@@ -20,10 +20,11 @@ def validate():
     required_sources = [
         "AUA01",
         "AUP03",
-        "AULK08",
         "jobDagpenge",
         "jobDimittend",
         "jobEarlyTalks",
+        "jobLongTerm",
+        "jobExhaustedRights",
         "jobDagpengeforbrug",
         "jobOverlevelse",
         "jobStatusAfter",
@@ -43,10 +44,10 @@ def validate():
     if not total_code or total_code not in funds:
         raise RuntimeError("Total a-kasse mangler")
     if len(funds) < 10:
-        raise RuntimeError(f"For faa aktive a-kasser: {len(funds)}")
+        raise RuntimeError(f"For få aktive a-kasser: {len(funds)}")
 
     total = funds[total_code]
-    for key, source in (("members", "AUA01"), ("unemploymentRate", "AUP03"), ("longTermPer1000", "AULK08")):
+    for key, source in (("members", "AUA01"), ("unemploymentRate", "AUP03")):
         series = total.get(key, {})
         labels = series.get("labels", [])
         values = series.get("values", [])
@@ -56,7 +57,16 @@ def validate():
         if source_info.get("latestPeriod") != labels[-1]:
             raise RuntimeError(f"Periode mismatch for {source}: {source_info.get('latestPeriod')} != {labels[-1]}")
 
-    required_job_modules = ["dagpenge", "graduates", "earlyTalks", "benefitConsumption", "survival", "statusAfter3m"]
+    required_job_modules = [
+        "dagpenge",
+        "graduates",
+        "earlyTalks",
+        "longTerm",
+        "exhaustedRights",
+        "benefitConsumption",
+        "survival",
+        "statusAfter3m",
+    ]
     missing_modules = {}
     for code, fund in funds.items():
         missing = [key for key in required_job_modules if not fund.get("jobindsats", {}).get(key)]
@@ -71,6 +81,8 @@ def validate():
         ("dagpenge", "labels", "jobDagpenge"),
         ("graduates", "labels", "jobDimittend"),
         ("earlyTalks", "labels", "jobEarlyTalks"),
+        ("longTerm", "labels", "jobLongTerm"),
+        ("exhaustedRights", "labels", "jobExhaustedRights"),
         ("benefitConsumption", "period", "jobDagpengeforbrug"),
         ("survival", "period", "jobOverlevelse"),
         ("statusAfter3m", "period", "jobStatusAfter"),
@@ -96,7 +108,14 @@ def validate():
         'akassesiden.goatcounter.com/count',
         'gc.zgo.at/count.js',
         'id="fundSelect"',
-        'id="benchmarkSelect"',
+        'id="compareOptions"',
+        'id="periodSelect"',
+        'id="membersRawChart"',
+        'id="membersIndexChart"',
+        'id="longRawChart"',
+        'id="longIndexChart"',
+        'id="gradCountChart"',
+        'id="exhaustedChart"',
         'id="statusPeriodText"',
         'id="talkPeriodText"',
         'Mindst 3 samtaler',
