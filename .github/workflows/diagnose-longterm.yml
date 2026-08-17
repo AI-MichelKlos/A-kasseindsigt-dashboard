@@ -1,0 +1,73 @@
+name: Diagnose langtidsledighed
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/diagnose-longterm.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Kontroller dashboard og Jobindsats
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from collections import defaultdict
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, 'scripts')
+          import jobindsats_api as ji
+          from fetch_sources import match_fund
+
+          data=json.loads(Path('data/dashboard-data.json').read_text(encoding='utf-8'))
+          funds=data['funds']; total=data['meta']['totalFundCode']
+          print('DASHBOARD COVERAGE LAST 36')
+          for code,item in funds.items():
+              s=item.get('jobindsats',{}).get('longTerm',{})
+              labels=s.get('labels',[])[-36:]; vals=s.get('persons',[])[-36:]
+              miss=[p for p,v in zip(labels,vals) if v is None]
+              print(code, item['name'], 'labels=',len(labels),'nonnull=',sum(v is not None for v in vals),'missing=',','.join(miss) or '-')
+
+          tables=ji.get('tables',{'format':'json'})
+          table=ji.find_table(tables,['antal langtidsledige personer'],['unge','udenlandsk'])
+          tid=str(table['table_id'])
+          spec=ji.get(f'table/{tid}',{'format':'json'})
+          fund_h=ji.find_hierarchy(spec,['a kasse','akasse']); level=ji.fund_level(fund_h)
+          rows=ji.query(tid,spec,'latest:36',((fund_h,f'level:{level}' if level else '*'),))
+          print('TABLE',tid)
+          print('COLUMNS',ji.columns(rows))
+          fcol=next((c for c in ji.columns(rows) if ji.norm(c)==ji.norm('A-kasse')), ji.best_col(rows,['a kasse'],distinct=True))
+          pcol=next((c for c in ji.columns(rows) if ji.norm(c)==ji.norm('Periode')), ji.best_col(rows,['periode'],distinct=True))
+          vcol=next((c for c in ji.columns(rows) if ji.norm(c)==ji.norm('Antal langtidsledige personer')), ji.best_col(rows,['antal','langtidsledige','personer'],['fuldtid','andel','brutto']))
+          names={code:item['name'] for code,item in funds.items()}
+          grouped=defaultdict(dict); unmatched=set()
+          for r in rows:
+              code=match_fund(r.get(fcol),names,total)
+              if code not in funds:
+                  unmatched.add(str(r.get(fcol)))
+                  continue
+              grouped[code][str(r.get(pcol))]=ji.number(r.get(vcol))
+          print('UNMATCHED',sorted(unmatched))
+          print('API COVERAGE LAST 36')
+          for code,item in funds.items():
+              vals=grouped.get(code,{})
+              periods=sorted(vals)[-36:]
+              miss=[p for p in periods if vals[p] is None]
+              print(code,item['name'],'periods=',len(periods),'nonnull=',sum(vals[p] is not None for p in periods),'missing=',','.join(miss) or '-')
+          aka=next((c for c,i in funds.items() if 'Akademik' in i['name']),None)
+          if aka:
+              print('AKA API VALUES',[(p,grouped.get(aka,{}).get(p)) for p in sorted(grouped.get(aka,{}))[-36:]])
+          PY
