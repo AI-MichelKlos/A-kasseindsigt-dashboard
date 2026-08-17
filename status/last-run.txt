@@ -1,3 +1,4 @@
-status: ok
-tid_utc: 2026-08-17T19:39:46Z
+status: fejl
+tid_utc: 2026-08-17T19:53:10Z
 dato_dk: 2026-08-17
+fejl: jobDagpengeforbrug ok 2026M05 jobOverlevelse ok 2024Q04 jobStatusAfter ok 2025Q03 DAK-navnestandard anvendt på 21 a-kasser Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 190, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 186, in main validate() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 19, in validate raise RuntimeError(f"Dashboardstatus er {state}; alle påkrævede kilder skal være ok") RuntimeError: Dashboardstatus er partial; alle påkrævede kilder skal være ok 
