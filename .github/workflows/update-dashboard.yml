@@ -88,23 +88,33 @@ jobs:
             printf 'status: fejl\ntid_utc: %s\ndato_dk: %s\nfejl: %s\n' "$utc" "$today" "$message" > status/last-run.txt
           fi
 
-      - name: Gem data og status
+      - name: Gem godkendte data eller kun fejlstatus
         if: steps.gate.outputs.should_run == 'true'
         shell: bash
         run: |
-          cp data/dashboard-data.json /tmp/dashboard-data.json
+          code="${{ steps.update.outputs.exit_code }}"
           cp status/last-run.txt /tmp/last-run.txt
+          if [ "$code" = "0" ]; then
+            cp data/dashboard-data.json /tmp/dashboard-data.json
+          fi
           git fetch origin main
           git reset --hard origin/main
-          cp /tmp/dashboard-data.json data/dashboard-data.json
           cp /tmp/last-run.txt status/last-run.txt
-          git add data/dashboard-data.json status/last-run.txt
+          git add status/last-run.txt
+          if [ "$code" = "0" ]; then
+            cp /tmp/dashboard-data.json data/dashboard-data.json
+            git add data/dashboard-data.json
+          fi
           if git diff --cached --quiet; then
-            echo "Ingen dataaendringer at gemme."
+            echo "Ingen aendringer at gemme."
           else
             git config user.name "Dashboard automation"
             git config user.email "dashboard-automation@users.noreply.github.com"
-            git commit -m "Opdater A-kasseindsigt data og status"
+            if [ "$code" = "0" ]; then
+              git commit -m "Opdater A-kasseindsigt data og status"
+            else
+              git commit -m "Registrer fejl i A-kasseindsigt opdatering"
+            fi
             git push origin HEAD:main
           fi
 
