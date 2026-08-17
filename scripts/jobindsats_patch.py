@@ -62,20 +62,6 @@ def setup_spec(spec):
     return fund, f"level:{level}" if level else "*"
 
 
-def hierarchy_value(hierarchy, includes, excludes=()):
-    wanted = [ji.norm(value) for value in includes]
-    banned = [ji.norm(value) for value in excludes]
-    matches = []
-    for value_id, text in ji.hierarchy_values(hierarchy):
-        normalized = ji.norm(text)
-        if all(term in normalized for term in wanted) and not any(term in normalized for term in banned):
-            matches.append((len(normalized), value_id, normalized))
-    if not matches:
-        raise RuntimeError(f"Kunne ikke finde hierarkiværdi for {includes}")
-    matches.sort()
-    return matches[0][1]
-
-
 def fund_code(label, data):
     names = {code: item.get("name", code) for code, item in data["funds"].items()}
     return match_fund(label, names, data["meta"]["totalFundCode"])
@@ -138,14 +124,31 @@ def early_talks(data):
 def long_term(data):
     table, spec = discover(["antal langtidsledige personer"], ["unge", "udenlandsk"])
     fund_h, selection = setup_spec(spec)
-    ledighed_h = ji.find_hierarchy(spec, ["ledighedstype"])
-    dagpenge_value = hierarchy_value(ledighed_h, ["a dagpenge"])
-    rows = ji.query(table, spec, "latest:120", ((fund_h, selection), (ledighed_h, dagpenge_value)))
+    # A-kasse er selve fordelingen i denne tabel. Jobindsats API'et eksponerer
+    # ikke ledighedstype som et separat hierarki her, så a-dagpengepopulationen
+    # identificeres gennem a-kassefordelingen frem for et ekstra filter.
+    rows = ji.query(table, spec, "latest:120", ((fund_h, selection),))
     vcol = exact_col(rows, "Antal langtidsledige personer") or ji.best_col(
         rows,
         ["antal", "langtidsledige", "personer"],
         ["fuldtid", "andel", "brutto"],
     )
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    seen = {}
+    for row in rows:
+        code = fund_code(row.get(fcol), data)
+        period = str(row.get(pcol) or "")
+        value = ji.number(row.get(vcol))
+        if code not in data["funds"] or not period:
+            continue
+        key = (code, period)
+        if key in seen and seen[key] != value:
+            raise RuntimeError(
+                "Langtidsledighed gav flere forskellige værdier for samme a-kasse og periode; "
+                f"kolonner: {ji.columns(rows)}"
+            )
+        seen[key] = value
     latest = store_timeseries(data, rows, "longTerm", vcol, "persons")
     put_status(
         data,
