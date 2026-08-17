@@ -67,7 +67,7 @@ jobs:
             code=$?
           fi
           if [ "$code" -eq 0 ]; then
-            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source AULK08 --require-source jobDagpenge --require-source jobDimittend --require-source jobEarlyTalks --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter >> status/run.log 2>&1
+            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobEarlyTalks --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter >> status/run.log 2>&1
             code=$?
           fi
           cat status/run.log || true
