@@ -7,6 +7,7 @@ on:
     paths:
       - index.html
       - scripts/**
+      - config/**
       - .github/workflows/update-dashboard.yml
       - README.md
       - .nojekyll
@@ -59,7 +60,7 @@ jobs:
         run: |
           mkdir -p status
           set +e
-          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
           code=$?
           if [ "$code" -eq 0 ]; then
             python scripts/run_update.py >> status/run.log 2>&1
