@@ -26,6 +26,7 @@ def validate():
         "jobEarlyTalks",
         "jobLongTerm",
         "jobExhaustedRights",
+        "jobSanctions",
         "jobDagpengeforbrug",
         "jobOverlevelse",
         "jobStatusAfter",
@@ -64,6 +65,7 @@ def validate():
         "earlyTalks",
         "longTerm",
         "exhaustedRights",
+        "sanctions",
         "benefitConsumption",
         "survival",
         "statusAfter3m",
@@ -98,6 +100,29 @@ def validate():
     if long_errors:
         raise RuntimeError("Ufuldstændig langtidsledighed: " + "; ".join(long_errors))
 
+    # Rådighedssanktioner er kvartalsvise: 3 års standardvisning = 12 kvartaler.
+    sanctions_total = total.get("jobindsats", {}).get("sanctions", {})
+    sanctions_labels = sanctions_total.get("labels", [])[-12:]
+    if len(sanctions_labels) < 12:
+        raise RuntimeError(f"Rådighedssanktioner har kun {len(sanctions_labels)} kvartaler; forventer mindst 12")
+    sanctions_errors = []
+    for code, fund in funds.items():
+        block = fund.get("jobindsats", {}).get("sanctions", {})
+        labels = block.get("labels", [])
+        totals = block.get("total", [])
+        shares = block.get("shareSanctioned", [])
+        avgs = block.get("avgPerSanctioned", [])
+        if not (len(labels) == len(totals) == len(shares) == len(avgs)):
+            sanctions_errors.append(f"{code}: uens længde på sanktionstidsserier")
+            continue
+        lookup_total = dict(zip(labels, totals))
+        lookup_share = dict(zip(labels, shares))
+        missing = [q for q in sanctions_labels if lookup_total.get(q) is None or lookup_share.get(q) is None]
+        if missing:
+            sanctions_errors.append(f"{code}: mangler total/andel i {','.join(missing)}")
+    if sanctions_errors:
+        raise RuntimeError("Ufuldstændige rådighedssanktioner: " + "; ".join(sanctions_errors))
+
     total_jobs = total.get("jobindsats", {})
     period_checks = [
         ("dagpenge", "labels", "jobDagpenge"),
@@ -105,6 +130,7 @@ def validate():
         ("earlyTalks", "labels", "jobEarlyTalks"),
         ("longTerm", "labels", "jobLongTerm"),
         ("exhaustedRights", "labels", "jobExhaustedRights"),
+        ("sanctions", "labels", "jobSanctions"),
         ("benefitConsumption", "period", "jobDagpengeforbrug"),
         ("survival", "period", "jobOverlevelse"),
         ("statusAfter3m", "period", "jobStatusAfter"),
@@ -140,6 +166,11 @@ def validate():
         'id="exhaustedChart"',
         'id="statusPeriodText"',
         'id="talkPeriodText"',
+        'id="sanctionsTotalChart"',
+        'id="sanctionsShareChart"',
+        'id="sanctionsTypeChart"',
+        'id="sanctionsAvgChart"',
+        'id="sanctionsPeriodText"',
         'Mindst 3 samtaler',
     ]
     missing = [item for item in required if item not in text]

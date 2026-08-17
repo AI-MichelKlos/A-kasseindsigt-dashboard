@@ -183,6 +183,80 @@ def exhausted_rights(data):
     )
 
 
+
+def sanctions(data):
+    table = "y01h01"
+    spec, fund_h, selection = setup(table)
+    rows = ji.query(table, spec, "latest:40", ((fund_h, selection),))
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    cols = {
+        "total": exact_col(rows, "Antal sanktioner i alt"),
+        "excluded": exact_col(rows, "Antal sanktioner fordelt på type: Udelukkes fra dagpenge i en periode"),
+        "quarantine": exact_col(rows, "Antal sanktioner fordelt på type: Karantæne (selvforskyldt ledighed)"),
+        "repeat": exact_col(rows, "Antal sanktioner fordelt på type: Gentagelsesvirkning (arbejdskrav)"),
+        "other": exact_col(rows, "Antal sanktioner fordelt på type: Andre (arbejdskrav)"),
+        "share": exact_col(rows, "Andel sanktionerede ledige"),
+        "avg": exact_col(rows, "Gnsn. antal sanktioner pr. sanktioneret ledig"),
+    }
+    missing = [key for key, col in cols.items() if not col]
+    if missing:
+        raise RuntimeError(f"Sanktionstabellen mangler kolonner: {missing}; har {ji.columns(rows)}")
+
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = fund_code(row.get(fcol), data)
+        period = str(row.get(pcol) or "")
+        if code not in data["funds"] or not period:
+            continue
+        grouped[code][period] = {
+            "total": ji.number(row.get(cols["total"])),
+            "share": ji.number(row.get(cols["share"])),
+            "avg": ji.number(row.get(cols["avg"])),
+            "excluded": ji.number(row.get(cols["excluded"])),
+            "quarantine": ji.number(row.get(cols["quarantine"])),
+            "repeat": ji.number(row.get(cols["repeat"])),
+            "other": ji.number(row.get(cols["other"])),
+        }
+    if not grouped:
+        raise RuntimeError("Rådighedssanktioner gav ingen a-kassedata")
+
+    type_defs = [
+        ("Udelukkelse fra dagpenge i en periode", "excluded"),
+        ("Karantæne (selvforskyldt ledighed)", "quarantine"),
+        ("Gentagelsesvirkning (arbejdskrav)", "repeat"),
+        ("Andre arbejdskrav", "other"),
+    ]
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"]["sanctions"] = {
+            "labels": labels,
+            "total": [values[p]["total"] for p in labels],
+            "shareSanctioned": [values[p]["share"] for p in labels],
+            "avgPerSanctioned": [values[p]["avg"] for p in labels],
+            "types": [
+                {"label": label, "values": [values[p][key] for p in labels]}
+                for label, key in type_defs
+            ],
+        }
+
+    latest = max((period for values in grouped.values() for period in values), key=pkey)
+    total_code = data["meta"]["totalFundCode"]
+    total_block = data["funds"].get(total_code, {}).get("jobindsats", {}).get("sanctions", {})
+    if not total_block.get("labels") or total_block["labels"][-1] != latest:
+        raise RuntimeError("Sanktioner mangler seneste kvartal for I alt")
+    if total_block.get("total", [None])[-1] is None:
+        raise RuntimeError("Seneste samlede antal rådighedssanktioner er tomt")
+
+    put_status(
+        data,
+        "jobSanctions",
+        table,
+        latest,
+        "antal rådighedssanktioner, pct. sanktionerede og gennemsnit pr. sanktioneret ledig",
+        "Databrud: 2019-2020 omfatter kun bestemte sager rejst via jobcentrene; fra 1. kvt. 2021 indgår også sager rejst af a-kasserne selv.",
+    )
+
 def consumption(data):
     table = "y01a12"
     spec, fund_h, selection = setup(table)
@@ -302,6 +376,7 @@ def main():
         ("jobEarlyTalks", early_talks),
         ("jobLongTerm", long_term),
         ("jobExhaustedRights", exhausted_rights),
+        ("jobSanctions", sanctions),
         ("jobDagpengeforbrug", consumption),
         ("jobOverlevelse", survival),
         ("jobStatusAfter", status_after),
@@ -340,6 +415,7 @@ def main():
         "Rå antal vises for den valgte a-kasse alene. Indeks, procenter og andele kan sammenlignes med I alt og flere valgte a-kasser.",
         "AUP03 er Danmarks Statistiks foreløbige ledighedsprocent blandt samtlige forsikrede.",
         "Langtidsledighed hentes fra Jobindsats og afgrænses til a-dagpenge.",
+        "Rådighedssanktioner hentes kvartalsvist fra Jobindsats. Der er databrud fra 1. kvt. 2021, hvor sager rejst af a-kasserne selv også indgår.",
         "Hvert Jobindsats-modul har egen kildestatus, så en enkelt fejl ikke skjules.",
     ]
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

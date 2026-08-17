@@ -30,3 +30,8 @@ GitHub Pages publicerer fra `main` og repository-root. `.nojekyll` er medtaget, 
 ## Besoegstaeller
 
 Forsiden indeholder GoatCounter for `akassesiden.goatcounter.com` efter aftale.
+
+
+## Rådighedssanktioner
+
+Sektion 7 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Der markeres databrud fra 1. kvt. 2021.
