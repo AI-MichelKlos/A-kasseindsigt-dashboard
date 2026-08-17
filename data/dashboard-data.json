@@ -2,7 +2,7 @@
   "meta": {
     "title": "A-kasseindsigt",
     "updated": "2026-08-17",
-    "checkedAt": "2026-08-17T19:20:29+02:00",
+    "checkedAt": "2026-08-17T21:39:22+02:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
@@ -10,7 +10,7 @@
         "dataset": "AUA01",
         "latestPeriod": "2026M06",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-08-17T19:20:05+02:00",
+        "checkedAt": "2026-08-17T21:39:01+02:00",
         "sourceUpdated": "2026-07-30T08:00:00"
       },
       "AUP03": {
@@ -19,7 +19,7 @@
         "dataset": "AUP03",
         "latestPeriod": "2026M06",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-08-17T19:20:09+02:00",
+        "checkedAt": "2026-08-17T21:39:03+02:00",
         "sourceUpdated": "2026-07-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
@@ -29,7 +29,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M06",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-08-17T19:20:17+02:00"
+        "checkedAt": "2026-08-17T21:39:11+02:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -37,15 +37,15 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M06",
         "unit": "personer og pct.",
-        "checkedAt": "2026-08-17T19:20:20+02:00"
+        "checkedAt": "2026-08-17T21:39:15+02:00"
       },
       "jobEarlyTalks": {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": "y30e22ak",
-        "latestPeriod": "2026M05",
+        "latestPeriod": "2026M06",
         "unit": "pct. med mindst 3 jobsamtaler",
-        "checkedAt": "2026-08-17T19:20:30+02:00",
+        "checkedAt": "2026-08-17T21:39:23+02:00",
         "note": "Populationen er personer, der i måneden afslutter a-kassens kontaktforløb med overgang til jobcenter."
       },
       "jobDagpengeforbrug": {
@@ -54,23 +54,23 @@
         "dataset": "y01a12",
         "latestPeriod": "2026M05",
         "unit": "personer efter forbrugt dagpengeperiode",
-        "checkedAt": "2026-08-17T19:20:41+02:00"
+        "checkedAt": "2026-08-17T21:39:34+02:00"
       },
       "jobOverlevelse": {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": "y01b01",
-        "latestPeriod": "2024Q02",
+        "latestPeriod": "2024Q04",
         "unit": "pct. fortsat på dagpenge uden tilbagefald",
-        "checkedAt": "2026-08-17T19:20:43+02:00"
+        "checkedAt": "2026-08-17T21:39:36+02:00"
       },
       "jobStatusAfter": {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": "y01b15",
-        "latestPeriod": "2025Q04",
+        "latestPeriod": "2024Q04",
         "unit": "pct. efter arbejdsmarkedsstatus 3 mdr. efter afsluttet forløb",
-        "checkedAt": "2026-08-17T19:20:47+02:00"
+        "checkedAt": "2026-08-17T21:39:46+02:00"
       },
       "jobLongTerm": {
         "state": "ok",
@@ -78,16 +78,16 @@
         "dataset": "y25i09",
         "latestPeriod": "2026M06",
         "unit": "antal langtidsledige personer på a-dagpenge",
-        "checkedAt": "2026-08-17T19:20:37+02:00",
+        "checkedAt": "2026-08-17T21:39:31+02:00",
         "note": "Langtidsledige har været ledige eller aktiverede mindst 80 pct. af de seneste 12 måneder."
       },
       "jobExhaustedRights": {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": "y01ud01di",
-        "latestPeriod": "2026M04",
+        "latestPeriod": "2026M05",
         "unit": "antal personer med opbrugt dagpengeret",
-        "checkedAt": "2026-08-17T19:20:39+02:00",
+        "checkedAt": "2026-08-17T21:39:33+02:00",
         "note": "A-kassefordelingen følger seneste udbetalende a-kasse."
       }
     },
@@ -106,7 +106,7 @@
         "jobExhaustedRights"
       ],
       "failed": [],
-      "checkedAt": "2026-08-17T19:20:47+02:00"
+      "checkedAt": "2026-08-17T21:39:46+02:00"
     },
     "methodNotes": [
       "Rå antal vises for den valgte a-kasse alene. Indeks, procenter og andele kan sammenlignes med I alt og flere valgte a-kasser.",
@@ -1570,7 +1570,6 @@
         },
         "earlyTalks": {
           "labels": [
-            "2024M02",
             "2024M03",
             "2024M04",
             "2024M05",
@@ -1597,37 +1596,38 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            null,
             74.8,
-            86.2,
+            86.1,
             87.6,
-            87.7,
+            87.6,
             87,
             88.1,
-            87.5,
+            87.6,
             90.7,
             91.8,
             91.6,
             91.7,
-            92.1,
+            92,
             91.9,
             93,
             92,
-            91.5,
-            89.9,
-            88.9,
-            92.1,
-            92.7,
+            91.4,
+            89.8,
+            88.8,
+            92,
+            92.6,
             92.5,
             91.6,
             91.9,
             88.8,
             88.1,
             83.8,
-            72.9
+            73,
+            71.8
           ]
         },
         "longTerm": {
@@ -1878,7 +1878,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -1997,10 +1996,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            1287,
             1023,
             1342,
             878,
@@ -2013,7 +2012,7 @@
             390,
             500,
             461,
-            423,
+            422,
             405,
             292,
             277,
@@ -2021,7 +2020,7 @@
             234,
             244,
             282,
-            362,
+            363,
             278,
             326,
             290,
@@ -2033,10 +2032,10 @@
             269,
             346,
             323,
-            390,
-            388,
+            391,
+            387,
             339,
-            296,
+            295,
             400,
             373,
             327,
@@ -2064,16 +2063,16 @@
             null,
             243,
             295,
-            247,
-            236,
-            226,
+            246,
+            235,
+            225,
             241,
             168,
             211,
             232,
-            212,
-            312,
-            371,
+            211,
+            311,
+            370,
             188,
             202,
             180,
@@ -2085,7 +2084,7 @@
             359,
             314,
             258,
-            247,
+            246,
             436,
             306,
             251,
@@ -2093,33 +2092,34 @@
             208,
             263,
             282,
-            375,
+            376,
             327,
-            303,
-            272,
+            302,
+            271,
             543,
             580,
             496,
-            433,
+            432,
             370,
             365,
-            402,
+            403,
             485,
             525,
             487,
             427,
-            415,
-            604,
+            414,
+            603,
             528,
-            533,
-            450,
+            532,
+            449,
             394,
             409,
-            357,
+            356,
             540,
-            570,
-            424,
-            466
+            568,
+            423,
+            454,
+            476
           ]
         },
         "benefitConsumption": {
@@ -2148,7 +2148,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -2156,84 +2156,84 @@
             },
             {
               "label": "4 uger",
-              "value": 39.1
+              "value": 42.4
             },
             {
               "label": "8 uger",
-              "value": 24.2
+              "value": 27.8
             },
             {
               "label": "13 uger",
-              "value": 13.2
+              "value": 17
             },
             {
               "label": "17 uger",
-              "value": 8.5
+              "value": 12.5
             },
             {
               "label": "21 uger",
-              "value": 5.8
+              "value": 9.5
             },
             {
               "label": "26 uger",
-              "value": 3.7
+              "value": 6.4
             },
             {
               "label": "30 uger",
-              "value": 2.6
+              "value": 4.7
             },
             {
               "label": "34 uger",
-              "value": 1.9
+              "value": 3.4
             },
             {
               "label": "39 uger",
-              "value": 1.3
+              "value": 2.2
             },
             {
               "label": "43 uger",
-              "value": 1
+              "value": 1.6
             },
             {
               "label": "47 uger",
-              "value": 0.8
+              "value": 1.3
             },
             {
               "label": "52 uger",
-              "value": 0.6
+              "value": 0.9
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 64
+              "value": 64.2
             },
             {
               "label": "A-dagpenge",
-              "value": 11.4
+              "value": 11.2
             },
             {
               "label": "Sygedagpenge",
-              "value": 8.4
+              "value": 8.3
             },
             {
               "label": "Selvforsørgelse",
-              "value": 7.5
+              "value": 6.2
             },
             {
               "label": "Uddannelse",
-              "value": 2.8
+              "value": 2.9
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 2.5
             },
             {
               "label": "Andet",
               "value": 2
-            },
-            {
-              "label": "Barselsdagpenge",
-              "value": 1
             },
             {
               "label": "Kontanthjælp",
@@ -2241,7 +2241,7 @@
             },
             {
               "label": "Folkepension",
-              "value": 0.8
+              "value": 0.6
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
@@ -2253,11 +2253,7 @@
             },
             {
               "label": "Jobafklaringsforløb",
-              "value": 0.2
-            },
-            {
-              "label": "Forrevalidering og revalidering",
-              "value": 0
+              "value": 0.3
             }
           ]
         }
@@ -3926,7 +3922,8 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             74,
@@ -3955,7 +3952,8 @@
             88.9,
             94.9,
             90.4,
-            90.1
+            90.1,
+            90.7
           ]
         },
         "longTerm": {
@@ -4206,7 +4204,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -4310,10 +4307,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            33,
             20,
             31,
             17,
@@ -4417,7 +4414,8 @@
             13,
             13,
             10,
-            12
+            12,
+            10
           ]
         },
         "benefitConsumption": {
@@ -4446,7 +4444,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -4454,100 +4452,100 @@
             },
             {
               "label": "4 uger",
-              "value": 42.5
+              "value": 47.5
             },
             {
               "label": "8 uger",
-              "value": 28.3
+              "value": 33.1
             },
             {
               "label": "13 uger",
-              "value": 17.4
+              "value": 21.6
             },
             {
               "label": "17 uger",
-              "value": 12.2
+              "value": 16.8
             },
             {
               "label": "21 uger",
-              "value": 8.7
+              "value": 13.3
             },
             {
               "label": "26 uger",
-              "value": 6.2
+              "value": 9.6
             },
             {
               "label": "30 uger",
-              "value": 4.7
+              "value": 7.5
             },
             {
               "label": "34 uger",
-              "value": 3.7
+              "value": 5.7
             },
             {
               "label": "39 uger",
-              "value": 2.4
+              "value": 3.6
             },
             {
               "label": "43 uger",
-              "value": 1.9
+              "value": 2.8
             },
             {
               "label": "47 uger",
-              "value": 1.8
+              "value": 2.4
             },
             {
               "label": "52 uger",
-              "value": 1.1
+              "value": 1.6
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 63.2
+              "value": 62.2
             },
             {
               "label": "A-dagpenge",
-              "value": 9.8
+              "value": 11.8
             },
             {
               "label": "Sygedagpenge",
-              "value": 9.8
+              "value": 10.4
             },
             {
               "label": "Selvforsørgelse",
-              "value": 6.7
+              "value": 6.3
             },
             {
               "label": "Uddannelse",
-              "value": 4.2
-            },
-            {
-              "label": "Andet",
-              "value": 1.8
-            },
-            {
-              "label": "Folkepension",
-              "value": 1.1
+              "value": 3.1
             },
             {
               "label": "Barselsdagpenge",
-              "value": 0.9
+              "value": 2.1
             },
             {
-              "label": "Kontanthjælp",
-              "value": 0.9
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.8
+              "label": "Andet",
+              "value": 1.4
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.5
+              "value": 0.8
+            },
+            {
+              "label": "Kontanthjælp",
+              "value": 0.8
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.6
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.6
             }
           ]
         }
@@ -6196,7 +6194,6 @@
         },
         "earlyTalks": {
           "labels": [
-            "2024M02",
             "2024M03",
             "2024M04",
             "2024M05",
@@ -6223,19 +6220,19 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            null,
             82.9,
-            89.8,
+            89.7,
             93.4,
             91.8,
             89.5,
             90.7,
-            84.7,
+            84.6,
             92.8,
-            92.9,
+            92.8,
             95.3,
             94.8,
             92.8,
@@ -6244,7 +6241,7 @@
             94.3,
             94.8,
             92.1,
-            91.2,
+            91.3,
             95.3,
             95,
             96,
@@ -6253,7 +6250,8 @@
             84.8,
             70.3,
             60.3,
-            14.4
+            14.6,
+            4.9
           ]
         },
         "longTerm": {
@@ -6504,7 +6502,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -6609,10 +6606,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            56,
             68,
             86,
             54,
@@ -6625,7 +6622,7 @@
             25,
             31,
             29,
-            36,
+            35,
             37,
             21,
             32,
@@ -6694,7 +6691,7 @@
             40,
             26,
             31,
-            40,
+            39,
             106,
             103,
             92,
@@ -6717,7 +6714,8 @@
             86,
             92,
             64,
-            53
+            52,
+            72
           ]
         },
         "benefitConsumption": {
@@ -6746,7 +6744,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -6754,96 +6752,92 @@
             },
             {
               "label": "4 uger",
-              "value": 48.7
+              "value": 46.8
             },
             {
               "label": "8 uger",
-              "value": 29.8
+              "value": 30.5
             },
             {
               "label": "13 uger",
-              "value": 16
+              "value": 18.1
             },
             {
               "label": "17 uger",
-              "value": 10.4
+              "value": 13.2
             },
             {
               "label": "21 uger",
-              "value": 7.1
+              "value": 10.2
             },
             {
               "label": "26 uger",
-              "value": 4.6
+              "value": 6.7
             },
             {
               "label": "30 uger",
-              "value": 3.2
+              "value": 4.8
             },
             {
               "label": "34 uger",
-              "value": 2.2
+              "value": 3.4
             },
             {
               "label": "39 uger",
-              "value": 1.5
+              "value": 2
             },
             {
               "label": "43 uger",
-              "value": 1.2
+              "value": 1.5
             },
             {
               "label": "47 uger",
-              "value": 0.9
+              "value": 1.1
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 0.7
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 72.5
+              "value": 72.7
             },
             {
               "label": "Selvforsørgelse",
-              "value": 9.2
+              "value": 8.8
             },
             {
               "label": "A-dagpenge",
-              "value": 7.6
-            },
-            {
-              "label": "Sygedagpenge",
-              "value": 3.3
+              "value": 7.2
             },
             {
               "label": "Andet",
-              "value": 3.3
-            },
-            {
-              "label": "Uddannelse",
-              "value": 1.4
+              "value": 3.2
             },
             {
               "label": "Barselsdagpenge",
+              "value": 3
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 2.8
+            },
+            {
+              "label": "Uddannelse",
               "value": 1.3
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.8
+              "value": 0.6
             },
             {
               "label": "Folkepension",
               "value": 0.4
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.1
             }
           ]
         }
@@ -8518,23 +8512,24 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             22.9,
-            63.3,
-            57.6,
-            57.3,
-            55.8,
-            73.7,
-            71.1,
+            63.2,
+            57.8,
+            57.1,
+            56,
+            74.5,
+            70.9,
             66.6,
             85.8,
             84.3,
             87.5,
             91.6,
             92.6,
-            89.8,
+            89.7,
             91.6,
             78.5,
             73.8,
@@ -8545,9 +8540,10 @@
             88.2,
             91.7,
             88.5,
-            91,
+            91.2,
             88,
-            89.4
+            89.4,
+            93.4
           ]
         },
         "longTerm": {
@@ -8798,7 +8794,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -8903,10 +8898,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            81,
             60,
             92,
             67,
@@ -9011,7 +9006,8 @@
             31,
             40,
             22,
-            26
+            26,
+            32
           ]
         },
         "benefitConsumption": {
@@ -9040,7 +9036,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -9048,91 +9044,91 @@
             },
             {
               "label": "4 uger",
-              "value": 41.4
+              "value": 42.2
             },
             {
               "label": "8 uger",
-              "value": 27
+              "value": 29.5
             },
             {
               "label": "13 uger",
-              "value": 16.2
+              "value": 19.5
             },
             {
               "label": "17 uger",
-              "value": 11.6
+              "value": 14.5
             },
             {
               "label": "21 uger",
-              "value": 8.2
+              "value": 11.2
             },
             {
               "label": "26 uger",
-              "value": 5.4
+              "value": 7.7
             },
             {
               "label": "30 uger",
-              "value": 4.2
+              "value": 6
             },
             {
               "label": "34 uger",
-              "value": 3.1
+              "value": 4.5
             },
             {
               "label": "39 uger",
-              "value": 2.3
+              "value": 3.1
             },
             {
               "label": "43 uger",
-              "value": 1.8
+              "value": 2.5
             },
             {
               "label": "47 uger",
-              "value": 1.4
+              "value": 2
             },
             {
               "label": "52 uger",
-              "value": 1.1
+              "value": 1.5
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 57.9
-            },
-            {
-              "label": "Sygedagpenge",
-              "value": 12.1
+              "value": 59.3
             },
             {
               "label": "A-dagpenge",
-              "value": 11.4
+              "value": 11.7
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 10.7
             },
             {
               "label": "Selvforsørgelse",
-              "value": 9.4
+              "value": 7.6
             },
             {
               "label": "Uddannelse",
-              "value": 3
-            },
-            {
-              "label": "Andet",
-              "value": 1.8
-            },
-            {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.9
+              "value": 3.2
             },
             {
               "label": "Barselsdagpenge",
-              "value": 0.9
+              "value": 2.2
             },
             {
-              "label": "Kontanthjælp",
+              "label": "Andet",
+              "value": 2.2
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.8
+            },
+            {
+              "label": "Folkepension",
               "value": 0.8
             },
             {
@@ -9140,12 +9136,12 @@
               "value": 0.7
             },
             {
-              "label": "Folkepension",
+              "label": "Kontanthjælp",
               "value": 0.7
             },
             {
               "label": "Jobafklaringsforløb",
-              "value": 0.4
+              "value": 0.3
             }
           ]
         }
@@ -10820,15 +10816,16 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             96,
             97.6,
-            94.1,
+            94,
             89.3,
             93,
-            95.9,
+            95.8,
             92.1,
             93.6,
             90,
@@ -10847,9 +10844,10 @@
             96.3,
             98,
             98,
-            93.4,
+            93.3,
             96.1,
-            92.2
+            92.2,
+            98.3
           ]
         },
         "longTerm": {
@@ -11100,7 +11098,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -11204,10 +11201,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            27,
             33,
             38,
             22,
@@ -11285,7 +11282,7 @@
             null,
             null,
             3,
-            6,
+            7,
             3,
             null,
             null,
@@ -11311,7 +11308,8 @@
             5,
             null,
             null,
-            6
+            6,
+            4
           ]
         },
         "benefitConsumption": {
@@ -11340,7 +11338,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -11348,43 +11346,43 @@
             },
             {
               "label": "4 uger",
-              "value": 48.4
+              "value": 46.7
             },
             {
               "label": "8 uger",
-              "value": 28.6
+              "value": 30.8
             },
             {
               "label": "13 uger",
-              "value": 15.7
+              "value": 16.9
             },
             {
               "label": "17 uger",
-              "value": 10.8
+              "value": 12.4
             },
             {
               "label": "21 uger",
-              "value": 7
+              "value": 9
             },
             {
               "label": "26 uger",
-              "value": 4.1
+              "value": 6
             },
             {
               "label": "30 uger",
-              "value": 2.8
+              "value": 4
             },
             {
               "label": "34 uger",
-              "value": 2
+              "value": 3.3
             },
             {
               "label": "39 uger",
-              "value": 1.5
+              "value": 2.1
             },
             {
               "label": "43 uger",
-              "value": 1.3
+              "value": 1.6
             },
             {
               "label": "47 uger",
@@ -11392,28 +11390,32 @@
             },
             {
               "label": "52 uger",
-              "value": 0.7
+              "value": 0.8
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 69.4
+              "value": 67.5
             },
             {
               "label": "Sygedagpenge",
-              "value": 10.5
+              "value": 9.8
             },
             {
               "label": "A-dagpenge",
-              "value": 9
+              "value": 8.4
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 5.2
             },
             {
               "label": "Selvforsørgelse",
-              "value": 4.4
+              "value": 3.8
             },
             {
               "label": "Uddannelse",
@@ -11421,15 +11423,19 @@
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 1.5
+              "value": 1.3
             },
             {
-              "label": "Barselsdagpenge",
-              "value": 1.4
+              "label": "Kontanthjælp",
+              "value": 0.7
             },
             {
               "label": "Andet",
-              "value": 1.1
+              "value": 0.5
+            },
+            {
+              "label": "Jobafklaringsforløb",
+              "value": 0.4
             }
           ]
         }
@@ -13104,20 +13110,21 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            82,
+            82.1,
             85.7,
             91.1,
             91.2,
-            88.1,
+            88.2,
             90,
             95.2,
             93.6,
             95.7,
             95.6,
-            93.9,
+            94,
             96.3,
             95.7,
             94.9,
@@ -13133,6 +13140,7 @@
             95,
             95.2,
             95.9,
+            96.1,
             96.1
           ]
         },
@@ -13384,7 +13392,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -13489,10 +13496,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            51,
             53,
             73,
             62,
@@ -13550,7 +13557,7 @@
             10,
             20,
             10,
-            11,
+            12,
             24,
             18,
             10,
@@ -13573,7 +13580,7 @@
             30,
             37,
             24,
-            41,
+            40,
             31,
             46,
             35,
@@ -13597,7 +13604,8 @@
             47,
             59,
             36,
-            51
+            48,
+            35
           ]
         },
         "benefitConsumption": {
@@ -13626,7 +13634,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -13634,88 +13642,88 @@
             },
             {
               "label": "4 uger",
-              "value": 35.9
+              "value": 41.3
             },
             {
               "label": "8 uger",
-              "value": 22
+              "value": 27.5
             },
             {
               "label": "13 uger",
-              "value": 12.3
+              "value": 16.9
             },
             {
               "label": "17 uger",
-              "value": 8.2
+              "value": 12.5
             },
             {
               "label": "21 uger",
-              "value": 5.8
+              "value": 9.1
             },
             {
               "label": "26 uger",
-              "value": 3.7
+              "value": 6.2
             },
             {
               "label": "30 uger",
-              "value": 2.6
+              "value": 4.5
             },
             {
               "label": "34 uger",
-              "value": 1.7
+              "value": 3.2
             },
             {
               "label": "39 uger",
-              "value": 1.2
+              "value": 2.1
             },
             {
               "label": "43 uger",
-              "value": 0.9
+              "value": 1.6
             },
             {
               "label": "47 uger",
-              "value": 0.7
+              "value": 1.3
             },
             {
               "label": "52 uger",
-              "value": 0.5
+              "value": 0.9
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 61.8
-            },
-            {
-              "label": "A-dagpenge",
-              "value": 11.3
+              "value": 61
             },
             {
               "label": "Sygedagpenge",
-              "value": 10.9
+              "value": 10.8
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 10.7
             },
             {
               "label": "Selvforsørgelse",
-              "value": 6.6
+              "value": 5
             },
             {
               "label": "Uddannelse",
-              "value": 3.9
-            },
-            {
-              "label": "Andet",
-              "value": 2.1
+              "value": 4.4
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.1
+              "value": 2.7
+            },
+            {
+              "label": "Andet",
+              "value": 2.4
             },
             {
               "label": "Kontanthjælp",
-              "value": 1
+              "value": 1.3
             },
             {
               "label": "Folkepension",
@@ -13723,15 +13731,15 @@
             },
             {
               "label": "Jobafklaringsforløb",
-              "value": 0.4
+              "value": 0.5
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.3
+              "value": 0.4
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.1
+              "value": 0.2
             }
           ]
         }
@@ -15406,27 +15414,28 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             48.9,
             74.2,
-            78.6,
-            87.3,
-            73.8,
+            79.7,
+            85.9,
+            73.3,
             86,
             72.7,
             78.4,
             71.8,
-            86.8,
+            86.5,
             80.6,
             74.4,
             79.6,
             88.1,
             85.3,
             84.7,
-            88.7,
-            84.7,
+            88.5,
+            86.4,
             87.8,
             91.8,
             88.6,
@@ -15434,8 +15443,9 @@
             86.7,
             87.6,
             94.4,
-            94.7,
-            92.1
+            95.6,
+            92.1,
+            95.5
           ]
         },
         "longTerm": {
@@ -15686,7 +15696,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -15790,10 +15799,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            26,
             23,
             14,
             10,
@@ -15826,7 +15835,7 @@
             9,
             null,
             5,
-            7,
+            8,
             6,
             5,
             8,
@@ -15897,7 +15906,8 @@
             7,
             6,
             null,
-            3
+            3,
+            7
           ]
         },
         "benefitConsumption": {
@@ -15926,7 +15936,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -15934,80 +15944,84 @@
             },
             {
               "label": "4 uger",
-              "value": 42.1
+              "value": 47.5
             },
             {
               "label": "8 uger",
-              "value": 19.9
+              "value": 29.6
             },
             {
               "label": "13 uger",
-              "value": 10.8
+              "value": 18.2
             },
             {
               "label": "17 uger",
-              "value": 6.8
+              "value": 13.1
             },
             {
               "label": "21 uger",
-              "value": 4.7
+              "value": 9.9
             },
             {
               "label": "26 uger",
-              "value": 2.9
+              "value": 6.8
             },
             {
               "label": "30 uger",
-              "value": 2.1
+              "value": 4.5
             },
             {
               "label": "34 uger",
-              "value": 1.3
+              "value": 3.2
             },
             {
               "label": "39 uger",
-              "value": 1
+              "value": 1.7
             },
             {
               "label": "43 uger",
-              "value": 0.8
+              "value": 1.1
             },
             {
               "label": "47 uger",
-              "value": 0.6
+              "value": 0.9
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 0.5
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 60.5
+              "value": 63
             },
             {
               "label": "A-dagpenge",
-              "value": 12.9
+              "value": 11.1
             },
             {
               "label": "Sygedagpenge",
-              "value": 10.5
+              "value": 10.4
             },
             {
               "label": "Uddannelse",
-              "value": 5.2
+              "value": 6.6
             },
             {
               "label": "Selvforsørgelse",
-              "value": 4.7
+              "value": 2.6
             },
             {
               "label": "Andet",
-              "value": 2.2
+              "value": 2.4
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 1.5
             },
             {
               "label": "Kontanthjælp",
@@ -16015,19 +16029,11 @@
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.7
+              "value": 0.9
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.7
-            },
-            {
-              "label": "Folkepension",
-              "value": 0.7
-            },
-            {
-              "label": "Barselsdagpenge",
-              "value": 0.5
+              "value": 0.3
             }
           ]
         }
@@ -17702,7 +17708,8 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             49.4,
@@ -17710,7 +17717,7 @@
             91.5,
             90.9,
             83.3,
-            80.5,
+            81.5,
             94,
             87.3,
             92.8,
@@ -17731,7 +17738,8 @@
             90.1,
             94.9,
             95.2,
-            85.6
+            85.6,
+            86.3
           ]
         },
         "longTerm": {
@@ -17982,7 +17990,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -18074,10 +18081,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            13,
             5,
             3,
             9,
@@ -18153,7 +18160,7 @@
             null,
             null,
             null,
-            4,
+            5,
             null,
             8,
             3,
@@ -18162,14 +18169,15 @@
             4,
             11,
             9,
-            8,
+            7,
             null,
             6,
             7,
             6,
             3,
             5,
-            5
+            5,
+            8
           ]
         },
         "benefitConsumption": {
@@ -18198,7 +18206,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -18206,95 +18214,91 @@
             },
             {
               "label": "4 uger",
-              "value": 38
+              "value": 34.8
             },
             {
               "label": "8 uger",
-              "value": 20.7
+              "value": 21.4
             },
             {
               "label": "13 uger",
-              "value": 10
+              "value": 11.1
             },
             {
               "label": "17 uger",
-              "value": 6.3
+              "value": 8.2
             },
             {
               "label": "21 uger",
-              "value": 3.8
+              "value": 6.1
             },
             {
               "label": "26 uger",
-              "value": 2
+              "value": 4
             },
             {
               "label": "30 uger",
-              "value": 1.4
+              "value": 3
             },
             {
               "label": "34 uger",
-              "value": 1
+              "value": 2.2
             },
             {
               "label": "39 uger",
-              "value": 0.6
+              "value": 1.2
             },
             {
               "label": "43 uger",
-              "value": 0.4
+              "value": 1.1
             },
             {
               "label": "47 uger",
-              "value": 0.3
+              "value": 0.8
             },
             {
               "label": "52 uger",
-              "value": 0.2
+              "value": 0.6
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 74.9
-            },
-            {
-              "label": "Selvforsørgelse",
-              "value": 6.9
+              "value": 73.4
             },
             {
               "label": "A-dagpenge",
-              "value": 6.7
+              "value": 8
             },
             {
               "label": "Sygedagpenge",
-              "value": 4.4
+              "value": 5.9
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.9
+              "value": 4.9
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 3.7
             },
             {
               "label": "Uddannelse",
-              "value": 1.9
+              "value": 2
             },
             {
               "label": "Andet",
-              "value": 1.8
+              "value": 1
             },
             {
-              "label": "Folkepension",
-              "value": 0.5
-            },
-            {
-              "label": "Jobafklaringsforløb",
+              "label": "Kontanthjælp",
               "value": 0.4
             },
             {
-              "label": "Efterløn og fleksydelse",
+              "label": "Folkepension",
               "value": 0.3
             }
           ]
@@ -19970,36 +19974,38 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             62.7,
-            67.9,
-            71.6,
+            67.7,
+            71.4,
             80.5,
             84.6,
             86.2,
-            87.7,
+            87.6,
             87.3,
             89.8,
-            86.1,
-            87,
+            86,
+            87.4,
             89.7,
             92.9,
             91,
-            95.1,
-            94,
+            95,
+            93.9,
             91.9,
             93.5,
             90,
-            91.8,
+            91.3,
             90.9,
             94.4,
             94.7,
             94.4,
             91.8,
             89,
-            91.2
+            91.2,
+            92.5
           ]
         },
         "longTerm": {
@@ -20250,7 +20256,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -20355,10 +20360,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            110,
             101,
             97,
             59,
@@ -20463,6 +20468,7 @@
             13,
             17,
             13,
+            20,
             20
           ]
         },
@@ -20492,7 +20498,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -20500,87 +20506,83 @@
             },
             {
               "label": "4 uger",
-              "value": 28.5
+              "value": 32.5
             },
             {
               "label": "8 uger",
-              "value": 16.2
+              "value": 19.6
             },
             {
               "label": "13 uger",
-              "value": 8.3
+              "value": 11.3
             },
             {
               "label": "17 uger",
-              "value": 5
+              "value": 8.3
             },
             {
               "label": "21 uger",
-              "value": 3.2
+              "value": 6.3
             },
             {
               "label": "26 uger",
-              "value": 1.9
+              "value": 4.2
             },
             {
               "label": "30 uger",
-              "value": 1.2
+              "value": 3.2
             },
             {
               "label": "34 uger",
-              "value": 0.8
+              "value": 2.4
             },
             {
               "label": "39 uger",
-              "value": 0.5
+              "value": 1.8
             },
             {
               "label": "43 uger",
-              "value": 0.4
+              "value": 1.4
             },
             {
               "label": "47 uger",
-              "value": 0.4
+              "value": 1
             },
             {
               "label": "52 uger",
-              "value": 0.3
+              "value": 0.7
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 65.9
+              "value": 63.4
             },
             {
               "label": "Sygedagpenge",
-              "value": 13.1
+              "value": 14
             },
             {
               "label": "A-dagpenge",
-              "value": 8.8
-            },
-            {
-              "label": "Selvforsørgelse",
-              "value": 3.4
+              "value": 9.7
             },
             {
               "label": "Uddannelse",
-              "value": 3.2
+              "value": 3.4
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.3
+              "value": 3.1
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 2.4
             },
             {
               "label": "Kontanthjælp",
-              "value": 1
-            },
-            {
-              "label": "Andet",
               "value": 0.9
             },
             {
@@ -20588,16 +20590,20 @@
               "value": 0.8
             },
             {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.6
-            },
-            {
               "label": "Folkepension",
-              "value": 0.6
+              "value": 0.7
             },
             {
               "label": "Jobafklaringsforløb",
+              "value": 0.6
+            },
+            {
+              "label": "Andet",
               "value": 0.5
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.4
             }
           ]
         }
@@ -22272,14 +22278,15 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            58.6,
+            58.4,
             75.9,
             79.9,
             85.9,
-            89.6,
+            89.3,
             91.3,
             93.9,
             94,
@@ -22296,12 +22303,13 @@
             94.4,
             95,
             90.2,
-            93.1,
+            93,
             92.1,
             88.6,
             90.1,
-            87.1,
-            88.5
+            87.3,
+            88.6,
+            92.6
           ]
         },
         "longTerm": {
@@ -22552,7 +22560,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -22657,10 +22664,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            216,
             154,
             208,
             133,
@@ -22694,9 +22701,9 @@
             69,
             57,
             57,
-            71,
+            70,
             63,
-            62,
+            61,
             55,
             57,
             56,
@@ -22761,11 +22768,12 @@
             36,
             36,
             41,
-            28,
+            27,
             49,
             56,
-            39,
-            37
+            38,
+            36,
+            45
           ]
         },
         "benefitConsumption": {
@@ -22794,7 +22802,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -22802,84 +22810,88 @@
             },
             {
               "label": "4 uger",
-              "value": 27.4
+              "value": 37.5
             },
             {
               "label": "8 uger",
-              "value": 16.1
+              "value": 24.8
             },
             {
               "label": "13 uger",
-              "value": 8.6
+              "value": 14.8
             },
             {
               "label": "17 uger",
-              "value": 5.5
+              "value": 10
             },
             {
               "label": "21 uger",
-              "value": 3.9
+              "value": 7.4
             },
             {
               "label": "26 uger",
-              "value": 2.5
+              "value": 4.8
             },
             {
               "label": "30 uger",
-              "value": 1.9
+              "value": 3.5
             },
             {
               "label": "34 uger",
-              "value": 1.4
+              "value": 2.6
             },
             {
               "label": "39 uger",
-              "value": 1
+              "value": 1.7
             },
             {
               "label": "43 uger",
-              "value": 0.8
+              "value": 1.3
             },
             {
               "label": "47 uger",
-              "value": 0.6
+              "value": 1
             },
             {
               "label": "52 uger",
-              "value": 0.5
+              "value": 0.8
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 57.7
+              "value": 59.6
             },
             {
               "label": "A-dagpenge",
-              "value": 16
+              "value": 15.1
             },
             {
               "label": "Sygedagpenge",
-              "value": 11.9
+              "value": 10.6
             },
             {
               "label": "Selvforsørgelse",
-              "value": 4.9
+              "value": 4.2
             },
             {
               "label": "Uddannelse",
-              "value": 3.7
+              "value": 3.8
             },
             {
               "label": "Andet",
-              "value": 1.9
+              "value": 2.2
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.9
+              "value": 1
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 1
             },
             {
               "label": "Kontanthjælp",
@@ -22891,15 +22903,11 @@
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.6
+              "value": 0.5
             },
             {
               "label": "Jobafklaringsforløb",
-              "value": 0.4
-            },
-            {
-              "label": "Barselsdagpenge",
-              "value": 0.4
+              "value": 0.3
             }
           ]
         }
@@ -24574,36 +24582,38 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             83.3,
             90.6,
-            81.6,
-            86.2,
-            79.4,
-            79.9,
+            81.5,
+            86.3,
+            79.3,
+            80.1,
             82.1,
-            86.7,
+            86.5,
             89.3,
             84.7,
             87.8,
-            84.8,
-            83.5,
-            87.8,
+            84.9,
+            83.9,
+            87.9,
             84.8,
             81.7,
             77.2,
-            75.3,
-            85.6,
+            75.1,
+            85.2,
             87.2,
-            84.4,
+            84.3,
             74.7,
-            80.1,
+            80.3,
             69.2,
             77.1,
             82.7,
-            75.1
+            75.1,
+            59.2
           ]
         },
         "longTerm": {
@@ -24854,7 +24864,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -24959,10 +24968,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            60,
             50,
             92,
             37,
@@ -25058,7 +25067,7 @@
             31,
             31,
             44,
-            53,
+            54,
             36,
             36,
             23,
@@ -25067,7 +25076,8 @@
             58,
             52,
             42,
-            41
+            39,
+            44
           ]
         },
         "benefitConsumption": {
@@ -25096,7 +25106,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -25104,99 +25114,99 @@
             },
             {
               "label": "4 uger",
-              "value": 41.9
+              "value": 42.7
             },
             {
               "label": "8 uger",
-              "value": 28.1
+              "value": 27.1
             },
             {
               "label": "13 uger",
-              "value": 14.9
+              "value": 17
             },
             {
               "label": "17 uger",
-              "value": 9.8
+              "value": 12.4
             },
             {
               "label": "21 uger",
-              "value": 6.8
+              "value": 9.3
             },
             {
               "label": "26 uger",
-              "value": 4.3
+              "value": 6.3
             },
             {
               "label": "30 uger",
-              "value": 3
+              "value": 4.8
             },
             {
               "label": "34 uger",
-              "value": 2.2
+              "value": 3.2
             },
             {
               "label": "39 uger",
-              "value": 1.4
+              "value": 2.1
             },
             {
               "label": "43 uger",
-              "value": 1.2
+              "value": 1.6
             },
             {
               "label": "47 uger",
-              "value": 1
+              "value": 1.1
             },
             {
               "label": "52 uger",
-              "value": 0.6
+              "value": 0.9
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 63.1
+              "value": 62.1
             },
             {
               "label": "A-dagpenge",
-              "value": 13.6
+              "value": 13.8
             },
             {
               "label": "Selvforsørgelse",
-              "value": 10.7
+              "value": 8.3
             },
             {
               "label": "Sygedagpenge",
-              "value": 5.1
-            },
-            {
-              "label": "Uddannelse",
-              "value": 2.6
-            },
-            {
-              "label": "Andet",
-              "value": 1.3
+              "value": 6
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.1
+              "value": 3.3
             },
             {
-              "label": "Folkepension",
-              "value": 0.8
+              "label": "Uddannelse",
+              "value": 2.4
+            },
+            {
+              "label": "Andet",
+              "value": 1.7
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.7
+              "value": 0.8
             },
             {
-              "label": "Førtids-, senior- og tidlig pension",
+              "label": "Folkepension",
               "value": 0.6
             },
             {
               "label": "Efterløn og fleksydelse",
+              "value": 0.5
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
               "value": 0.3
             },
             {
@@ -26876,25 +26886,26 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             89.7,
             90.8,
             92,
             89.1,
-            89.6,
-            89.1,
-            85.9,
+            89.5,
+            88.8,
+            86.1,
             91.7,
             92,
-            91.1,
+            91,
             92.3,
             90.3,
             89.7,
             90.1,
             84.8,
-            91.3,
+            91.2,
             88.9,
             89.7,
             89.4,
@@ -26904,8 +26915,9 @@
             92.8,
             87.5,
             88.1,
-            84.3,
-            76.1
+            84.4,
+            76.2,
+            72.1
           ]
         },
         "longTerm": {
@@ -27156,7 +27168,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -27261,10 +27272,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            157,
             115,
             160,
             116,
@@ -27321,7 +27332,7 @@
             16,
             28,
             28,
-            25,
+            24,
             28,
             49,
             20,
@@ -27367,9 +27378,10 @@
             41,
             26,
             51,
-            60,
+            59,
             33,
-            50
+            49,
+            38
           ]
         },
         "benefitConsumption": {
@@ -27398,7 +27410,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -27406,100 +27418,100 @@
             },
             {
               "label": "4 uger",
-              "value": 40.4
+              "value": 45.4
             },
             {
               "label": "8 uger",
-              "value": 26.3
+              "value": 29.4
             },
             {
               "label": "13 uger",
-              "value": 14.2
+              "value": 18.1
             },
             {
               "label": "17 uger",
-              "value": 8.9
+              "value": 13.8
             },
             {
               "label": "21 uger",
-              "value": 5.8
+              "value": 10.8
             },
             {
               "label": "26 uger",
-              "value": 3.6
+              "value": 7.2
             },
             {
               "label": "30 uger",
-              "value": 2.5
+              "value": 5.2
             },
             {
               "label": "34 uger",
-              "value": 2
+              "value": 3.6
             },
             {
               "label": "39 uger",
-              "value": 1.3
+              "value": 2.2
             },
             {
               "label": "43 uger",
-              "value": 1.2
+              "value": 1.6
             },
             {
               "label": "47 uger",
-              "value": 0.9
+              "value": 1.2
             },
             {
               "label": "52 uger",
-              "value": 0.7
+              "value": 0.8
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 61.3
+              "value": 63.7
             },
             {
               "label": "A-dagpenge",
-              "value": 11.5
+              "value": 10.5
             },
             {
               "label": "Sygedagpenge",
-              "value": 8.6
+              "value": 8.3
             },
             {
               "label": "Selvforsørgelse",
-              "value": 6.4
+              "value": 5
             },
             {
               "label": "Uddannelse",
-              "value": 5.3
-            },
-            {
-              "label": "Andet",
-              "value": 1.3
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 1.2
+              "value": 4.5
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.2
+              "value": 3
             },
             {
               "label": "Kontanthjælp",
-              "value": 1
+              "value": 1.2
+            },
+            {
+              "label": "Andet",
+              "value": 1.1
             },
             {
               "label": "Folkepension",
               "value": 1
             },
             {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.9
+            },
+            {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.8
+              "value": 0.6
             },
             {
               "label": "Jobafklaringsforløb",
@@ -29178,7 +29190,8 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             41.1,
@@ -29186,8 +29199,8 @@
             86,
             86.6,
             78.8,
-            77.5,
-            86.1,
+            77.1,
+            87.3,
             92.2,
             92.2,
             92.9,
@@ -29197,7 +29210,7 @@
             95.7,
             96,
             96.6,
-            94.4,
+            94.3,
             95,
             95.7,
             95.7,
@@ -29206,8 +29219,9 @@
             94.8,
             93.5,
             92.6,
-            98,
-            97.5
+            97.4,
+            97.5,
+            81.8
           ]
         },
         "longTerm": {
@@ -29458,7 +29472,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -29563,10 +29576,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            19,
             15,
             28,
             13,
@@ -29671,7 +29684,8 @@
             15,
             12,
             8,
-            8
+            7,
+            10
           ]
         },
         "benefitConsumption": {
@@ -29700,7 +29714,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -29708,95 +29722,95 @@
             },
             {
               "label": "4 uger",
-              "value": 38.2
+              "value": 40
             },
             {
               "label": "8 uger",
-              "value": 22.8
+              "value": 25
             },
             {
               "label": "13 uger",
-              "value": 11.2
+              "value": 15
             },
             {
               "label": "17 uger",
-              "value": 7.4
+              "value": 10.5
             },
             {
               "label": "21 uger",
-              "value": 5
+              "value": 7.7
             },
             {
               "label": "26 uger",
-              "value": 3.1
+              "value": 5.1
             },
             {
               "label": "30 uger",
-              "value": 2
+              "value": 3.6
             },
             {
               "label": "34 uger",
-              "value": 1.3
+              "value": 2.5
             },
             {
               "label": "39 uger",
-              "value": 0.8
+              "value": 1.5
             },
             {
               "label": "43 uger",
-              "value": 0.7
+              "value": 1
             },
             {
               "label": "47 uger",
-              "value": 0.5
+              "value": 0.7
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 0.5
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 58.3
+              "value": 56.1
             },
             {
               "label": "A-dagpenge",
-              "value": 16.5
+              "value": 17.9
             },
             {
               "label": "Selvforsørgelse",
-              "value": 14.7
+              "value": 13.4
             },
             {
               "label": "Sygedagpenge",
-              "value": 3.9
-            },
-            {
-              "label": "Andet",
-              "value": 2
-            },
-            {
-              "label": "Uddannelse",
-              "value": 1.7
+              "value": 4.2
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1
+              "value": 2.8
             },
             {
-              "label": "Folkepension",
-              "value": 0.9
+              "label": "Andet",
+              "value": 1.8
+            },
+            {
+              "label": "Uddannelse",
+              "value": 1.6
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.5
+              "value": 0.8
             },
             {
               "label": "Kontanthjælp",
+              "value": 0.8
+            },
+            {
+              "label": "Folkepension",
               "value": 0.4
             }
           ]
@@ -31472,10 +31486,11 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            87.1,
+            87.4,
             92.5,
             92.8,
             95.3,
@@ -31484,10 +31499,10 @@
             78.1,
             93,
             90.1,
-            92.3,
+            92.2,
             91.9,
             93.7,
-            93.6,
+            93.5,
             92.6,
             92.8,
             90,
@@ -31497,11 +31512,12 @@
             89.4,
             93.6,
             90.4,
-            91.4,
+            91.3,
             93.1,
             92.7,
             89.7,
-            90
+            90.2,
+            88.6
           ]
         },
         "longTerm": {
@@ -31752,7 +31768,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -31857,10 +31872,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            190,
             137,
             152,
             98,
@@ -31912,13 +31927,13 @@
             23,
             25,
             29,
-            23,
+            22,
             29,
             28,
             25,
             13,
             21,
-            42,
+            41,
             43,
             16,
             19,
@@ -31955,7 +31970,7 @@
             49,
             42,
             51,
-            50,
+            49,
             55,
             49,
             57,
@@ -31965,7 +31980,8 @@
             48,
             45,
             46,
-            54
+            54,
+            47
           ]
         },
         "benefitConsumption": {
@@ -31994,7 +32010,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -32002,104 +32018,104 @@
             },
             {
               "label": "4 uger",
-              "value": 37.9
+              "value": 44.8
             },
             {
               "label": "8 uger",
-              "value": 24
+              "value": 30.8
             },
             {
               "label": "13 uger",
-              "value": 13.3
+              "value": 19.7
             },
             {
               "label": "17 uger",
-              "value": 8.4
+              "value": 14.9
             },
             {
               "label": "21 uger",
-              "value": 5.8
+              "value": 11.3
             },
             {
               "label": "26 uger",
-              "value": 3.8
+              "value": 7.8
             },
             {
               "label": "30 uger",
-              "value": 2.8
+              "value": 5.6
             },
             {
               "label": "34 uger",
-              "value": 2
+              "value": 4.1
             },
             {
               "label": "39 uger",
-              "value": 1.5
+              "value": 2.7
             },
             {
               "label": "43 uger",
-              "value": 1.3
+              "value": 2
             },
             {
               "label": "47 uger",
-              "value": 1
+              "value": 1.6
             },
             {
               "label": "52 uger",
-              "value": 0.8
+              "value": 1.1
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 58.1
+              "value": 57.8
             },
             {
               "label": "A-dagpenge",
-              "value": 12.9
+              "value": 12.6
             },
             {
               "label": "Sygedagpenge",
-              "value": 11.8
+              "value": 12.1
             },
             {
               "label": "Selvforsørgelse",
-              "value": 7.6
+              "value": 5.7
+            },
+            {
+              "label": "Uddannelse",
+              "value": 3
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 2.9
             },
             {
               "label": "Andet",
               "value": 2.8
             },
             {
-              "label": "Uddannelse",
-              "value": 2.3
-            },
-            {
               "label": "Kontanthjælp",
-              "value": 1.2
-            },
-            {
-              "label": "Barselsdagpenge",
-              "value": 1.1
-            },
-            {
-              "label": "Folkepension",
-              "value": 1.1
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.6
+              "value": 0.9
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.4
+              "value": 0.6
             },
             {
               "label": "Jobafklaringsforløb",
-              "value": 0.2
+              "value": 0.6
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.6
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.4
             }
           ]
         }
@@ -33774,18 +33790,19 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            84.7,
+            84.5,
             98,
-            90.9,
-            88.4,
-            77.5,
-            60.9,
-            54.6,
-            76.6,
-            90.9,
+            90.8,
+            88.1,
+            77.1,
+            60,
+            55,
+            76.5,
+            90.7,
             97.8,
             97.1,
             94.4,
@@ -33793,17 +33810,18 @@
             96.2,
             96,
             97.8,
-            92.6,
-            90,
-            95.2,
+            92.5,
+            89.8,
+            95.1,
             93.6,
             89.8,
             96.2,
-            94,
-            93.5,
+            93.9,
+            93.4,
             93.7,
             93.6,
-            94.1
+            94.1,
+            87.3
           ]
         },
         "longTerm": {
@@ -34054,7 +34072,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -34158,10 +34175,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            9,
             8,
             20,
             19,
@@ -34254,7 +34271,7 @@
             6,
             null,
             5,
-            6,
+            5,
             10,
             23,
             8,
@@ -34265,7 +34282,8 @@
             5,
             11,
             10,
-            4
+            4,
+            7
           ]
         },
         "benefitConsumption": {
@@ -34294,7 +34312,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -34302,84 +34320,84 @@
             },
             {
               "label": "4 uger",
-              "value": 48.8
+              "value": 39.1
             },
             {
               "label": "8 uger",
-              "value": 26.2
+              "value": 23.5
             },
             {
               "label": "13 uger",
-              "value": 14.4
+              "value": 14
             },
             {
               "label": "17 uger",
-              "value": 8.9
+              "value": 10.4
             },
             {
               "label": "21 uger",
-              "value": 5.7
+              "value": 7.9
             },
             {
               "label": "26 uger",
-              "value": 3.4
+              "value": 5.6
             },
             {
               "label": "30 uger",
-              "value": 2.4
+              "value": 4.1
             },
             {
               "label": "34 uger",
-              "value": 1.6
+              "value": 2.9
             },
             {
               "label": "39 uger",
-              "value": 1.2
+              "value": 1.6
             },
             {
               "label": "43 uger",
-              "value": 0.9
+              "value": 1.1
             },
             {
               "label": "47 uger",
-              "value": 0.7
+              "value": 0.9
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 0.6
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 71.1
+              "value": 72
             },
             {
               "label": "A-dagpenge",
-              "value": 10.5
+              "value": 9.1
             },
             {
               "label": "Sygedagpenge",
-              "value": 6.8
-            },
-            {
-              "label": "Selvforsørgelse",
-              "value": 4.6
+              "value": 6.1
             },
             {
               "label": "Barselsdagpenge",
-              "value": 2.1
+              "value": 4.5
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 3.9
             },
             {
               "label": "Uddannelse",
-              "value": 1.6
+              "value": 1.3
             },
             {
-              "label": "Andet",
-              "value": 1.5
+              "label": "Efterløn og fleksydelse",
+              "value": 0.9
             },
             {
               "label": "Kontanthjælp",
@@ -34387,11 +34405,15 @@
             },
             {
               "label": "Folkepension",
-              "value": 0.6
+              "value": 0.5
             },
             {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.5
+              "label": "Jobafklaringsforløb",
+              "value": 0.4
+            },
+            {
+              "label": "Andet",
+              "value": 0.4
             }
           ]
         }
@@ -36066,22 +36088,23 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             65.9,
-            87.2,
+            87.1,
             93.7,
-            88.8,
+            88.7,
             95.4,
             90.5,
             90,
             91.4,
             97.3,
             91.7,
-            90,
+            89.9,
             95.8,
-            92.5,
+            92.4,
             95.6,
             95,
             92.7,
@@ -36092,10 +36115,11 @@
             91,
             90.1,
             87,
-            84,
+            83.9,
             88.7,
             79.4,
-            62.4
+            62.4,
+            68.5
           ]
         },
         "longTerm": {
@@ -36346,7 +36370,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -36451,10 +36474,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            26,
             19,
             30,
             19,
@@ -36559,7 +36582,8 @@
             13,
             10,
             15,
-            10
+            10,
+            13
           ]
         },
         "benefitConsumption": {
@@ -36588,7 +36612,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -36596,96 +36620,100 @@
             },
             {
               "label": "4 uger",
-              "value": 56.9
+              "value": 55.8
             },
             {
               "label": "8 uger",
-              "value": 40.2
+              "value": 37.5
             },
             {
               "label": "13 uger",
-              "value": 23.3
+              "value": 23.6
             },
             {
               "label": "17 uger",
-              "value": 15.1
+              "value": 18.1
             },
             {
               "label": "21 uger",
-              "value": 10.5
+              "value": 14.5
             },
             {
               "label": "26 uger",
-              "value": 6.3
+              "value": 10.6
             },
             {
               "label": "30 uger",
-              "value": 4.5
+              "value": 7.9
             },
             {
               "label": "34 uger",
-              "value": 2.9
+              "value": 5.6
             },
             {
               "label": "39 uger",
-              "value": 1.9
+              "value": 3.8
             },
             {
               "label": "43 uger",
-              "value": 1.6
+              "value": 3
             },
             {
               "label": "47 uger",
-              "value": 1.4
+              "value": 2.2
             },
             {
               "label": "52 uger",
-              "value": 1.1
+              "value": 1.5
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 69.3
-            },
-            {
-              "label": "A-dagpenge",
-              "value": 10.1
+              "value": 71.1
             },
             {
               "label": "Selvforsørgelse",
-              "value": 10
+              "value": 9.4
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 9.1
             },
             {
               "label": "Sygedagpenge",
-              "value": 5.4
-            },
-            {
-              "label": "Folkepension",
-              "value": 1.8
+              "value": 5.1
             },
             {
               "label": "Andet",
-              "value": 0.8
-            },
-            {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.7
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.7
-            },
-            {
-              "label": "Kontanthjælp",
-              "value": 0.6
+              "value": 1.2
             },
             {
               "label": "Uddannelse",
+              "value": 1.1
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.9
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
               "value": 0.6
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.6
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 0.6
+            },
+            {
+              "label": "Jobafklaringsforløb",
+              "value": 0.2
             }
           ]
         }
@@ -38360,11 +38388,12 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            95.9,
-            96.1,
+            95.8,
+            96,
             96.4,
             96.1,
             97.1,
@@ -38375,12 +38404,12 @@
             95.6,
             96.7,
             98.1,
-            95.8,
+            95.7,
             96.8,
             95.7,
             95.8,
             91.6,
-            88.2,
+            88.1,
             94.6,
             96,
             95.2,
@@ -38389,7 +38418,8 @@
             96.9,
             96.8,
             95,
-            97.7
+            97.7,
+            88.2
           ]
         },
         "longTerm": {
@@ -38640,7 +38670,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -38745,10 +38774,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            62,
             42,
             56,
             36,
@@ -38769,7 +38798,7 @@
             16,
             13,
             9,
-            17,
+            18,
             25,
             14,
             19,
@@ -38798,8 +38827,8 @@
             13,
             10,
             19,
-            18,
-            14,
+            17,
+            13,
             14,
             17,
             6,
@@ -38807,7 +38836,7 @@
             7,
             16,
             18,
-            18,
+            17,
             19,
             13,
             12,
@@ -38844,16 +38873,17 @@
             28,
             29,
             56,
-            49,
+            48,
             50,
             29,
             35,
             26,
             18,
             37,
-            37,
+            36,
             21,
-            31
+            31,
+            30
           ]
         },
         "benefitConsumption": {
@@ -38882,7 +38912,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -38890,7 +38920,7 @@
             },
             {
               "label": "4 uger",
-              "value": 43.4
+              "value": 42.5
             },
             {
               "label": "8 uger",
@@ -38898,87 +38928,91 @@
             },
             {
               "label": "13 uger",
-              "value": 14.8
+              "value": 16.3
             },
             {
               "label": "17 uger",
-              "value": 9.4
+              "value": 12.1
             },
             {
               "label": "21 uger",
-              "value": 6.3
+              "value": 9.3
             },
             {
               "label": "26 uger",
-              "value": 4
+              "value": 6.5
             },
             {
               "label": "30 uger",
-              "value": 2.7
+              "value": 4.6
             },
             {
               "label": "34 uger",
-              "value": 1.9
+              "value": 3.3
             },
             {
               "label": "39 uger",
-              "value": 1.4
+              "value": 1.9
             },
             {
               "label": "43 uger",
-              "value": 1.1
+              "value": 1.3
             },
             {
               "label": "47 uger",
-              "value": 0.8
+              "value": 0.9
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 0.5
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 67.4
+              "value": 67.9
             },
             {
               "label": "A-dagpenge",
-              "value": 12.3
+              "value": 12
             },
             {
               "label": "Selvforsørgelse",
-              "value": 9.7
+              "value": 6.9
             },
             {
               "label": "Sygedagpenge",
-              "value": 3.7
-            },
-            {
-              "label": "Andet",
-              "value": 2.3
+              "value": 4.9
             },
             {
               "label": "Barselsdagpenge",
+              "value": 3.8
+            },
+            {
+              "label": "Andet",
               "value": 1.7
             },
             {
               "label": "Kontanthjælp",
-              "value": 1.2
+              "value": 1.1
             },
             {
               "label": "Uddannelse",
-              "value": 0.8
-            },
-            {
-              "label": "Folkepension",
-              "value": 0.5
+              "value": 0.7
             },
             {
               "label": "Efterløn og fleksydelse",
+              "value": 0.4
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.4
+            },
+            {
+              "label": "Jobafklaringsforløb",
               "value": 0.2
             }
           ]
@@ -40654,7 +40688,8 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             87.3,
@@ -40665,7 +40700,7 @@
             90.1,
             91,
             95,
-            93.7,
+            93.6,
             93.7,
             89.1,
             92.2,
@@ -40683,7 +40718,8 @@
             90.2,
             91.9,
             92.5,
-            93.3
+            93.3,
+            92.4
           ]
         },
         "longTerm": {
@@ -40934,7 +40970,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -41039,10 +41074,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            45,
             22,
             32,
             20,
@@ -41128,7 +41163,7 @@
             13,
             6,
             6,
-            3,
+            null,
             8,
             10,
             6,
@@ -41147,7 +41182,8 @@
             8,
             7,
             7,
-            9
+            9,
+            7
           ]
         },
         "benefitConsumption": {
@@ -41176,7 +41212,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -41184,96 +41220,100 @@
             },
             {
               "label": "4 uger",
-              "value": 27.9
+              "value": 41.6
             },
             {
               "label": "8 uger",
-              "value": 15.5
+              "value": 24.2
             },
             {
               "label": "13 uger",
-              "value": 7.3
+              "value": 13.2
             },
             {
               "label": "17 uger",
-              "value": 4.6
+              "value": 9.6
             },
             {
               "label": "21 uger",
-              "value": 3.2
+              "value": 7
             },
             {
               "label": "26 uger",
-              "value": 1.7
+              "value": 4.3
             },
             {
               "label": "30 uger",
-              "value": 1.1
+              "value": 3
             },
             {
               "label": "34 uger",
-              "value": 0.7
+              "value": 1.9
             },
             {
               "label": "39 uger",
-              "value": 0.3
+              "value": 1.1
             },
             {
               "label": "43 uger",
-              "value": 0.2
+              "value": 0.8
             },
             {
               "label": "47 uger",
-              "value": 0.2
+              "value": 0.6
             },
             {
               "label": "52 uger",
-              "value": 0.1
+              "value": 0.4
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 63.1
+              "value": 61.4
             },
             {
               "label": "Sygedagpenge",
-              "value": 11.8
+              "value": 11.9
             },
             {
               "label": "A-dagpenge",
-              "value": 9.8
+              "value": 10.8
             },
             {
               "label": "Uddannelse",
-              "value": 5.6
+              "value": 6.4
             },
             {
               "label": "Selvforsørgelse",
-              "value": 4.2
-            },
-            {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 1.2
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 1.2
-            },
-            {
-              "label": "Folkepension",
-              "value": 1.1
+              "value": 3.5
             },
             {
               "label": "Kontanthjælp",
+              "value": 1.3
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 1
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.9
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.8
+            },
+            {
+              "label": "Folkepension",
               "value": 0.8
             },
             {
               "label": "Andet",
-              "value": 0.8
+              "value": 0.6
             },
             {
               "label": "Jobafklaringsforløb",
@@ -42952,25 +42992,26 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
-            85.8,
+            85.9,
             90.4,
             91.4,
-            85.9,
-            89.4,
+            85.8,
+            89.9,
             93,
             94.9,
             96.7,
-            95.7,
+            95.6,
             93,
             94.8,
             95,
             93.2,
             94.8,
-            93.9,
-            91.3,
+            94.2,
+            91.2,
             91.2,
             95.9,
             95.7,
@@ -42981,7 +43022,8 @@
             87.6,
             86.6,
             88.1,
-            86.4
+            86.5,
+            80.7
           ]
         },
         "longTerm": {
@@ -43232,7 +43274,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -43337,10 +43378,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            49,
             39,
             54,
             30,
@@ -43398,7 +43439,7 @@
             6,
             9,
             13,
-            12,
+            11,
             17,
             5,
             8,
@@ -43445,7 +43486,8 @@
             20,
             24,
             29,
-            20
+            19,
+            21
           ]
         },
         "benefitConsumption": {
@@ -43474,7 +43516,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -43482,76 +43524,80 @@
             },
             {
               "label": "4 uger",
-              "value": 43.2
+              "value": 48
             },
             {
               "label": "8 uger",
-              "value": 29.5
+              "value": 32.6
             },
             {
               "label": "13 uger",
-              "value": 16.7
+              "value": 20.8
             },
             {
               "label": "17 uger",
-              "value": 10.8
+              "value": 16.3
             },
             {
               "label": "21 uger",
-              "value": 7.8
+              "value": 12.7
             },
             {
               "label": "26 uger",
-              "value": 5.1
+              "value": 9.1
             },
             {
               "label": "30 uger",
-              "value": 3.5
+              "value": 6.4
             },
             {
               "label": "34 uger",
-              "value": 2.5
+              "value": 4.7
             },
             {
               "label": "39 uger",
-              "value": 1.7
+              "value": 3.1
             },
             {
               "label": "43 uger",
-              "value": 1.3
+              "value": 2.3
             },
             {
               "label": "47 uger",
-              "value": 1.1
+              "value": 1.8
             },
             {
               "label": "52 uger",
-              "value": 0.8
+              "value": 1.1
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 63.3
+              "value": 62.4
             },
             {
               "label": "A-dagpenge",
-              "value": 11
+              "value": 11.1
             },
             {
               "label": "Selvforsørgelse",
-              "value": 8.1
+              "value": 9
             },
             {
               "label": "Sygedagpenge",
-              "value": 7.6
+              "value": 6.4
             },
             {
               "label": "Uddannelse",
-              "value": 3.1
+              "value": 3.2
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 2.2
             },
             {
               "label": "Andet",
@@ -43559,23 +43605,19 @@
             },
             {
               "label": "Kontanthjælp",
-              "value": 1.4
-            },
-            {
-              "label": "Barselsdagpenge",
               "value": 1.3
             },
             {
-              "label": "Folkepension",
-              "value": 1.1
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 1
             },
             {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.8
+              "label": "Folkepension",
+              "value": 1
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.2
+              "value": 0.5
             }
           ]
         }
@@ -45250,19 +45292,20 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             88.7,
             91.1,
             97.6,
-            90.9,
-            90.8,
+            91.3,
+            90.7,
             88.3,
             92,
             89.2,
             91.4,
-            94.5,
+            94.4,
             90.6,
             93.7,
             95.7,
@@ -45275,11 +45318,12 @@
             92,
             90.4,
             92.6,
-            92.4,
+            92.5,
             92.2,
             94.5,
             91.5,
-            94.4
+            94.4,
+            92.9
           ]
         },
         "longTerm": {
@@ -45530,7 +45574,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -45635,10 +45678,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            30,
             29,
             34,
             26,
@@ -45743,6 +45786,7 @@
             17,
             17,
             17,
+            19,
             20
           ]
         },
@@ -45772,7 +45816,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -45780,60 +45824,60 @@
             },
             {
               "label": "4 uger",
-              "value": 47.2
+              "value": 48.7
             },
             {
               "label": "8 uger",
-              "value": 29.8
+              "value": 34.2
             },
             {
               "label": "13 uger",
-              "value": 16.4
+              "value": 20.6
             },
             {
               "label": "17 uger",
-              "value": 10.7
+              "value": 15.5
             },
             {
               "label": "21 uger",
-              "value": 6.9
+              "value": 11.9
             },
             {
               "label": "26 uger",
-              "value": 4.7
+              "value": 7.9
             },
             {
               "label": "30 uger",
-              "value": 3.2
+              "value": 6.1
             },
             {
               "label": "34 uger",
-              "value": 2
+              "value": 4.4
             },
             {
               "label": "39 uger",
-              "value": 1.4
+              "value": 2.7
             },
             {
               "label": "43 uger",
-              "value": 1.2
+              "value": 2.2
             },
             {
               "label": "47 uger",
-              "value": 0.9
+              "value": 1.7
             },
             {
               "label": "52 uger",
-              "value": 0.6
+              "value": 1.2
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 71.1
+              "value": 70.6
             },
             {
               "label": "Selvforsørgelse",
@@ -45841,31 +45885,27 @@
             },
             {
               "label": "A-dagpenge",
-              "value": 6.5
-            },
-            {
-              "label": "Sygedagpenge",
-              "value": 4.1
+              "value": 7
             },
             {
               "label": "Andet",
-              "value": 3.8
+              "value": 4.1
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 4
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.1
-            },
-            {
-              "label": "Uddannelse",
-              "value": 1
+              "value": 2
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.8
+              "value": 0.7
             },
             {
-              "label": "Folkepension",
-              "value": 0.7
+              "label": "Uddannelse",
+              "value": 0.6
             }
           ]
         }
@@ -47540,7 +47580,8 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             93.9,
@@ -47557,7 +47598,7 @@
             93,
             93.9,
             93.7,
-            94.5,
+            94.4,
             98.1,
             94.1,
             86.5,
@@ -47569,7 +47610,8 @@
             97.5,
             90.4,
             97.7,
-            89.1
+            89.1,
+            93.8
           ]
         },
         "longTerm": {
@@ -47820,7 +47862,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -47914,10 +47955,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            13,
             11,
             16,
             10,
@@ -48011,7 +48052,8 @@
             null,
             null,
             null,
-            5
+            4,
+            3
           ]
         },
         "benefitConsumption": {
@@ -48040,7 +48082,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -48048,87 +48090,83 @@
             },
             {
               "label": "4 uger",
-              "value": 35.3
+              "value": 32.3
             },
             {
               "label": "8 uger",
-              "value": 20
+              "value": 18.9
             },
             {
               "label": "13 uger",
-              "value": 10.4
+              "value": 10.1
             },
             {
               "label": "17 uger",
-              "value": 6.5
+              "value": 7.1
             },
             {
               "label": "21 uger",
-              "value": 3.9
+              "value": 5.5
             },
             {
               "label": "26 uger",
-              "value": 2.2
+              "value": 3.5
             },
             {
               "label": "30 uger",
-              "value": 1.3
+              "value": 2.3
             },
             {
               "label": "34 uger",
-              "value": 0.9
+              "value": 1.4
             },
             {
               "label": "39 uger",
-              "value": 0.4
+              "value": 0.7
             },
             {
               "label": "43 uger",
-              "value": 0.3
+              "value": 0.4
             },
             {
               "label": "47 uger",
-              "value": 0.2
+              "value": 0.3
             },
             {
               "label": "52 uger",
-              "value": 0.1
+              "value": 0.3
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 68.4
+              "value": 73.8
             },
             {
               "label": "Sygedagpenge",
-              "value": 11.6
+              "value": 9
             },
             {
               "label": "A-dagpenge",
-              "value": 8.6
+              "value": 8.7
             },
             {
               "label": "Selvforsørgelse",
-              "value": 3.9
+              "value": 2.3
             },
             {
-              "label": "Uddannelse",
-              "value": 1.5
-            },
-            {
-              "label": "Andet",
-              "value": 1.5
+              "label": "Barselsdagpenge",
+              "value": 1.6
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 1.3
+              "value": 1.2
             },
             {
-              "label": "Førtids-, senior- og tidlig pension",
+              "label": "Uddannelse",
               "value": 0.9
             },
             {
@@ -48136,12 +48174,12 @@
               "value": 0.9
             },
             {
-              "label": "Jobafklaringsforløb",
+              "label": "Andet",
               "value": 0.7
             },
             {
-              "label": "Barselsdagpenge",
-              "value": 0.6
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.5
             }
           ]
         }
@@ -49816,12 +49854,13 @@
             "2026M02",
             "2026M03",
             "2026M04",
-            "2026M05"
+            "2026M05",
+            "2026M06"
           ],
           "share": [
             63.9,
             91.5,
-            91.8,
+            91.7,
             88,
             92.1,
             98.4,
@@ -49836,16 +49875,17 @@
             87.7,
             84.8,
             86.8,
-            85.4,
+            85.1,
             95.6,
             97.3,
             95,
             93.2,
             89.2,
-            98.1,
+            100,
             100,
             95.8,
-            91.8
+            91.8,
+            95.1
           ]
         },
         "longTerm": {
@@ -50096,7 +50136,6 @@
         },
         "exhaustedRights": {
           "labels": [
-            "2016M05",
             "2016M06",
             "2016M07",
             "2016M08",
@@ -50199,10 +50238,10 @@
             "2026M01",
             "2026M02",
             "2026M03",
-            "2026M04"
+            "2026M04",
+            "2026M05"
           ],
           "persons": [
-            14,
             19,
             26,
             21,
@@ -50271,7 +50310,7 @@
             5,
             null,
             11,
-            8,
+            7,
             6,
             5,
             null,
@@ -50297,7 +50336,7 @@
             3,
             9,
             5,
-            8,
+            7,
             5,
             6,
             null,
@@ -50305,7 +50344,8 @@
             9,
             6,
             3,
-            null
+            null,
+            3
           ]
         },
         "benefitConsumption": {
@@ -50334,7 +50374,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q02",
+          "period": "2024Q04",
           "items": [
             {
               "label": "0 uger",
@@ -50342,91 +50382,99 @@
             },
             {
               "label": "4 uger",
-              "value": 41.1
+              "value": 43.8
             },
             {
               "label": "8 uger",
-              "value": 26.5
+              "value": 30.1
             },
             {
               "label": "13 uger",
-              "value": 13.9
+              "value": 18.3
             },
             {
               "label": "17 uger",
-              "value": 8.9
+              "value": 14.4
             },
             {
               "label": "21 uger",
-              "value": 6.5
+              "value": 11.7
             },
             {
               "label": "26 uger",
-              "value": 4
+              "value": 7.9
             },
             {
               "label": "30 uger",
-              "value": 2.6
+              "value": 6.1
             },
             {
               "label": "34 uger",
-              "value": 1.7
+              "value": 4.2
             },
             {
               "label": "39 uger",
-              "value": 1.2
+              "value": 3
             },
             {
               "label": "43 uger",
-              "value": 0.9
+              "value": 2.5
             },
             {
               "label": "47 uger",
-              "value": 0.6
+              "value": 1.9
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 1.1
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2025Q04",
+          "period": "2024Q04",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 64.8
+              "value": 61.5
             },
             {
               "label": "A-dagpenge",
-              "value": 14.6
+              "value": 15.1
             },
             {
               "label": "Selvforsørgelse",
-              "value": 6.6
+              "value": 7.1
             },
             {
               "label": "Sygedagpenge",
-              "value": 5.6
+              "value": 5.7
             },
             {
               "label": "Uddannelse",
-              "value": 3.1
+              "value": 3.2
             },
             {
               "label": "Andet",
-              "value": 1.6
-            },
-            {
-              "label": "Folkepension",
-              "value": 1.2
+              "value": 2.1
             },
             {
               "label": "Barselsdagpenge",
-              "value": 0.7
+              "value": 1.6
             },
             {
               "label": "Kontanthjælp",
+              "value": 1.4
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.9
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.7
+            },
+            {
+              "label": "Efterløn og fleksydelse",
               "value": 0.7
             }
           ]
