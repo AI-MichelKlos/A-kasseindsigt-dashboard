@@ -1,0 +1,69 @@
+name: Ret lukning af sammenligningsmenu
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/fix-compare-menu-close.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Luk sammenligningsmenu ved klik udenfor og Escape
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+          original = text
+
+          old = "function buildCompareOptions(){const total=DATA.meta.totalFundCode,entries=Object.entries(DATA.funds).sort((a,b)=>{if(a[0]===total)return-1;if(b[0]===total)return 1;return a[1].name.localeCompare(b[1].name,'da')});$('compareOptions').innerHTML=entries.map(([code,v])=>`<label class=\"compare-option\"><input class=\"compareCheck\" type=\"checkbox\" value=\"${code}\" ${code===total?'checked':''}> <span>${v.name}</span></label>`).join('');document.querySelectorAll('.compareCheck').forEach(x=>x.addEventListener('change',draw))}function init(){"
+          new = "function buildCompareOptions(){const total=DATA.meta.totalFundCode,entries=Object.entries(DATA.funds).sort((a,b)=>{if(a[0]===total)return-1;if(b[0]===total)return 1;return a[1].name.localeCompare(b[1].name,'da')});$('compareOptions').innerHTML=entries.map(([code,v])=>`<label class=\"compare-option\"><input class=\"compareCheck\" type=\"checkbox\" value=\"${code}\" ${code===total?'checked':''}> <span>${v.name}</span></label>`).join('');document.querySelectorAll('.compareCheck').forEach(x=>x.addEventListener('change',draw))}function setupCompareClose(){const details=$('compareDetails');document.addEventListener('pointerdown',e=>{if(details.open&&!details.contains(e.target))details.removeAttribute('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&details.open){details.removeAttribute('open');$('compareSummary').focus()}})}function init(){"
+          if old not in text:
+              raise RuntimeError('Kunne ikke finde buildCompareOptions/init-ankeret')
+          text = text.replace(old, new, 1)
+
+          old2 = "buildCompareOptions();$('fundSelect').addEventListener('change',draw);"
+          new2 = "buildCompareOptions();setupCompareClose();$('fundSelect').addEventListener('change',draw);"
+          if old2 not in text:
+              raise RuntimeError('Kunne ikke finde init-ankeret')
+          text = text.replace(old2, new2, 1)
+
+          if text == original or 'function setupCompareClose()' not in text or "e.key==='Escape'" not in text:
+              raise RuntimeError('Rettelsen blev ikke anvendt korrekt')
+          p.write_text(text, encoding='utf-8')
+          PY
+      - name: Kontroller JavaScript
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          text = Path('index.html').read_text(encoding='utf-8')
+          assert "function setupCompareClose()" in text
+          assert "!details.contains(e.target)" in text
+          assert "e.key==='Escape'" in text
+          assert "buildCompareOptions();setupCompareClose();" in text
+          m = re.search(r'<script>\s*(let DATA=.*?)</script>', text, re.S)
+          if not m:
+              raise SystemExit('Kunne ikke udtrække dashboardets JavaScript')
+          Path('/tmp/dashboard.js').write_text(m.group(1), encoding='utf-8')
+          PY
+          node --check /tmp/dashboard.js
+      - name: Gem ændringen
+        shell: bash
+        run: |
+          git config user.name "ChatGPT dashboard update"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add index.html
+          git commit -m "Luk sammenligningsmenu ved klik udenfor"
+          git push origin HEAD:main
