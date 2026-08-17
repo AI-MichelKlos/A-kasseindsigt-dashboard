@@ -39,9 +39,10 @@ jobs:
       - name: Gem ændringer og fjern midlertidige filer
         shell: bash
         run: |
+          git checkout -- .github/workflows/update-dashboard.yml
           rm .github/workflows/add-sanctions.yml tools/add_sanctions_patch.py
           git config user.name "ChatGPT dashboard update"
           git config user.email "dashboard-automation@users.noreply.github.com"
-          git add index.html scripts/jobindsats_patch.py scripts/run_update.py .github/workflows/update-dashboard.yml README.md .github/workflows/add-sanctions.yml tools/add_sanctions_patch.py
+          git add index.html scripts/jobindsats_patch.py scripts/run_update.py README.md .github/workflows/add-sanctions.yml tools/add_sanctions_patch.py
           git commit -m "Tilføj rådighedssanktioner til A-kasseindsigt"
           git push origin HEAD:main
