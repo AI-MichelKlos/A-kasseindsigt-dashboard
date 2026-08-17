@@ -1,4 +1,4 @@
-name: Patch a-kasse mapping
+name: Anvend DAK navnestandard
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Ret canonical a-kasse mapping
+      - name: Kobl DAK navnetabel paa datamapping
         shell: bash
         run: |
           python - <<'PY'
@@ -26,87 +26,93 @@ jobs:
 
           path = Path('scripts/fetch_sources.py')
           text = path.read_text(encoding='utf-8')
+          if 'NAMES = BASE / "config" / "a-kasse-navne.json"' not in text:
+              text = text.replace('OUT = BASE / "data" / "dashboard-data.json"\n', 'OUT = BASE / "data" / "dashboard-data.json"\nNAMES = BASE / "config" / "a-kasse-navne.json"\n')
+
           start = text.index('def fund_key(name):')
           end = text.index('\ndef match_fund', start)
-          replacement = '''def fund_key(name):
+          replacement = '''def load_name_reference():
+              data = json.loads(NAMES.read_text(encoding="utf-8"))
+              rows = data.get("funds", [])
+              aliases = {}
+              by_key = {}
+              for row in rows:
+                  key = row.get("starCode") or ji.norm(row.get("dakName"))
+                  by_key[key] = row
+                  for field in ("dakName", "dakShort", "dstName", "jobindsatsName", "starMemberName"):
+                      alias = ji.norm(row.get(field))
+                      if alias:
+                          aliases[alias] = key
+              return rows, aliases, by_key
+
+
+          DAK_NAME_ROWS, DAK_ALIASES, DAK_BY_KEY = load_name_reference()
+
+
+          def fund_key(name):
               text = ji.norm(name)
-              text = re.sub(r"\\b(fra|inkl|jan|januar|juli)\\b.*$", "", text).strip()
-              text = re.sub(r"\\b(arbejdsloeshedskasse|a kassen|a kasse|akasse)\\b", " ", text)
-              text = re.sub(r"\\s+", " ", text).strip()
-              aliases = {
-                  "a til": "atil",
-                  "funktionaerer og tjenestemaend ftf a": "atil",
-                  "ftf a": "atil",
-                  "frie": "frie",
-                  "akademikernes": "akademikerne",
-                  "akademikerne": "akademikerne",
-                  "ase": "ase",
-                  "borne og ungdomspaedagoger bupl a": "bupl",
-                  "borne og ungdomspaedagoger bupl": "bupl",
-                  "bupl": "bupl",
-                  "det faglige hus": "detfagligehus",
-                  "din faglige": "dinfaglige",
-                  "din sundhedsfaglige dsa": "dsa",
-                  "din sundhedsfaglige": "dsa",
-                  "fag og arbejde foa": "foa",
-                  "foas": "foa",
-                  "foa": "foa",
-                  "faglig faelles 3f": "3f",
-                  "faglig faelles": "3f",
-                  "handels og kontorfunktionaerer hk": "hk",
-                  "hk danmarks": "hk",
-                  "journalistik kommunikation og sprog": "jks",
-                  "for journalistik komm og sprog": "jks",
-                  "journalistik komm og sprog": "jks",
-                  "kristelig": "krifa",
-                  "laerere dlf a": "laererne",
-                  "laerere dlf": "laererne",
-                  "laerernes": "laererne",
-                  "ledere": "lederne",
-                  "lederne": "lederne",
-                  "magistre ma": "magistrene",
-                  "magistrenes": "magistrene",
-                  "metalarbejdere": "metal",
-                  "metalarbejdernes": "metal",
-                  "min": "min",
-                  "oekonomer ca": "ca",
-                  "ca": "ca",
-                  "socialpaedagoger sla": "socialpaedagogerne",
-                  "socialpaedagogernes": "socialpaedagogerne",
-                  "teknikere": "teknikerne",
-                  "teknikernes": "teknikerne",
-              }
-              return aliases.get(text, text)
+              if text in DAK_ALIASES:
+                  return DAK_ALIASES[text]
+              simplified = re.sub(r"\\b(fra|inkl|jan|januar|juli)\\b.*$", "", text).strip()
+              for alias, key in DAK_ALIASES.items():
+                  alias_simple = re.sub(r"\\b(fra|inkl|jan|januar|juli)\\b.*$", "", alias).strip()
+                  if simplified and simplified == alias_simple:
+                      return key
+              return simplified or text
+
+
+          def dak_ref(name):
+              return DAK_BY_KEY.get(fund_key(name))
 
           '''
-          path.write_text(text[:start] + replacement + text[end+1:], encoding='utf-8')
+          text = text[:start] + replacement + text[end+1:]
 
-          run = Path('scripts/run_update.py')
-          rtext = run.read_text(encoding='utf-8')
-          marker = '    text = HTML.read_text(encoding="utf-8")\n'
-          audit = '''    required_job_modules = ["dagpenge", "graduates", "earlyTalks", "benefitConsumption", "survival", "statusAfter3m"]
-              missing_modules = {}
-              for code, fund in funds.items():
-                  missing = [key for key in required_job_modules if not fund.get("jobindsats", {}).get(key)]
-                  if missing:
-                      missing_modules[code] = missing
-              if missing_modules:
-                  details = "; ".join(f"{code}: {','.join(keys)}" for code, keys in missing_modules.items())
-                  raise RuntimeError(f"Manglende Jobindsats-moduler pr. a-kasse: {details}")
+          old = '''    names = {code: names_all.get(code, code) for code in selected}
+              for code in selected:
+                  funds[code] = {"code": code, "name": names[code], "members": members.get(code, {"labels": [], "values": []}), "profileAge": [], "profileSex": [], "jobindsats": {}}
           '''
-          if 'required_job_modules = [' not in rtext:
-              if marker not in rtext:
-                  raise SystemExit('Kunne ikke finde valideringspunkt i run_update.py')
-              rtext = rtext.replace(marker, audit + marker)
-              run.write_text(rtext, encoding='utf-8')
+          new = '''    source_names = {code: names_all.get(code, code) for code in selected}
+              names = {}
+              for code in selected:
+                  ref = {} if code == fund_total else (dak_ref(source_names[code]) or {})
+                  names[code] = "I alt" if code == fund_total else (ref.get("dakName") or source_names[code])
+                  funds[code] = {
+                      "code": code,
+                      "name": names[code],
+                      "short": "I alt" if code == fund_total else ref.get("dakShort"),
+                      "starCode": None if code == fund_total else ref.get("starCode"),
+                      "sourceNames": {
+                          "dst": source_names[code],
+                          "jobindsats": None if code == fund_total else ref.get("jobindsatsName"),
+                          "starMembers": None if code == fund_total else ref.get("starMemberName"),
+                      },
+                      "members": members.get(code, {"labels": [], "values": []}),
+                      "profileAge": [],
+                      "profileSex": [],
+                      "jobindsats": {},
+                  }
+          '''
+          if old not in text:
+              raise SystemExit('Kunne ikke finde DST-navneblokken i fetch_sources.py')
+          text = text.replace(old, new)
+          path.write_text(text, encoding='utf-8')
+
+          workflow = Path('.github/workflows/update-dashboard.yml')
+          wtext = workflow.read_text(encoding='utf-8')
+          if '      - config/**\n' not in wtext:
+              wtext = wtext.replace('      - scripts/**\n', '      - scripts/**\n      - config/**\n')
+              workflow.write_text(wtext, encoding='utf-8')
+
+          readme = Path('README.md')
+          rtext = readme.read_text(encoding='utf-8')
+          if '## Navnestandard' not in rtext:
+              rtext += '''\n## Navnestandard\n\n`config/a-kasse-navne.json` er den interne navnebro mellem Danske A-kassers foretrukne visningsnavne, Danmarks Statistik, Jobindsats.dk og STARs medlemstal. Dashboardet viser DAK-navnet, mens kildealiaserne kun bruges til sikker datamatching. Tabellen er opgjort april 2026.\n'''
+              readme.write_text(rtext, encoding='utf-8')
           PY
           python -m py_compile scripts/fetch_sources.py scripts/run_update.py
           git config user.name "Dashboard maintenance"
           git config user.email "dashboard-maintenance@users.noreply.github.com"
-          git add scripts/fetch_sources.py scripts/run_update.py
-          if git diff --cached --quiet; then
-            echo "Ingen rettelse noedvendig"
-          else
-            git commit -m "Ret a-kasse mapping og valider datadaekning"
-            git push
-          fi
+          git add scripts/fetch_sources.py .github/workflows/update-dashboard.yml README.md
+          git rm .github/workflows/patch-fund-mapping.yml
+          git commit -m "Brug DAK-navne og eksplicit kildealiasing"
+          git push
