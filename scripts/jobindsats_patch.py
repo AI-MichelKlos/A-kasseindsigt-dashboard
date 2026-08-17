@@ -29,6 +29,11 @@ def pkey(period):
     return 0, 0
 
 
+def exact_col(rows, label):
+    wanted = ji.norm(label)
+    return next((col for col in ji.columns(rows) if ji.norm(col) == wanted), None)
+
+
 def setup(table_id):
     spec = ji.get(f"table/{table_id}", {"format": "json"})
     fund = ji.find_hierarchy(spec, ["a kasse", "akasse"])
@@ -56,9 +61,9 @@ def early_talks(data):
     table = "y30e22ak"
     spec, fund_h, selection = setup(table)
     rows = ji.query(table, spec, "latest:28", ((fund_h, selection),))
-    fcol = ji.best_col(rows, ["a kasse"], distinct=True)
-    pcol = ji.best_col(rows, ["periode"], distinct=True)
-    vcol = next((c for c in ji.columns(rows) if ji.norm(c) == ji.norm("Andel personer fordelt på antal afholdte jobsamtaler : 3+")), None)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    vcol = exact_col(rows, "Andel personer fordelt på antal afholdte jobsamtaler : 3+")
     if not vcol:
         raise RuntimeError("Kolonnen for andel med 3+ jobsamtaler mangler")
     grouped = defaultdict(dict)
@@ -84,10 +89,12 @@ def consumption(data):
     dp = ji.find_hierarchy(spec, ["forbrug", "dagpengeperioden"])
     level = ji.levels(dp)[0].get("level_id")
     rows = ji.query(table, spec, "latest:1", ((fund_h, selection), (dp, f"level:{level}")))
-    fcol = ji.best_col(rows, ["a kasse"], distinct=True)
-    pcol = ji.best_col(rows, ["periode"], distinct=True)
-    ccol = ji.best_col(rows, ["forbrug", "dagpengeperioden"], distinct=True)
-    vcol = ji.best_col(rows, ["antal personer med forbrug"])
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode")
+    ccol = exact_col(rows, "Forbrug af dagpengeperioden")
+    vcol = exact_col(rows, "Antal personer med forbrug af dagpengeperioden")
+    if not pcol or not ccol or not vcol:
+        raise RuntimeError(f"Uventede kolonner i dagpengeforbrug: {ji.columns(rows)}")
     latest = max((str(r.get(pcol)) for r in rows if r.get(pcol)), key=pkey)
     bands = [("0-3 mdr.", 0, 3), ("3-6 mdr.", 3, 6), ("6-12 mdr.", 6, 12), ("12-18 mdr.", 12, 18), ("18+ mdr.", 18, 999)]
     grouped = defaultdict(lambda: defaultdict(float))
@@ -105,6 +112,8 @@ def consumption(data):
             if lo <= start < hi:
                 grouped[code][band] += float(value)
                 break
+    if not grouped:
+        raise RuntimeError("Dagpengeforbrug gav ingen fordelte a-kassedata")
     for code, values in grouped.items():
         data["funds"][code]["jobindsats"]["benefitConsumption"] = {
             "period": latest,
@@ -117,8 +126,8 @@ def survival(data):
     table = "y01b01"
     spec, fund_h, selection = setup(table)
     rows = ji.query(table, spec, "latest:8", ((fund_h, selection),))
-    fcol = ji.best_col(rows, ["a kasse"], distinct=True)
-    pcol = ji.best_col(rows, ["periode"], distinct=True)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
     week_cols = []
     for col in ji.columns(rows):
         n = ji.norm(col)
@@ -162,10 +171,10 @@ def status_after(data):
     status_h = ji.find_hierarchy(spec, ["arbejdsmarkedsstatus"])
     status_level = ji.levels(status_h)[0].get("level_id")
     rows = ji.query(table, spec, "latest:8", ((fund_h, selection), (status_h, f"level:{status_level}")))
-    fcol = ji.best_col(rows, ["a kasse"], distinct=True)
-    pcol = ji.best_col(rows, ["periode"], distinct=True)
-    scol = ji.best_col(rows, ["arbejdsmarkedsstatus"], distinct=True)
-    vcol = next((c for c in ji.columns(rows) if ji.norm(c) == ji.norm("Status 3 mdr. efter afsluttet forløb, pct.")), None)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    scol = exact_col(rows, "Arbejdsmarkedsstatus") or ji.best_col(rows, ["arbejdsmarkedsstatus"], distinct=True)
+    vcol = exact_col(rows, "Status 3 mdr. efter afsluttet forløb, pct.")
     if not vcol:
         raise RuntimeError("3-måneders statuskolonnen mangler")
     periods = sorted({str(r.get(pcol)) for r in rows if r.get(pcol)}, key=pkey, reverse=True)
