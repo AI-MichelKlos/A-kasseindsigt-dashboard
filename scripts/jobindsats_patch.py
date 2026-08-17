@@ -187,7 +187,16 @@ def exhausted_rights(data):
 def sanctions(data):
     table = "y01h01"
     spec, fund_h, selection = setup(table)
-    rows = ji.query(table, spec, "latest:40", ((fund_h, selection),))
+    try:
+        rows = ji.query(table, spec, "latest:40", ((fund_h, selection),))
+    except RuntimeError as exc:
+        # Tabellen starter i 2019 og har derfor endnu under 40 kvartaler.
+        # Jobindsats afviser latest:N, hvis N er større end den tilgængelige historik.
+        match = re.search(r"only (\d+) periods are available", str(exc), re.IGNORECASE)
+        if not match:
+            raise
+        available = min(40, int(match.group(1)))
+        rows = ji.query(table, spec, f"latest:{available}", ((fund_h, selection),))
     fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
     pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
     cols = {
