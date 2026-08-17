@@ -76,6 +76,27 @@ def validate():
         details = "; ".join(f"{code}: {','.join(keys)}" for code, keys in missing_modules.items())
         raise RuntimeError(f"Manglende Jobindsats-moduler pr. a-kasse: {details}")
 
+    # Langtidsledighed skal være komplet i standardvisningen (36 måneder)
+    # for alle aktive a-kasser. Vi udfylder aldrig manglende kildeværdier med 0.
+    expected_long = total.get("jobindsats", {}).get("longTerm", {})
+    expected_labels = expected_long.get("labels", [])[-36:]
+    if len(expected_labels) < 36:
+        raise RuntimeError(f"Langtidsledighed har kun {len(expected_labels)} måneder; forventer mindst 36")
+    long_errors = []
+    for code, fund in funds.items():
+        block = fund.get("jobindsats", {}).get("longTerm", {})
+        labels = block.get("labels", [])
+        values = block.get("persons", [])
+        if len(labels) != len(values):
+            long_errors.append(f"{code}: labels/værdier har forskellig længde")
+            continue
+        lookup = dict(zip(labels, values))
+        missing = [period for period in expected_labels if lookup.get(period) is None]
+        if missing:
+            long_errors.append(f"{code}: mangler {','.join(missing)}")
+    if long_errors:
+        raise RuntimeError("Ufuldstændig langtidsledighed: " + "; ".join(long_errors))
+
     total_jobs = total.get("jobindsats", {})
     period_checks = [
         ("dagpenge", "labels", "jobDagpenge"),
