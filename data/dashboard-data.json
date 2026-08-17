@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "updated": null,
+    "checkedAt": null,
+    "title": "A-kasseindsigt",
+    "totalFundCode": null,
+    "fundNames": {},
+    "sourceStatus": {
+      "AUA01": {"state": "not_run", "source": "Danmarks Statistik", "dataset": "AUA01"},
+      "AUP03": {"state": "not_run", "source": "Danmarks Statistik", "dataset": "AUP03"},
+      "AULK08": {"state": "not_run", "source": "Danmarks Statistik", "dataset": "AULK08"},
+      "jobDagpenge": {"state": "not_run", "source": "Jobindsats.dk / STAR"},
+      "jobDimittend": {"state": "not_run", "source": "Jobindsats.dk / STAR"},
+      "jobEarlyTalks": {"state": "not_run", "source": "Jobindsats.dk / STAR"},
+      "jobDagpengeforbrug": {"state": "not_run", "source": "Jobindsats.dk / STAR"},
+      "jobOverlevelse": {"state": "not_run", "source": "Jobindsats.dk / STAR"},
+      "jobStatusAfter": {"state": "not_run", "source": "Jobindsats.dk / STAR"}
+    },
+    "updateStatus": {"state": "not_run", "successful": [], "failed": [], "checkedAt": null},
+    "methodNotes": []
+  },
+  "funds": {}
+}
