@@ -24,7 +24,7 @@ def pkey(period):
     m = re.fullmatch(r"(\d{4})M(\d{2})", text)
     if m:
         return int(m.group(1)), int(m.group(2))
-    q = re.fullmatch(r"(\d{4})Q(\d)", text)
+    q = re.fullmatch(r"(\d{4})Q0?([1-4])", text)
     if q:
         return int(q.group(1)), int(q.group(2)) * 3
     return 0, 0
