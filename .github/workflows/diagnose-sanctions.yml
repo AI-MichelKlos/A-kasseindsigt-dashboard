@@ -1,0 +1,71 @@
+name: Diagnose Jobindsats sanktioner
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/diagnose-sanctions.yml
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Find sanktionstabeller og dimensioner
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, sys
+          sys.path.insert(0,'scripts')
+          import jobindsats_api as ji
+
+          tables=ji.get('tables',{'format':'json'})
+          candidates=[]
+          for item in ji.walk(tables):
+              tid=item.get('table_id') or (item.get('id') if isinstance(item.get('id'),str) and item.get('id','').lower().startswith('y') else None)
+              if not tid:
+                  continue
+              text=ji.norm(json.dumps(item,ensure_ascii=False))
+              if 'sanktion' in text or 'raadighed' in text:
+                  candidates.append((str(tid), text[:1000]))
+          print('CANDIDATES')
+          for tid,text in candidates[:30]:
+              print(tid, text)
+
+          found=ji.find_table(tables,['antal raadighedssanktioner'],['kontanthjaelp'])
+          tid=str(found['table_id'])
+          print('SELECTED',tid,found.get('_match_text',''))
+          spec=ji.get(f'table/{tid}',{'format':'json'})
+          print('HIERARCHIES')
+          for h in ji.hierarchies(spec):
+              hid=str(h.get('hierarchy_id'))
+              vals=ji.hierarchy_values(h)
+              print('HIER',hid,'required=',ji.required(h),'values=',len(vals),'sample=',vals[:15])
+
+          fund=ji.find_hierarchy(spec,['a kasse','akasse'])
+          flevel=ji.fund_level(fund)
+          breakdowns=[(fund,f'level:{flevel}' if flevel else '*')]
+          try:
+              stype=ji.find_hierarchy(spec,['sanktionstype','sanktion type','type sanktion'])
+              slevels=ji.levels(stype)
+              sid=slevels[0].get('level_id') if slevels else None
+              breakdowns.append((stype,f'level:{sid}' if sid else '*'))
+              print('SANCTION_TYPE_HIER',stype.get('hierarchy_id'),'level',sid)
+          except Exception as e:
+              print('NO_SANCTION_TYPE_HIER',repr(e))
+          rows=ji.query(tid,spec,'latest:12',tuple(breakdowns))
+          print('COLUMNS',ji.columns(rows))
+          print('ROW_COUNT',len(rows))
+          print('SAMPLE_ROWS')
+          for r in rows[:20]: print(r)
+          periods=sorted({str(r.get(next((c for c in ji.columns(rows) if ji.norm(c)==ji.norm('Periode')),''))) for r in rows})
+          print('PERIODS',periods)
+          PY
