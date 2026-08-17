@@ -1,0 +1,57 @@
+name: Engangsopdatering af dashboarddesign
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/streamline-visual-design.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Tilføj ensartet byline
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          original = text
+          style_anchor = ".sub{max-width:900px;color:#e7eeee;line-height:1.5}"
+          style_new = ".byline{font-size:.78rem;color:#c9d8d5;font-weight:600;margin-top:4px}.sub{max-width:900px;color:#e7eeee;line-height:1.5;margin-top:8px}"
+          if style_anchor not in text:
+              raise RuntimeError('Kunne ikke finde typografien under dashboardtitlen')
+          text = text.replace(style_anchor, style_new, 1)
+          old_head = '<h1>A-kasseindsigt</h1><div class="sub">'
+          new_head = '<h1>A-kasseindsigt</h1><div class="byline">Udarbejdet af Michel Klos@GitHub</div><div class="sub">'
+          if old_head not in text:
+              raise RuntimeError('Kunne ikke finde dashboardets nuværende top')
+          text = text.replace(old_head, new_head, 1)
+          if text == original or 'Udarbejdet af Michel Klos@GitHub' not in text:
+              raise RuntimeError('Byline blev ikke anvendt')
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Kontroller ændringen
+        shell: bash
+        run: |
+          grep -Fq 'Udarbejdet af Michel Klos@GitHub' index.html
+          grep -Fq 'linear-gradient(135deg,#0F2B36,#244d4b)' index.html
+          grep -Fq 'data/dashboard-data.json' index.html
+          grep -Fq 'id="fundSelect"' index.html
+      - name: Gem ændringen og fjern engangsworkflow
+        shell: bash
+        run: |
+          rm .github/workflows/streamline-visual-design.yml
+          git config user.name "ChatGPT design update"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add index.html .github/workflows/streamline-visual-design.yml
+          git commit -m "Tilføj fælles byline til dashboardtop"
+          git push origin HEAD:main
