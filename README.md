@@ -13,6 +13,12 @@ Forsiden har en hovedvaelger for a-kasse og en valgfri benchmark. Raad medlemsta
 
 Jobindsats-tabeller identificeres dynamisk via API v3 metadata frem for faste tabel-id'er. Hver Jobindsats-maaling har selvstaendig status i datafilen.
 
+## Navnestandard
+
+`config/a-kasse-navne.json` er navnebroen mellem Danske A-kassers foretrukne visningsnavne og navnene hos Danmarks Statistik, Jobindsats.dk og STAR. Dashboardet viser DAK-navnet og DAK-forkortelsen. Kildenavnene bruges kun til datamatching. Tabellen er opgjort april 2026 og bygger paa DAKs interne ark med a-kassenavne og forkortelser.
+
+Hvis en aktiv a-kasse ikke kan matches til navnestandarden, fejler valideringen i stedet for at publicere et ukendt eller forkert navn.
+
 ## Drift
 
 GitHub Actions koerer paa hverdage med flere backup-forsoeg og gemmer hoejst en succesfuld opdatering pr. dansk dato. Data gemmes i `data/dashboard-data.json` og driftsspor i `status/last-run.txt`.
