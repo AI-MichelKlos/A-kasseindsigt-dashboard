@@ -2,7 +2,7 @@
   "meta": {
     "title": "A-kasseindsigt",
     "updated": "2026-08-17",
-    "checkedAt": "2026-08-17T15:00:50+02:00",
+    "checkedAt": "2026-08-17T15:18:07+02:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
@@ -10,7 +10,7 @@
         "dataset": "AUA01",
         "latestPeriod": "2026M06",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-08-17T15:00:12+02:00",
+        "checkedAt": "2026-08-17T15:17:49+02:00",
         "sourceUpdated": "2026-07-30T08:00:00"
       },
       "AUP03": {
@@ -19,7 +19,7 @@
         "dataset": "AUP03",
         "latestPeriod": "2026M06",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-08-17T15:00:31+02:00",
+        "checkedAt": "2026-08-17T15:17:52+02:00",
         "sourceUpdated": "2026-07-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
@@ -29,7 +29,7 @@
         "dataset": "AULK08",
         "latestPeriod": "2026M02",
         "unit": "langtidsledige pr. 1.000 forsikringsaktive",
-        "checkedAt": "2026-08-17T15:00:37+02:00",
+        "checkedAt": "2026-08-17T15:17:53+02:00",
         "sourceUpdated": "2026-07-06T08:00:00"
       },
       "jobDagpenge": {
@@ -38,7 +38,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M06",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-08-17T15:00:41+02:00"
+        "checkedAt": "2026-08-17T15:17:58+02:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -46,7 +46,7 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M06",
         "unit": "personer og pct.",
-        "checkedAt": "2026-08-17T15:00:43+02:00"
+        "checkedAt": "2026-08-17T15:18:00+02:00"
       },
       "jobEarlyTalks": {
         "state": "ok",
@@ -54,7 +54,7 @@
         "dataset": "y30e22ak",
         "latestPeriod": "2026M05",
         "unit": "pct. med mindst 3 jobsamtaler",
-        "checkedAt": "2026-08-17T15:00:51+02:00"
+        "checkedAt": "2026-08-17T15:18:08+02:00"
       },
       "jobDagpengeforbrug": {
         "state": "ok",
@@ -62,23 +62,23 @@
         "dataset": "y01a12",
         "latestPeriod": "2026M05",
         "unit": "personer efter forbrugt dagpengeperiode",
-        "checkedAt": "2026-08-17T15:00:52+02:00"
+        "checkedAt": "2026-08-17T15:18:09+02:00"
       },
       "jobOverlevelse": {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": "y01b01",
-        "latestPeriod": "2024Q03",
+        "latestPeriod": "2025Q01",
         "unit": "pct. fortsat på dagpenge uden tilbagefald",
-        "checkedAt": "2026-08-17T15:00:54+02:00"
+        "checkedAt": "2026-08-17T15:18:11+02:00"
       },
       "jobStatusAfter": {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": "y01b15",
-        "latestPeriod": "2024Q03",
+        "latestPeriod": "2025Q01",
         "unit": "pct. efter arbejdsmarkedsstatus 3 mdr. efter afsluttet forløb",
-        "checkedAt": "2026-08-17T15:00:57+02:00"
+        "checkedAt": "2026-08-17T15:18:14+02:00"
       }
     },
     "updateStatus": {
@@ -95,7 +95,7 @@
         "jobStatusAfter"
       ],
       "failed": [],
-      "checkedAt": "2026-08-17T15:00:57+02:00"
+      "checkedAt": "2026-08-17T15:18:14+02:00"
     },
     "methodNotes": [
       "Raad medlemstal sammenlignes ikke direkte mellem store og smaa a-kasser. Udviklingsgrafer vises derfor som indeks, hvor det er relevant.",
@@ -105,31 +105,36 @@
     "totalFundCode": "TOT",
     "fundNames": {
       "TOT": "I alt",
-      "11": "A-kassen Frie (fra 1. januar 2020 inkl. DANA)",
-      "48": "Akademikernes (fra 1. juli 2013 inkl. ingeniører)",
+      "11": "A-kassen Frie",
+      "48": "Akademikernes A-kasse",
       "31": "ASE",
-      "05": "Børne- og Ungdomspædagoger (BUPL-A)",
-      "40": "Det Faglige Hus A-kasse",
-      "46": "Din Faglige A-kasse (fra 1. januar 2025 inkl. Fødevareforbundet (NNF)",
-      "06": "Din Sundhedsfaglige A-kasse (DSA)",
-      "44": "Fag og Arbejde (FOA)",
-      "43": "Faglig Fælles a-kasse (3F)",
-      "13": "Funktionærer og Tjenestemænd (FTF-A)",
-      "15": "Handels- og Kontorfunktionærer (HK)",
-      "41": "Journalistik, Kommunikation og Sprog",
-      "19": "Kristelig a-kasse",
-      "22": "Lærere (DLF-A)",
-      "21": "Ledere",
-      "23": "Magistre (MA)",
-      "26": "Metalarbejdere",
-      "49": "Min akasse (jan. 2017 - inkl. Funktionærer og Servicefag)",
-      "39": "Økonomer (CA)",
-      "33": "Socialpædagoger (SLA)",
-      "36": "Teknikere"
+      "05": "Børne- og Ungdomspædagogernes Landsdækkende A-kasse",
+      "40": "Det Faglige Hus - A-kasse",
+      "46": "Din Faglige A-kasse",
+      "06": "Din Sundhedsfaglige A-kasse",
+      "44": "FOAs A-kasse",
+      "43": "Faglig Fælles A-kasse",
+      "13": "A-kassen A&Til",
+      "15": "HK A-kasse",
+      "41": "A-kassen for Journalistik, Kommunikation & Sprog",
+      "19": "Kristelig A-kasse",
+      "22": "Lærernes a-kasse",
+      "21": "Lederne A-kasse",
+      "23": "Magistrenes A-kasse",
+      "26": "Metal A-kasse",
+      "49": "Min A-kasse",
+      "39": "CA A-kasse & Karriereudvikling",
+      "33": "Socialpædagogernes A-kasse",
+      "36": "Teknikernes A-kasse"
     },
     "jobindsatsTables": {
       "jobDagpenge": "y01a02",
       "jobDimittend": "y01dia02"
+    },
+    "nameStandard": {
+      "source": "Danske A-kasser",
+      "asOf": "2026-04",
+      "file": "config/a-kasse-navne.json"
     }
   },
   "funds": {
@@ -1633,7 +1638,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -1641,76 +1646,76 @@
             },
             {
               "label": "4 uger",
-              "value": 43.3
+              "value": 44.3
             },
             {
               "label": "8 uger",
-              "value": 28.3
+              "value": 30.3
             },
             {
               "label": "13 uger",
-              "value": 17.6
+              "value": 19.2
             },
             {
               "label": "17 uger",
-              "value": 12.3
+              "value": 13.7
             },
             {
               "label": "21 uger",
-              "value": 8.2
+              "value": 9.7
             },
             {
               "label": "26 uger",
-              "value": 5.4
+              "value": 5.7
             },
             {
               "label": "30 uger",
-              "value": 4.2
+              "value": 3.7
             },
             {
               "label": "34 uger",
-              "value": 3.4
+              "value": 2.7
             },
             {
               "label": "39 uger",
-              "value": 2.5
+              "value": 1.9
             },
             {
               "label": "43 uger",
-              "value": 2
+              "value": 1.4
             },
             {
               "label": "47 uger",
-              "value": 1.5
+              "value": 1.1
             },
             {
               "label": "52 uger",
-              "value": 0.8
+              "value": 0.7
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 67.4
-            },
-            {
-              "label": "Uddannelse",
-              "value": 8.3
+              "value": 71.5
             },
             {
               "label": "A-dagpenge",
-              "value": 7.3
+              "value": 7.1
             },
             {
               "label": "Sygedagpenge",
-              "value": 5.9
+              "value": 6.3
             },
             {
               "label": "Selvforsørgelse",
-              "value": 4.9
+              "value": 5.1
+            },
+            {
+              "label": "Uddannelse",
+              "value": 4
             },
             {
               "label": "Barselsdagpenge",
@@ -1718,7 +1723,7 @@
             },
             {
               "label": "Andet",
-              "value": 1.8
+              "value": 1.4
             },
             {
               "label": "Kontanthjælp",
@@ -1726,15 +1731,15 @@
             },
             {
               "label": "Folkepension",
-              "value": 0.5
+              "value": 0.6
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.3
+              "value": 0.4
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.3
+              "value": 0.4
             },
             {
               "label": "Jobafklaringsforløb",
@@ -2390,11 +2395,12 @@
           3.6,
           3.6
         ]
-      }
+      },
+      "short": "I alt"
     },
     "11": {
       "code": "11",
-      "name": "A-kassen Frie (fra 1. januar 2020 inkl. DANA)",
+      "name": "A-kassen Frie",
       "members": {
         "labels": [
           "2000M04",
@@ -3890,7 +3896,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -3898,99 +3904,95 @@
             },
             {
               "label": "4 uger",
-              "value": 47.7
+              "value": 45.1
             },
             {
               "label": "8 uger",
-              "value": 33.8
+              "value": 32.5
             },
             {
               "label": "13 uger",
-              "value": 22.8
+              "value": 22.1
             },
             {
               "label": "17 uger",
-              "value": 16.4
+              "value": 15.9
             },
             {
               "label": "21 uger",
-              "value": 12
+              "value": 12.1
             },
             {
               "label": "26 uger",
-              "value": 8.3
+              "value": 7.8
             },
             {
               "label": "30 uger",
-              "value": 7
+              "value": 6.1
             },
             {
               "label": "34 uger",
-              "value": 5.6
+              "value": 4.8
             },
             {
               "label": "39 uger",
-              "value": 4.5
+              "value": 3.4
             },
             {
               "label": "43 uger",
-              "value": 3.9
+              "value": 2.7
             },
             {
               "label": "47 uger",
-              "value": 3.1
+              "value": 2.1
             },
             {
               "label": "52 uger",
-              "value": 2
+              "value": 1.7
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 65.4
-            },
-            {
-              "label": "Uddannelse",
-              "value": 8.9
-            },
-            {
-              "label": "Sygedagpenge",
-              "value": 7.8
+              "value": 70.1
             },
             {
               "label": "A-dagpenge",
-              "value": 5.8
+              "value": 7.9
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 6.6
             },
             {
               "label": "Selvforsørgelse",
-              "value": 5.6
+              "value": 5.8
             },
             {
-              "label": "Andet",
-              "value": 1.8
+              "label": "Uddannelse",
+              "value": 4.4
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.6
+              "value": 2
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 1.3
             },
             {
               "label": "Kontanthjælp",
-              "value": 1
+              "value": 0.6
             },
             {
               "label": "Folkepension",
-              "value": 0.8
-            },
-            {
-              "label": "Førtids-, senior- og tidlig pension",
               "value": 0.5
             },
             {
-              "label": "Jobafklaringsforløb",
+              "label": "Andet",
               "value": 0.4
             }
           ]
@@ -4635,11 +4637,18 @@
           3.8,
           3.8
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "A-kassen Frie (fra 1. januar 2020 inkl. DANA)",
+        "jobindsats": "A-kassen Frie",
+        "starMembers": "A-kassen Frie"
+      },
+      "short": "FRIE",
+      "starCode": "D83"
     },
     "48": {
       "code": "48",
-      "name": "Akademikernes (fra 1. juli 2013 inkl. ingeniører)",
+      "name": "Akademikernes A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -6137,7 +6146,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -6145,43 +6154,43 @@
             },
             {
               "label": "4 uger",
-              "value": 47.9
+              "value": 50.2
             },
             {
               "label": "8 uger",
-              "value": 30.7
+              "value": 34.8
             },
             {
               "label": "13 uger",
-              "value": 18.9
+              "value": 22.7
             },
             {
               "label": "17 uger",
-              "value": 13.2
+              "value": 16.1
             },
             {
               "label": "21 uger",
-              "value": 8.6
+              "value": 11.2
             },
             {
               "label": "26 uger",
-              "value": 5.4
+              "value": 6.5
             },
             {
               "label": "30 uger",
-              "value": 3.9
+              "value": 4.1
             },
             {
               "label": "34 uger",
-              "value": 3
+              "value": 2.9
             },
             {
               "label": "39 uger",
-              "value": 2.3
+              "value": 2
             },
             {
               "label": "43 uger",
-              "value": 1.7
+              "value": 1.5
             },
             {
               "label": "47 uger",
@@ -6194,43 +6203,47 @@
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 76.1
-            },
-            {
-              "label": "Uddannelse",
-              "value": 6.1
+              "value": 76.7
             },
             {
               "label": "Selvforsørgelse",
-              "value": 5.9
+              "value": 6.9
             },
             {
               "label": "A-dagpenge",
-              "value": 4.2
-            },
-            {
-              "label": "Andet",
-              "value": 2.7
+              "value": 5
             },
             {
               "label": "Barselsdagpenge",
-              "value": 2.5
+              "value": 2.9
             },
             {
               "label": "Sygedagpenge",
-              "value": 1.8
+              "value": 2.8
+            },
+            {
+              "label": "Andet",
+              "value": 2.3
+            },
+            {
+              "label": "Uddannelse",
+              "value": 2.1
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.5
+              "value": 0.8
             },
             {
               "label": "Folkepension",
-              "value": 0.2
+              "value": 0.4
+            },
+            {
+              "label": "Jobafklaringsforløb",
+              "value": 0
             },
             {
               "label": "Efterløn og fleksydelse",
@@ -6878,7 +6891,14 @@
           3.2,
           3.1
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Akademikernes (fra 1. juli 2013 inkl. ingeniører)",
+        "jobindsats": "Akademikernes A-kasse",
+        "starMembers": "Akademikernes A-kasse"
+      },
+      "short": "AKA",
+      "starCode": "D86"
     },
     "31": {
       "code": "31",
@@ -8378,7 +8398,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -8386,104 +8406,104 @@
             },
             {
               "label": "4 uger",
-              "value": 46.8
+              "value": 43.9
             },
             {
               "label": "8 uger",
-              "value": 32.2
+              "value": 30.4
             },
             {
               "label": "13 uger",
-              "value": 20.7
+              "value": 19.4
             },
             {
               "label": "17 uger",
-              "value": 14.9
+              "value": 14.5
             },
             {
               "label": "21 uger",
-              "value": 10.8
+              "value": 10.4
             },
             {
               "label": "26 uger",
-              "value": 7.3
+              "value": 6.7
             },
             {
               "label": "30 uger",
-              "value": 5.8
+              "value": 4.6
             },
             {
               "label": "34 uger",
-              "value": 4.9
-            },
-            {
-              "label": "39 uger",
               "value": 3.7
             },
             {
-              "label": "43 uger",
-              "value": 2.9
+              "label": "39 uger",
+              "value": 2.7
             },
             {
-              "label": "47 uger",
+              "label": "43 uger",
               "value": 2.2
             },
             {
+              "label": "47 uger",
+              "value": 1.7
+            },
+            {
               "label": "52 uger",
-              "value": 1.3
+              "value": 1.2
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 61.6
+              "value": 69.6
             },
             {
               "label": "Sygedagpenge",
-              "value": 8.8
-            },
-            {
-              "label": "A-dagpenge",
               "value": 8
             },
             {
+              "label": "A-dagpenge",
+              "value": 6.7
+            },
+            {
               "label": "Selvforsørgelse",
-              "value": 7.6
+              "value": 6.6
             },
             {
               "label": "Uddannelse",
-              "value": 6.8
+              "value": 3.6
             },
             {
               "label": "Barselsdagpenge",
-              "value": 2
+              "value": 1.8
             },
             {
               "label": "Andet",
-              "value": 1.9
+              "value": 1.6
             },
             {
               "label": "Kontanthjælp",
-              "value": 1.1
+              "value": 0.8
             },
             {
               "label": "Folkepension",
-              "value": 1
+              "value": 0.5
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.5
+              "value": 0.4
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.5
+              "value": 0.3
             },
             {
               "label": "Jobafklaringsforløb",
-              "value": 0.2
+              "value": 0.1
             }
           ]
         }
@@ -9127,11 +9147,18 @@
           4.5,
           4.7
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "ASE",
+        "jobindsats": "A-kassen Ase",
+        "starMembers": "A-kassen Ase"
+      },
+      "short": "ASE",
+      "starCode": "D94"
     },
     "05": {
       "code": "05",
-      "name": "Børne- og Ungdomspædagoger (BUPL-A)",
+      "name": "Børne- og Ungdomspædagogernes Landsdækkende A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -10627,7 +10654,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -10635,100 +10662,92 @@
             },
             {
               "label": "4 uger",
-              "value": 45.5
+              "value": 42.7
             },
             {
               "label": "8 uger",
-              "value": 27.6
+              "value": 26.1
             },
             {
               "label": "13 uger",
-              "value": 15.3
+              "value": 15
             },
             {
               "label": "17 uger",
-              "value": 11.1
+              "value": 10.5
             },
             {
               "label": "21 uger",
-              "value": 7.5
+              "value": 7.7
             },
             {
               "label": "26 uger",
-              "value": 5.2
+              "value": 4.7
             },
             {
               "label": "30 uger",
-              "value": 4
+              "value": 3.1
             },
             {
               "label": "34 uger",
-              "value": 3.3
+              "value": 2.2
             },
             {
               "label": "39 uger",
-              "value": 2.3
+              "value": 1.5
             },
             {
               "label": "43 uger",
-              "value": 1.8
+              "value": 1.1
             },
             {
               "label": "47 uger",
-              "value": 1.4
+              "value": 0.9
             },
             {
               "label": "52 uger",
-              "value": 1
+              "value": 0.6
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 74.7
-            },
-            {
-              "label": "Uddannelse",
-              "value": 6.9
+              "value": 75.4
             },
             {
               "label": "Sygedagpenge",
-              "value": 5.7
+              "value": 7
             },
             {
               "label": "A-dagpenge",
-              "value": 4.8
+              "value": 6.1
+            },
+            {
+              "label": "Uddannelse",
+              "value": 3.6
             },
             {
               "label": "Barselsdagpenge",
-              "value": 4.1
+              "value": 3.5
             },
             {
               "label": "Selvforsørgelse",
-              "value": 1.8
+              "value": 1.9
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.6
+              "value": 0.9
             },
             {
               "label": "Andet",
-              "value": 0.6
-            },
-            {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.2
-            },
-            {
-              "label": "Jobafklaringsforløb",
-              "value": 0.2
+              "value": 0.7
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.2
+              "value": 0.3
             }
           ]
         }
@@ -11372,11 +11391,18 @@
           1.1,
           1.1
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Børne- og Ungdomspædagoger (BUPL-A)",
+        "jobindsats": "BUPL A-kasse",
+        "starMembers": "BUPL A-kasse"
+      },
+      "short": "BUPL-A",
+      "starCode": "D81"
     },
     "40": {
       "code": "40",
-      "name": "Det Faglige Hus A-kasse",
+      "name": "Det Faglige Hus - A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -12872,7 +12898,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -12880,76 +12906,76 @@
             },
             {
               "label": "4 uger",
-              "value": 41.5
+              "value": 43.6
             },
             {
               "label": "8 uger",
-              "value": 28.3
+              "value": 29.7
             },
             {
               "label": "13 uger",
-              "value": 17.9
+              "value": 18.9
             },
             {
               "label": "17 uger",
-              "value": 12.6
+              "value": 13.6
             },
             {
               "label": "21 uger",
-              "value": 8.3
+              "value": 9.3
             },
             {
               "label": "26 uger",
-              "value": 5.6
+              "value": 5.5
             },
             {
               "label": "30 uger",
-              "value": 4.3
-            },
-            {
-              "label": "34 uger",
               "value": 3.5
             },
             {
+              "label": "34 uger",
+              "value": 2.5
+            },
+            {
               "label": "39 uger",
-              "value": 2.7
-            },
-            {
-              "label": "43 uger",
-              "value": 2.2
-            },
-            {
-              "label": "47 uger",
               "value": 1.6
             },
             {
+              "label": "43 uger",
+              "value": 1.3
+            },
+            {
+              "label": "47 uger",
+              "value": 1
+            },
+            {
               "label": "52 uger",
-              "value": 0.9
+              "value": 0.7
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 62.7
+              "value": 69.9
             },
             {
               "label": "Sygedagpenge",
-              "value": 9.6
-            },
-            {
-              "label": "Uddannelse",
-              "value": 9.5
+              "value": 7.9
             },
             {
               "label": "A-dagpenge",
-              "value": 8.1
+              "value": 6.8
+            },
+            {
+              "label": "Uddannelse",
+              "value": 6.1
             },
             {
               "label": "Selvforsørgelse",
-              "value": 3.9
+              "value": 3.7
             },
             {
               "label": "Barselsdagpenge",
@@ -12957,18 +12983,18 @@
             },
             {
               "label": "Andet",
-              "value": 1.9
+              "value": 1.3
             },
             {
               "label": "Kontanthjælp",
-              "value": 1.1
-            },
-            {
-              "label": "Jobafklaringsforløb",
-              "value": 0.3
+              "value": 0.8
             },
             {
               "label": "Folkepension",
+              "value": 0.4
+            },
+            {
+              "label": "Jobafklaringsforløb",
               "value": 0.3
             },
             {
@@ -12977,7 +13003,7 @@
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.1
+              "value": 0.2
             }
           ]
         }
@@ -13621,11 +13647,18 @@
           4.1,
           4.1
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Det Faglige Hus A-kasse",
+        "jobindsats": "Det Faglige Hus A-kasse",
+        "starMembers": "Det Faglige Hus"
+      },
+      "short": "DFH",
+      "starCode": "D22"
     },
     "46": {
       "code": "46",
-      "name": "Din Faglige A-kasse (fra 1. januar 2025 inkl. Fødevareforbundet (NNF)",
+      "name": "Din Faglige A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -15121,7 +15154,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -15129,80 +15162,80 @@
             },
             {
               "label": "4 uger",
-              "value": 46.2
+              "value": 47.8
             },
             {
               "label": "8 uger",
-              "value": 30.9
+              "value": 30.1
             },
             {
               "label": "13 uger",
-              "value": 21.1
+              "value": 16.8
             },
             {
               "label": "17 uger",
-              "value": 15.2
+              "value": 11.6
             },
             {
               "label": "21 uger",
-              "value": 11.1
+              "value": 7.4
             },
             {
               "label": "26 uger",
-              "value": 7.6
+              "value": 4
             },
             {
               "label": "30 uger",
-              "value": 5.9
+              "value": 2.8
             },
             {
               "label": "34 uger",
-              "value": 4.5
+              "value": 2.1
             },
             {
               "label": "39 uger",
-              "value": 3.1
+              "value": 1.4
             },
             {
               "label": "43 uger",
-              "value": 2.2
+              "value": 1.1
             },
             {
               "label": "47 uger",
-              "value": 1.5
+              "value": 0.8
             },
             {
               "label": "52 uger",
-              "value": 1.1
+              "value": 0.6
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 71.6
-            },
-            {
-              "label": "A-dagpenge",
-              "value": 7.5
-            },
-            {
-              "label": "Uddannelse",
-              "value": 7.5
+              "value": 71.3
             },
             {
               "label": "Sygedagpenge",
-              "value": 7
+              "value": 7.5
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 7.1
+            },
+            {
+              "label": "Uddannelse",
+              "value": 6.3
             },
             {
               "label": "Selvforsørgelse",
-              "value": 2
+              "value": 3.4
             },
             {
               "label": "Andet",
-              "value": 1.7
+              "value": 1.3
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
@@ -15214,18 +15247,18 @@
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.5
-            },
-            {
-              "label": "Jobafklaringsforløb",
-              "value": 0.2
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.2
+              "value": 0.6
             },
             {
               "label": "Folkepension",
+              "value": 0.5
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.4
+            },
+            {
+              "label": "Jobafklaringsforløb",
               "value": 0.2
             }
           ]
@@ -15870,11 +15903,18 @@
           2.3,
           2.4
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Din Faglige A-kasse (fra 1. januar 2025 inkl. Fødevareforbundet (NNF)",
+        "jobindsats": "Din Faglige A-Kasse",
+        "starMembers": "Din Faglige A-kasse"
+      },
+      "short": "FAK",
+      "starCode": "D40"
     },
     "06": {
       "code": "06",
-      "name": "Din Sundhedsfaglige A-kasse (DSA)",
+      "name": "Din Sundhedsfaglige A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -17370,7 +17410,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -17378,23 +17418,23 @@
             },
             {
               "label": "4 uger",
-              "value": 34.2
+              "value": 35.8
             },
             {
               "label": "8 uger",
-              "value": 19.4
+              "value": 20.9
             },
             {
               "label": "13 uger",
-              "value": 9.9
+              "value": 12
             },
             {
               "label": "17 uger",
-              "value": 6.9
+              "value": 7.8
             },
             {
               "label": "21 uger",
-              "value": 4.6
+              "value": 5.1
             },
             {
               "label": "26 uger",
@@ -17402,63 +17442,67 @@
             },
             {
               "label": "30 uger",
-              "value": 2.2
+              "value": 1.9
             },
             {
               "label": "34 uger",
-              "value": 1.7
-            },
-            {
-              "label": "39 uger",
-              "value": 1.2
-            },
-            {
-              "label": "43 uger",
               "value": 1
             },
             {
+              "label": "39 uger",
+              "value": 0.6
+            },
+            {
+              "label": "43 uger",
+              "value": 0.5
+            },
+            {
               "label": "47 uger",
-              "value": 0.7
+              "value": 0.4
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 0.3
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 75.1
-            },
-            {
-              "label": "Uddannelse",
-              "value": 8
+              "value": 81.2
             },
             {
               "label": "Barselsdagpenge",
-              "value": 4.7
-            },
-            {
-              "label": "A-dagpenge",
-              "value": 4.6
+              "value": 4.3
             },
             {
               "label": "Sygedagpenge",
-              "value": 3.1
+              "value": 4.1
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 3.9
             },
             {
               "label": "Selvforsørgelse",
-              "value": 3.1
+              "value": 2.7
+            },
+            {
+              "label": "Uddannelse",
+              "value": 2
             },
             {
               "label": "Andet",
               "value": 0.8
             },
             {
-              "label": "Efterløn og fleksydelse",
+              "label": "Kontanthjælp",
+              "value": 0.4
+            },
+            {
+              "label": "Folkepension",
               "value": 0.2
             }
           ]
@@ -18103,11 +18147,18 @@
           0.8,
           0.9
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Din Sundhedsfaglige A-kasse (DSA)",
+        "jobindsats": "Din Sundhedsfaglige A-kasse",
+        "starMembers": "Din Sundhedsfaglige"
+      },
+      "short": "DSA",
+      "starCode": "D76"
     },
     "44": {
       "code": "44",
-      "name": "Fag og Arbejde (FOA)",
+      "name": "FOAs A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -19603,7 +19654,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -19611,47 +19662,47 @@
             },
             {
               "label": "4 uger",
-              "value": 34.6
+              "value": 34.2
             },
             {
               "label": "8 uger",
-              "value": 21.5
+              "value": 22.2
             },
             {
               "label": "13 uger",
-              "value": 12.4
+              "value": 13.8
             },
             {
               "label": "17 uger",
-              "value": 8.2
+              "value": 9.4
             },
             {
               "label": "21 uger",
-              "value": 5.4
+              "value": 6.6
             },
             {
               "label": "26 uger",
-              "value": 3.5
+              "value": 4.1
             },
             {
               "label": "30 uger",
-              "value": 2.8
+              "value": 2.7
             },
             {
               "label": "34 uger",
-              "value": 2.4
+              "value": 1.9
             },
             {
               "label": "39 uger",
-              "value": 1.8
-            },
-            {
-              "label": "43 uger",
               "value": 1.4
             },
             {
-              "label": "47 uger",
+              "label": "43 uger",
               "value": 1.1
+            },
+            {
+              "label": "47 uger",
+              "value": 0.8
             },
             {
               "label": "52 uger",
@@ -19660,55 +19711,55 @@
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 63.3
+              "value": 66.3
             },
             {
               "label": "Sygedagpenge",
-              "value": 11.4
-            },
-            {
-              "label": "Uddannelse",
-              "value": 9.5
+              "value": 10.8
             },
             {
               "label": "A-dagpenge",
-              "value": 7.4
+              "value": 6.8
+            },
+            {
+              "label": "Uddannelse",
+              "value": 5.9
             },
             {
               "label": "Barselsdagpenge",
-              "value": 2.9
+              "value": 3.4
             },
             {
               "label": "Selvforsørgelse",
-              "value": 1.8
+              "value": 2.4
             },
             {
-              "label": "Kontanthjælp",
-              "value": 1.2
+              "label": "Folkepension",
+              "value": 1.1
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 1
             },
             {
               "label": "Jobafklaringsforløb",
               "value": 0.8
             },
             {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.6
+              "label": "Kontanthjælp",
+              "value": 0.7
             },
             {
               "label": "Andet",
               "value": 0.5
             },
             {
-              "label": "Folkepension",
-              "value": 0.4
-            },
-            {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.2
+              "value": 0.4
             }
           ]
         }
@@ -20352,11 +20403,18 @@
           1.8,
           1.7
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Fag og Arbejde (FOA)",
+        "jobindsats": "FOAs A-kasse",
+        "starMembers": "FOAs A-kasse"
+      },
+      "short": "FOA-A",
+      "starCode": "D17"
     },
     "43": {
       "code": "43",
-      "name": "Faglig Fælles a-kasse (3F)",
+      "name": "Faglig Fælles A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -21852,7 +21910,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -21860,112 +21918,104 @@
             },
             {
               "label": "4 uger",
-              "value": 35.1
+              "value": 37.4
             },
             {
               "label": "8 uger",
-              "value": 22.5
+              "value": 23.9
             },
             {
               "label": "13 uger",
-              "value": 14
+              "value": 13.6
             },
             {
               "label": "17 uger",
-              "value": 9.9
+              "value": 9.3
             },
             {
               "label": "21 uger",
-              "value": 6.7
+              "value": 6.4
             },
             {
               "label": "26 uger",
-              "value": 4.5
+              "value": 3.9
             },
             {
               "label": "30 uger",
-              "value": 3.7
+              "value": 2.7
             },
             {
               "label": "34 uger",
-              "value": 2.9
+              "value": 2
             },
             {
               "label": "39 uger",
-              "value": 2.2
+              "value": 1.5
             },
             {
               "label": "43 uger",
-              "value": 1.7
+              "value": 1.2
             },
             {
               "label": "47 uger",
-              "value": 1.3
+              "value": 0.9
             },
             {
               "label": "52 uger",
-              "value": 0.9
+              "value": 0.6
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 62.8
-            },
-            {
-              "label": "A-dagpenge",
-              "value": 11.1
+              "value": 74.1
             },
             {
               "label": "Sygedagpenge",
-              "value": 9.3
+              "value": 7.8
             },
             {
-              "label": "Uddannelse",
+              "label": "A-dagpenge",
               "value": 7
             },
             {
+              "label": "Uddannelse",
+              "value": 4.2
+            },
+            {
               "label": "Selvforsørgelse",
-              "value": 3.6
+              "value": 2.5
             },
             {
               "label": "Andet",
-              "value": 2
+              "value": 1.2
             },
             {
               "label": "Barselsdagpenge",
-              "value": 0.9
-            },
-            {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.8
+              "value": 1
             },
             {
               "label": "Kontanthjælp",
               "value": 0.6
             },
             {
-              "label": "Folkepension",
-              "value": 0.6
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.5
             },
             {
-              "label": "Jobafklaringsforløb",
+              "label": "Folkepension",
               "value": 0.5
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.5
+              "value": 0.4
             },
             {
-              "label": "Fleksjob",
-              "value": 0.1
-            },
-            {
-              "label": "Forrevalidering og revalidering",
-              "value": 0
+              "label": "Jobafklaringsforløb",
+              "value": 0.2
             }
           ]
         }
@@ -22609,11 +22659,18 @@
           4.3,
           4.4
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Faglig Fælles a-kasse (3F)",
+        "jobindsats": "Faglig Fælles (3F) A-kasse",
+        "starMembers": "Faglig Fælles A-kasse"
+      },
+      "short": "3F-A",
+      "starCode": "D15"
     },
     "13": {
       "code": "13",
-      "name": "Funktionærer og Tjenestemænd (FTF-A)",
+      "name": "A-kassen A&Til",
       "members": {
         "labels": [
           "2000M04",
@@ -23286,7 +23343,939 @@
           "value": 86652
         }
       ],
-      "jobindsats": {},
+      "jobindsats": {
+        "dagpenge": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "persons": [
+            6661,
+            6573,
+            5688,
+            5413,
+            5241,
+            5622,
+            6564,
+            6500,
+            6072,
+            5605,
+            5683,
+            6504,
+            6889,
+            6809,
+            5853,
+            5650,
+            5471,
+            5657,
+            6462,
+            6334,
+            6120,
+            5818,
+            5677,
+            6355,
+            6953,
+            6929,
+            5902,
+            5829,
+            5642,
+            5933,
+            7060,
+            6834,
+            6589,
+            6223,
+            6062,
+            7020,
+            7647,
+            7542,
+            6513,
+            6380,
+            6146,
+            6506,
+            7816,
+            7623,
+            8523,
+            9042,
+            9333,
+            10394,
+            10818,
+            10342,
+            9077,
+            8674,
+            8376,
+            8691,
+            10227,
+            10159,
+            9702,
+            9216,
+            8262,
+            9032,
+            9341,
+            8870,
+            7427,
+            6955,
+            6539,
+            6526,
+            7790,
+            7225,
+            6645,
+            6316,
+            5971,
+            6907,
+            7501,
+            7294,
+            6168,
+            5902,
+            5860,
+            6025,
+            7531,
+            7372,
+            7070,
+            6785,
+            6596,
+            7658,
+            8282,
+            8099,
+            6768,
+            6519,
+            6496,
+            6604,
+            8042,
+            7711,
+            7289,
+            6970,
+            6601,
+            7550,
+            8125,
+            7796,
+            6511,
+            6350,
+            6162,
+            6310,
+            7693,
+            7318,
+            6925,
+            6524,
+            6254,
+            7283,
+            8018,
+            7424,
+            6420,
+            6200,
+            6016,
+            6235,
+            7637,
+            7303,
+            7047,
+            6933,
+            6418,
+            7070
+          ],
+          "fulltime": [
+            4630,
+            4805,
+            4352,
+            4199,
+            4138,
+            4258,
+            4678,
+            4871,
+            4684,
+            4246,
+            4408,
+            4680,
+            5070,
+            5187,
+            4712,
+            4598,
+            4513,
+            4517,
+            4989,
+            5146,
+            4936,
+            4544,
+            4628,
+            4928,
+            5331,
+            5377,
+            4837,
+            4783,
+            4657,
+            4847,
+            5453,
+            5628,
+            5421,
+            4950,
+            4920,
+            5527,
+            5832,
+            5938,
+            5348,
+            5196,
+            5123,
+            5354,
+            6126,
+            6348,
+            6843,
+            7846,
+            8199,
+            8532,
+            8714,
+            8457,
+            7620,
+            7428,
+            7178,
+            7397,
+            8477,
+            8860,
+            8366,
+            7783,
+            6957,
+            7066,
+            7438,
+            6966,
+            5995,
+            5625,
+            5119,
+            4629,
+            6125,
+            5911,
+            5372,
+            5212,
+            4821,
+            5216,
+            5790,
+            5646,
+            4880,
+            4705,
+            4709,
+            4573,
+            5901,
+            6101,
+            5796,
+            5684,
+            5401,
+            5833,
+            6439,
+            6376,
+            5450,
+            5319,
+            5292,
+            5150,
+            6233,
+            6378,
+            6059,
+            5789,
+            5414,
+            5837,
+            6246,
+            6082,
+            5299,
+            5118,
+            5003,
+            4918,
+            5956,
+            6054,
+            5761,
+            5443,
+            5142,
+            5553,
+            6165,
+            5876,
+            5212,
+            5013,
+            4971,
+            4802,
+            5958,
+            6103,
+            5863,
+            5705,
+            5360,
+            5550
+          ]
+        },
+        "graduates": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "share": [
+            46.9,
+            45.4,
+            41.8,
+            39.6,
+            37.8,
+            37.1,
+            41.3,
+            42.3,
+            42.2,
+            41.1,
+            37.7,
+            44.3,
+            47.4,
+            46.1,
+            43.3,
+            42.1,
+            40.7,
+            40.2,
+            43.5,
+            45.1,
+            43.7,
+            42.5,
+            40.7,
+            45.8,
+            48,
+            45.7,
+            43.1,
+            40.7,
+            39.4,
+            38.3,
+            43.8,
+            45.9,
+            44.8,
+            43,
+            40.5,
+            47,
+            48.5,
+            47.1,
+            44.2,
+            42.1,
+            39.9,
+            38.5,
+            42.9,
+            45.1,
+            40.4,
+            37.8,
+            36.4,
+            42,
+            43.6,
+            42.1,
+            39.8,
+            38.2,
+            36.7,
+            34.6,
+            38.7,
+            39.4,
+            38.7,
+            37.2,
+            36,
+            41.6,
+            43.5,
+            42.7,
+            39.4,
+            37.6,
+            36.3,
+            35.5,
+            40.1,
+            42,
+            41.5,
+            39,
+            37.6,
+            44.8,
+            46.4,
+            44.2,
+            41.5,
+            37.9,
+            36.7,
+            34.9,
+            41.5,
+            42.5,
+            40.7,
+            39,
+            35.7,
+            41.6,
+            42.8,
+            41.6,
+            37.8,
+            34.7,
+            32.1,
+            31,
+            37,
+            38.2,
+            36.7,
+            34.5,
+            32.6,
+            39.4,
+            39.4,
+            38,
+            34,
+            30.8,
+            28.9,
+            27.3,
+            33.8,
+            34.3,
+            32.8,
+            30.5,
+            27.8,
+            34.9,
+            36.1,
+            35.1,
+            31.5,
+            28.8,
+            26.8,
+            25.5,
+            33,
+            33,
+            30.9,
+            29.1,
+            27.5,
+            33.5
+          ],
+          "persons": [
+            3127,
+            2985,
+            2377,
+            2141,
+            1981,
+            2085,
+            2710,
+            2749,
+            2563,
+            2301,
+            2144,
+            2881,
+            3265,
+            3136,
+            2534,
+            2376,
+            2227,
+            2275,
+            2812,
+            2857,
+            2675,
+            2470,
+            2310,
+            2910,
+            3337,
+            3167,
+            2541,
+            2374,
+            2223,
+            2272,
+            3095,
+            3136,
+            2952,
+            2678,
+            2453,
+            3302,
+            3708,
+            3550,
+            2876,
+            2687,
+            2452,
+            2505,
+            3350,
+            3441,
+            3446,
+            3418,
+            3393,
+            4365,
+            4717,
+            4351,
+            3610,
+            3312,
+            3072,
+            3004,
+            3958,
+            4005,
+            3759,
+            3431,
+            2973,
+            3755,
+            4065,
+            3788,
+            2927,
+            2613,
+            2372,
+            2319,
+            3125,
+            3032,
+            2757,
+            2463,
+            2245,
+            3091,
+            3483,
+            3222,
+            2562,
+            2238,
+            2149,
+            2100,
+            3127,
+            3135,
+            2878,
+            2647,
+            2355,
+            3182,
+            3548,
+            3369,
+            2560,
+            2260,
+            2087,
+            2048,
+            2976,
+            2947,
+            2676,
+            2407,
+            2152,
+            2976,
+            3199,
+            2966,
+            2211,
+            1956,
+            1781,
+            1721,
+            2603,
+            2512,
+            2271,
+            1987,
+            1736,
+            2545,
+            2898,
+            2606,
+            2024,
+            1783,
+            1611,
+            1589,
+            2523,
+            2409,
+            2180,
+            2019,
+            1763,
+            2367
+          ]
+        },
+        "earlyTalks": {
+          "labels": [
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05"
+          ],
+          "share": [
+            83.3,
+            90.6,
+            81.6,
+            86.2,
+            79.4,
+            79.9,
+            82.1,
+            86.7,
+            89.3,
+            84.7,
+            87.8,
+            84.8,
+            83.5,
+            87.8,
+            84.8,
+            81.7,
+            77.2,
+            75.3,
+            85.6,
+            87.2,
+            84.4,
+            74.7,
+            80.1,
+            69.2,
+            77.1,
+            82.7,
+            75.1
+          ]
+        },
+        "benefitConsumption": {
+          "period": "2026M05",
+          "items": [
+            {
+              "label": "0-3 mdr.",
+              "value": 1739.0
+            },
+            {
+              "label": "3-6 mdr.",
+              "value": 1801.0
+            },
+            {
+              "label": "6-12 mdr.",
+              "value": 1634.0
+            },
+            {
+              "label": "12-18 mdr.",
+              "value": 755.0
+            },
+            {
+              "label": "18+ mdr.",
+              "value": 612.0
+            }
+          ]
+        },
+        "survival": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "0 uger",
+              "value": 100
+            },
+            {
+              "label": "4 uger",
+              "value": 44.3
+            },
+            {
+              "label": "8 uger",
+              "value": 30.5
+            },
+            {
+              "label": "13 uger",
+              "value": 19.3
+            },
+            {
+              "label": "17 uger",
+              "value": 14
+            },
+            {
+              "label": "21 uger",
+              "value": 10.4
+            },
+            {
+              "label": "26 uger",
+              "value": 6.2
+            },
+            {
+              "label": "30 uger",
+              "value": 4.1
+            },
+            {
+              "label": "34 uger",
+              "value": 3
+            },
+            {
+              "label": "39 uger",
+              "value": 2
+            },
+            {
+              "label": "43 uger",
+              "value": 1.6
+            },
+            {
+              "label": "47 uger",
+              "value": 1.3
+            },
+            {
+              "label": "52 uger",
+              "value": 0.8
+            }
+          ]
+        },
+        "statusAfter3m": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "Lønmodtagerbeskæftigelse",
+              "value": 66.1
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 10.4
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 8.3
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 4.7
+            },
+            {
+              "label": "Uddannelse",
+              "value": 4
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 2.5
+            },
+            {
+              "label": "Andet",
+              "value": 1.6
+            },
+            {
+              "label": "Kontanthjælp",
+              "value": 0.8
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.8
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.4
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.4
+            },
+            {
+              "label": "Jobafklaringsforløb",
+              "value": 0.1
+            }
+          ]
+        }
+      },
       "unemploymentRate": {
         "labels": [
           "2017M07",
@@ -23926,11 +24915,18 @@
           3.7,
           3.5
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Funktionærer og Tjenestemænd (FTF-A)",
+        "jobindsats": "A-kassen A&Til",
+        "starMembers": "A-kassen A&Til"
+      },
+      "short": "A&Til",
+      "starCode": "D92"
     },
     "15": {
       "code": "15",
-      "name": "Handels- og Kontorfunktionærer (HK)",
+      "name": "HK A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -25426,7 +26422,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -25434,43 +26430,43 @@
             },
             {
               "label": "4 uger",
-              "value": 45.8
+              "value": 48.9
             },
             {
               "label": "8 uger",
-              "value": 30.4
+              "value": 35.7
             },
             {
               "label": "13 uger",
-              "value": 18.5
+              "value": 23.9
             },
             {
               "label": "17 uger",
-              "value": 12.7
+              "value": 17.4
             },
             {
               "label": "21 uger",
-              "value": 8.1
+              "value": 12.4
             },
             {
               "label": "26 uger",
-              "value": 5.2
+              "value": 7.1
             },
             {
               "label": "30 uger",
-              "value": 4
+              "value": 4.3
             },
             {
               "label": "34 uger",
-              "value": 3.3
+              "value": 2.9
             },
             {
               "label": "39 uger",
-              "value": 2.4
+              "value": 2.1
             },
             {
               "label": "43 uger",
-              "value": 1.8
+              "value": 1.7
             },
             {
               "label": "47 uger",
@@ -25478,55 +26474,55 @@
             },
             {
               "label": "52 uger",
-              "value": 0.6
+              "value": 0.8
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 59.9
-            },
-            {
-              "label": "Uddannelse",
-              "value": 15.7
-            },
-            {
-              "label": "Sygedagpenge",
-              "value": 6.6
+              "value": 65.9
             },
             {
               "label": "A-dagpenge",
-              "value": 6.2
+              "value": 7.9
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 6.9
+            },
+            {
+              "label": "Uddannelse",
+              "value": 6.7
             },
             {
               "label": "Selvforsørgelse",
-              "value": 4.7
+              "value": 5.1
             },
             {
               "label": "Barselsdagpenge",
-              "value": 2.6
-            },
-            {
-              "label": "Andet",
-              "value": 1.1
-            },
-            {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.8
+              "value": 3.2
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.8
+              "value": 1.1
             },
             {
-              "label": "Folkepension",
-              "value": 0.7
+              "label": "Andet",
+              "value": 1
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.7
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.7
+            },
+            {
+              "label": "Folkepension",
               "value": 0.5
             },
             {
@@ -26175,11 +27171,18 @@
           4,
           3.8
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Handels- og Kontorfunktionærer (HK)",
+        "jobindsats": "HK /Danmarks A-kasse",
+        "starMembers": "HK/Danmark"
+      },
+      "short": "HK-A",
+      "starCode": "D53"
     },
     "41": {
       "code": "41",
-      "name": "Journalistik, Kommunikation og Sprog",
+      "name": "A-kassen for Journalistik, Kommunikation & Sprog",
       "members": {
         "labels": [
           "2000M04",
@@ -26852,7 +27855,931 @@
           "value": 15168
         }
       ],
-      "jobindsats": {},
+      "jobindsats": {
+        "dagpenge": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "persons": [
+            1941,
+            1926,
+            1763,
+            1711,
+            1725,
+            1801,
+            2000,
+            1968,
+            1889,
+            1785,
+            1765,
+            1870,
+            2080,
+            2082,
+            1902,
+            1844,
+            1780,
+            1823,
+            1958,
+            1887,
+            1836,
+            1759,
+            1715,
+            1934,
+            2144,
+            2120,
+            1878,
+            1863,
+            1797,
+            1723,
+            1999,
+            1979,
+            1892,
+            1802,
+            1755,
+            1873,
+            2151,
+            2149,
+            1922,
+            1876,
+            1883,
+            1925,
+            2143,
+            2057,
+            2345,
+            2569,
+            2691,
+            2835,
+            2991,
+            2918,
+            2658,
+            2535,
+            2470,
+            2474,
+            2773,
+            2764,
+            2656,
+            2563,
+            2320,
+            2371,
+            2512,
+            2326,
+            2011,
+            1837,
+            1773,
+            1737,
+            1922,
+            1839,
+            1805,
+            1695,
+            1588,
+            1656,
+            1891,
+            1845,
+            1646,
+            1593,
+            1549,
+            1633,
+            1864,
+            1878,
+            1850,
+            1810,
+            1743,
+            1855,
+            2123,
+            2088,
+            1874,
+            1866,
+            1797,
+            1810,
+            2030,
+            2014,
+            1953,
+            1930,
+            1987,
+            2057,
+            2319,
+            2230,
+            1943,
+            1915,
+            1865,
+            1944,
+            2291,
+            2175,
+            2096,
+            2004,
+            1916,
+            2020,
+            2217,
+            2090,
+            1841,
+            1841,
+            1766,
+            1859,
+            2096,
+            2052,
+            1937,
+            1902,
+            1800,
+            1891
+          ],
+          "fulltime": [
+            1351,
+            1426,
+            1356,
+            1355,
+            1382,
+            1432,
+            1545,
+            1490,
+            1463,
+            1351,
+            1388,
+            1422,
+            1592,
+            1649,
+            1569,
+            1515,
+            1498,
+            1508,
+            1587,
+            1544,
+            1484,
+            1397,
+            1412,
+            1486,
+            1541,
+            1634,
+            1539,
+            1525,
+            1499,
+            1394,
+            1608,
+            1593,
+            1526,
+            1389,
+            1420,
+            1428,
+            1563,
+            1680,
+            1573,
+            1516,
+            1548,
+            1572,
+            1714,
+            1679,
+            1827,
+            2197,
+            2367,
+            2302,
+            2321,
+            2372,
+            2234,
+            2162,
+            2116,
+            2113,
+            2340,
+            2419,
+            2316,
+            2178,
+            1978,
+            1873,
+            1890,
+            1809,
+            1624,
+            1489,
+            1427,
+            1303,
+            1546,
+            1462,
+            1457,
+            1385,
+            1289,
+            1253,
+            1389,
+            1446,
+            1328,
+            1278,
+            1256,
+            1229,
+            1493,
+            1552,
+            1514,
+            1486,
+            1435,
+            1460,
+            1577,
+            1675,
+            1538,
+            1543,
+            1473,
+            1410,
+            1647,
+            1680,
+            1643,
+            1591,
+            1635,
+            1622,
+            1746,
+            1744,
+            1594,
+            1532,
+            1496,
+            1478,
+            1850,
+            1800,
+            1739,
+            1643,
+            1557,
+            1578,
+            1656,
+            1649,
+            1516,
+            1490,
+            1439,
+            1373,
+            1691,
+            1699,
+            1607,
+            1554,
+            1491,
+            1505
+          ]
+        },
+        "graduates": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "share": [
+            47.3,
+            47.2,
+            46.1,
+            44.9,
+            43.9,
+            43,
+            41.8,
+            41.8,
+            41.7,
+            40.8,
+            39.5,
+            43.3,
+            44.7,
+            44.1,
+            44.4,
+            44.1,
+            44.3,
+            42,
+            41.7,
+            42.5,
+            41.6,
+            41.8,
+            38.8,
+            44.1,
+            46.8,
+            45.5,
+            44.6,
+            44,
+            43.1,
+            40.5,
+            41.5,
+            42,
+            41.2,
+            39.5,
+            38.4,
+            43.6,
+            46.6,
+            44.4,
+            42.1,
+            41.6,
+            39.6,
+            38.6,
+            38.4,
+            38.9,
+            35.4,
+            33.8,
+            33.1,
+            36.9,
+            39.9,
+            39,
+            38.2,
+            37.5,
+            36.7,
+            35.3,
+            37.2,
+            37.6,
+            36.1,
+            36.4,
+            35.4,
+            38.5,
+            40.3,
+            40.2,
+            38.6,
+            36.8,
+            34.3,
+            33.2,
+            33.6,
+            36,
+            34.2,
+            33.1,
+            31.2,
+            34.2,
+            37.2,
+            35.7,
+            32.9,
+            31.9,
+            29.6,
+            27.9,
+            29.2,
+            31.1,
+            29.8,
+            29.6,
+            27.9,
+            30.7,
+            32.8,
+            30.7,
+            28.1,
+            26.2,
+            26.4,
+            24.4,
+            24.4,
+            24.1,
+            23.7,
+            23.1,
+            22,
+            24.1,
+            25,
+            24.2,
+            23.3,
+            22,
+            20.6,
+            19.7,
+            21.2,
+            22.6,
+            20.5,
+            19.4,
+            17.7,
+            20.6,
+            22.2,
+            22.5,
+            21.1,
+            19.4,
+            19.6,
+            17.9,
+            19.1,
+            19.2,
+            18.7,
+            18.9,
+            18.2,
+            19.9
+          ],
+          "persons": [
+            919,
+            910,
+            812,
+            769,
+            758,
+            774,
+            835,
+            822,
+            788,
+            728,
+            697,
+            810,
+            929,
+            919,
+            844,
+            814,
+            789,
+            766,
+            816,
+            802,
+            763,
+            735,
+            665,
+            852,
+            1003,
+            965,
+            838,
+            819,
+            774,
+            697,
+            830,
+            832,
+            780,
+            711,
+            674,
+            817,
+            1003,
+            955,
+            810,
+            781,
+            745,
+            744,
+            823,
+            800,
+            829,
+            869,
+            890,
+            1045,
+            1192,
+            1137,
+            1015,
+            951,
+            907,
+            873,
+            1031,
+            1040,
+            960,
+            932,
+            822,
+            912,
+            1012,
+            936,
+            776,
+            676,
+            609,
+            576,
+            645,
+            662,
+            617,
+            561,
+            495,
+            566,
+            703,
+            658,
+            542,
+            508,
+            459,
+            455,
+            544,
+            584,
+            551,
+            535,
+            486,
+            570,
+            697,
+            640,
+            527,
+            489,
+            474,
+            441,
+            495,
+            486,
+            463,
+            445,
+            437,
+            495,
+            579,
+            539,
+            452,
+            421,
+            385,
+            383,
+            486,
+            491,
+            429,
+            389,
+            339,
+            417,
+            492,
+            471,
+            389,
+            357,
+            347,
+            332,
+            401,
+            393,
+            363,
+            359,
+            327,
+            376
+          ]
+        },
+        "earlyTalks": {
+          "labels": [
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05"
+          ],
+          "share": [
+            41.1,
+            65,
+            86,
+            86.6,
+            78.8,
+            77.5,
+            86.1,
+            92.2,
+            92.2,
+            92.9,
+            92,
+            97.8,
+            92.8,
+            95.7,
+            96,
+            96.6,
+            94.4,
+            95,
+            95.7,
+            95.7,
+            95.2,
+            97.4,
+            94.8,
+            93.5,
+            92.6,
+            98,
+            97.5
+          ]
+        },
+        "benefitConsumption": {
+          "period": "2026M05",
+          "items": [
+            {
+              "label": "0-3 mdr.",
+              "value": 461.0
+            },
+            {
+              "label": "3-6 mdr.",
+              "value": 464.0
+            },
+            {
+              "label": "6-12 mdr.",
+              "value": 451.0
+            },
+            {
+              "label": "12-18 mdr.",
+              "value": 252.0
+            },
+            {
+              "label": "18+ mdr.",
+              "value": 199.0
+            }
+          ]
+        },
+        "survival": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "0 uger",
+              "value": 100
+            },
+            {
+              "label": "4 uger",
+              "value": 38.6
+            },
+            {
+              "label": "8 uger",
+              "value": 24.8
+            },
+            {
+              "label": "13 uger",
+              "value": 15.1
+            },
+            {
+              "label": "17 uger",
+              "value": 10.6
+            },
+            {
+              "label": "21 uger",
+              "value": 7.3
+            },
+            {
+              "label": "26 uger",
+              "value": 3.8
+            },
+            {
+              "label": "30 uger",
+              "value": 2.4
+            },
+            {
+              "label": "34 uger",
+              "value": 1.4
+            },
+            {
+              "label": "39 uger",
+              "value": 1.2
+            },
+            {
+              "label": "43 uger",
+              "value": 0.8
+            },
+            {
+              "label": "47 uger",
+              "value": 0.6
+            },
+            {
+              "label": "52 uger",
+              "value": 0.4
+            }
+          ]
+        },
+        "statusAfter3m": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "Lønmodtagerbeskæftigelse",
+              "value": 62.3
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 12.9
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 12.6
+            },
+            {
+              "label": "Uddannelse",
+              "value": 3.3
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 2.6
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 2.6
+            },
+            {
+              "label": "Andet",
+              "value": 1.9
+            },
+            {
+              "label": "Kontanthjælp",
+              "value": 0.6
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.5
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.4
+            }
+          ]
+        }
+      },
       "unemploymentRate": {
         "labels": [
           "2017M07",
@@ -27492,11 +29419,18 @@
           8.1,
           7.6
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Journalistik, Kommunikation og Sprog",
+        "jobindsats": "A-kassen for Journalistik, Komm. og Sprog",
+        "starMembers": "Jour., Kom. & Sprog"
+      },
+      "short": "AJKS",
+      "starCode": "D10"
     },
     "19": {
       "code": "19",
-      "name": "Kristelig a-kasse",
+      "name": "Kristelig A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -28992,7 +30926,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -29000,103 +30934,103 @@
             },
             {
               "label": "4 uger",
-              "value": 45.1
+              "value": 46.1
             },
             {
               "label": "8 uger",
-              "value": 30.7
+              "value": 32.4
             },
             {
               "label": "13 uger",
-              "value": 19.8
+              "value": 21.4
             },
             {
               "label": "17 uger",
-              "value": 14
+              "value": 15.2
             },
             {
               "label": "21 uger",
-              "value": 9.7
+              "value": 10.8
             },
             {
               "label": "26 uger",
-              "value": 6.7
+              "value": 6.3
             },
             {
               "label": "30 uger",
-              "value": 5.3
-            },
-            {
-              "label": "34 uger",
               "value": 4.2
             },
             {
+              "label": "34 uger",
+              "value": 3.1
+            },
+            {
               "label": "39 uger",
-              "value": 3.2
+              "value": 2.2
             },
             {
               "label": "43 uger",
-              "value": 2.5
+              "value": 1.6
             },
             {
               "label": "47 uger",
-              "value": 1.8
+              "value": 1.3
             },
             {
               "label": "52 uger",
-              "value": 1.1
+              "value": 0.8
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 61.8
+              "value": 69.6
             },
             {
               "label": "A-dagpenge",
-              "value": 9.4
+              "value": 8.2
             },
             {
               "label": "Sygedagpenge",
-              "value": 9.3
-            },
-            {
-              "label": "Uddannelse",
-              "value": 6.7
+              "value": 7.8
             },
             {
               "label": "Selvforsørgelse",
-              "value": 5.4
+              "value": 4.7
             },
             {
-              "label": "Andet",
-              "value": 2.5
+              "label": "Uddannelse",
+              "value": 3.2
             },
             {
               "label": "Barselsdagpenge",
               "value": 2.3
             },
             {
+              "label": "Andet",
+              "value": 1.8
+            },
+            {
               "label": "Kontanthjælp",
-              "value": 1
+              "value": 0.7
             },
             {
               "label": "Folkepension",
-              "value": 0.6
-            },
-            {
-              "label": "Jobafklaringsforløb",
-              "value": 0.5
+              "value": 0.7
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.3
+              "value": 0.5
             },
             {
               "label": "Efterløn og fleksydelse",
+              "value": 0.3
+            },
+            {
+              "label": "Jobafklaringsforløb",
               "value": 0.2
             }
           ]
@@ -29741,11 +31675,18 @@
           6.1,
           6.1
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Kristelig a-kasse",
+        "jobindsats": "Kristelig A-Kasse",
+        "starMembers": "Kristelig A-kasse"
+      },
+      "short": "KRIFA",
+      "starCode": "D73"
     },
     "22": {
       "code": "22",
-      "name": "Lærere (DLF-A)",
+      "name": "Lærernes a-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -30418,7 +32359,931 @@
           "value": 48424
         }
       ],
-      "jobindsats": {},
+      "jobindsats": {
+        "dagpenge": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "persons": [
+            3985,
+            2485,
+            1856,
+            2866,
+            1604,
+            1732,
+            1788,
+            2824,
+            1546,
+            1511,
+            1554,
+            2615,
+            3883,
+            2525,
+            1996,
+            2788,
+            1686,
+            1765,
+            1746,
+            2630,
+            1588,
+            1498,
+            1561,
+            2506,
+            3718,
+            2598,
+            2014,
+            2732,
+            1779,
+            1823,
+            1839,
+            2631,
+            1644,
+            1675,
+            1762,
+            2760,
+            3939,
+            3048,
+            2568,
+            3058,
+            2189,
+            2219,
+            2233,
+            2877,
+            2277,
+            2440,
+            2486,
+            3598,
+            5140,
+            3391,
+            2844,
+            2657,
+            2249,
+            2265,
+            2409,
+            2377,
+            2271,
+            2165,
+            2030,
+            3153,
+            3843,
+            2593,
+            2121,
+            1907,
+            1692,
+            1613,
+            1744,
+            1606,
+            1540,
+            1487,
+            1447,
+            2608,
+            3372,
+            2237,
+            1826,
+            1701,
+            1557,
+            1520,
+            1708,
+            1663,
+            1513,
+            1477,
+            1523,
+            2688,
+            3411,
+            2631,
+            2126,
+            1969,
+            1812,
+            1784,
+            1945,
+            1815,
+            1716,
+            1640,
+            1670,
+            2604,
+            3516,
+            2760,
+            2220,
+            2081,
+            1949,
+            1832,
+            1982,
+            1854,
+            1749,
+            1741,
+            1752,
+            2697,
+            3521,
+            2538,
+            2075,
+            1897,
+            1650,
+            1605,
+            1740,
+            1639,
+            1543,
+            1531,
+            1507,
+            2304
+          ],
+          "fulltime": [
+            2503,
+            1659,
+            1351,
+            1517,
+            1209,
+            1259,
+            1242,
+            1481,
+            1133,
+            1078,
+            1208,
+            1640,
+            2733,
+            1946,
+            1599,
+            1703,
+            1351,
+            1377,
+            1310,
+            1410,
+            1171,
+            1121,
+            1260,
+            1626,
+            2471,
+            1918,
+            1605,
+            1678,
+            1420,
+            1430,
+            1395,
+            1482,
+            1253,
+            1236,
+            1407,
+            1811,
+            2697,
+            2392,
+            2027,
+            2029,
+            1742,
+            1744,
+            1685,
+            1768,
+            1786,
+            2035,
+            2117,
+            2505,
+            3760,
+            2724,
+            2281,
+            2072,
+            1787,
+            1809,
+            1982,
+            2016,
+            1898,
+            1762,
+            1647,
+            1918,
+            3007,
+            1984,
+            1648,
+            1439,
+            1262,
+            1135,
+            1244,
+            1208,
+            1199,
+            1179,
+            1137,
+            1515,
+            2556,
+            1707,
+            1417,
+            1309,
+            1208,
+            1115,
+            1300,
+            1296,
+            1196,
+            1182,
+            1224,
+            1673,
+            2583,
+            2056,
+            1681,
+            1543,
+            1418,
+            1327,
+            1462,
+            1453,
+            1378,
+            1337,
+            1372,
+            1707,
+            2703,
+            2174,
+            1782,
+            1644,
+            1531,
+            1367,
+            1512,
+            1454,
+            1387,
+            1410,
+            1417,
+            1747,
+            2670,
+            1990,
+            1664,
+            1466,
+            1309,
+            1185,
+            1323,
+            1305,
+            1237,
+            1201,
+            1225,
+            1505
+          ]
+        },
+        "graduates": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "share": [
+            61.2,
+            42.9,
+            34.9,
+            54.8,
+            29.9,
+            30.5,
+            27.1,
+            41.7,
+            25.2,
+            24.7,
+            24.1,
+            49.1,
+            55.9,
+            38.3,
+            34.5,
+            45.8,
+            28.4,
+            27,
+            24.6,
+            37.9,
+            24.7,
+            23.8,
+            22.4,
+            48.3,
+            54.1,
+            37.2,
+            31.9,
+            43.9,
+            25.2,
+            24.8,
+            24.4,
+            34.5,
+            23.4,
+            21.7,
+            20.7,
+            46.3,
+            50.7,
+            37,
+            33.7,
+            38.9,
+            29,
+            27.9,
+            26.3,
+            32.7,
+            24.7,
+            23.2,
+            22.3,
+            41.8,
+            49.8,
+            36,
+            34.4,
+            32.3,
+            28.2,
+            27.2,
+            28.5,
+            29.1,
+            28.3,
+            26.7,
+            25.5,
+            47.4,
+            50.4,
+            38.5,
+            34.4,
+            31,
+            28.9,
+            28.3,
+            27.9,
+            27.6,
+            25.4,
+            25.5,
+            24.8,
+            48.3,
+            51.8,
+            38.8,
+            34.9,
+            31.7,
+            29.6,
+            28.7,
+            31.2,
+            31.1,
+            28.8,
+            27.8,
+            25.8,
+            47.6,
+            47.5,
+            38.7,
+            34.5,
+            30.8,
+            27.1,
+            26.1,
+            28,
+            27.7,
+            26.1,
+            25.1,
+            25.4,
+            48.9,
+            47.4,
+            39.3,
+            35,
+            31.4,
+            28,
+            25.1,
+            26.6,
+            27.8,
+            26.2,
+            24.4,
+            22.9,
+            46.2,
+            47.2,
+            38,
+            33,
+            29.2,
+            25,
+            21.5,
+            24.4,
+            24.2,
+            22.9,
+            20.8,
+            19.2,
+            42.3
+          ],
+          "persons": [
+            2438,
+            1065,
+            647,
+            1571,
+            480,
+            528,
+            485,
+            1178,
+            389,
+            373,
+            375,
+            1284,
+            2171,
+            966,
+            688,
+            1276,
+            478,
+            476,
+            430,
+            997,
+            392,
+            357,
+            349,
+            1210,
+            2010,
+            967,
+            642,
+            1199,
+            449,
+            453,
+            448,
+            907,
+            385,
+            363,
+            365,
+            1278,
+            1998,
+            1129,
+            865,
+            1190,
+            635,
+            620,
+            588,
+            941,
+            562,
+            565,
+            554,
+            1505,
+            2560,
+            1222,
+            978,
+            857,
+            635,
+            615,
+            687,
+            691,
+            643,
+            577,
+            517,
+            1495,
+            1936,
+            999,
+            730,
+            592,
+            489,
+            457,
+            487,
+            444,
+            391,
+            379,
+            359,
+            1259,
+            1747,
+            869,
+            637,
+            540,
+            461,
+            436,
+            533,
+            518,
+            436,
+            410,
+            393,
+            1280,
+            1619,
+            1019,
+            733,
+            607,
+            491,
+            466,
+            545,
+            503,
+            448,
+            411,
+            425,
+            1273,
+            1668,
+            1084,
+            778,
+            653,
+            545,
+            460,
+            527,
+            516,
+            459,
+            424,
+            401,
+            1246,
+            1661,
+            964,
+            685,
+            553,
+            413,
+            345,
+            424,
+            397,
+            354,
+            318,
+            289,
+            974
+          ]
+        },
+        "earlyTalks": {
+          "labels": [
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05"
+          ],
+          "share": [
+            84.7,
+            98,
+            90.9,
+            88.4,
+            77.5,
+            60.9,
+            54.6,
+            76.6,
+            90.9,
+            97.8,
+            97.1,
+            94.4,
+            97.6,
+            96.2,
+            96,
+            97.8,
+            92.6,
+            90,
+            95.2,
+            93.6,
+            89.8,
+            96.2,
+            94,
+            93.5,
+            93.7,
+            93.6,
+            94.1
+          ]
+        },
+        "benefitConsumption": {
+          "period": "2026M05",
+          "items": [
+            {
+              "label": "0-3 mdr.",
+              "value": 454.0
+            },
+            {
+              "label": "3-6 mdr.",
+              "value": 359.0
+            },
+            {
+              "label": "6-12 mdr.",
+              "value": 393.0
+            },
+            {
+              "label": "12-18 mdr.",
+              "value": 185.0
+            },
+            {
+              "label": "18+ mdr.",
+              "value": 144.0
+            }
+          ]
+        },
+        "survival": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "0 uger",
+              "value": 100
+            },
+            {
+              "label": "4 uger",
+              "value": 42.3
+            },
+            {
+              "label": "8 uger",
+              "value": 28.6
+            },
+            {
+              "label": "13 uger",
+              "value": 18.4
+            },
+            {
+              "label": "17 uger",
+              "value": 13.6
+            },
+            {
+              "label": "21 uger",
+              "value": 9.2
+            },
+            {
+              "label": "26 uger",
+              "value": 5.2
+            },
+            {
+              "label": "30 uger",
+              "value": 3.2
+            },
+            {
+              "label": "34 uger",
+              "value": 2.4
+            },
+            {
+              "label": "39 uger",
+              "value": 1.3
+            },
+            {
+              "label": "43 uger",
+              "value": 0.9
+            },
+            {
+              "label": "47 uger",
+              "value": 0.6
+            },
+            {
+              "label": "52 uger",
+              "value": 0.3
+            }
+          ]
+        },
+        "statusAfter3m": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "Lønmodtagerbeskæftigelse",
+              "value": 70.7
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 10.3
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 5.6
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 4.3
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 3.8
+            },
+            {
+              "label": "Uddannelse",
+              "value": 1.9
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 1.1
+            },
+            {
+              "label": "Folkepension",
+              "value": 1
+            },
+            {
+              "label": "Andet",
+              "value": 0.8
+            },
+            {
+              "label": "Kontanthjælp",
+              "value": 0.4
+            }
+          ]
+        }
+      },
       "unemploymentRate": {
         "labels": [
           "2017M07",
@@ -31058,11 +33923,18 @@
           1.9,
           1.9
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Lærere (DLF-A)",
+        "jobindsats": "Lærernes A-kasse",
+        "starMembers": "Lærernes a-kasse"
+      },
+      "short": "LAK",
+      "starCode": "D18"
     },
     "21": {
       "code": "21",
-      "name": "Ledere",
+      "name": "Lederne A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -31735,7 +34607,935 @@
           "value": 42048
         }
       ],
-      "jobindsats": {},
+      "jobindsats": {
+        "dagpenge": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "persons": [
+            2679,
+            2798,
+            2687,
+            2731,
+            2718,
+            2781,
+            2977,
+            2928,
+            2805,
+            2678,
+            2767,
+            2734,
+            2817,
+            2922,
+            2791,
+            2802,
+            2730,
+            2789,
+            2929,
+            2862,
+            2926,
+            2794,
+            2801,
+            2739,
+            2838,
+            2987,
+            2829,
+            2941,
+            2909,
+            2965,
+            3167,
+            3114,
+            3166,
+            3020,
+            3045,
+            3015,
+            3125,
+            3226,
+            3071,
+            3132,
+            3144,
+            3258,
+            3538,
+            3404,
+            3878,
+            4410,
+            4745,
+            4706,
+            4791,
+            4800,
+            4672,
+            4600,
+            4543,
+            4554,
+            4742,
+            4654,
+            4541,
+            4425,
+            4021,
+            3788,
+            3731,
+            3654,
+            3295,
+            3092,
+            2863,
+            2761,
+            2844,
+            2698,
+            2628,
+            2499,
+            2392,
+            2321,
+            2416,
+            2537,
+            2397,
+            2392,
+            2407,
+            2408,
+            2677,
+            2637,
+            2645,
+            2635,
+            2631,
+            2690,
+            2859,
+            3020,
+            2899,
+            2902,
+            2869,
+            2897,
+            3145,
+            3099,
+            3126,
+            3152,
+            3183,
+            3164,
+            3352,
+            3495,
+            3363,
+            3397,
+            3339,
+            3356,
+            3697,
+            3569,
+            3596,
+            3548,
+            3535,
+            3544,
+            3704,
+            3810,
+            3703,
+            3769,
+            3684,
+            3727,
+            4097,
+            4086,
+            4112,
+            4170,
+            4096,
+            4039
+          ],
+          "fulltime": [
+            1923,
+            2152,
+            2203,
+            2253,
+            2307,
+            2310,
+            2412,
+            2320,
+            2253,
+            2045,
+            2286,
+            2272,
+            2115,
+            2376,
+            2347,
+            2400,
+            2363,
+            2423,
+            2500,
+            2417,
+            2420,
+            2174,
+            2401,
+            2330,
+            2110,
+            2404,
+            2419,
+            2512,
+            2510,
+            2544,
+            2686,
+            2658,
+            2659,
+            2394,
+            2611,
+            2599,
+            2337,
+            2613,
+            2616,
+            2680,
+            2714,
+            2849,
+            3033,
+            2953,
+            3095,
+            3604,
+            4224,
+            4155,
+            3849,
+            4048,
+            4088,
+            4074,
+            4061,
+            4082,
+            4274,
+            4246,
+            4086,
+            3926,
+            3548,
+            3277,
+            2921,
+            2957,
+            2778,
+            2587,
+            2381,
+            2069,
+            2420,
+            2269,
+            2252,
+            2136,
+            2022,
+            1949,
+            1855,
+            2056,
+            2016,
+            2000,
+            2013,
+            1904,
+            2289,
+            2290,
+            2262,
+            2287,
+            2277,
+            2304,
+            2242,
+            2468,
+            2476,
+            2484,
+            2488,
+            2334,
+            2728,
+            2729,
+            2764,
+            2765,
+            2808,
+            2792,
+            2679,
+            2929,
+            2909,
+            2961,
+            2897,
+            2688,
+            3240,
+            3190,
+            3190,
+            3176,
+            3137,
+            3145,
+            2942,
+            3255,
+            3233,
+            3261,
+            3233,
+            2990,
+            3599,
+            3663,
+            3661,
+            3690,
+            3667,
+            3615
+          ]
+        },
+        "graduates": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "share": [
+            1,
+            0.9,
+            0.7,
+            0.8,
+            0.9,
+            1,
+            1,
+            0.9,
+            0.9,
+            1,
+            0.9,
+            1.1,
+            1.1,
+            1.2,
+            1,
+            1.1,
+            1.2,
+            1,
+            1.1,
+            1.2,
+            1.2,
+            1.3,
+            1.3,
+            1.4,
+            1.4,
+            1.4,
+            1.2,
+            1.1,
+            0.9,
+            0.7,
+            0.8,
+            1.1,
+            1,
+            0.9,
+            0.9,
+            1.1,
+            1.1,
+            1.1,
+            1.1,
+            1.1,
+            1,
+            0.9,
+            1,
+            1,
+            0.9,
+            0.8,
+            0.9,
+            1.1,
+            1.1,
+            1,
+            0.9,
+            1,
+            1.1,
+            1,
+            1.1,
+            1.1,
+            1,
+            0.9,
+            0.8,
+            0.7,
+            1,
+            0.8,
+            0.8,
+            0.7,
+            0.9,
+            1,
+            1.2,
+            1,
+            0.8,
+            0.8,
+            0.7,
+            0.9,
+            1.1,
+            0.9,
+            0.8,
+            0.8,
+            0.7,
+            0.8,
+            0.7,
+            0.9,
+            0.8,
+            0.6,
+            0.7,
+            0.7,
+            0.9,
+            0.7,
+            0.5,
+            0.4,
+            0.3,
+            0.4,
+            0.6,
+            0.5,
+            0.5,
+            0.6,
+            0.6,
+            0.7,
+            0.8,
+            0.6,
+            0.4,
+            0.4,
+            0.4,
+            0.4,
+            0.3,
+            0.4,
+            0.4,
+            0.4,
+            0.5,
+            0.4,
+            0.4,
+            0.4,
+            0.5,
+            0.3,
+            0.3,
+            0.3,
+            0.3,
+            0.2,
+            0.2,
+            0.3,
+            0.2,
+            0.6
+          ],
+          "persons": [
+            27,
+            26,
+            20,
+            21,
+            24,
+            27,
+            31,
+            25,
+            25,
+            26,
+            25,
+            30,
+            32,
+            34,
+            27,
+            31,
+            32,
+            29,
+            32,
+            33,
+            36,
+            37,
+            36,
+            37,
+            41,
+            42,
+            35,
+            31,
+            25,
+            21,
+            25,
+            33,
+            31,
+            26,
+            26,
+            32,
+            35,
+            37,
+            35,
+            34,
+            32,
+            28,
+            34,
+            33,
+            36,
+            37,
+            41,
+            50,
+            52,
+            49,
+            44,
+            44,
+            48,
+            46,
+            50,
+            52,
+            44,
+            41,
+            32,
+            28,
+            37,
+            31,
+            25,
+            21,
+            25,
+            27,
+            34,
+            28,
+            21,
+            21,
+            16,
+            20,
+            27,
+            24,
+            18,
+            18,
+            17,
+            19,
+            19,
+            25,
+            21,
+            16,
+            18,
+            19,
+            25,
+            22,
+            15,
+            11,
+            10,
+            13,
+            18,
+            17,
+            17,
+            20,
+            20,
+            21,
+            26,
+            21,
+            13,
+            13,
+            12,
+            12,
+            10,
+            13,
+            14,
+            15,
+            16,
+            15,
+            14,
+            16,
+            18,
+            13,
+            12,
+            13,
+            12,
+            8,
+            9,
+            11,
+            10,
+            23
+          ]
+        },
+        "earlyTalks": {
+          "labels": [
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05"
+          ],
+          "share": [
+            65.9,
+            87.2,
+            93.7,
+            88.8,
+            95.4,
+            90.5,
+            90,
+            91.4,
+            97.3,
+            91.7,
+            90,
+            95.8,
+            92.5,
+            95.6,
+            95,
+            92.7,
+            92,
+            91.3,
+            91.2,
+            87.5,
+            91,
+            90.1,
+            87,
+            84,
+            88.7,
+            79.4,
+            62.4
+          ]
+        },
+        "benefitConsumption": {
+          "period": "2026M05",
+          "items": [
+            {
+              "label": "0-3 mdr.",
+              "value": 1339.0
+            },
+            {
+              "label": "3-6 mdr.",
+              "value": 969.0
+            },
+            {
+              "label": "6-12 mdr.",
+              "value": 1074.0
+            },
+            {
+              "label": "12-18 mdr.",
+              "value": 488.0
+            },
+            {
+              "label": "18+ mdr.",
+              "value": 312.0
+            }
+          ]
+        },
+        "survival": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "0 uger",
+              "value": 100
+            },
+            {
+              "label": "4 uger",
+              "value": 61
+            },
+            {
+              "label": "8 uger",
+              "value": 45.4
+            },
+            {
+              "label": "13 uger",
+              "value": 31.4
+            },
+            {
+              "label": "17 uger",
+              "value": 23.2
+            },
+            {
+              "label": "21 uger",
+              "value": 17.2
+            },
+            {
+              "label": "26 uger",
+              "value": 10.6
+            },
+            {
+              "label": "30 uger",
+              "value": 6.9
+            },
+            {
+              "label": "34 uger",
+              "value": 5.3
+            },
+            {
+              "label": "39 uger",
+              "value": 3.4
+            },
+            {
+              "label": "43 uger",
+              "value": 2.4
+            },
+            {
+              "label": "47 uger",
+              "value": 1.8
+            },
+            {
+              "label": "52 uger",
+              "value": 0.9
+            }
+          ]
+        },
+        "statusAfter3m": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "Lønmodtagerbeskæftigelse",
+              "value": 76.5
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 7.2
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 5.3
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 4.7
+            },
+            {
+              "label": "Uddannelse",
+              "value": 1.4
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 1.2
+            },
+            {
+              "label": "Folkepension",
+              "value": 1
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.9
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.8
+            },
+            {
+              "label": "Andet",
+              "value": 0.7
+            },
+            {
+              "label": "Kontanthjælp",
+              "value": 0.2
+            }
+          ]
+        }
+      },
       "unemploymentRate": {
         "labels": [
           "2017M07",
@@ -32375,11 +36175,18 @@
           2.9,
           2.9
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Ledere",
+        "jobindsats": "Lederne A-kasse",
+        "starMembers": "Lederne A-kasse"
+      },
+      "short": "LH-A",
+      "starCode": "D67"
     },
     "23": {
       "code": "23",
-      "name": "Magistre (MA)",
+      "name": "Magistrenes A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -33875,7 +37682,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -33883,96 +37690,96 @@
             },
             {
               "label": "4 uger",
-              "value": 45.1
+              "value": 46.2
             },
             {
               "label": "8 uger",
-              "value": 29.3
+              "value": 32.7
             },
             {
               "label": "13 uger",
-              "value": 18.6
+              "value": 21.6
             },
             {
               "label": "17 uger",
-              "value": 13.1
+              "value": 15.4
             },
             {
               "label": "21 uger",
-              "value": 8.9
+              "value": 10.5
             },
             {
               "label": "26 uger",
-              "value": 5.6
+              "value": 5.5
             },
             {
               "label": "30 uger",
-              "value": 4.4
+              "value": 3.1
             },
             {
               "label": "34 uger",
-              "value": 3.5
+              "value": 2
             },
             {
               "label": "39 uger",
-              "value": 2.6
+              "value": 1.3
             },
             {
               "label": "43 uger",
-              "value": 2.1
+              "value": 0.9
             },
             {
               "label": "47 uger",
-              "value": 1.5
+              "value": 0.6
             },
             {
               "label": "52 uger",
-              "value": 0.7
+              "value": 0.4
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 68.9
-            },
-            {
-              "label": "Uddannelse",
-              "value": 9.6
-            },
-            {
-              "label": "A-dagpenge",
-              "value": 6.2
+              "value": 71.4
             },
             {
               "label": "Selvforsørgelse",
-              "value": 6.2
+              "value": 7.9
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 7.7
             },
             {
               "label": "Barselsdagpenge",
-              "value": 3.5
+              "value": 3.4
             },
             {
               "label": "Sygedagpenge",
-              "value": 2.4
+              "value": 3.2
+            },
+            {
+              "label": "Uddannelse",
+              "value": 2.6
             },
             {
               "label": "Andet",
-              "value": 1.9
+              "value": 2
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.8
+              "value": 1.1
             },
             {
               "label": "Folkepension",
-              "value": 0.4
+              "value": 0.5
             },
             {
               "label": "Efterløn og fleksydelse",
-              "value": 0.1
+              "value": 0.2
             }
           ]
         }
@@ -34616,11 +38423,18 @@
           5.3,
           5.1
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Magistre (MA)",
+        "jobindsats": "Magistrenes A-kasse",
+        "starMembers": "Magistrenes A-kasse"
+      },
+      "short": "MA",
+      "starCode": "D88"
     },
     "26": {
       "code": "26",
-      "name": "Metalarbejdere",
+      "name": "Metal A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -35293,7 +39107,939 @@
           "value": 2666
         }
       ],
-      "jobindsats": {},
+      "jobindsats": {
+        "dagpenge": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "persons": [
+            2605,
+            2744,
+            2548,
+            2746,
+            2804,
+            2938,
+            3300,
+            3182,
+            2952,
+            2613,
+            2481,
+            2301,
+            2133,
+            2284,
+            2110,
+            2280,
+            2402,
+            2518,
+            2751,
+            2629,
+            2617,
+            2422,
+            2143,
+            1947,
+            1877,
+            2009,
+            1896,
+            2062,
+            2201,
+            2346,
+            2597,
+            2430,
+            2370,
+            2175,
+            2093,
+            1942,
+            1972,
+            2191,
+            2106,
+            2207,
+            2315,
+            2474,
+            2826,
+            2774,
+            3650,
+            4641,
+            4610,
+            4360,
+            4005,
+            3971,
+            3687,
+            3529,
+            3434,
+            3475,
+            3888,
+            3855,
+            3672,
+            3358,
+            2848,
+            2566,
+            2424,
+            2416,
+            2165,
+            1958,
+            1840,
+            1819,
+            1921,
+            1785,
+            1718,
+            1544,
+            1406,
+            1298,
+            1331,
+            1443,
+            1329,
+            1342,
+            1439,
+            1529,
+            1784,
+            1772,
+            1701,
+            1565,
+            1565,
+            1427,
+            1385,
+            1465,
+            1436,
+            1498,
+            1605,
+            1620,
+            2009,
+            1927,
+            1814,
+            1916,
+            1751,
+            1676,
+            1613,
+            1731,
+            1627,
+            1698,
+            1735,
+            1738,
+            2022,
+            1895,
+            1781,
+            1664,
+            1634,
+            1555,
+            1661,
+            1693,
+            1608,
+            1646,
+            1671,
+            1762,
+            2156,
+            2088,
+            1946,
+            1848,
+            1700,
+            1588
+          ],
+          "fulltime": [
+            1746,
+            1839,
+            1851,
+            1998,
+            2052,
+            2168,
+            2390,
+            2328,
+            2149,
+            1893,
+            1799,
+            1669,
+            1501,
+            1608,
+            1584,
+            1714,
+            1812,
+            1933,
+            2071,
+            1982,
+            1972,
+            1709,
+            1622,
+            1414,
+            1272,
+            1394,
+            1432,
+            1536,
+            1639,
+            1813,
+            1929,
+            1849,
+            1797,
+            1591,
+            1561,
+            1463,
+            1365,
+            1549,
+            1594,
+            1667,
+            1806,
+            1955,
+            2124,
+            2186,
+            2485,
+            3520,
+            3746,
+            3455,
+            2936,
+            2968,
+            2827,
+            2795,
+            2781,
+            2874,
+            3159,
+            3227,
+            3014,
+            2648,
+            2289,
+            1954,
+            1792,
+            1740,
+            1593,
+            1481,
+            1355,
+            1269,
+            1431,
+            1308,
+            1246,
+            1189,
+            1050,
+            934,
+            922,
+            995,
+            978,
+            976,
+            1057,
+            1073,
+            1309,
+            1338,
+            1260,
+            1205,
+            1125,
+            1036,
+            958,
+            1009,
+            1039,
+            1120,
+            1187,
+            1179,
+            1482,
+            1473,
+            1423,
+            1413,
+            1279,
+            1205,
+            1145,
+            1222,
+            1221,
+            1250,
+            1300,
+            1252,
+            1513,
+            1486,
+            1396,
+            1331,
+            1255,
+            1197,
+            1183,
+            1239,
+            1199,
+            1269,
+            1334,
+            1282,
+            1627,
+            1632,
+            1519,
+            1462,
+            1356,
+            1235
+          ]
+        },
+        "graduates": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "share": [
+            29,
+            28.4,
+            26.3,
+            26,
+            25.5,
+            24.9,
+            23.9,
+            23.7,
+            23.7,
+            24.3,
+            24.1,
+            25.2,
+            27.8,
+            26.9,
+            25.6,
+            24.1,
+            23,
+            21.9,
+            21.8,
+            23.1,
+            23.5,
+            24.1,
+            24.3,
+            23.9,
+            27.2,
+            27.8,
+            24.5,
+            22.9,
+            21.9,
+            22,
+            21.8,
+            23.1,
+            24.8,
+            24.2,
+            24.1,
+            26.3,
+            27.9,
+            27.3,
+            25.2,
+            24.8,
+            23.1,
+            22.4,
+            22.1,
+            24.9,
+            20.3,
+            17.6,
+            18.6,
+            19.7,
+            21.9,
+            22.8,
+            22.1,
+            22,
+            21.9,
+            21.2,
+            22,
+            22.9,
+            23.1,
+            23.1,
+            23.4,
+            23.6,
+            26.2,
+            27.2,
+            26.7,
+            27.3,
+            26.4,
+            25.3,
+            25.8,
+            27.8,
+            28.2,
+            28.2,
+            27.8,
+            28,
+            28.9,
+            30.1,
+            28.2,
+            26.7,
+            25.6,
+            25.3,
+            25.6,
+            27.4,
+            26.6,
+            26.7,
+            23.5,
+            24.2,
+            25.3,
+            24.5,
+            22.9,
+            21.4,
+            19.9,
+            19.6,
+            18.9,
+            19.4,
+            19,
+            15.8,
+            15.5,
+            16.5,
+            18.9,
+            19.7,
+            18.7,
+            17.9,
+            16.8,
+            15.5,
+            15.9,
+            17,
+            17,
+            16.2,
+            17.4,
+            18.3,
+            17.7,
+            18,
+            17,
+            16.6,
+            16.1,
+            16.6,
+            15.4,
+            15.4,
+            16.6,
+            16.6,
+            15.8,
+            17.5
+          ],
+          "persons": [
+            756,
+            779,
+            670,
+            713,
+            714,
+            733,
+            790,
+            754,
+            699,
+            635,
+            598,
+            579,
+            593,
+            614,
+            541,
+            550,
+            553,
+            552,
+            599,
+            606,
+            614,
+            583,
+            521,
+            466,
+            510,
+            559,
+            465,
+            473,
+            483,
+            517,
+            565,
+            562,
+            587,
+            527,
+            505,
+            511,
+            550,
+            598,
+            530,
+            548,
+            535,
+            554,
+            625,
+            690,
+            741,
+            818,
+            859,
+            861,
+            878,
+            906,
+            814,
+            775,
+            753,
+            737,
+            855,
+            884,
+            848,
+            776,
+            666,
+            605,
+            635,
+            657,
+            579,
+            535,
+            485,
+            460,
+            495,
+            497,
+            485,
+            435,
+            391,
+            364,
+            385,
+            435,
+            375,
+            358,
+            369,
+            387,
+            456,
+            485,
+            452,
+            418,
+            367,
+            345,
+            350,
+            359,
+            329,
+            321,
+            320,
+            318,
+            379,
+            374,
+            345,
+            303,
+            272,
+            277,
+            305,
+            341,
+            305,
+            304,
+            291,
+            270,
+            321,
+            322,
+            302,
+            270,
+            285,
+            285,
+            294,
+            305,
+            274,
+            274,
+            269,
+            293,
+            331,
+            322,
+            324,
+            306,
+            268,
+            278
+          ]
+        },
+        "earlyTalks": {
+          "labels": [
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05"
+          ],
+          "share": [
+            87.3,
+            87.8,
+            100,
+            88.6,
+            90.9,
+            90.1,
+            91,
+            95,
+            93.7,
+            93.7,
+            89.1,
+            92.2,
+            93.8,
+            91.8,
+            93,
+            91.3,
+            92.4,
+            93.8,
+            93.5,
+            94.5,
+            90,
+            94.5,
+            94.8,
+            90.2,
+            91.9,
+            92.5,
+            93.3
+          ]
+        },
+        "benefitConsumption": {
+          "period": "2026M05",
+          "items": [
+            {
+              "label": "0-3 mdr.",
+              "value": 669.0
+            },
+            {
+              "label": "3-6 mdr.",
+              "value": 423.0
+            },
+            {
+              "label": "6-12 mdr.",
+              "value": 415.0
+            },
+            {
+              "label": "12-18 mdr.",
+              "value": 163.0
+            },
+            {
+              "label": "18+ mdr.",
+              "value": 118.0
+            }
+          ]
+        },
+        "survival": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "0 uger",
+              "value": 100
+            },
+            {
+              "label": "4 uger",
+              "value": 46.7
+            },
+            {
+              "label": "8 uger",
+              "value": 30.1
+            },
+            {
+              "label": "13 uger",
+              "value": 17.1
+            },
+            {
+              "label": "17 uger",
+              "value": 11.8
+            },
+            {
+              "label": "21 uger",
+              "value": 8.4
+            },
+            {
+              "label": "26 uger",
+              "value": 4.9
+            },
+            {
+              "label": "30 uger",
+              "value": 2.8
+            },
+            {
+              "label": "34 uger",
+              "value": 1.9
+            },
+            {
+              "label": "39 uger",
+              "value": 1.2
+            },
+            {
+              "label": "43 uger",
+              "value": 1
+            },
+            {
+              "label": "47 uger",
+              "value": 0.8
+            },
+            {
+              "label": "52 uger",
+              "value": 0.4
+            }
+          ]
+        },
+        "statusAfter3m": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "Lønmodtagerbeskæftigelse",
+              "value": 69.3
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 8.4
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 7.6
+            },
+            {
+              "label": "Uddannelse",
+              "value": 7.2
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 3.5
+            },
+            {
+              "label": "Kontanthjælp",
+              "value": 0.9
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.6
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.6
+            },
+            {
+              "label": "Andet",
+              "value": 0.5
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.5
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 0.4
+            },
+            {
+              "label": "Jobafklaringsforløb",
+              "value": 0.3
+            }
+          ]
+        }
+      },
       "unemploymentRate": {
         "labels": [
           "2017M07",
@@ -35933,11 +40679,18 @@
           1.2,
           1.3
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Metalarbejdere",
+        "jobindsats": "Metalarbejdernes A-Kasse",
+        "starMembers": "Metalarbejderne"
+      },
+      "short": "Metal-A",
+      "starCode": "D24"
     },
     "49": {
       "code": "49",
-      "name": "Min akasse (jan. 2017 - inkl. Funktionærer og Servicefag)",
+      "name": "Min A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -37433,7 +42186,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -37441,104 +42194,100 @@
             },
             {
               "label": "4 uger",
-              "value": 47.5
+              "value": 51.6
             },
             {
               "label": "8 uger",
-              "value": 32.4
+              "value": 38.1
             },
             {
               "label": "13 uger",
-              "value": 20.9
+              "value": 25.8
             },
             {
               "label": "17 uger",
-              "value": 15
+              "value": 19.1
             },
             {
               "label": "21 uger",
-              "value": 9.4
+              "value": 14
             },
             {
               "label": "26 uger",
-              "value": 6
+              "value": 8.7
             },
             {
               "label": "30 uger",
-              "value": 4.6
+              "value": 5.9
             },
             {
               "label": "34 uger",
-              "value": 3.9
+              "value": 4.4
             },
             {
               "label": "39 uger",
-              "value": 2.9
+              "value": 3.1
             },
             {
               "label": "43 uger",
-              "value": 2.2
+              "value": 2.4
             },
             {
               "label": "47 uger",
-              "value": 1.6
+              "value": 1.8
             },
             {
               "label": "52 uger",
-              "value": 1
+              "value": 1.1
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 62.1
-            },
-            {
-              "label": "Uddannelse",
-              "value": 12.3
-            },
-            {
-              "label": "A-dagpenge",
-              "value": 6.6
+              "value": 70.2
             },
             {
               "label": "Selvforsørgelse",
+              "value": 7.5
+            },
+            {
+              "label": "A-dagpenge",
               "value": 6.4
             },
             {
-              "label": "Sygedagpenge",
+              "label": "Uddannelse",
               "value": 5.1
             },
             {
-              "label": "Barselsdagpenge",
-              "value": 2.5
+              "label": "Sygedagpenge",
+              "value": 4.1
             },
             {
-              "label": "Andet",
+              "label": "Barselsdagpenge",
               "value": 2
             },
             {
+              "label": "Andet",
+              "value": 1.7
+            },
+            {
               "label": "Kontanthjælp",
-              "value": 1
+              "value": 1.2
+            },
+            {
+              "label": "Folkepension",
+              "value": 0.9
             },
             {
               "label": "Førtids-, senior- og tidlig pension",
               "value": 0.6
             },
             {
-              "label": "Folkepension",
-              "value": 0.6
-            },
-            {
-              "label": "Jobafklaringsforløb",
-              "value": 0.3
-            },
-            {
               "label": "Efterløn og fleksydelse",
-              "value": 0.3
+              "value": 0.2
             }
           ]
         }
@@ -37655,114 +42404,114 @@
           "2026M06"
         ],
         "values": [
-          3.7,
-          3.8,
-          3.6,
-          3.6,
-          3.5,
-          3.6,
-          3.7,
-          3.8,
-          3.7,
-          3.4,
-          3.4,
-          3.3,
-          3.2,
-          3.4,
-          3.2,
-          3.4,
-          3.4,
-          3.4,
-          3.6,
-          3.7,
-          3.7,
-          3.3,
-          3.3,
-          3.3,
-          3.3,
-          3.6,
-          3.3,
-          3.4,
-          3.4,
-          3.4,
-          3.6,
-          3.7,
-          4.1,
-          4.9,
-          5.2,
-          5.2,
-          5.2,
-          5.2,
-          5,
-          4.8,
-          4.8,
-          4.8,
-          5.2,
-          5.5,
-          5.4,
-          4.9,
-          4.5,
-          4.3,
-          4.1,
-          3.9,
-          3.6,
-          3.4,
-          3.1,
-          2.8,
-          3.1,
-          3.1,
-          3.1,
-          3,
-          2.7,
-          2.7,
-          2.8,
-          2.8,
-          2.6,
-          2.6,
-          2.6,
-          2.5,
-          3,
-          3.2,
-          3.2,
-          3.2,
-          3.1,
-          3,
-          3.2,
-          3.3,
-          3.1,
-          3.1,
-          3.1,
-          2.8,
-          3.4,
-          3.6,
-          3.6,
-          3.5,
-          3.4,
-          3.4,
-          3.4,
-          3.4,
-          3.3,
-          3.3,
-          3.2,
-          3,
-          3.5,
-          3.6,
-          3.6,
-          3.5,
-          3.4,
-          3.3,
-          3.4,
-          3.5,
-          3.3,
-          3.3,
-          3.3,
-          3.1,
-          3.6,
-          3.8,
-          3.8,
-          3.7,
-          3.5,
-          3.5
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       },
       "longTermPer1000": {
@@ -37993,200 +42742,207 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          8.9,
-          8.7,
-          8.8,
-          9,
-          8.8,
-          8.9,
-          8.8,
-          8.2,
-          7.3,
-          7.1,
-          7,
-          7,
-          7.3,
-          7,
-          6.7,
-          6.6,
-          6.4,
-          6.3,
-          6.3,
-          5.6,
-          5.1,
-          4.9,
-          4.8,
-          4.8,
-          5.3,
-          5.4,
-          5.1,
-          5.4,
-          5,
-          5.2,
-          4.7,
-          4.5,
-          4.3,
-          4.5,
-          4.6,
-          4.8,
-          5,
-          5.3,
-          4.8,
-          5.2,
-          4.9,
-          4.9,
-          5.4,
-          5.4,
-          5.3,
-          5.4,
-          5.3,
-          5.5,
-          5.6,
-          5.4,
-          5.3,
-          5,
-          5,
-          5.2,
-          5.3,
-          4.9,
-          5.2,
-          5.1,
-          4.5,
-          5,
-          5.1,
-          5.4,
-          5.5,
-          5.8,
-          6.2,
-          7,
-          7.5,
-          7.7,
-          8.1,
-          8,
-          8.2,
-          8.7,
-          10,
-          10.4,
-          11.2,
+          10.1,
+          11,
           11.3,
-          11.2,
+          12,
+          12.5,
+          13,
+          13.4,
+          13.5,
+          12.7,
+          12.5,
+          13.1,
+          13,
+          12.9,
+          13.1,
+          12.9,
+          12.5,
+          12.1,
           11.5,
-          10.8,
-          10.6,
-          9.7,
-          8.9,
-          7.9,
-          7.4,
-          7.2,
-          6.7,
-          6.3,
-          5.5,
-          5.2,
-          4.8,
-          4.7,
-          4.6,
-          4.2,
-          4,
-          3.7,
-          3.3,
-          3.9,
-          4,
-          3.9,
-          3.7,
-          3.6,
-          3.9,
-          3.9,
-          3.7,
-          3.4,
-          3.7,
-          3.6,
-          3.8,
-          4.2,
-          4.5,
-          4.7,
-          4.5,
-          4.6,
-          4.7,
-          4.6,
-          4.4,
-          4.1,
-          4.2,
-          4.2,
-          4.2,
-          4.5,
-          4.4,
-          4.3,
-          4.5,
-          4.2,
-          4.9,
-          4.7,
-          4.8,
-          4.8,
-          4.8,
-          4.6,
-          4.8,
-          4.6,
-          4.8
+          11.9,
+          12.3,
+          12.4,
+          12.7,
+          12.3,
+          12.2,
+          12.4,
+          12.5,
+          13,
+          13.1,
+          12.7,
+          12.3,
+          11.9,
+          11.6,
+          11.2,
+          10.1,
+          9.3,
+          9.4,
+          10.1,
+          9,
+          9.6,
+          9.4,
+          9.1,
+          10.3,
+          10.3,
+          10.3,
+          10.4,
+          9.8,
+          9.3,
+          10,
+          9.9,
+          10.3,
+          10.2,
+          9.8,
+          10.3,
+          10.5,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Min akasse (jan. 2017 - inkl. Funktionærer og Servicefag)",
+        "jobindsats": "Min A-kasse",
+        "starMembers": "Min A-kasse"
+      },
+      "short": "MIA",
+      "starCode": "D57"
     },
     "39": {
       "code": "39",
-      "name": "Økonomer (CA)",
+      "name": "CA A-kasse & Karriereudvikling",
       "members": {
         "labels": [
           "2000M04",
@@ -39682,7 +44438,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -39690,84 +44446,84 @@
             },
             {
               "label": "4 uger",
-              "value": 46
+              "value": 54.2
             },
             {
               "label": "8 uger",
-              "value": 30.8
+              "value": 40.3
             },
             {
               "label": "13 uger",
-              "value": 19.7
+              "value": 27.9
             },
             {
               "label": "17 uger",
-              "value": 13.9
+              "value": 20.6
             },
             {
               "label": "21 uger",
-              "value": 9.2
+              "value": 14.7
             },
             {
               "label": "26 uger",
-              "value": 6.1
+              "value": 8.6
             },
             {
               "label": "30 uger",
-              "value": 4.6
+              "value": 5.8
             },
             {
               "label": "34 uger",
-              "value": 3.7
+              "value": 4.3
             },
             {
               "label": "39 uger",
-              "value": 2.8
+              "value": 3
             },
             {
               "label": "43 uger",
-              "value": 2.2
+              "value": 2.1
             },
             {
               "label": "47 uger",
-              "value": 1.7
+              "value": 1.5
             },
             {
               "label": "52 uger",
-              "value": 1
+              "value": 0.8
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 77.8
-            },
-            {
-              "label": "Uddannelse",
-              "value": 5.4
+              "value": 73.4
             },
             {
               "label": "Selvforsørgelse",
-              "value": 5.3
+              "value": 9.7
             },
             {
               "label": "A-dagpenge",
-              "value": 3.7
-            },
-            {
-              "label": "Andet",
-              "value": 3
+              "value": 6.2
             },
             {
               "label": "Sygedagpenge",
-              "value": 2.2
+              "value": 3.2
+            },
+            {
+              "label": "Andet",
+              "value": 2.8
             },
             {
               "label": "Barselsdagpenge",
-              "value": 1.6
+              "value": 2.4
+            },
+            {
+              "label": "Uddannelse",
+              "value": 1.3
             },
             {
               "label": "Kontanthjælp",
@@ -39775,11 +44531,7 @@
             },
             {
               "label": "Folkepension",
-              "value": 0.2
-            },
-            {
-              "label": "Førtids-, senior- og tidlig pension",
-              "value": 0.1
+              "value": 0.5
             }
           ]
         }
@@ -40423,11 +45175,18 @@
           4.4,
           4.6
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Økonomer (CA)",
+        "jobindsats": "CA A-kasse",
+        "starMembers": "CA A-kasse"
+      },
+      "short": "CA",
+      "starCode": "D98"
     },
     "33": {
       "code": "33",
-      "name": "Socialpædagoger (SLA)",
+      "name": "Socialpædagogernes A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -41923,7 +46682,7 @@
           ]
         },
         "survival": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "0 uger",
@@ -41931,100 +46690,104 @@
             },
             {
               "label": "4 uger",
-              "value": 34.1
+              "value": 33.4
             },
             {
               "label": "8 uger",
-              "value": 20.8
+              "value": 20.2
             },
             {
               "label": "13 uger",
-              "value": 10.9
+              "value": 11.2
             },
             {
               "label": "17 uger",
-              "value": 6.9
+              "value": 7.6
             },
             {
               "label": "21 uger",
-              "value": 4.4
+              "value": 5.6
             },
             {
               "label": "26 uger",
-              "value": 2.6
+              "value": 3
             },
             {
               "label": "30 uger",
-              "value": 1.9
+              "value": 1.7
             },
             {
               "label": "34 uger",
-              "value": 1.5
-            },
-            {
-              "label": "39 uger",
-              "value": 1.2
-            },
-            {
-              "label": "43 uger",
               "value": 1.1
             },
             {
+              "label": "39 uger",
+              "value": 0.6
+            },
+            {
+              "label": "43 uger",
+              "value": 0.6
+            },
+            {
               "label": "47 uger",
-              "value": 0.9
+              "value": 0.4
             },
             {
               "label": "52 uger",
-              "value": 0.3
+              "value": 0.2
             }
           ]
         },
         "statusAfter3m": {
-          "period": "2024Q03",
+          "period": "2025Q01",
           "items": [
             {
               "label": "Lønmodtagerbeskæftigelse",
-              "value": 71
+              "value": 76.2
             },
             {
               "label": "Sygedagpenge",
-              "value": 7.8
+              "value": 7.9
             },
             {
               "label": "A-dagpenge",
-              "value": 7.7
-            },
-            {
-              "label": "Uddannelse",
-              "value": 4.7
-            },
-            {
-              "label": "Barselsdagpenge",
-              "value": 3.3
+              "value": 5.1
             },
             {
               "label": "Selvforsørgelse",
-              "value": 2.3
+              "value": 3.3
             },
             {
-              "label": "Folkepension",
-              "value": 0.9
+              "label": "Barselsdagpenge",
+              "value": 2.6
             },
             {
-              "label": "Efterløn og fleksydelse",
-              "value": 0.7
-            },
-            {
-              "label": "Andet",
-              "value": 0.7
+              "label": "Uddannelse",
+              "value": 1.4
             },
             {
               "label": "Jobafklaringsforløb",
+              "value": 0.8
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 0.8
+            },
+            {
+              "label": "Førtids-, senior- og tidlig pension",
+              "value": 0.6
+            },
+            {
+              "label": "Folkepension",
               "value": 0.5
             },
             {
               "label": "Kontanthjælp",
-              "value": 0.5
+              "value": 0.4
+            },
+            {
+              "label": "Andet",
+              "value": 0.4
             }
           ]
         }
@@ -42668,11 +47431,18 @@
           1.5,
           1.4
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Socialpædagoger (SLA)",
+        "jobindsats": "Socialpædagogernes A-Kasse",
+        "starMembers": "Socialpædagogernes"
+      },
+      "short": "SL-A",
+      "starCode": "D14"
     },
     "36": {
       "code": "36",
-      "name": "Teknikere",
+      "name": "Teknikernes A-kasse",
       "members": {
         "labels": [
           "2000M04",
@@ -43345,7 +48115,935 @@
           "value": 8964
         }
       ],
-      "jobindsats": {},
+      "jobindsats": {
+        "dagpenge": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "persons": [
+            2044,
+            1977,
+            1683,
+            1565,
+            1513,
+            1706,
+            1850,
+            1823,
+            1789,
+            1658,
+            1596,
+            1806,
+            1963,
+            1920,
+            1599,
+            1546,
+            1438,
+            1600,
+            1804,
+            1713,
+            1686,
+            1591,
+            1524,
+            1684,
+            1861,
+            1854,
+            1532,
+            1494,
+            1428,
+            1515,
+            1719,
+            1677,
+            1634,
+            1532,
+            1526,
+            1671,
+            1797,
+            1794,
+            1568,
+            1531,
+            1481,
+            1586,
+            1715,
+            1706,
+            1840,
+            2026,
+            2116,
+            2368,
+            2515,
+            2432,
+            2194,
+            2092,
+            1994,
+            2071,
+            2188,
+            2177,
+            2068,
+            1953,
+            1718,
+            1722,
+            1766,
+            1672,
+            1416,
+            1303,
+            1215,
+            1159,
+            1320,
+            1277,
+            1188,
+            1118,
+            1065,
+            1103,
+            1184,
+            1135,
+            968,
+            907,
+            872,
+            964,
+            1132,
+            1157,
+            1110,
+            1072,
+            1049,
+            1107,
+            1191,
+            1175,
+            1002,
+            954,
+            920,
+            906,
+            1062,
+            1059,
+            1041,
+            974,
+            968,
+            1040,
+            1162,
+            1156,
+            999,
+            996,
+            981,
+            995,
+            1136,
+            1147,
+            1077,
+            1008,
+            958,
+            1060,
+            1137,
+            1096,
+            956,
+            922,
+            877,
+            919,
+            1068,
+            1084,
+            1073,
+            1048,
+            1058,
+            1139
+          ],
+          "fulltime": [
+            1449,
+            1491,
+            1346,
+            1287,
+            1250,
+            1274,
+            1406,
+            1424,
+            1418,
+            1315,
+            1280,
+            1306,
+            1442,
+            1473,
+            1325,
+            1274,
+            1200,
+            1260,
+            1409,
+            1399,
+            1363,
+            1253,
+            1268,
+            1268,
+            1327,
+            1452,
+            1278,
+            1244,
+            1199,
+            1242,
+            1360,
+            1378,
+            1367,
+            1232,
+            1283,
+            1294,
+            1307,
+            1422,
+            1312,
+            1281,
+            1269,
+            1302,
+            1397,
+            1446,
+            1526,
+            1732,
+            1899,
+            1934,
+            1977,
+            2004,
+            1895,
+            1835,
+            1748,
+            1780,
+            1875,
+            1923,
+            1817,
+            1674,
+            1488,
+            1379,
+            1345,
+            1287,
+            1158,
+            1055,
+            974,
+            820,
+            1036,
+            1036,
+            982,
+            947,
+            878,
+            844,
+            875,
+            872,
+            792,
+            743,
+            720,
+            688,
+            900,
+            965,
+            939,
+            910,
+            891,
+            883,
+            898,
+            932,
+            833,
+            797,
+            767,
+            683,
+            863,
+            891,
+            881,
+            829,
+            810,
+            824,
+            900,
+            940,
+            840,
+            848,
+            826,
+            753,
+            935,
+            976,
+            932,
+            866,
+            821,
+            847,
+            877,
+            880,
+            805,
+            781,
+            733,
+            664,
+            850,
+            920,
+            915,
+            896,
+            916,
+            898
+          ]
+        },
+        "graduates": {
+          "labels": [
+            "2016M07",
+            "2016M08",
+            "2016M09",
+            "2016M10",
+            "2016M11",
+            "2016M12",
+            "2017M01",
+            "2017M02",
+            "2017M03",
+            "2017M04",
+            "2017M05",
+            "2017M06",
+            "2017M07",
+            "2017M08",
+            "2017M09",
+            "2017M10",
+            "2017M11",
+            "2017M12",
+            "2018M01",
+            "2018M02",
+            "2018M03",
+            "2018M04",
+            "2018M05",
+            "2018M06",
+            "2018M07",
+            "2018M08",
+            "2018M09",
+            "2018M10",
+            "2018M11",
+            "2018M12",
+            "2019M01",
+            "2019M02",
+            "2019M03",
+            "2019M04",
+            "2019M05",
+            "2019M06",
+            "2019M07",
+            "2019M08",
+            "2019M09",
+            "2019M10",
+            "2019M11",
+            "2019M12",
+            "2020M01",
+            "2020M02",
+            "2020M03",
+            "2020M04",
+            "2020M05",
+            "2020M06",
+            "2020M07",
+            "2020M08",
+            "2020M09",
+            "2020M10",
+            "2020M11",
+            "2020M12",
+            "2021M01",
+            "2021M02",
+            "2021M03",
+            "2021M04",
+            "2021M05",
+            "2021M06",
+            "2021M07",
+            "2021M08",
+            "2021M09",
+            "2021M10",
+            "2021M11",
+            "2021M12",
+            "2022M01",
+            "2022M02",
+            "2022M03",
+            "2022M04",
+            "2022M05",
+            "2022M06",
+            "2022M07",
+            "2022M08",
+            "2022M09",
+            "2022M10",
+            "2022M11",
+            "2022M12",
+            "2023M01",
+            "2023M02",
+            "2023M03",
+            "2023M04",
+            "2023M05",
+            "2023M06",
+            "2023M07",
+            "2023M08",
+            "2023M09",
+            "2023M10",
+            "2023M11",
+            "2023M12",
+            "2024M01",
+            "2024M02",
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05",
+            "2026M06"
+          ],
+          "share": [
+            63.7,
+            62.5,
+            59.8,
+            59.1,
+            59,
+            60.8,
+            61,
+            61.3,
+            62.3,
+            62.4,
+            61.2,
+            65.3,
+            66.4,
+            64.8,
+            61.9,
+            60.9,
+            58.3,
+            59,
+            61.3,
+            63,
+            63.3,
+            63.5,
+            63,
+            65.1,
+            67.5,
+            68.4,
+            67.2,
+            67.1,
+            64.4,
+            64,
+            65.4,
+            66,
+            66,
+            65.7,
+            64.4,
+            65.9,
+            67.7,
+            66.8,
+            63.2,
+            62,
+            60.2,
+            58.6,
+            59.1,
+            59,
+            55.7,
+            51.6,
+            49.5,
+            53.4,
+            54,
+            52.5,
+            48.2,
+            46.3,
+            44.9,
+            44.4,
+            46.2,
+            46.8,
+            46.8,
+            46,
+            45.9,
+            48.4,
+            49.7,
+            49.8,
+            46.8,
+            46.3,
+            45.1,
+            44.9,
+            49,
+            51.6,
+            51.8,
+            50.1,
+            48.3,
+            49.1,
+            51.4,
+            51.6,
+            47.9,
+            47,
+            45.5,
+            46.1,
+            49.7,
+            48.9,
+            48.8,
+            47.9,
+            42.2,
+            43.6,
+            42.4,
+            42,
+            39.1,
+            36.2,
+            33.6,
+            33.4,
+            37.9,
+            38.7,
+            37.4,
+            36.8,
+            35,
+            38.2,
+            38.6,
+            35.4,
+            32.3,
+            29.7,
+            26.4,
+            27,
+            30.5,
+            30.3,
+            29.8,
+            30,
+            28.1,
+            32,
+            34.5,
+            32.8,
+            29.9,
+            26.5,
+            22.6,
+            23.7,
+            27.2,
+            28.4,
+            28,
+            26.6,
+            25.1,
+            31.7
+          ],
+          "persons": [
+            1302,
+            1235,
+            1006,
+            925,
+            892,
+            1038,
+            1128,
+            1117,
+            1115,
+            1035,
+            976,
+            1179,
+            1304,
+            1245,
+            989,
+            941,
+            839,
+            944,
+            1106,
+            1079,
+            1067,
+            1011,
+            960,
+            1097,
+            1257,
+            1268,
+            1029,
+            1002,
+            919,
+            969,
+            1124,
+            1106,
+            1079,
+            1006,
+            982,
+            1101,
+            1216,
+            1198,
+            991,
+            949,
+            892,
+            930,
+            1014,
+            1007,
+            1025,
+            1046,
+            1048,
+            1265,
+            1359,
+            1276,
+            1057,
+            969,
+            895,
+            920,
+            1010,
+            1019,
+            968,
+            899,
+            789,
+            834,
+            877,
+            832,
+            662,
+            603,
+            548,
+            520,
+            647,
+            659,
+            615,
+            560,
+            514,
+            542,
+            609,
+            586,
+            464,
+            426,
+            397,
+            444,
+            563,
+            566,
+            542,
+            513,
+            443,
+            483,
+            505,
+            493,
+            392,
+            345,
+            309,
+            303,
+            402,
+            410,
+            389,
+            358,
+            339,
+            397,
+            449,
+            409,
+            323,
+            296,
+            259,
+            269,
+            346,
+            348,
+            321,
+            302,
+            269,
+            339,
+            392,
+            360,
+            286,
+            244,
+            198,
+            218,
+            291,
+            308,
+            300,
+            279,
+            266,
+            361
+          ]
+        },
+        "earlyTalks": {
+          "labels": [
+            "2024M03",
+            "2024M04",
+            "2024M05",
+            "2024M06",
+            "2024M07",
+            "2024M08",
+            "2024M09",
+            "2024M10",
+            "2024M11",
+            "2024M12",
+            "2025M01",
+            "2025M02",
+            "2025M03",
+            "2025M04",
+            "2025M05",
+            "2025M06",
+            "2025M07",
+            "2025M08",
+            "2025M09",
+            "2025M10",
+            "2025M11",
+            "2025M12",
+            "2026M01",
+            "2026M02",
+            "2026M03",
+            "2026M04",
+            "2026M05"
+          ],
+          "share": [
+            63.9,
+            91.5,
+            91.8,
+            88,
+            92.1,
+            98.4,
+            96.9,
+            94.1,
+            92.9,
+            95.1,
+            93.1,
+            96.4,
+            98.6,
+            97.6,
+            87.7,
+            84.8,
+            86.8,
+            85.4,
+            95.6,
+            97.3,
+            95,
+            93.2,
+            89.2,
+            98.1,
+            100,
+            95.8,
+            91.8
+          ]
+        },
+        "benefitConsumption": {
+          "period": "2026M05",
+          "items": [
+            {
+              "label": "0-3 mdr.",
+              "value": 336.0
+            },
+            {
+              "label": "3-6 mdr.",
+              "value": 295.0
+            },
+            {
+              "label": "6-12 mdr.",
+              "value": 237.0
+            },
+            {
+              "label": "12-18 mdr.",
+              "value": 109.0
+            },
+            {
+              "label": "18+ mdr.",
+              "value": 98.0
+            }
+          ]
+        },
+        "survival": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "0 uger",
+              "value": 100
+            },
+            {
+              "label": "4 uger",
+              "value": 45.5
+            },
+            {
+              "label": "8 uger",
+              "value": 32.7
+            },
+            {
+              "label": "13 uger",
+              "value": 20.2
+            },
+            {
+              "label": "17 uger",
+              "value": 15.4
+            },
+            {
+              "label": "21 uger",
+              "value": 10.9
+            },
+            {
+              "label": "26 uger",
+              "value": 5.7
+            },
+            {
+              "label": "30 uger",
+              "value": 3.6
+            },
+            {
+              "label": "34 uger",
+              "value": 2.4
+            },
+            {
+              "label": "39 uger",
+              "value": 1.6
+            },
+            {
+              "label": "43 uger",
+              "value": 1.4
+            },
+            {
+              "label": "47 uger",
+              "value": 1.1
+            },
+            {
+              "label": "52 uger",
+              "value": 0.7
+            }
+          ]
+        },
+        "statusAfter3m": {
+          "period": "2025Q01",
+          "items": [
+            {
+              "label": "Lønmodtagerbeskæftigelse",
+              "value": 68.4
+            },
+            {
+              "label": "A-dagpenge",
+              "value": 6.5
+            },
+            {
+              "label": "Sygedagpenge",
+              "value": 5.4
+            },
+            {
+              "label": "Uddannelse",
+              "value": 5.4
+            },
+            {
+              "label": "Selvforsørgelse",
+              "value": 4.1
+            },
+            {
+              "label": "Barselsdagpenge",
+              "value": 2.9
+            },
+            {
+              "label": "Kontanthjælp",
+              "value": 2
+            },
+            {
+              "label": "Efterløn og fleksydelse",
+              "value": 1.6
+            },
+            {
+              "label": "Andet",
+              "value": 1.6
+            },
+            {
+              "label": "Folkepension",
+              "value": 1.3
+            },
+            {
+              "label": "Jobafklaringsforløb",
+              "value": 0.5
+            }
+          ]
+        }
+      },
       "unemploymentRate": {
         "labels": [
           "2017M07",
@@ -43985,7 +49683,14 @@
           4.6,
           4.3
         ]
-      }
+      },
+      "sourceNames": {
+        "dst": "Teknikere",
+        "jobindsats": "Teknikernes A-Kasse",
+        "starMembers": "Teknikernes A-kasse"
+      },
+      "short": "TAK",
+      "starCode": "D72"
     }
   }
 }
