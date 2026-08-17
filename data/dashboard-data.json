@@ -2,7 +2,7 @@
   "meta": {
     "title": "A-kasseindsigt",
     "updated": "2026-08-17",
-    "checkedAt": "2026-08-17T14:59:00+02:00",
+    "checkedAt": "2026-08-17T15:00:50+02:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
@@ -10,7 +10,7 @@
         "dataset": "AUA01",
         "latestPeriod": "2026M06",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-08-17T14:58:38+02:00",
+        "checkedAt": "2026-08-17T15:00:12+02:00",
         "sourceUpdated": "2026-07-30T08:00:00"
       },
       "AUP03": {
@@ -19,7 +19,7 @@
         "dataset": "AUP03",
         "latestPeriod": "2026M06",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-08-17T14:58:41+02:00",
+        "checkedAt": "2026-08-17T15:00:31+02:00",
         "sourceUpdated": "2026-07-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
@@ -29,7 +29,7 @@
         "dataset": "AULK08",
         "latestPeriod": "2026M02",
         "unit": "langtidsledige pr. 1.000 forsikringsaktive",
-        "checkedAt": "2026-08-17T14:58:43+02:00",
+        "checkedAt": "2026-08-17T15:00:37+02:00",
         "sourceUpdated": "2026-07-06T08:00:00"
       },
       "jobDagpenge": {
@@ -38,7 +38,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M06",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-08-17T14:58:48+02:00"
+        "checkedAt": "2026-08-17T15:00:41+02:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -46,7 +46,7 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M06",
         "unit": "personer og pct.",
-        "checkedAt": "2026-08-17T14:58:51+02:00"
+        "checkedAt": "2026-08-17T15:00:43+02:00"
       },
       "jobEarlyTalks": {
         "state": "ok",
@@ -54,7 +54,7 @@
         "dataset": "y30e22ak",
         "latestPeriod": "2026M05",
         "unit": "pct. med mindst 3 jobsamtaler",
-        "checkedAt": "2026-08-17T14:59:01+02:00"
+        "checkedAt": "2026-08-17T15:00:51+02:00"
       },
       "jobDagpengeforbrug": {
         "state": "ok",
@@ -62,7 +62,7 @@
         "dataset": "y01a12",
         "latestPeriod": "2026M05",
         "unit": "personer efter forbrugt dagpengeperiode",
-        "checkedAt": "2026-08-17T14:59:03+02:00"
+        "checkedAt": "2026-08-17T15:00:52+02:00"
       },
       "jobOverlevelse": {
         "state": "ok",
@@ -70,7 +70,7 @@
         "dataset": "y01b01",
         "latestPeriod": "2024Q03",
         "unit": "pct. fortsat på dagpenge uden tilbagefald",
-        "checkedAt": "2026-08-17T14:59:06+02:00"
+        "checkedAt": "2026-08-17T15:00:54+02:00"
       },
       "jobStatusAfter": {
         "state": "ok",
@@ -78,7 +78,7 @@
         "dataset": "y01b15",
         "latestPeriod": "2024Q03",
         "unit": "pct. efter arbejdsmarkedsstatus 3 mdr. efter afsluttet forløb",
-        "checkedAt": "2026-08-17T14:59:09+02:00"
+        "checkedAt": "2026-08-17T15:00:57+02:00"
       }
     },
     "updateStatus": {
@@ -95,7 +95,7 @@
         "jobStatusAfter"
       ],
       "failed": [],
-      "checkedAt": "2026-08-17T14:59:09+02:00"
+      "checkedAt": "2026-08-17T15:00:57+02:00"
     },
     "methodNotes": [
       "Raad medlemstal sammenlignes ikke direkte mellem store og smaa a-kasser. Udviklingsgrafer vises derfor som indeks, hvor det er relevant.",
