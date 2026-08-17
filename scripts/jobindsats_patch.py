@@ -203,7 +203,10 @@ def sanctions(data):
     # Niveauvalget returnerer de enkelte a-kasser, men ikke totalrækken.
     # Hent derfor A-kasse i alt særskilt fra samme officielle tabel.
     rows = fetch_periods(selection)
-    rows.extend(fetch_periods(ji.total_value(fund_h)))
+    total_rows = fetch_periods(ji.total_value(fund_h))
+    for row in total_rows:
+        row["_dak_force_total"] = True
+    rows.extend(total_rows)
     fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
     pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
     cols = {
@@ -221,7 +224,7 @@ def sanctions(data):
 
     grouped = defaultdict(dict)
     for row in rows:
-        code = fund_code(row.get(fcol), data)
+        code = data["meta"]["totalFundCode"] if row.get("_dak_force_total") else fund_code(row.get(fcol), data)
         period = str(row.get(pcol) or "")
         if code not in data["funds"] or not period:
             continue
