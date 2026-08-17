@@ -41,6 +41,9 @@ def validate():
     if missing_modules:
         details = "; ".join(f"{code}: {','.join(keys)}" for code, keys in missing_modules.items())
         raise RuntimeError(f"Manglende Jobindsats-moduler pr. a-kasse: {details}")
+    name_standard = meta.get("nameStandard", {})
+    if name_standard.get("source") != "Danske A-kasser":
+        raise RuntimeError("DAK-navnestandard er ikke anvendt")
     text = HTML.read_text(encoding="utf-8")
     required = ['data/dashboard-data.json', 'akassesiden.goatcounter.com/count', 'gc.zgo.at/count.js', 'id="fundSelect"', 'id="benchmarkSelect"']
     missing = [item for item in required if item not in text]
@@ -52,6 +55,7 @@ def validate():
 def main():
     subprocess.run([sys.executable, str(BASE / "scripts" / "fetch_sources.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "jobindsats_patch.py")], check=True)
+    subprocess.run([sys.executable, str(BASE / "scripts" / "apply_dak_names.py")], check=True)
     validate()
 
 
