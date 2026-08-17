@@ -1,0 +1,28 @@
+name: Ret sanktionsperiode
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/fix-sanctions-period.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ret periodehentning
+        run: python tools/fix_sanctions_period.py
+      - name: Kontroller og gem
+        shell: bash
+        run: |
+          python -m py_compile scripts/jobindsats_patch.py
+          grep -Fq 'only (\\d+) periods are available' scripts/jobindsats_patch.py
+          git config user.name "ChatGPT dashboard update"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add scripts/jobindsats_patch.py
+          git commit -m "Håndter kortere sanktionshistorik"
+          git push origin HEAD:main
