@@ -1,0 +1,109 @@
+name: Opdater A-kasseindsigt
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - data/dashboard-data.json
+      - scripts/**
+      - .github/workflows/update-dashboard.yml
+      - README.md
+      - .nojekyll
+  schedule:
+    - cron: "17 7-10 * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: a-kasseindsigt-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Afgoer om dagens opdatering skal koere
+        id: gate
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          today="$(TZ=Europe/Copenhagen date +'%F')"
+          local_hour="$(TZ=Europe/Copenhagen date +'%H')"
+          local_hour=$((10#$local_hour))
+          if [ "$local_hour" -lt 9 ]; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          elif grep -Fxq "status: ok" status/last-run.txt 2>/dev/null && grep -Fxq "dato_dk: $today" status/last-run.txt 2>/dev/null; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.should_run == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Hent officielle data og valider
+        if: steps.gate.outputs.should_run == 'true'
+        id: update
+        shell: bash
+        run: |
+          mkdir -p status
+          set +e
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
+          code=$?
+          if [ "$code" -eq 0 ]; then
+            python scripts/run_update.py >> status/run.log 2>&1
+            code=$?
+          fi
+          if [ "$code" -eq 0 ]; then
+            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source AULK08 --require-source jobDagpenge --require-source jobDimittend --require-source jobEarlyTalks --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter >> status/run.log 2>&1
+            code=$?
+          fi
+          cat status/run.log || true
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+
+      - name: Skriv driftsspor
+        if: steps.gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          today="$(TZ=Europe/Copenhagen date +'%F')"
+          utc="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          code="${{ steps.update.outputs.exit_code }}"
+          if [ "$code" = "0" ]; then
+            state="$(python -c "import json; print(json.load(open('data/dashboard-data.json'))['meta']['updateStatus']['state'])")"
+            printf 'status: %s\ntid_utc: %s\ndato_dk: %s\n' "$state" "$utc" "$today" > status/last-run.txt
+          else
+            message="$(tail -n 12 status/run.log | tr '\n' ' ' | sed 's/[[:space:]]\+/ /g')"
+            printf 'status: fejl\ntid_utc: %s\ndato_dk: %s\nfejl: %s\n' "$utc" "$today" "$message" > status/last-run.txt
+          fi
+
+      - name: Gem data og status
+        if: steps.gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          git add data/dashboard-data.json status/last-run.txt
+          if git diff --cached --quiet; then
+            echo "Ingen dataaendringer at gemme."
+          else
+            git config user.name "Dashboard automation"
+            git config user.email "dashboard-automation@users.noreply.github.com"
+            git commit -m "Opdater A-kasseindsigt data og status"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Marker reel opdateringsfejl
+        if: steps.gate.outputs.should_run == 'true' && steps.update.outputs.exit_code != '0'
+        shell: bash
+        run: exit "${{ steps.update.outputs.exit_code }}"
