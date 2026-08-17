@@ -12,6 +12,7 @@ from fetch_sources import match_fund
 
 BASE = Path(__file__).resolve().parents[1]
 OUT = BASE / "data" / "dashboard-data.json"
+_TABLES = None
 
 
 def now_iso():
@@ -34,6 +35,20 @@ def exact_col(rows, label):
     return next((col for col in ji.columns(rows) if ji.norm(col) == wanted), None)
 
 
+def tables():
+    global _TABLES
+    if _TABLES is None:
+        _TABLES = ji.get("tables", {"format": "json"})
+    return _TABLES
+
+
+def discover(phrases, excludes=()):
+    found = ji.find_table(tables(), phrases, excludes)
+    table_id = str(found["table_id"])
+    spec = ji.get(f"table/{table_id}", {"format": "json"})
+    return table_id, spec
+
+
 def setup(table_id):
     spec = ji.get(f"table/{table_id}", {"format": "json"})
     fund = ji.find_hierarchy(spec, ["a kasse", "akasse"])
@@ -41,13 +56,33 @@ def setup(table_id):
     return spec, fund, f"level:{level}" if level else "*"
 
 
+def setup_spec(spec):
+    fund = ji.find_hierarchy(spec, ["a kasse", "akasse"])
+    level = ji.fund_level(fund)
+    return fund, f"level:{level}" if level else "*"
+
+
+def hierarchy_value(hierarchy, includes, excludes=()):
+    wanted = [ji.norm(value) for value in includes]
+    banned = [ji.norm(value) for value in excludes]
+    matches = []
+    for value_id, text in ji.hierarchy_values(hierarchy):
+        normalized = ji.norm(text)
+        if all(term in normalized for term in wanted) and not any(term in normalized for term in banned):
+            matches.append((len(normalized), value_id, normalized))
+    if not matches:
+        raise RuntimeError(f"Kunne ikke finde hierarkiværdi for {includes}")
+    matches.sort()
+    return matches[0][1]
+
+
 def fund_code(label, data):
     names = {code: item.get("name", code) for code, item in data["funds"].items()}
     return match_fund(label, names, data["meta"]["totalFundCode"])
 
 
-def put_status(data, key, dataset, latest, unit):
-    data["meta"]["sourceStatus"][key] = {
+def put_status(data, key, dataset, latest, unit, note=None):
+    value = {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": dataset,
@@ -55,32 +90,94 @@ def put_status(data, key, dataset, latest, unit):
         "unit": unit,
         "checkedAt": now_iso(),
     }
+    if note:
+        value["note"] = note
+    data["meta"]["sourceStatus"][key] = value
+    data["meta"].setdefault("jobindsatsTables", {})[key] = dataset
+
+
+def store_timeseries(data, rows, module, measure_col, value_key="persons"):
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = fund_code(row.get(fcol), data)
+        period = str(row.get(pcol) or "")
+        value = ji.number(row.get(measure_col))
+        if code in data["funds"] and period:
+            grouped[code][period] = value
+    if not grouped:
+        raise RuntimeError(f"Ingen a-kassedata fundet for {module}")
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"][module] = {
+            "labels": labels,
+            value_key: [values[p] for p in labels],
+        }
+    return max((p for values in grouped.values() for p in values), key=pkey)
 
 
 def early_talks(data):
     table = "y30e22ak"
     spec, fund_h, selection = setup(table)
     rows = ji.query(table, spec, "latest:28", ((fund_h, selection),))
-    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
-    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
     vcol = exact_col(rows, "Andel personer fordelt på antal afholdte jobsamtaler : 3+")
     if not vcol:
         raise RuntimeError("Kolonnen for andel med 3+ jobsamtaler mangler")
-    grouped = defaultdict(dict)
-    for row in rows:
-        code = fund_code(row.get(fcol), data)
-        period = str(row.get(pcol) or "")
-        value = ji.number(row.get(vcol))
-        if code in data["funds"] and period:
-            grouped[code][period] = value
-    for code, values in grouped.items():
-        labels = sorted(values, key=pkey)
-        data["funds"][code]["jobindsats"]["earlyTalks"] = {
-            "labels": labels,
-            "share": [values[p] for p in labels],
-        }
-    latest = max((p for values in grouped.values() for p in values), key=pkey)
-    put_status(data, "jobEarlyTalks", table, latest, "pct. med mindst 3 jobsamtaler")
+    latest = store_timeseries(data, rows, "earlyTalks", vcol, "share")
+    put_status(
+        data,
+        "jobEarlyTalks",
+        table,
+        latest,
+        "pct. med mindst 3 jobsamtaler",
+        "Populationen er personer, der i måneden afslutter a-kassens kontaktforløb med overgang til jobcenter.",
+    )
+
+
+def long_term(data):
+    table, spec = discover(["antal langtidsledige personer"], ["unge", "udenlandsk"])
+    fund_h, selection = setup_spec(spec)
+    ledighed_h = ji.find_hierarchy(spec, ["ledighedstype"])
+    dagpenge_value = hierarchy_value(ledighed_h, ["a dagpenge"])
+    rows = ji.query(table, spec, "latest:120", ((fund_h, selection), (ledighed_h, dagpenge_value)))
+    vcol = exact_col(rows, "Antal langtidsledige personer") or ji.best_col(
+        rows,
+        ["antal", "langtidsledige", "personer"],
+        ["fuldtid", "andel", "brutto"],
+    )
+    latest = store_timeseries(data, rows, "longTerm", vcol, "persons")
+    put_status(
+        data,
+        "jobLongTerm",
+        table,
+        latest,
+        "antal langtidsledige personer på a-dagpenge",
+        "Langtidsledige har været ledige eller aktiverede mindst 80 pct. af de seneste 12 måneder.",
+    )
+
+
+def exhausted_rights(data):
+    table, spec = discover(
+        ["opbrugt dagpengeret", "dimittender", "oevrige ledige"],
+        ["efterfoelgende arbejdsmarkedsstatus"],
+    )
+    fund_h, selection = setup_spec(spec)
+    rows = ji.query(table, spec, "latest:120", ((fund_h, selection),))
+    vcol = exact_col(rows, "Antal personer med opbrugt dagpengeret") or ji.best_col(
+        rows,
+        ["antal", "personer", "opbrugt", "dagpengeret"],
+        ["andel", "pct", "beskaeftigelse", "uddannelse"],
+    )
+    latest = store_timeseries(data, rows, "exhaustedRights", vcol, "persons")
+    put_status(
+        data,
+        "jobExhaustedRights",
+        table,
+        latest,
+        "antal personer med opbrugt dagpengeret",
+        "A-kassefordelingen følger seneste udbetalende a-kasse.",
+    )
 
 
 def consumption(data):
@@ -200,6 +297,8 @@ def main():
     data = json.loads(OUT.read_text(encoding="utf-8"))
     jobs = [
         ("jobEarlyTalks", early_talks),
+        ("jobLongTerm", long_term),
+        ("jobExhaustedRights", exhausted_rights),
         ("jobDagpengeforbrug", consumption),
         ("jobOverlevelse", survival),
         ("jobStatusAfter", status_after),
@@ -220,6 +319,11 @@ def main():
                 "checkedAt": now_iso(),
             }
             print(key, state, exc)
+
+    data["meta"]["sourceStatus"].pop("AULK08", None)
+    for fund in data.get("funds", {}).values():
+        fund.pop("longTermPer1000", None)
+
     statuses = data["meta"]["sourceStatus"]
     successful = [k for k, v in statuses.items() if v.get("state") == "ok"]
     failed = [k for k, v in statuses.items() if v.get("state") != "ok"]
@@ -229,6 +333,12 @@ def main():
         "failed": failed,
         "checkedAt": now_iso(),
     }
+    data["meta"]["methodNotes"] = [
+        "Rå antal vises for den valgte a-kasse alene. Indeks, procenter og andele kan sammenlignes med I alt og flere valgte a-kasser.",
+        "AUP03 er Danmarks Statistiks foreløbige ledighedsprocent blandt samtlige forsikrede.",
+        "Langtidsledighed hentes fra Jobindsats og afgrænses til a-dagpenge.",
+        "Hvert Jobindsats-modul har egen kildestatus, så en enkelt fejl ikke skjules.",
+    ]
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
