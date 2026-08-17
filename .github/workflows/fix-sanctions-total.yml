@@ -1,0 +1,27 @@
+name: Ret sanktionsbenchmark
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/fix-sanctions-total.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ret totalhentning
+        run: python tools/fix_sanctions_total.py
+      - name: Kontroller og gem
+        shell: bash
+        run: |
+          python -m py_compile scripts/jobindsats_patch.py
+          git config user.name "ChatGPT dashboard update"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add scripts/jobindsats_patch.py
+          git commit -m "Hent officiel total for rådighedssanktioner"
+          git push origin HEAD:main
