@@ -6,7 +6,6 @@ on:
     branches: [main]
     paths:
       - index.html
-      - data/dashboard-data.json
       - scripts/**
       - .github/workflows/update-dashboard.yml
       - README.md
@@ -92,6 +91,12 @@ jobs:
         if: steps.gate.outputs.should_run == 'true'
         shell: bash
         run: |
+          cp data/dashboard-data.json /tmp/dashboard-data.json
+          cp status/last-run.txt /tmp/last-run.txt
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/dashboard-data.json data/dashboard-data.json
+          cp /tmp/last-run.txt status/last-run.txt
           git add data/dashboard-data.json status/last-run.txt
           if git diff --cached --quiet; then
             echo "Ingen dataaendringer at gemme."
@@ -99,8 +104,7 @@ jobs:
             git config user.name "Dashboard automation"
             git config user.email "dashboard-automation@users.noreply.github.com"
             git commit -m "Opdater A-kasseindsigt data og status"
-            git pull --rebase origin main
-            git push
+            git push origin HEAD:main
           fi
 
       - name: Marker reel opdateringsfejl
