@@ -1,0 +1,61 @@
+name: Tilføj år-før-tal i KPIer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/add-kpi-year-ago.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Tilføj år-før-tal under KPIer
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+          original = text
+
+          anchor = "const pct=v=>v==null?'-':pf.format(v)+' %',num=v=>v==null?'-':nf.format(v);function last(s,key='values'){"
+          replacement = "const pct=v=>v==null?'-':pf.format(v)+' %',num=v=>v==null?'-':nf.format(v);function previousYear(s,key,currentPeriod){if(!s?.labels?.length||!Array.isArray(s[key])||!currentPeriod)return null;let m=/^(\\d{4})M(\\d{2})$/.exec(currentPeriod),target=null;if(m)target=(+m[1]-1)+'M'+m[2];else{m=/^(\\d{4})Q0?([1-4])$/.exec(currentPeriod);if(m)target=(+m[1]-1)+'Q0'+m[2]}if(!target)return null;const i=s.labels.indexOf(target);return i>=0&&s[key][i]!=null?{period:s.labels[i],value:s[key][i]}:null}function kpiSub(s,key,current,formatter){if(!current)return'-';const prev=previousYear(s,key,current.period);return period(current.period)+(prev?' · Året før ('+period(prev.period)+'): '+formatter(prev.value):' · Året før: ikke tilgængeligt')}function last(s,key='values'){"
+          if anchor not in text:
+              raise RuntimeError('Kunne ikke finde KPI-hjælpefunktionerne')
+          text = text.replace(anchor, replacement, 1)
+
+          old = "function kpis(f){let x=last(f.members);$('k1').textContent=x?num(x.value):'-';$('k1s').textContent=x?period(x.period):'-';x=last(f.unemploymentRate);$('k2').textContent=x?pct(x.value):'-';$('k2s').textContent=x?period(x.period):'-';x=last(f.jobindsats?.longTerm,'persons');$('k3').textContent=x?num(x.value):'-';$('k3s').textContent=x?period(x.period):'Jobindsats';x=last(f.jobindsats?.dagpenge,'persons');$('k4').textContent=x?num(x.value):'-';$('k4s').textContent=x?period(x.period):'Jobindsats';x=last(f.jobindsats?.graduates,'share');$('k5').textContent=x?pct(x.value):'-';$('k5s').textContent=x?period(x.period):'Jobindsats';x=last(f.jobindsats?.earlyTalks,'share');$('k6').textContent=x?pct(x.value):'-';$('k6s').textContent=x?period(x.period):'Jobindsats'}"
+          new = "function kpis(f){let s=f.members,x=last(s);$('k1').textContent=x?num(x.value):'-';$('k1s').textContent=kpiSub(s,'values',x,num);s=f.unemploymentRate;x=last(s);$('k2').textContent=x?pct(x.value):'-';$('k2s').textContent=kpiSub(s,'values',x,pct);s=f.jobindsats?.longTerm;x=last(s,'persons');$('k3').textContent=x?num(x.value):'-';$('k3s').textContent=kpiSub(s,'persons',x,num);s=f.jobindsats?.dagpenge;x=last(s,'persons');$('k4').textContent=x?num(x.value):'-';$('k4s').textContent=kpiSub(s,'persons',x,num);s=f.jobindsats?.graduates;x=last(s,'share');$('k5').textContent=x?pct(x.value):'-';$('k5s').textContent=kpiSub(s,'share',x,pct);s=f.jobindsats?.earlyTalks;x=last(s,'share');$('k6').textContent=x?pct(x.value):'-';$('k6s').textContent=kpiSub(s,'share',x,pct)}"
+          if old not in text:
+              raise RuntimeError('Kunne ikke finde KPI-renderingen')
+          text = text.replace(old, new, 1)
+
+          # Giv underteksten lidt mere luft, da den nu indeholder både periode og år-før-tal.
+          text = text.replace(".kpi span{font-size:.78rem;color:var(--muted)}", ".kpi span{display:block;font-size:.76rem;color:var(--muted);line-height:1.35;margin-top:4px}", 1)
+
+          if text == original or 'function previousYear' not in text or 'Året før (' not in text:
+              raise RuntimeError('KPI-ændringen blev ikke anvendt')
+          p.write_text(text, encoding='utf-8')
+          PY
+      - name: Kontroller ændringen
+        shell: bash
+        run: |
+          grep -Fq 'function previousYear' index.html
+          grep -Fq 'Året før (' index.html
+          grep -Fq "kpiSub(s,'share',x,pct)" index.html
+      - name: Gem ændringen
+        shell: bash
+        run: |
+          git config user.name "ChatGPT dashboard update"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add index.html
+          git commit -m "Vis tal fra året før under KPIer"
+          git push origin HEAD:main
