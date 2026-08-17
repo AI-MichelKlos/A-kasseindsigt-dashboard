@@ -2,7 +2,7 @@
   "meta": {
     "title": "A-kasseindsigt",
     "updated": "2026-08-17",
-    "checkedAt": "2026-08-17T14:53:06+02:00",
+    "checkedAt": "2026-08-17T14:54:05+02:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
@@ -10,7 +10,7 @@
         "dataset": "AUA01",
         "latestPeriod": "2026M06",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-08-17T14:52:21+02:00",
+        "checkedAt": "2026-08-17T14:53:48+02:00",
         "sourceUpdated": "2026-07-30T08:00:00"
       },
       "AUP03": {
@@ -19,7 +19,7 @@
         "dataset": "AUP03",
         "latestPeriod": "2026M06",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-08-17T14:52:41+02:00",
+        "checkedAt": "2026-08-17T14:53:51+02:00",
         "sourceUpdated": "2026-07-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
@@ -29,7 +29,7 @@
         "dataset": "AULK08",
         "latestPeriod": "2026M02",
         "unit": "langtidsledige pr. 1.000 forsikringsaktive",
-        "checkedAt": "2026-08-17T14:52:47+02:00",
+        "checkedAt": "2026-08-17T14:53:52+02:00",
         "sourceUpdated": "2026-07-06T08:00:00"
       },
       "jobDagpenge": {
@@ -38,7 +38,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M06",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-08-17T14:52:53+02:00"
+        "checkedAt": "2026-08-17T14:53:56+02:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -46,35 +46,35 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M06",
         "unit": "personer og pct.",
-        "checkedAt": "2026-08-17T14:52:57+02:00"
+        "checkedAt": "2026-08-17T14:53:59+02:00"
       },
       "jobEarlyTalks": {
         "state": "failed",
         "source": "Jobindsats.dk / STAR",
         "dataset": null,
-        "error": "Ingen gyldig periodetype: Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Requested latest:60 for type M, but only 28 periods are available.\",\"request_id\":\"2e6cee15-c847-4084-ab49-2e69dc1a6c9e\"} | Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: Q\",\"request_id\":\"dfe45a25-9bcc-4858-a0fa-4085f166536c\"} | Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: A\",\"request_id\":\"c6d2232b-a1b3-4dbc-8433-10e9756c1db5\"}",
-        "checkedAt": "2026-08-17T14:52:59+02:00"
+        "error": "Ingen gyldig periodetype: Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Requested latest:60 for type M, but only 28 periods are available.\",\"request_id\":\"561ab492-7d9e-44d2-b69f-6189b05c1f11\"} | Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: Q\",\"request_id\":\"1b8ee45b-8909-4eb5-80c4-49265d85cadc\"} | Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: A\",\"request_id\":\"ebd567cb-05af-468d-9af5-906750dd03d9\"}",
+        "checkedAt": "2026-08-17T14:54:01+02:00"
       },
       "jobDagpengeforbrug": {
         "state": "failed",
         "source": "Jobindsats.dk / STAR",
         "dataset": null,
         "error": "Kategorikolonne mangler for ['forbrug', 'maaned']",
-        "checkedAt": "2026-08-17T14:53:01+02:00"
+        "checkedAt": "2026-08-17T14:54:02+02:00"
       },
       "jobOverlevelse": {
         "state": "failed",
         "source": "Jobindsats.dk / STAR",
         "dataset": null,
         "error": "Kategorikolonne mangler for ['uge', 'uger']",
-        "checkedAt": "2026-08-17T14:53:03+02:00"
+        "checkedAt": "2026-08-17T14:54:03+02:00"
       },
       "jobStatusAfter": {
         "state": "failed",
         "source": "Jobindsats.dk / STAR",
         "dataset": null,
         "error": "Kategorikolonne mangler for ['beskaeftigelse', 'uddannelse', 'selvforsoergelse']",
-        "checkedAt": "2026-08-17T14:53:06+02:00"
+        "checkedAt": "2026-08-17T14:54:05+02:00"
       }
     },
     "updateStatus": {
@@ -92,7 +92,7 @@
         "jobOverlevelse",
         "jobStatusAfter"
       ],
-      "checkedAt": "2026-08-17T14:53:06+02:00"
+      "checkedAt": "2026-08-17T14:54:05+02:00"
     },
     "methodNotes": [
       "Raad medlemstal sammenlignes ikke direkte mellem store og smaa a-kasser. Udviklingsgrafer vises derfor som indeks, hvor det er relevant.",
