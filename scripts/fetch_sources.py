@@ -61,17 +61,53 @@ def find_total(var, names):
 
 def fund_key(name):
     text = ji.norm(name)
-    text = re.sub(r"\b(fra|inkl|januar|juli)\b.*$", "", text).strip()
-    text = text.replace("arbejdsloeshedskasse", "").replace("a kasse", "").replace("akasse", "")
+    text = re.sub(r"\b(fra|inkl|jan|januar|juli)\b.*$", "", text).strip()
+    text = re.sub(r"\b(arbejdsloeshedskasse|a kassen|a kasse|akasse)\b", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
     aliases = {
-        "faglig faelles 3f": "3f", "faglig faelles": "3f", "fag og arbejde foa": "foa",
-        "handels og kontorfunktionaerer hk": "hk", "magistrenes": "magistrene", "magistre ma": "magistrene",
-        "oekonomer ca": "ca", "akademikernes": "akademikerne", "kristelig": "krifa",
-        "journalistik kommunikation og sprog": "jks", "borne og ungdomspaedagoger bupl": "bupl",
-        "socialpaedagoger sla": "socialpaedagogerne", "laerere dlf": "laererne"
+        "a til": "atil",
+        "funktionaerer og tjenestemaend ftf a": "atil",
+        "ftf a": "atil",
+        "frie": "frie",
+        "akademikernes": "akademikerne",
+        "akademikerne": "akademikerne",
+        "ase": "ase",
+        "borne og ungdomspaedagoger bupl a": "bupl",
+        "borne og ungdomspaedagoger bupl": "bupl",
+        "bupl": "bupl",
+        "det faglige hus": "detfagligehus",
+        "din faglige": "dinfaglige",
+        "din sundhedsfaglige dsa": "dsa",
+        "din sundhedsfaglige": "dsa",
+        "fag og arbejde foa": "foa",
+        "foas": "foa",
+        "foa": "foa",
+        "faglig faelles 3f": "3f",
+        "faglig faelles": "3f",
+        "handels og kontorfunktionaerer hk": "hk",
+        "hk danmarks": "hk",
+        "journalistik kommunikation og sprog": "jks",
+        "for journalistik komm og sprog": "jks",
+        "journalistik komm og sprog": "jks",
+        "kristelig": "krifa",
+        "laerere dlf a": "laererne",
+        "laerere dlf": "laererne",
+        "laerernes": "laererne",
+        "ledere": "lederne",
+        "lederne": "lederne",
+        "magistre ma": "magistrene",
+        "magistrenes": "magistrene",
+        "metalarbejdere": "metal",
+        "metalarbejdernes": "metal",
+        "min": "min",
+        "oekonomer ca": "ca",
+        "ca": "ca",
+        "socialpaedagoger sla": "socialpaedagogerne",
+        "socialpaedagogernes": "socialpaedagogerne",
+        "teknikere": "teknikerne",
+        "teknikernes": "teknikerne",
     }
     return aliases.get(text, text)
-
 
 def match_fund(label, names, total_code):
     normalized = ji.norm(label)

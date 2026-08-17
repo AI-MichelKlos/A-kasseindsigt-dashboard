@@ -32,6 +32,15 @@ def validate():
         source_info = meta.get("sourceStatus", {}).get(source, {})
         if source_info.get("state") == "ok" and source_info.get("latestPeriod") != labels[-1]:
             raise RuntimeError(f"Periode mismatch for {source}")
+    required_job_modules = ["dagpenge", "graduates", "earlyTalks", "benefitConsumption", "survival", "statusAfter3m"]
+    missing_modules = {}
+    for code, fund in funds.items():
+        missing = [key for key in required_job_modules if not fund.get("jobindsats", {}).get(key)]
+        if missing:
+            missing_modules[code] = missing
+    if missing_modules:
+        details = "; ".join(f"{code}: {','.join(keys)}" for code, keys in missing_modules.items())
+        raise RuntimeError(f"Manglende Jobindsats-moduler pr. a-kasse: {details}")
     text = HTML.read_text(encoding="utf-8")
     required = ['data/dashboard-data.json', 'akassesiden.goatcounter.com/count', 'gc.zgo.at/count.js', 'id="fundSelect"', 'id="benchmarkSelect"']
     missing = [item for item in required if item not in text]
