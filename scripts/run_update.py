@@ -5,6 +5,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Validerer også fuld langtidsdækning i dashboardets standardperiode.
 BASE = Path(__file__).resolve().parents[1]
 DATA = BASE / "data" / "dashboard-data.json"
 HTML = BASE / "index.html"
