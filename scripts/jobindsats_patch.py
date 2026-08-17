@@ -187,16 +187,23 @@ def exhausted_rights(data):
 def sanctions(data):
     table = "y01h01"
     spec, fund_h, selection = setup(table)
-    try:
-        rows = ji.query(table, spec, "latest:40", ((fund_h, selection),))
-    except RuntimeError as exc:
-        # Tabellen starter i 2019 og har derfor endnu under 40 kvartaler.
-        # Jobindsats afviser latest:N, hvis N er større end den tilgængelige historik.
-        match = re.search(r"only (\d+) periods are available", str(exc), re.IGNORECASE)
-        if not match:
-            raise
-        available = min(40, int(match.group(1)))
-        rows = ji.query(table, spec, f"latest:{available}", ((fund_h, selection),))
+
+    def fetch_periods(fund_selection):
+        try:
+            return ji.query(table, spec, "latest:40", ((fund_h, fund_selection),))
+        except RuntimeError as exc:
+            # Tabellen starter i 2019 og har derfor endnu under 40 kvartaler.
+            # Jobindsats afviser latest:N, hvis N er større end den tilgængelige historik.
+            match = re.search(r"only (\d+) periods are available", str(exc), re.IGNORECASE)
+            if not match:
+                raise
+            available = min(40, int(match.group(1)))
+            return ji.query(table, spec, f"latest:{available}", ((fund_h, fund_selection),))
+
+    # Niveauvalget returnerer de enkelte a-kasser, men ikke totalrækken.
+    # Hent derfor A-kasse i alt særskilt fra samme officielle tabel.
+    rows = fetch_periods(selection)
+    rows.extend(fetch_periods(ji.total_value(fund_h)))
     fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
     pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
     cols = {
