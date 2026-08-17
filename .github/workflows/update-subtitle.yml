@@ -1,0 +1,45 @@
+name: Opdater undertitel i A-kasseindsigt
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/update-subtitle.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Ret undertitel
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+          old = 'A-kassenære nøgletal om medlemmer, ledighed, dagpengeforløb og egen indsats. Rå antal vises for den valgte a-kasse, mens indeks, procenter og andele kan sammenlignes med I alt og flere a-kasser.'
+          new = 'Overblik over centrale nøgletal for den valgte a-kasse. Sammenlign udviklingen med I alt eller andre a-kasser.'
+          if text.count(old) != 1:
+              raise RuntimeError(f'Forventede præcis 1 forekomst af gammel undertitel, fandt {text.count(old)}')
+          text = text.replace(old, new, 1)
+          p.write_text(text, encoding='utf-8')
+          PY
+      - name: Kontroller undertitel
+        shell: bash
+        run: |
+          grep -Fq 'Overblik over centrale nøgletal for den valgte a-kasse. Sammenlign udviklingen med I alt eller andre a-kasser.' index.html
+          ! grep -Fq 'A-kassenære nøgletal om medlemmer, ledighed, dagpengeforløb og egen indsats.' index.html
+      - name: Gem ændringen
+        shell: bash
+        run: |
+          git config user.name "ChatGPT dashboard update"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add index.html
+          git commit -m "Forkort undertitel i A-kasseindsigt"
+          git push origin HEAD:main
