@@ -6,16 +6,15 @@ Forsiden har en hovedvaelger for a-kasse og en valgfri benchmark. Raad medlemsta
 
 ## Officielle kilder
 
-- Danmarks Statistik AUA01: forsikringsaktive efter a-kasse, alder og koen.
-- Danmarks Statistik AUP03: fuldtidsledige i pct. af samtlige forsikrede efter a-kasse.
-- Danmarks Statistik AULK08: langtidsledige forsikringsaktive efter a-kasse og alder.
-- Jobindsats.dk / STAR: a-dagpenge, dimittendledighed, forbrug af dagpengeperioden, overlevelseskurver, arbejdsmarkedsstatus efter afsluttet forloeb og tidlig samtaleindsats i a-kasserne.
+- DST AUA01: forsikringsaktive efter a-kasse, alder og koen.
+- DST AUP03: fuldtidsledige i pct. af samtlige forsikrede efter a-kasse.
+- Jobindsats.dk / STAR: a-dagpenge, dimittendledighed, langtidsledighed, opbrugt dagpengeret, forbrug af dagpengeperioden, overlevelseskurver, arbejdsmarkedsstatus efter afsluttet forloeb, tidlig samtaleindsats og raadighedssanktioner.
 
-Jobindsats-tabeller identificeres dynamisk via API v3 metadata frem for faste tabel-id'er. Hver Jobindsats-maaling har selvstaendig status i datafilen.
+De centrale Jobindsats-tabeller findes via API v3-metadata, mens verificerede specialtabeller kan have faste tabel-id'er. Hver Jobindsats-maaling har selvstaendig status i datafilen.
 
 ## Navnestandard
 
-`config/a-kasse-navne.json` er navnebroen mellem Danske A-kassers foretrukne visningsnavne og navnene hos Danmarks Statistik, Jobindsats.dk og STAR. Dashboardet viser DAK-navnet og DAK-forkortelsen. Kildenavnene bruges kun til datamatching. Tabellen er opgjort april 2026 og bygger paa DAKs interne ark med a-kassenavne og forkortelser.
+`config/a-kasse-navne.json` er navnebroen mellem Danske A-kassers foretrukne visningsnavne og navnene hos DST, Jobindsats.dk og STAR. Dashboardet viser DAK-navnet og DAK-forkortelsen. Kildenavnene bruges kun til datamatching. Tabellen er opgjort april 2026 og bygger paa DAKs interne ark med a-kassenavne og forkortelser.
 
 Hvis en aktiv a-kasse ikke kan matches til navnestandarden, fejler valideringen i stedet for at publicere et ukendt eller forkert navn.
 
@@ -31,7 +30,6 @@ GitHub Pages publicerer fra `main` og repository-root. `.nojekyll` er medtaget, 
 
 Forsiden indeholder GoatCounter for `akassesiden.goatcounter.com` efter aftale.
 
-
 ## Rådighedssanktioner
 
-Sektion 7 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Der markeres databrud fra 1. kvt. 2021.
+Sektion 7 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Historikken starter i 2019, og der markeres databrud fra 1. kvt. 2021.
