@@ -1,0 +1,47 @@
+name: Diagnose officiel sanktionstotal
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/diag-sanctions-total.yml
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Vis totalrequest
+        shell: bash
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0,'scripts')
+          import jobindsats_api as ji
+          table='y01h01'
+          spec=ji.get(f'table/{table}',{'format':'json'})
+          fund=ji.find_hierarchy(spec,['a kasse','akasse'])
+          print('FUND_HIER',fund.get('hierarchy_id'),'TOTAL',repr(ji.total_value(fund)),'LEVEL',ji.fund_level(fund))
+          for selection in [ji.total_value(fund), '/', 'value:']:
+              try:
+                  rows=ji.query(table,spec,'latest:4',((fund,selection),))
+                  print('SELECTION',repr(selection),'COUNT',len(rows),'COLUMNS',ji.columns(rows))
+                  for row in rows[:8]: print('ROW',row)
+              except Exception as exc:
+                  print('ERROR',repr(selection),repr(exc))
+          print('NO FUND BREAKDOWN')
+          try:
+              rows=ji.query(table,spec,'latest:4',())
+              print('COUNT',len(rows),'COLUMNS',ji.columns(rows))
+              for row in rows[:8]: print('ROW',row)
+          except Exception as exc:
+              print('ERROR_NO_FUND',repr(exc))
+          PY
