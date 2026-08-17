@@ -14,14 +14,37 @@ def validate():
     data = json.loads(DATA.read_text(encoding="utf-8"))
     meta = data.get("meta", {})
     state = meta.get("updateStatus", {}).get("state")
-    if state not in {"ok", "partial"}:
-        raise RuntimeError(f"Dashboardstatus er {state}")
+    if state != "ok":
+        raise RuntimeError(f"Dashboardstatus er {state}; alle påkrævede kilder skal være ok")
+
+    required_sources = [
+        "AUA01",
+        "AUP03",
+        "AULK08",
+        "jobDagpenge",
+        "jobDimittend",
+        "jobEarlyTalks",
+        "jobDagpengeforbrug",
+        "jobOverlevelse",
+        "jobStatusAfter",
+    ]
+    statuses = meta.get("sourceStatus", {})
+    bad_sources = {
+        key: statuses.get(key, {}).get("state", "mangler")
+        for key in required_sources
+        if statuses.get(key, {}).get("state") != "ok"
+    }
+    if bad_sources:
+        details = "; ".join(f"{key}: {value}" for key, value in bad_sources.items())
+        raise RuntimeError(f"Påkrævede kilder er ikke ok: {details}")
+
     funds = data.get("funds", {})
     total_code = meta.get("totalFundCode")
     if not total_code or total_code not in funds:
         raise RuntimeError("Total a-kasse mangler")
     if len(funds) < 10:
         raise RuntimeError(f"For faa aktive a-kasser: {len(funds)}")
+
     total = funds[total_code]
     for key, source in (("members", "AUA01"), ("unemploymentRate", "AUP03"), ("longTermPer1000", "AULK08")):
         series = total.get(key, {})
@@ -29,9 +52,10 @@ def validate():
         values = series.get("values", [])
         if not labels or len(labels) != len(values):
             raise RuntimeError(f"Ugyldig totalserie {key}")
-        source_info = meta.get("sourceStatus", {}).get(source, {})
-        if source_info.get("state") == "ok" and source_info.get("latestPeriod") != labels[-1]:
-            raise RuntimeError(f"Periode mismatch for {source}")
+        source_info = statuses.get(source, {})
+        if source_info.get("latestPeriod") != labels[-1]:
+            raise RuntimeError(f"Periode mismatch for {source}: {source_info.get('latestPeriod')} != {labels[-1]}")
+
     required_job_modules = ["dagpenge", "graduates", "earlyTalks", "benefitConsumption", "survival", "statusAfter3m"]
     missing_modules = {}
     for code, fund in funds.items():
@@ -41,11 +65,42 @@ def validate():
     if missing_modules:
         details = "; ".join(f"{code}: {','.join(keys)}" for code, keys in missing_modules.items())
         raise RuntimeError(f"Manglende Jobindsats-moduler pr. a-kasse: {details}")
+
+    total_jobs = total.get("jobindsats", {})
+    period_checks = [
+        ("dagpenge", "labels", "jobDagpenge"),
+        ("graduates", "labels", "jobDimittend"),
+        ("earlyTalks", "labels", "jobEarlyTalks"),
+        ("benefitConsumption", "period", "jobDagpengeforbrug"),
+        ("survival", "period", "jobOverlevelse"),
+        ("statusAfter3m", "period", "jobStatusAfter"),
+    ]
+    for module, period_kind, source in period_checks:
+        block = total_jobs.get(module, {})
+        if period_kind == "labels":
+            labels = block.get("labels", [])
+            actual = labels[-1] if labels else None
+        else:
+            actual = block.get("period")
+        expected = statuses.get(source, {}).get("latestPeriod")
+        if not actual or actual != expected:
+            raise RuntimeError(f"Periode mismatch for {source}: {expected} != {actual}")
+
     name_standard = meta.get("nameStandard", {})
     if name_standard.get("source") != "Danske A-kasser":
         raise RuntimeError("DAK-navnestandard er ikke anvendt")
+
     text = HTML.read_text(encoding="utf-8")
-    required = ['data/dashboard-data.json', 'akassesiden.goatcounter.com/count', 'gc.zgo.at/count.js', 'id="fundSelect"', 'id="benchmarkSelect"']
+    required = [
+        'data/dashboard-data.json',
+        'akassesiden.goatcounter.com/count',
+        'gc.zgo.at/count.js',
+        'id="fundSelect"',
+        'id="benchmarkSelect"',
+        'id="statusPeriodText"',
+        'id="talkPeriodText"',
+        'Mindst 3 samtaler',
+    ]
     missing = [item for item in required if item not in text]
     if missing:
         raise RuntimeError(f"HTML mangler: {missing}")
