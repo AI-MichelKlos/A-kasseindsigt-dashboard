@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "A-kassenavne og forkortelser",
+    "asOf": "2026-04",
+    "usage": "DAK display names and explicit source aliases"
+  },
+  "funds": [
+    {"dakName":"Akademikernes A-kasse","dakShort":"AKA","dstName":"Akademikernes (fra 1. juli 2013 inkl. ingeniører)","jobindsatsName":"Akademikernes A-kasse","starMemberName":"Akademikernes A-kasse","starCode":"D86"},
+    {"dakName":"A-kassen A&Til","dakShort":"A&Til","dstName":"Funktionærer og Tjenestemænd (FTF-A)","jobindsatsName":"A-kassen A&Til","starMemberName":"A-kassen A&Til","starCode":"D92"},
+    {"dakName":"A-kassen for Journalistik, Kommunikation & Sprog","dakShort":"AJKS","dstName":"Journalistik, Kommunikation og Sprog","jobindsatsName":"A-kassen for Journalistik, Komm. og Sprog","starMemberName":"Jour., Kom. & Sprog","starCode":"D10"},
+    {"dakName":"A-kassen Frie","dakShort":"FRIE","dstName":"A-kassen Frie (fra 1. januar 2020 inkl. DANA)","jobindsatsName":"A-kassen Frie","starMemberName":"A-kassen Frie","starCode":"D83"},
+    {"dakName":"Lederne A-kasse","dakShort":"LH-A","dstName":"Ledere","jobindsatsName":"Lederne A-kasse","starMemberName":"Lederne A-kasse","starCode":"D67"},
+    {"dakName":"Børne- og Ungdomspædagogernes Landsdækkende A-kasse","dakShort":"BUPL-A","dstName":"Børne- og Ungdomspædagoger (BUPL-A)","jobindsatsName":"BUPL A-kasse","starMemberName":"BUPL A-kasse","starCode":"D81"},
+    {"dakName":"CA A-kasse & Karriereudvikling","dakShort":"CA","dstName":"Økonomer (CA)","jobindsatsName":"CA A-kasse","starMemberName":"CA A-kasse","starCode":"D98"},
+    {"dakName":"Det Faglige Hus - A-kasse","dakShort":"DFH","dstName":"Det Faglige Hus A-kasse","jobindsatsName":"Det Faglige Hus A-kasse","starMemberName":"Det Faglige Hus","starCode":"D22"},
+    {"dakName":"Din Faglige A-kasse","dakShort":"FAK","dstName":"Din Faglige A-kasse (fra 1. januar 2025 inkl. Fødevareforbundet (NNF)","jobindsatsName":"Din Faglige A-Kasse","starMemberName":"Din Faglige A-kasse","starCode":"D40"},
+    {"dakName":"Din Sundhedsfaglige A-kasse","dakShort":"DSA","dstName":"Din Sundhedsfaglige A-kasse (DSA)","jobindsatsName":"Din Sundhedsfaglige A-kasse","starMemberName":"Din Sundhedsfaglige","starCode":"D76"},
+    {"dakName":"Faglig Fælles A-kasse","dakShort":"3F-A","dstName":"Faglig Fælles a-kasse (3F)","jobindsatsName":"Faglig Fælles (3F) A-kasse","starMemberName":"Faglig Fælles A-kasse","starCode":"D15"},
+    {"dakName":"FOAs A-kasse","dakShort":"FOA-A","dstName":"Fag og Arbejde (FOA)","jobindsatsName":"FOAs A-kasse","starMemberName":"FOAs A-kasse","starCode":"D17"},
+    {"dakName":"HK A-kasse","dakShort":"HK-A","dstName":"Handels- og Kontorfunktionærer (HK)","jobindsatsName":"HK /Danmarks A-kasse","starMemberName":"HK/Danmark","starCode":"D53"},
+    {"dakName":"Kristelig A-kasse","dakShort":"KRIFA","dstName":"Kristelig a-kasse","jobindsatsName":"Kristelig A-Kasse","starMemberName":"Kristelig A-kasse","starCode":"D73"},
+    {"dakName":"Lærernes a-kasse","dakShort":"LAK","dstName":"Lærere (DLF-A)","jobindsatsName":"Lærernes A-kasse","starMemberName":"Lærernes a-kasse","starCode":"D18"},
+    {"dakName":"Magistrenes A-kasse","dakShort":"MA","dstName":"Magistre (MA)","jobindsatsName":"Magistrenes A-kasse","starMemberName":"Magistrenes A-kasse","starCode":"D88"},
+    {"dakName":"Metal A-kasse","dakShort":"Metal-A","dstName":"Metalarbejdere","jobindsatsName":"Metalarbejdernes A-Kasse","starMemberName":"Metalarbejderne","starCode":"D24"},
+    {"dakName":"Socialpædagogernes A-kasse","dakShort":"SL-A","dstName":"Socialpædagoger (SLA)","jobindsatsName":"Socialpædagogernes A-Kasse","starMemberName":"Socialpædagogernes","starCode":"D14"},
+    {"dakName":"Teknikernes A-kasse","dakShort":"TAK","dstName":"Teknikere","jobindsatsName":"Teknikernes A-Kasse","starMemberName":"Teknikernes A-kasse","starCode":"D72"},
+    {"dakName":"Min A-kasse","dakShort":"MIA","dstName":"Min akasse (jan. 2017 - inkl. Funktionærer og Servicefag)","jobindsatsName":"Min A-kasse","starMemberName":"Min A-kasse","starCode":"D57"},
+    {"dakName":"ASE","dakShort":"ASE","dstName":"ASE","jobindsatsName":"A-kassen Ase","starMemberName":"A-kassen Ase","starCode":"D94"}
+  ]
+}
