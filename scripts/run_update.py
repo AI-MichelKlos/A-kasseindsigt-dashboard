@@ -42,6 +42,7 @@ def validate():
 
 def main():
     subprocess.run([sys.executable, str(BASE / "scripts" / "fetch_sources.py")], check=True)
+    subprocess.run([sys.executable, str(BASE / "scripts" / "jobindsats_patch.py")], check=True)
     validate()
 
 
