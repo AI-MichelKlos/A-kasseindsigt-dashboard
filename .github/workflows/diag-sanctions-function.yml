@@ -1,0 +1,46 @@
+name: Diagnose sanktionsparser
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/diag-sanctions-function.yml
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kør kun sanktionsparser
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, sys
+          sys.path.insert(0,'scripts')
+          import jobindsats_patch as jp
+          data=json.load(open('data/dashboard-data.json',encoding='utf-8'))
+          print('TOTAL_CODE_BEFORE',repr(data.get('meta',{}).get('totalFundCode')),'HAS_TOTAL',data.get('meta',{}).get('totalFundCode') in data.get('funds',{}))
+          try:
+              jp.sanctions(data)
+              print('SANCTIONS_CALL_OK')
+          except Exception as exc:
+              print('SANCTIONS_CALL_ERROR',repr(exc))
+          total_code=data.get('meta',{}).get('totalFundCode')
+          block=data.get('funds',{}).get(total_code,{}).get('jobindsats',{}).get('sanctions')
+          print('TOTAL_BLOCK',json.dumps(block,ensure_ascii=False)[:12000])
+          present=[]
+          for code,fund in data.get('funds',{}).items():
+              b=fund.get('jobindsats',{}).get('sanctions')
+              if b:
+                  present.append((code,fund.get('name'),b.get('labels',[])[-3:],b.get('total',[])[-3:]))
+          print('PRESENT_COUNT',len(present))
+          for item in present: print('PRESENT',item)
+          PY
