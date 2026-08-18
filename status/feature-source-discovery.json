@@ -1,0 +1,132 @@
+{
+  "checkedAt": "2026-08-18T12:45:17+00:00",
+  "apiAccess": "ok",
+  "targets": {
+    "talkForms": {
+      "phrases": [
+        "samtaleformer",
+        "a kassen"
+      ],
+      "excludes": [
+        "jobcenter"
+      ],
+      "state": "ok",
+      "tableId": "smt02",
+      "matchText": "table id smt02 table name samtaleformer i a kassen link infopage https jobindsats dk information om malinger om indsatser om tilbud og samtaler samtaleformer i a kassen link tablepage https jobindsats dk databank indsatser tilbud og samtaler samtaler samtaleformer i a kassen update freq m update latest 2026 07 26 update next 2026 08 27 mgroups mgroup id mgrpsmt02 1 mgroup name samtaler i alt mgroup id mgrpsmt02 2 mgroup name fysiske samtaler mgroup id mgrpsmt02 3 mgroup name telefoniske samtaler mgroup id mgrpsmt02 4 mgroup name videosamtaler mgroup id mgrpsmt02 5 mgroup name anden kontakt per",
+      "fundHierarchyId": "_akassedp",
+      "fundLevel": "akassedp",
+      "fundTotalValue": "/",
+      "columns": [
+        "Periode",
+        "Område",
+        "A-kasse",
+        "Samtaler i alt",
+        "Fysiske samtaler",
+        "Telefoniske samtaler",
+        "Videosamtaler",
+        "Anden kontakt"
+      ],
+      "rowCount": 44,
+      "sampleRows": [
+        {
+          "Periode": "2026M04",
+          "Område": "Hele landet",
+          "A-kasse": "A-kasse i alt",
+          "Samtaler i alt": 22741,
+          "Fysiske samtaler": 11686,
+          "Telefoniske samtaler": 7849,
+          "Videosamtaler": 3203,
+          "Anden kontakt": 3
+        },
+        {
+          "Periode": "2026M04",
+          "Område": "Hele landet",
+          "A-kasse": "A-kassen for Journalistik, Komm. og Sprog",
+          "Samtaler i alt": 366,
+          "Fysiske samtaler": 152,
+          "Telefoniske samtaler": 126,
+          "Videosamtaler": 88,
+          "Anden kontakt": null
+        },
+        {
+          "Periode": "2026M04",
+          "Område": "Hele landet",
+          "A-kasse": "Socialpædagogernes A-Kasse",
+          "Samtaler i alt": 245,
+          "Fysiske samtaler": 83,
+          "Telefoniske samtaler": 156,
+          "Videosamtaler": 6,
+          "Anden kontakt": null
+        }
+      ]
+    },
+    "afterlon": {
+      "phrases": [
+        "efterloen",
+        "antal personer",
+        "fuldtidspersoner"
+      ],
+      "excludes": [
+        "fleksydelse"
+      ],
+      "state": "ok",
+      "tableId": "y28a02",
+      "matchText": "table id y28a02 table name antal personer og fuldtidspersoner paa efterloen link infopage https jobindsats dk information om malinger om ydelser om efterlon om antal personer og fuldtidspersoner pa efterlon link tablepage https jobindsats dk databank ydelser tilbagetraekningsydelser efterlon antal personer og fuldtidspersoner pa efterlon update freq m update latest 2026 07 21 update next 2026 08 24 mgroups mgroup id mgrpa02 1 y28 mgroup name antal personer paa efterloen mgroup id mgrpa02 3 y28 mgroup name antal fuldtidspersoner med udbetalt efterloen mgroup id mgrpa02 4b y28 mgroup name fuldti",
+      "fundHierarchyId": "_akassedp",
+      "fundLevel": "akassedp",
+      "fundTotalValue": "/",
+      "columns": [
+        "Periode",
+        "Område",
+        "A-kasse",
+        "Antal personer på efterløn",
+        "Antal personer med udbetalt efterløn",
+        "Antal fuldtidspersoner med udbetalt efterløn",
+        "Fuldtidspersoner i pct. af arbejdsstyrken",
+        "Fuldtidspersoner i pct. af befolkningen"
+      ],
+      "rowCount": 44,
+      "sampleRows": [
+        {
+          "Periode": "2026M05",
+          "Område": "Hele landet",
+          "A-kasse": "A-kasse i alt",
+          "Antal personer på efterløn": 18892,
+          "Antal personer med udbetalt efterløn": 18760,
+          "Antal fuldtidspersoner med udbetalt efterløn": 17938,
+          "Fuldtidspersoner i pct. af arbejdsstyrken": 0.6,
+          "Fuldtidspersoner i pct. af befolkningen": 0.5
+        },
+        {
+          "Periode": "2026M05",
+          "Område": "Hele landet",
+          "A-kasse": "A-kassen for Journalistik, Komm. og Sprog",
+          "Antal personer på efterløn": 229,
+          "Antal personer med udbetalt efterløn": 222,
+          "Antal fuldtidspersoner med udbetalt efterløn": 208,
+          "Fuldtidspersoner i pct. af arbejdsstyrken": 0.0,
+          "Fuldtidspersoner i pct. af befolkningen": 0.0
+        },
+        {
+          "Periode": "2026M05",
+          "Område": "Hele landet",
+          "A-kasse": "Socialpædagogernes A-Kasse",
+          "Antal personer på efterløn": 653,
+          "Antal personer med udbetalt efterløn": 644,
+          "Antal fuldtidspersoner med udbetalt efterløn": 610,
+          "Fuldtidspersoner i pct. af arbejdsstyrken": 0.0,
+          "Fuldtidspersoner i pct. af befolkningen": 0.0
+        }
+      ]
+    },
+    "afterlonContrib": {
+      "phrases": [
+        "efterloensbidragsbetalere",
+        "dagpengeforsikrede"
+      ],
+      "excludes": [],
+      "state": "error",
+      "error": "Ingen gyldig periodetype: Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: M\",\"request_id\":\"80b5d16b-b686-420d-841c-220f0367fe41\"} | Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: Q\",\"request_id\":\"a8f10832-1871-458c-af3f-1c7947404c01\"} | Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: A\",\"request_id\":\"005a8064-9696-4891-a4a7-cba9bf74ba6a\"}"
+    }
+  }
+}
