@@ -1,0 +1,37 @@
+name: Koer migration af samtaler og efterloen
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/run-migrate-talks-afterlon.yml
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Anvend migration
+        run: python scripts/migrate_talks_afterlon.py
+      - name: Koer fuld opdatering og validering
+        run: |
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py
+          python scripts/run_update.py
+          python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobTalkForms --require-source jobAfterlon --require-source jobAfterlonContrib --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobSanctions --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter
+      - name: Gem valideret produktionsversion
+        run: |
+          git config user.name "Dashboard automation"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add index.html README.md scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/run_update.py .github/workflows/update-dashboard.yml data/dashboard-data.json
+          git commit -m "Udskift samtalemaal og tilfoej efterloen"
+          git push origin HEAD:main
