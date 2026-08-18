@@ -1,0 +1,85 @@
+name: Diagnostik af samtale- og efterloensopdatering
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/run-talks-afterlon-diagnostic.yml
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Koer feature-runner og gem resultat
+        shell: bash
+        run: |
+          mkdir -p status
+          set +e
+          python - <<'PY' > status/talks-afterlon-apply.log 2>&1
+          from pathlib import Path
+          import subprocess
+
+          workflow = Path('.github/workflows/apply-talks-afterlon.yml').read_text(encoding='utf-8')
+          token = "          python - <<'PY'\n"
+          start = workflow.index(token) + len(token)
+          end = workflow.index("\n          PY", start)
+          script = workflow[start:end]
+          script = "\n".join(line[10:] if line.startswith("          ") else line for line in script.splitlines())
+          exec(compile(script, 'apply-talks-afterlon-inline.py', 'exec'), {})
+
+          path = Path('scripts/jobindsats_api.py')
+          text = path.read_text(encoding='utf-8')
+          if 'for period_type in ("M", "Q", "A"):' in text:
+              text = text.replace('for period_type in ("M", "Q", "A"):', 'for period_type in ("M", "Q", "A", "Y"):', 1)
+          path.write_text(text, encoding='utf-8')
+
+          path = Path('scripts/jobindsats_patch.py')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace('    a = re.fullmatch(r"(\\d{4})", text)\n    if a:\n        return int(a.group(1)), 12\n', '    a = re.fullmatch(r"(\\d{4})Y\\d{2}", text)\n    if a:\n        return int(a.group(1)), 12\n', 1)
+          path.write_text(text, encoding='utf-8')
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = "return p||'-'};const pct"
+          if marker in text:
+              text = text.replace(marker, "m=/^(\\d{4})Y\\d{2}$/.exec(p||'');if(m)return m[1];return p||'-'};const pct", 1)
+          annual_fn = "function compareJobAnnual(k,id,moduleKey,field,percent=false){const f=fund(),a=f?.jobindsats?.[moduleKey];if(!a){missing(id.replace('Chart','Wrap'));return}const n=Math.max(1,Math.ceil(+$('periodSelect').value/12)),w=seriesWindow(a,field,n),sets=[{label:f.name,data:w.values,borderColor:C.gd,backgroundColor:C.gd,pointRadius:0,borderWidth:2.6,tension:.18,spanGaps:false}];compareCodes().forEach((code,i)=>{const b=DATA.funds[code]?.jobindsats?.[moduleKey];if(!b)return;sets.push({label:DATA.funds[code].name,data:mapValues(b,field,w.labels),borderColor:color(i),backgroundColor:color(i),pointRadius:0,borderWidth:2,tension:.18,spanGaps:false})});lineChart(k,id,w.labels,sets,percent,true)}"
+          if 'function compareJobAnnual(' not in text:
+              text = text.replace('function shares(items){', annual_fn + 'function shares(items){', 1)
+          text = text.replace("compareJobTime('ac','afterlonContribChart','afterlonContrib','share',true,false,true)", "compareJobAnnual('ac','afterlonContribChart','afterlonContrib','share',true)", 1)
+          path.write_text(text, encoding='utf-8')
+
+          subprocess.run(['python','-m','py_compile','scripts/statbank_api.py','scripts/jobindsats_api.py','scripts/fetch_sources.py','scripts/jobindsats_patch.py','scripts/apply_dak_names.py','scripts/run_update.py','scripts/validate_dashboard_repo.py'], check=True)
+          subprocess.run(['python','scripts/run_update.py'], check=True)
+          subprocess.run(['python','scripts/validate_dashboard_repo.py','--repo','.','--require-source','AUA01','--require-source','AUP03','--require-source','jobDagpenge','--require-source','jobDimittend','--require-source','jobTalkForms','--require-source','jobAfterlon','--require-source','jobAfterlonContrib','--require-source','jobLongTerm','--require-source','jobExhaustedRights','--require-source','jobSanctions','--require-source','jobDagpengeforbrug','--require-source','jobOverlevelse','--require-source','jobStatusAfter'], check=True)
+          print('FEATURE_APPLY_OK')
+          PY
+          code=$?
+          printf 'exit_code: %s\n' "$code" > status/talks-afterlon-apply-status.txt
+          tail -n 80 status/talks-afterlon-apply.log || true
+
+          if [ "$code" -eq 0 ]; then
+            git add index.html README.md scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/run_update.py .github/workflows/update-dashboard.yml data/dashboard-data.json
+            git config user.name "Dashboard automation"
+            git config user.email "dashboard-automation@users.noreply.github.com"
+            git commit -m "Udskift samtalemaal og tilfoej efterloen"
+            git push origin HEAD:main
+          else
+            git add status/talks-afterlon-apply.log status/talks-afterlon-apply-status.txt
+            git config user.name "Dashboard diagnostics"
+            git config user.email "dashboard-automation@users.noreply.github.com"
+            git commit -m "Gem fejl fra samtale- og efterloensopdatering"
+            git push origin HEAD:main
+            exit "$code"
+          fi
