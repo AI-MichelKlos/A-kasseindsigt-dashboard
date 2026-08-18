@@ -1,0 +1,113 @@
+name: Undersoeg samtaleformer og efterloen
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/discover-talks-afterlon.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: a-kasseindsigt-feature-discovery
+  cancel-in-progress: true
+
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find tabeller og kolonner
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          sys.path.insert(0, "scripts")
+          import jobindsats_api as ji
+
+          out = {
+              "checkedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+              "apiAccess": "missing_token" if not os.environ.get("JOBINDSATS_API_TOKEN") else "unknown",
+              "targets": {},
+          }
+          if not os.environ.get("JOBINDSATS_API_TOKEN"):
+              Path("status/feature-source-discovery.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+              raise SystemExit(0)
+
+          tables = ji.get("tables", {"format": "json"})
+          out["apiAccess"] = "ok"
+          targets = {
+              "talkForms": {
+                  "phrases": ["samtaleformer", "a kassen"],
+                  "excludes": ["jobcenter"],
+                  "period": "latest:2",
+              },
+              "afterlon": {
+                  "phrases": ["efterloen", "antal personer", "fuldtidspersoner"],
+                  "excludes": ["fleksydelse"],
+                  "period": "latest:2",
+              },
+              "afterlonContrib": {
+                  "phrases": ["efterloensbidragsbetalere", "dagpengeforsikrede"],
+                  "excludes": [],
+                  "period": "latest:2",
+              },
+          }
+
+          for key, cfg in targets.items():
+              info = {"phrases": cfg["phrases"], "excludes": cfg["excludes"]}
+              try:
+                  found = ji.find_table(tables, cfg["phrases"], cfg["excludes"])
+                  table_id = str(found["table_id"])
+                  spec = ji.get(f"table/{table_id}", {"format": "json"})
+                  fund_h = ji.find_hierarchy(spec, ["a kasse", "akasse"])
+                  level = ji.fund_level(fund_h)
+                  selection = f"level:{level}" if level else "*"
+                  rows = ji.query(table_id, spec, cfg["period"], ((fund_h, selection),))
+                  info.update({
+                      "state": "ok",
+                      "tableId": table_id,
+                      "matchText": found.get("_match_text"),
+                      "fundHierarchyId": fund_h.get("hierarchy_id"),
+                      "fundLevel": level,
+                      "fundTotalValue": ji.total_value(fund_h),
+                      "columns": ji.columns(rows),
+                      "rowCount": len(rows),
+                      "sampleRows": rows[:3],
+                  })
+              except Exception as exc:
+                  info.update({"state": "error", "error": str(exc)[:1200]})
+              out["targets"][key] = info
+
+          Path("status").mkdir(exist_ok=True)
+          Path("status/feature-source-discovery.json").write_text(
+              json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8"
+          )
+          print(json.dumps(out, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Gem resultat
+        shell: bash
+        run: |
+          git config user.name "Dashboard source discovery"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add status/feature-source-discovery.json
+          if git diff --cached --quiet; then
+            echo "Ingen ændring i diagnosen."
+          else
+            git commit -m "Gem kildediagnose for samtaleformer og efterloen"
+            git push origin HEAD:main
+          fi
