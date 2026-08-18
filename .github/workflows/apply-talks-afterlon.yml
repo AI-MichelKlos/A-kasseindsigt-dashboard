@@ -1,0 +1,291 @@
+name: Indfoer samtaleformer og efterloen
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/apply-talks-afterlon.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: a-kasseindsigt-feature-change
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Opdater datalogik dashboard og validering
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          def read(path):
+              return Path(path).read_text(encoding="utf-8")
+          def write(path, text):
+              Path(path).write_text(text, encoding="utf-8")
+          def replace_once(text, old, new, label):
+              if old not in text:
+                  raise RuntimeError(f"Kunne ikke finde forventet tekst: {label}")
+              return text.replace(old, new, 1)
+
+          # 1. Den generiske første Jobindsats-pass skal ikke længere hente den gamle 3+-samtalemåling.
+          path = "scripts/fetch_sources.py"
+          text = read(path)
+          old_line = '        ("jobEarlyTalks", "earlyTalks", ["jobsamtaler", "a dagpengemodtagere", "a kasserne"], ["jobcent"], "latest:60", lambda r,f,t: process_timeseries(r,f,t,"earlyTalks",["andel"],"share"), "pct."),\n'
+          if old_line in text:
+              text = text.replace(old_line, "", 1)
+          write(path, text)
+
+          # 2. Specialpasset får samtaleformer samt to efterlønsserier.
+          path = "scripts/jobindsats_patch.py"
+          text = read(path)
+          text = replace_once(
+              text,
+              '    q = re.fullmatch(r"(\\d{4})Q0?([1-4])", text)\n    if q:\n        return int(q.group(1)), int(q.group(2)) * 3\n    return 0, 0\n',
+              '    q = re.fullmatch(r"(\\d{4})Q0?([1-4])", text)\n    if q:\n        return int(q.group(1)), int(q.group(2)) * 3\n    a = re.fullmatch(r"(\\d{4})", text)\n    if a:\n        return int(a.group(1)), 12\n    return 0, 0\n',
+              "pkey annual"
+          )
+
+          start = text.index("def early_talks(data):")
+          end = text.index("\ndef long_term(data):", start)
+          new_block = r'''def query_up_to(table, spec, limit, breakdowns):
+    try:
+        return ji.query(table, spec, f"latest:{limit}", breakdowns)
+    except RuntimeError as exc:
+        matches = [int(x) for x in re.findall(r"only (\d+) periods are available", str(exc), re.IGNORECASE)]
+        if not matches:
+            raise
+        available = max(matches)
+        if available < 1:
+            raise
+        return ji.query(table, spec, f"latest:{min(limit, available)}", breakdowns)
+
+
+def all_fund_rows(table, spec, limit):
+    fund_h, selection = setup_spec(spec)
+    rows = query_up_to(table, spec, limit, ((fund_h, selection),))
+    total_rows = query_up_to(table, spec, limit, ((fund_h, ji.total_value(fund_h)),))
+    for row in total_rows:
+        row["_dak_force_total"] = True
+    rows.extend(total_rows)
+    return rows
+
+
+def row_fund_code(row, fcol, data):
+    if row.get("_dak_force_total"):
+        return data["meta"]["totalFundCode"]
+    return fund_code(row.get(fcol), data)
+
+
+def talk_forms(data):
+    table, spec = discover(["samtaleformer", "a kassen"], ["jobcenter"])
+    rows = all_fund_rows(table, spec, 120)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    cols = {
+        "total": exact_col(rows, "Samtaler i alt") or ji.best_col(rows, ["samtaler", "i alt"], ["pct", "andel"]),
+        "physical": exact_col(rows, "Fysiske samtaler") or ji.best_col(rows, ["fysiske", "samtaler"]),
+        "phone": exact_col(rows, "Telefoniske samtaler") or ji.best_col(rows, ["telefoniske", "samtaler"]),
+        "video": exact_col(rows, "Videosamtaler") or ji.best_col(rows, ["video", "samtaler"]),
+        "other": exact_col(rows, "Anden kontakt") or ji.best_col(rows, ["anden", "kontakt"]),
+    }
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = row_fund_code(row, fcol, data)
+        period = str(row.get(pcol) or "")
+        if code not in data["funds"] or not period:
+            continue
+        grouped[code][period] = {key: ji.number(row.get(col)) for key, col in cols.items()}
+    if not grouped:
+        raise RuntimeError("Samtaleformer gav ingen a-kassedata")
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"]["talkForms"] = {
+            "labels": labels,
+            **{key: [values[p][key] for p in labels] for key in cols},
+        }
+    latest = max((p for values in grouped.values() for p in values), key=pkey)
+    put_status(
+        data,
+        "jobTalkForms",
+        table,
+        latest,
+        "antal jobsamtaler efter samtaleform",
+        "Omfatter kun jobsamtaler afholdt i a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet. Serien findes fra januar 2024.",
+    )
+    data["meta"]["sourceStatus"].pop("jobEarlyTalks", None)
+    data["meta"].setdefault("jobindsatsTables", {}).pop("jobEarlyTalks", None)
+    for fund in data["funds"].values():
+        fund.get("jobindsats", {}).pop("earlyTalks", None)
+
+
+def afterlon(data):
+    table, spec = discover(["efterloen", "antal personer", "fuldtidspersoner"], ["fleksydelse"])
+    rows = all_fund_rows(table, spec, 120)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    persons = exact_col(rows, "Antal personer på efterløn") or ji.best_col(rows, ["antal", "personer", "efterloen"], ["udbetalt", "fuldtid", "pct"])
+    paid = exact_col(rows, "Antal personer med udbetalt efterløn") or ji.best_col(rows, ["antal", "personer", "udbetalt", "efterloen"], ["fuldtid", "pct"])
+    fulltime = exact_col(rows, "Antal fuldtidspersoner med udbetalt efterløn") or ji.best_col(rows, ["fuldtidspersoner", "udbetalt", "efterloen"], ["pct"])
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = row_fund_code(row, fcol, data)
+        period = str(row.get(pcol) or "")
+        if code in data["funds"] and period:
+            grouped[code][period] = {
+                "persons": ji.number(row.get(persons)),
+                "paidPersons": ji.number(row.get(paid)),
+                "fulltime": ji.number(row.get(fulltime)),
+            }
+    if not grouped:
+        raise RuntimeError("Efterløn gav ingen a-kassedata")
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"]["afterlon"] = {
+            "labels": labels,
+            "persons": [values[p]["persons"] for p in labels],
+            "paidPersons": [values[p]["paidPersons"] for p in labels],
+            "fulltime": [values[p]["fulltime"] for p in labels],
+        }
+    latest = max((p for values in grouped.values() for p in values), key=pkey)
+    put_status(data, "jobAfterlon", table, latest, "personer og fuldtidspersoner på efterløn")
+
+
+def afterlon_contrib(data):
+    table, spec = discover(["efterloensbidragsbetalere", "dagpengeforsikrede"], [])
+    rows = all_fund_rows(table, spec, 30)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    count = exact_col(rows, "Antal efterlønsbidragsbetalere") or ji.best_col(rows, ["antal", "efterloensbidragsbetalere"], ["andel", "pct"])
+    share = exact_col(rows, "Andel efterlønsbidragsbetalere blandt dagpengeforsikrede") or ji.best_col(rows, ["andel", "efterloensbidragsbetalere", "dagpengeforsikrede"])
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = row_fund_code(row, fcol, data)
+        period = str(row.get(pcol) or "")
+        if code in data["funds"] and period:
+            grouped[code][period] = {
+                "count": ji.number(row.get(count)),
+                "share": ji.number(row.get(share)),
+            }
+    if not grouped:
+        raise RuntimeError("Efterlønsbidrag gav ingen a-kassedata")
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"]["afterlonContrib"] = {
+            "labels": labels,
+            "count": [values[p]["count"] for p in labels],
+            "share": [values[p]["share"] for p in labels],
+        }
+    latest = max((p for values in grouped.values() for p in values), key=pkey)
+    put_status(
+        data,
+        "jobAfterlonContrib",
+        table,
+        latest,
+        "antal og pct. efterlønsbidragsbetalere blandt dagpengeforsikrede",
+        "Opgøres én gang årligt pr. 1. september, dog 1. november i 2012.",
+    )
+'''
+          text = text[:start] + new_block + text[end:]
+          text = replace_once(
+              text,
+              '        ("jobEarlyTalks", early_talks),\n',
+              '        ("jobTalkForms", talk_forms),\n        ("jobAfterlon", afterlon),\n        ("jobAfterlonContrib", afterlon_contrib),\n',
+              "jobs list"
+          )
+          write(path, text)
+
+          # 3. Validator: nye kilder/moduler og HTML-elementer er påkrævede.
+          path = "scripts/run_update.py"
+          text = read(path)
+          text = text.replace('        "jobEarlyTalks",\n', '        "jobTalkForms",\n        "jobAfterlon",\n        "jobAfterlonContrib",\n')
+          text = text.replace('        "earlyTalks",\n', '        "talkForms",\n        "afterlon",\n        "afterlonContrib",\n')
+          text = text.replace('        ("earlyTalks", "labels", "jobEarlyTalks"),\n', '        ("talkForms", "labels", "jobTalkForms"),\n        ("afterlon", "labels", "jobAfterlon"),\n        ("afterlonContrib", "labels", "jobAfterlonContrib"),\n')
+          text = text.replace("        'id=\"talkPeriodText\"',\n", "        'id=\"talkPeriodText\"',\n        'id=\"afterlonPeriodText\"',\n        'id=\"afterlonContribPeriodText\"',\n        'id=\"afterlonChart\"',\n        'id=\"afterlonContribChart\"',\n")
+          text = text.replace("        'Mindst 3 samtaler',\n", "        'Samtaleformer i a-kassen',\n        'Efterløn',\n")
+          write(path, text)
+
+          # 4. Workflowets eksplicitte source-gate.
+          path = ".github/workflows/update-dashboard.yml"
+          text = read(path)
+          text = text.replace('--require-source jobEarlyTalks ', '--require-source jobTalkForms --require-source jobAfterlon --require-source jobAfterlonContrib ')
+          write(path, text)
+
+          # 5. README.
+          path = "README.md"
+          text = read(path)
+          text = text.replace(
+              'Jobindsats.dk / STAR: a-dagpenge, dimittendledighed, langtidsledighed, opbrugt dagpengeret, forbrug af dagpengeperioden, overlevelseskurver, arbejdsmarkedsstatus efter afsluttet forloeb, tidlig samtaleindsats og raadighedssanktioner.',
+              'Jobindsats.dk / STAR: a-dagpenge, dimittendledighed, langtidsledighed, opbrugt dagpengeret, forbrug af dagpengeperioden, overlevelseskurver, arbejdsmarkedsstatus efter afsluttet forloeb, samtaleformer i a-kassen, efterloen, efterloensbidragsbetalere og raadighedssanktioner.'
+          )
+          write(path, text)
+
+          # 6. Dashboard HTML og JavaScript.
+          path = "index.html"
+          text = read(path)
+          text = replace_once(text, '<small>Mindst 3 samtaler</small>', '<small>Samtaler i a-kassen</small>', 'KPI label')
+
+          section_start = text.index('<section><h2>6. A-kassens egen tidlige indsats</h2>')
+          sanctions_start = text.index('<section><h2>7. Rådighedssanktioner</h2>', section_start)
+          sanctions_end_heading = sanctions_start + len('<section><h2>7. Rådighedssanktioner</h2>')
+          new_sections = '''<section><h2>6. Samtaler i a-kassen</h2><p>Hvor mange jobsamtaler a-kassen afholder, og hvordan samtalerne gennemføres.</p><div class="card"><h3>Samtaleformer i a-kassen</h3><div class="explain"><strong>Hvad måles:</strong> Alle jobsamtaler afholdt af a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet, fordelt på fysisk fremmøde, telefon, video og anden kontakt. Serien starter i januar 2024. <strong>Seneste periode:</strong> <span id="talkPeriodText">-</span>.</div><div id="talkWrap" class="chart"><canvas id="talkChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/databank/indsatser/tilbud-og-samtaler/samtaler/samtaleformer-i-a-kassen/" target="_blank" rel="noopener">Jobindsats.dk – Samtaleformer i a-kassen</a></span><span id="sTalk"></span></div></div></section>
+<section><h2>7. Efterløn</h2><p>Efterløn er fortsat en a-kasseopgave. Her vises både den aktuelle brug af ordningen og den fremtidige tilslutning via efterlønsbidrag.</p><div class="grid"><div class="card"><h3>Personer på efterløn</h3><div class="desc">Antal personer, der er inde i efterlønsordningen i måneden. Sammenligning med konkrete a-kasser følger valgene øverst.</div><div class="explain"><strong>Seneste periode:</strong> <span id="afterlonPeriodText">-</span>. Personer kan indgå uden at have fået efterløn udbetalt i den pågældende måned.</div><div id="afterlonWrap" class="chart"><canvas id="afterlonChart"></canvas></div><div class="source"><span>Kilde: <a href="https://www.jobindsats.dk/information/om-malinger/om-ydelser/om-efterlon/om-antal-personer-og-fuldtidspersoner-pa-efterlon/" target="_blank" rel="noopener">Jobindsats.dk – Antal personer og fuldtidspersoner på efterløn</a></span><span id="sAfterlon"></span></div></div><div class="card"><h3>Efterlønsbidragsbetalere blandt dagpengeforsikrede</h3><div class="desc">Andel af de dagpengeforsikrede, der indbetaler efterlønsbidrag. Målingen giver et billede af den forventede fremtidige tilknytning til ordningen.</div><div class="explain"><strong>Seneste år:</strong> <span id="afterlonContribPeriodText">-</span>. Opgøres én gang årligt pr. 1. september, dog 1. november i 2012.</div><div id="afterlonContribWrap" class="chart"><canvas id="afterlonContribChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-efterlon/om-antal-og-andel-efterlonsbidragsbetalere-blandt-dagpengeforsikrede/" target="_blank" rel="noopener">Jobindsats.dk – Efterlønsbidragsbetalere blandt dagpengeforsikrede</a></span><span id="sAfterlonContrib"></span></div></div></div></section>
+<section><h2>8. Rådighedssanktioner</h2>'''
+          text = text[:section_start] + new_sections + text[sanctions_end_heading:]
+
+          insertion = '''function talkFormsChart(){const s=fund()?.jobindsats?.talkForms;if(!s?.labels?.length){missing('talkWrap');return}const n=+$('periodSelect').value,start=Math.max(0,s.labels.length-n),labels=s.labels.slice(start),defs=[['Fysisk','physical',C.gd],['Telefon','phone',C.b],['Video','video',C.o],['Anden kontakt','other',C.p]],sets=defs.map(([label,key,col])=>({label,data:(s[key]||[]).slice(start),borderColor:col,backgroundColor:col,pointRadius:0,borderWidth:2.3,tension:.18,spanGaps:false}));lineChart('talk','talkChart',labels,sets,false,true)}'''
+          text = replace_once(text, 'function sanctionTypeChart(){', insertion + 'function sanctionTypeChart(){', 'talk chart function')
+
+          old_sources = "['sStatus','jobStatusAfter'],['sTalk','jobEarlyTalks'],['sSanctionsTotal','jobSanctions']"
+          new_sources = "['sStatus','jobStatusAfter'],['sTalk','jobTalkForms'],['sAfterlon','jobAfterlon'],['sAfterlonContrib','jobAfterlonContrib'],['sSanctionsTotal','jobSanctions']"
+          text = replace_once(text, old_sources, new_sources, 'source mapping')
+          text = replace_once(
+              text,
+              "$('talkPeriodText').textContent=period(DATA.meta.sourceStatus?.jobEarlyTalks?.latestPeriod);$('sanctionsPeriodText')",
+              "$('talkPeriodText').textContent=period(DATA.meta.sourceStatus?.jobTalkForms?.latestPeriod);$('afterlonPeriodText').textContent=period(DATA.meta.sourceStatus?.jobAfterlon?.latestPeriod);$('afterlonContribPeriodText').textContent=period(DATA.meta.sourceStatus?.jobAfterlonContrib?.latestPeriod);$('sanctionsPeriodText')",
+              'period labels'
+          )
+          text = replace_once(
+              text,
+              "s=f.jobindsats?.earlyTalks;x=last(s,'share');$('k6').textContent=x?pct(x.value):'-';$('k6s').textContent=kpiSub(s,'share',x,pct)",
+              "s=f.jobindsats?.talkForms;x=last(s,'total');$('k6').textContent=x?num(x.value):'-';$('k6s').textContent=kpiSub(s,'total',x,num)",
+              'KPI data'
+          )
+          text = replace_once(
+              text,
+              "compareCategory('status','statusChart','statusAfter3m',true,false,false);compareJobTime('talk','talkChart','earlyTalks','share',true,false);singleQuarterTime",
+              "compareCategory('status','statusChart','statusAfter3m',true,false,false);talkFormsChart();rawJobTime('al','afterlonChart','afterlon','persons',true);compareJobTime('ac','afterlonContribChart','afterlonContrib','share',true,false,true);singleQuarterTime",
+              'draw calls'
+          )
+          write(path, text)
+          PY
+
+      - name: Koer fuld dataopdatering og validering
+        shell: bash
+        run: |
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py
+          python scripts/run_update.py
+          python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobTalkForms --require-source jobAfterlon --require-source jobAfterlonContrib --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobSanctions --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter
+
+      - name: Gem produktionsaendringen
+        shell: bash
+        run: |
+          git config user.name "Dashboard automation"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add index.html README.md scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/run_update.py .github/workflows/update-dashboard.yml data/dashboard-data.json
+          git commit -m "Udskift samtalemaal og tilfoej efterloen"
+          git push origin HEAD:main
