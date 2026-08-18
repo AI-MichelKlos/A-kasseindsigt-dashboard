@@ -1,0 +1,5 @@
+Sorry: IndentationError: unindent does not match any outer indentation level (jobindsats_patch.py, line 115)Traceback (most recent call last):
+  File "<stdin>", line 34, in <module>
+  File "/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '-m', 'py_compile', 'scripts/statbank_api.py', 'scripts/jobindsats_api.py', 'scripts/fetch_sources.py', 'scripts/jobindsats_patch.py', 'scripts/apply_dak_names.py', 'scripts/run_update.py', 'scripts/validate_dashboard_repo.py']' returned non-zero exit status 1.
