@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-08-18T12:30:12+00:00",
+  "officialReport": "Dagpengemodtageres jobsoegning",
+  "officialReportUrl": "https://www.jobindsats.dk/rapportbank/rapporter/dagpengemodtageres-jobsogning/",
+  "targets": [
+    "andel dagpengemodtagere med mindst en jobansoegning i maaneden",
+    "andel dagpengemodtagere uden registrerede jobsoegninger i maaneden",
+    "gennemsnitligt antal jobsoegninger"
+  ],
+  "apiRoot": "https://api.jobindsats.dk/v3",
+  "apiAccess": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "state": "ok"
+    }
+  ],
+  "candidateCount": 0,
+  "candidates": [],
+  "globalMetadataHitCount": 0,
+  "conclusion": "no_jobsearch_measurement_found_in_v3_tables_metadata"
+}
