@@ -1,0 +1,67 @@
+{
+  "tableId": "y28a15",
+  "matchText": "table id y28a15 table name antal og andel efterloensbidragere blandt dagpengeforsikrede link infopage https jobindsats dk information om malinger om ydelser om efterlon om antal og andel efterlonsbidragsbetalere blandt dagpengeforsikrede link tablepage https jobindsats dk databank ydelser tilbagetraekningsydelser efterlon antal og andel efterlonsbidragere blandt dagpengeforsikrede update freq y update latest 2025 12 01 update next 2026 12 16 mgroups mgroup id mgrpa15 1 mgroup name antal efterloensbidragsbetalere mgroup id mgrpa15 2 mgroup name andel efterloensbidragsbetalere blandt dagpengefor",
+  "hierarchies": [
+    "_nykom",
+    "_region",
+    "_reko",
+    "_kon",
+    "_alder_5i30_60s",
+    "_akassedp"
+  ],
+  "attempts": {
+    "M": {
+      "state": "error",
+      "error": "Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: M\",\"request_id\":\"ebab4e76-aa65-478d-a44e-fea3ad21d823\"}"
+    },
+    "Q": {
+      "state": "error",
+      "error": "Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: Q\",\"request_id\":\"3ed268a1-6f5c-410d-8949-f47b4bfbff58\"}"
+    },
+    "A": {
+      "state": "error",
+      "error": "Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: A\",\"request_id\":\"87e4624f-a96d-42b0-b324-3f1a4fcff3dc\"}"
+    },
+    "Y": {
+      "state": "ok",
+      "columns": [
+        "Periode",
+        "Område",
+        "A-kasse",
+        "Antal efterlønsbidragsbetalere",
+        "Andel efterlønsbidragsbetalere blandt dagpengeforsikrede"
+      ],
+      "sampleRows": [
+        {
+          "Periode": "2024Y01",
+          "Område": "Hele landet",
+          "A-kasse": "A-kassen for Journalistik, Komm. og Sprog",
+          "Antal efterlønsbidragsbetalere": 2218,
+          "Andel efterlønsbidragsbetalere blandt dagpengeforsikrede": 9.0
+        },
+        {
+          "Periode": "2025Y01",
+          "Område": "Hele landet",
+          "A-kasse": "A-kassen for Journalistik, Komm. og Sprog",
+          "Antal efterlønsbidragsbetalere": 2065,
+          "Andel efterlønsbidragsbetalere blandt dagpengeforsikrede": 8.5
+        },
+        {
+          "Periode": "2024Y01",
+          "Område": "Hele landet",
+          "A-kasse": "Socialpædagogernes A-Kasse",
+          "Antal efterlønsbidragsbetalere": 5203,
+          "Andel efterlønsbidragsbetalere blandt dagpengeforsikrede": 15.5
+        }
+      ]
+    },
+    "Å": {
+      "state": "error",
+      "error": "Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: Å\",\"request_id\":\"d30617a0-22de-4c65-b6c7-96859db5a9f5\"}"
+    },
+    "YEAR": {
+      "state": "error",
+      "error": "Jobindsats HTTP 422: {\"code\":422,\"cause\":\"Unknown period type: YEAR\",\"request_id\":\"81060528-c80a-48fa-b3bd-b1654ea9be0d\"}"
+    }
+  }
+}
