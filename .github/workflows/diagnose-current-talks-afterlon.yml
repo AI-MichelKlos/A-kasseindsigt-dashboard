@@ -1,0 +1,55 @@
+name: Diagnostiser samtaler og efterloen
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/diagnose-current-talks-afterlon.yml
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Koer migration med fejlspor
+        shell: bash
+        run: |
+          set +e
+          mkdir -p status
+          {
+            echo "=== migration ==="
+            python scripts/migrate_talks_afterlon.py
+            echo "migration_exit=$?"
+            echo "=== compile ==="
+            python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py
+            echo "compile_exit=$?"
+            echo "=== update ==="
+            python scripts/run_update.py
+            echo "update_exit=$?"
+            echo "=== validate ==="
+            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobTalkForms --require-source jobAfterlon --require-source jobAfterlonContrib --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobSanctions --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter
+            echo "validate_exit=$?"
+          } > status/migrate-current.log 2>&1
+          cat status/migrate-current.log
+      - name: Gem diagnose
+        shell: bash
+        run: |
+          git config user.name "Dashboard diagnostics"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add status/migrate-current.log
+          if git diff --cached --quiet; then
+            echo "Ingen ny diagnose."
+          else
+            git commit -m "Gem aktuel migrationdiagnose"
+            git push origin HEAD:main
+          fi
