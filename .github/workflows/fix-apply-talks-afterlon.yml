@@ -1,0 +1,49 @@
+name: Ret feature-opdatering for aarsdata
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/fix-apply-talks-afterlon.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ret Y-periodetype og aarsnogle
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('.github/workflows/apply-talks-afterlon.yml')
+          text = path.read_text(encoding='utf-8')
+
+          marker = '          # 2. Specialpasset får samtaleformer samt to efterlønsserier.\n'
+          insert = '''          # Jobindsats bruger periodetype Y til årsserier som efterlønsbidrag.\n          path = "scripts/jobindsats_api.py"\n          text = read(path)\n          text = replace_once(text, 'for period_type in ("M", "Q", "A"):', 'for period_type in ("M", "Q", "A", "Y"):', "Jobindsats Y-periodetype")\n          write(path, text)\n\n'''
+          if '"Jobindsats Y-periodetype"' not in text:
+              if marker not in text:
+                  raise RuntimeError('Indsættelsespunkt for Y-periodetype mangler')
+              text = text.replace(marker, insert + marker, 1)
+
+          marker2 = '              "pkey annual"\n          )\n\n          start = text.index("def early_talks(data):")\n'
+          insert2 = '''              "pkey annual"\n          )\n          text = text.replace(\n              '    a = re.fullmatch(r"(\\\\d{4})", text)\\n    if a:\\n        return int(a.group(1)), 12\\n',\n              '    a = re.fullmatch(r"(\\\\d{4})Y\\\\d{2}", text)\\n    if a:\\n        return int(a.group(1)), 12\\n'\n          )\n\n          start = text.index("def early_talks(data):")\n'''
+          if marker2 in text:
+              text = text.replace(marker2, insert2, 1)
+          elif 'Y\\\\d{2}' not in text:
+              raise RuntimeError('Indsættelsespunkt for pkey Y mangler')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Gem rettelsen
+        shell: bash
+        run: |
+          git config user.name "Dashboard automation"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add .github/workflows/apply-talks-afterlon.yml
+          git commit -m "Ret efterloensbidrag til Y-perioder"
+          git push origin HEAD:main
