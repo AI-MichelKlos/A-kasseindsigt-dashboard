@@ -288,7 +288,6 @@ def jobindsats(funds, statuses, meta, old):
     definitions = [
         ("jobDagpenge", "dagpenge", ["a dagpenge", "antal personer og fuldtidspersoner"], ["sygedagpenge"], "latest:120", process_dagpenge, "personer og fuldtidspersoner"),
         ("jobDimittend", "graduates", ["antal dimittendledige personer"], [], "latest:120", process_dimittend, "personer og pct."),
-        ("jobEarlyTalks", "earlyTalks", ["jobsamtaler", "a dagpengemodtagere", "a kasserne"], ["jobcent"], "latest:60", lambda r,f,t: process_timeseries(r,f,t,"earlyTalks",["andel"],"share"), "pct."),
         ("jobDagpengeforbrug", "benefitConsumption", ["antal personer med forbrug af dagpengeperioden"], [], "latest:1", lambda r,f,t: process_category(r,f,t,"benefitConsumption",["forbrug","maaned"],["antal personer"]), "personer"),
         ("jobOverlevelse", "survival", ["overlevelseskurver", "a dagpenge"], ["sygedagpenge","kontanthjaelp"], "latest:1", lambda r,f,t: process_category(r,f,t,"survival",["uge","uger"],["pct"]), "pct."),
         ("jobStatusAfter", "statusAfter3m", ["arbejdsmarkedsstatus", "afsluttet", "a dagpenge"], ["sygedagpenge","kontanthjaelp"], "latest:1", lambda r,f,t: process_category(r,f,t,"statusAfter3m",["beskaeftigelse","uddannelse","selvforsoergelse"],["pct"]), "pct."),

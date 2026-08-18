@@ -8,7 +8,7 @@ Forsiden har en hovedvaelger for a-kasse og en valgfri benchmark. Raad medlemsta
 
 - DST AUA01: forsikringsaktive efter a-kasse, alder og koen.
 - DST AUP03: fuldtidsledige i pct. af samtlige forsikrede efter a-kasse.
-- Jobindsats.dk / STAR: a-dagpenge, dimittendledighed, langtidsledighed, opbrugt dagpengeret, forbrug af dagpengeperioden, overlevelseskurver, arbejdsmarkedsstatus efter afsluttet forloeb, tidlig samtaleindsats og raadighedssanktioner.
+- Jobindsats.dk / STAR: a-dagpenge, dimittendledighed, langtidsledighed, opbrugt dagpengeret, forbrug af dagpengeperioden, overlevelseskurver, arbejdsmarkedsstatus efter afsluttet forloeb, samtaleformer i a-kassen, efterloen, efterloensbidragsbetalere og raadighedssanktioner.
 
 De centrale Jobindsats-tabeller findes via API v3-metadata, mens verificerede specialtabeller kan have faste tabel-id'er. Hver Jobindsats-maaling har selvstaendig status i datafilen.
 

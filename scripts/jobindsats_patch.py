@@ -27,6 +27,9 @@ def pkey(period):
     q = re.fullmatch(r"(\d{4})Q0?([1-4])", text)
     if q:
         return int(q.group(1)), int(q.group(2)) * 3
+    y = re.fullmatch(r"(\d{4})Y\d{2}", text)
+    if y:
+        return int(y.group(1)), 12
     return 0, 0
 
 
@@ -103,23 +106,153 @@ def store_timeseries(data, rows, module, measure_col, value_key="persons"):
     return max((p for values in grouped.values() for p in values), key=pkey)
 
 
-def early_talks(data):
-    table = "y30e22ak"
-    spec, fund_h, selection = setup(table)
-    rows = ji.query(table, spec, "latest:28", ((fund_h, selection),))
-    vcol = exact_col(rows, "Andel personer fordelt på antal afholdte jobsamtaler : 3+")
-    if not vcol:
-        raise RuntimeError("Kolonnen for andel med 3+ jobsamtaler mangler")
-    latest = store_timeseries(data, rows, "earlyTalks", vcol, "share")
+def query_up_to(table, spec, limit, breakdowns):
+    try:
+        return ji.query(table, spec, f"latest:{limit}", breakdowns)
+    except RuntimeError as exc:
+        matches = [int(x) for x in re.findall(r"only (\d+) periods are available", str(exc), re.IGNORECASE)]
+        if not matches:
+            raise
+        available = max(matches)
+        if available < 1:
+            raise
+        return ji.query(table, spec, f"latest:{min(limit, available)}", breakdowns)
+
+
+def all_fund_rows(table, spec, limit):
+    fund_h, selection = setup_spec(spec)
+    rows = query_up_to(table, spec, limit, ((fund_h, selection),))
+    total_rows = query_up_to(table, spec, limit, ((fund_h, ji.total_value(fund_h)),))
+    for row in total_rows:
+        row["_dak_force_total"] = True
+    rows.extend(total_rows)
+    return rows
+
+
+def row_fund_code(row, fcol, data):
+    if row.get("_dak_force_total"):
+        return data["meta"]["totalFundCode"]
+    return fund_code(row.get(fcol), data)
+
+
+def talk_forms(data):
+    table = "smt02"
+    spec, _, _ = setup(table)
+    rows = all_fund_rows(table, spec, 120)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    cols = {
+        "total": exact_col(rows, "Samtaler i alt"),
+        "physical": exact_col(rows, "Fysiske samtaler"),
+        "phone": exact_col(rows, "Telefoniske samtaler"),
+        "video": exact_col(rows, "Videosamtaler"),
+        "other": exact_col(rows, "Anden kontakt"),
+    }
+    missing = [key for key, col in cols.items() if not col]
+    if missing:
+        raise RuntimeError(f"Samtaleformer mangler kolonner: {missing}; har {ji.columns(rows)}")
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = row_fund_code(row, fcol, data)
+        period = str(row.get(pcol) or "")
+        if code not in data["funds"] or not period:
+            continue
+        grouped[code][period] = {key: ji.number(row.get(col)) for key, col in cols.items()}
+    if not grouped:
+        raise RuntimeError("Samtaleformer gav ingen a-kassedata")
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"]["talkForms"] = {
+            "labels": labels,
+            **{key: [values[p][key] for p in labels] for key in cols},
+        }
+    latest = max((p for values in grouped.values() for p in values), key=pkey)
     put_status(
         data,
-        "jobEarlyTalks",
+        "jobTalkForms",
         table,
         latest,
-        "pct. med mindst 3 jobsamtaler",
-        "Populationen er personer, der i måneden afslutter a-kassens kontaktforløb med overgang til jobcenter.",
+        "antal jobsamtaler efter samtaleform",
+        "Omfatter jobsamtaler afholdt i a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet. Serien findes fra januar 2024.",
     )
+    data["meta"]["sourceStatus"].pop("jobEarlyTalks", None)
+    data["meta"].setdefault("jobindsatsTables", {}).pop("jobEarlyTalks", None)
+    for fund in data["funds"].values():
+        fund.get("jobindsats", {}).pop("earlyTalks", None)
 
+
+def afterlon(data):
+    table = "y28a02"
+    spec, _, _ = setup(table)
+    rows = all_fund_rows(table, spec, 120)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    persons = exact_col(rows, "Antal personer på efterløn")
+    paid = exact_col(rows, "Antal personer med udbetalt efterløn")
+    fulltime = exact_col(rows, "Antal fuldtidspersoner med udbetalt efterløn")
+    if not persons or not paid or not fulltime:
+        raise RuntimeError(f"Efterløn mangler forventede kolonner; har {ji.columns(rows)}")
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = row_fund_code(row, fcol, data)
+        period = str(row.get(pcol) or "")
+        if code in data["funds"] and period:
+            grouped[code][period] = {
+                "persons": ji.number(row.get(persons)),
+                "paidPersons": ji.number(row.get(paid)),
+                "fulltime": ji.number(row.get(fulltime)),
+            }
+    if not grouped:
+        raise RuntimeError("Efterløn gav ingen a-kassedata")
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"]["afterlon"] = {
+            "labels": labels,
+            "persons": [values[p]["persons"] for p in labels],
+            "paidPersons": [values[p]["paidPersons"] for p in labels],
+            "fulltime": [values[p]["fulltime"] for p in labels],
+        }
+    latest = max((p for values in grouped.values() for p in values), key=pkey)
+    put_status(data, "jobAfterlon", table, latest, "personer og fuldtidspersoner på efterløn")
+
+
+def afterlon_contrib(data):
+    table = "y28a15"
+    spec, _, _ = setup(table)
+    rows = all_fund_rows(table, spec, 30)
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    count = exact_col(rows, "Antal efterlønsbidragsbetalere")
+    share = exact_col(rows, "Andel efterlønsbidragsbetalere blandt dagpengeforsikrede")
+    if not count or not share:
+        raise RuntimeError(f"Efterlønsbidrag mangler forventede kolonner; har {ji.columns(rows)}")
+    grouped = defaultdict(dict)
+    for row in rows:
+        code = row_fund_code(row, fcol, data)
+        period = str(row.get(pcol) or "")
+        if code in data["funds"] and period:
+            grouped[code][period] = {
+                "count": ji.number(row.get(count)),
+                "share": ji.number(row.get(share)),
+            }
+    if not grouped:
+        raise RuntimeError("Efterlønsbidrag gav ingen a-kassedata")
+    for code, values in grouped.items():
+        labels = sorted(values, key=pkey)
+        data["funds"][code]["jobindsats"]["afterlonContrib"] = {
+            "labels": labels,
+            "count": [values[p]["count"] for p in labels],
+            "share": [values[p]["share"] for p in labels],
+        }
+    latest = max((p for values in grouped.values() for p in values), key=pkey)
+    put_status(
+        data,
+        "jobAfterlonContrib",
+        table,
+        latest,
+        "antal og pct. efterlønsbidragsbetalere blandt dagpengeforsikrede",
+        "Opgøres én gang årligt pr. 1. september, dog 1. november i 2012.",
+    )
 
 def long_term(data):
     table, spec = discover(["antal langtidsledige personer"], ["unge", "udenlandsk"])
@@ -392,7 +525,9 @@ def status_after(data):
 def main():
     data = json.loads(OUT.read_text(encoding="utf-8"))
     jobs = [
-        ("jobEarlyTalks", early_talks),
+        ("jobTalkForms", talk_forms),
+        ("jobAfterlon", afterlon),
+        ("jobAfterlonContrib", afterlon_contrib),
         ("jobLongTerm", long_term),
         ("jobExhaustedRights", exhausted_rights),
         ("jobSanctions", sanctions),

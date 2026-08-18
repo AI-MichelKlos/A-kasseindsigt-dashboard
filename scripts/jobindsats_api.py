@@ -246,7 +246,7 @@ def query(table_id, spec, period, breakdowns=()):
             continue
         base[f"hierarchy.{hierarchy_id}"] = total_value(hierarchy)
     errors = []
-    for period_type in ("M", "Q", "A"):
+    for period_type in ("M", "Q", "A", "Y"):
         params = dict(base)
         params[f"period.{period_type}"] = period
         try:
