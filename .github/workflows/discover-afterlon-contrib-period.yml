@@ -1,0 +1,63 @@
+name: Undersoeg periodetype for efterloensbidrag
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/discover-afterlon-contrib-period.yml
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Find tabel og periodetype
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import jobindsats_api as ji
+
+          tables = ji.get('tables', {'format':'json'})
+          found = ji.find_table(tables, ['efterloensbidragsbetalere','dagpengeforsikrede'], [])
+          table = str(found['table_id'])
+          spec = ji.get(f'table/{table}', {'format':'json'})
+          fund = ji.find_hierarchy(spec, ['a kasse','akasse'])
+          level = ji.fund_level(fund)
+          selection = f'level:{level}' if level else '*'
+          base = {'mgroup.*':'*','format':'json',f'hierarchy.{fund["hierarchy_id"]}':selection}
+          try:
+              geo = ji.find_hierarchy(spec, ['omraade','geografi','kommune','region'], ('_hele_landet','_nykom','_reko','_region'))
+              base[f'hierarchy.{geo["hierarchy_id"]}'] = ji.total_value(geo)
+          except Exception:
+              pass
+          result={'tableId':table,'matchText':found.get('_match_text'),'hierarchies':[x.get('hierarchy_id') for x in ji.hierarchies(spec)],'attempts':{}}
+          for typ in ['M','Q','A','Y','Å','YEAR']:
+              params=dict(base); params[f'period.{typ}']='latest:2'
+              try:
+                  payload=ji.get(f'data/{table}',params)
+                  rows=ji.records(payload)
+                  result['attempts'][typ]={'state':'ok','columns':ji.columns(rows),'sampleRows':rows[:3]}
+              except Exception as exc:
+                  result['attempts'][typ]={'state':'error','error':str(exc)[:500]}
+          Path('status/afterlon-contrib-period.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - name: Gem resultat
+        shell: bash
+        run: |
+          git config user.name "Dashboard source discovery"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add status/afterlon-contrib-period.json
+          git commit -m "Gem periodediagnose for efterloensbidrag"
+          git push origin HEAD:main
