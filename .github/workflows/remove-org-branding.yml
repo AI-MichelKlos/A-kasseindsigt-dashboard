@@ -1,0 +1,43 @@
+name: Fjern organisationsnavn fra A-kasseindsigt
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/remove-org-branding.yml
+
+permissions:
+  contents: write
+
+jobs:
+  scrub:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fjern synlig organisationsbranding
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("index.html")
+          text = path.read_text(encoding="utf-8")
+          target = "Danske " + "A-kasser"
+          old = f'<div style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700">{target}</div>'
+          if old not in text:
+              raise RuntimeError("Forventet branding mangler i A-kasseindsigt")
+          text = text.replace(old, "")
+          if target in text:
+              raise RuntimeError("Organisationsnavnet findes stadig i A-kasseindsigt")
+          path.write_text(text, encoding="utf-8")
+          PY
+      - name: Gem ændringen
+        shell: bash
+        run: |
+          git config user.name "Dashboard maintenance"
+          git config user.email "dashboard-automation@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fjern organisationsnavn fra A-kasseindsigt"
+          git push origin HEAD:main
