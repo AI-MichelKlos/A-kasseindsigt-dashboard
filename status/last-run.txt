@@ -1,4 +1,4 @@
 status: fejl
-tid_utc: 2026-08-19T07:57:18Z
+tid_utc: 2026-08-19T08:56:49Z
 dato_dk: 2026-08-19
 fejl: jobTalkForms ok 2026M05 jobAfterlon ok 2026M06 jobAfterlonContrib ok 2025Y01 jobLongTerm ok 2026M06 jobExhaustedRights ok 2026M05 jobSanctions ok 2026Q01 jobDagpengeforbrug ok 2026M05 jobOverlevelse ok 2025Q02 jobStatusAfter ok 2025Q04 DAK-navnestandard anvendt på 21 a-kasser OK: A-kasseindsigt bestod datavalidering ERROR: Required source not registered: jobEarlyTalks 
