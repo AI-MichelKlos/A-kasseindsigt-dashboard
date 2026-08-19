@@ -12,7 +12,9 @@ on:
       - README.md
       - .nojekyll
   schedule:
-    - cron: "17 7-10 * * 1-5"
+    # Flere backupforsøg, fordi GitHub kan forsinke eller droppe enkelte cron-kørsler.
+    # Dagslåsen nedenfor sikrer, at der kun gennemføres én vellykket opdatering pr. dag.
+    - cron: "17 7-11 * * *"
 
 permissions:
   contents: write
@@ -23,7 +25,8 @@ concurrency:
 
 jobs:
   update:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
     env:
       JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
     steps:
@@ -67,7 +70,7 @@ jobs:
             code=$?
           fi
           if [ "$code" -eq 0 ]; then
-            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobEarlyTalks --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobSanctions --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter >> status/run.log 2>&1
+            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobTalkForms --require-source jobAfterlon --require-source jobAfterlonContrib --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobSanctions --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter >> status/run.log 2>&1
             code=$?
           fi
           cat status/run.log || true
