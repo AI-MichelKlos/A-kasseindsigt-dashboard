@@ -159,7 +159,7 @@ def validate():
     text = HTML.read_text(encoding="utf-8")
     required = [
         'data/dashboard-data.json',
-        'akassesiden.goatcounter.com/count',
+        'hovedsidearbejdsmarked.goatcounter.com/count',
         'gc.zgo.at/count.js',
         'id="fundSelect"',
         'id="compareOptions"',
