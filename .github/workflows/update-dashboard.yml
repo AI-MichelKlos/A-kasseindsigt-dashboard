@@ -63,7 +63,7 @@ jobs:
         run: |
           mkdir -p status
           set +e
-          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/completed_duration.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/completed_duration.py scripts/patch_ui.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
           code=$?
           if [ "$code" -eq 0 ]; then
             python scripts/run_update.py >> status/run.log 2>&1
@@ -91,7 +91,7 @@ jobs:
             printf 'status: fejl\ntid_utc: %s\ndato_dk: %s\nfejl: %s\n' "$utc" "$today" "$message" > status/last-run.txt
           fi
 
-      - name: Gem godkendte data eller kun fejlstatus
+      - name: Gem godkendte data og UI eller kun fejlstatus
         if: steps.gate.outputs.should_run == 'true'
         shell: bash
         run: |
@@ -99,6 +99,7 @@ jobs:
           cp status/last-run.txt /tmp/last-run.txt
           if [ "$code" = "0" ]; then
             cp data/dashboard-data.json /tmp/dashboard-data.json
+            cp index.html /tmp/index.html
           fi
           git fetch origin main
           git reset --hard origin/main
@@ -106,7 +107,8 @@ jobs:
           git add status/last-run.txt
           if [ "$code" = "0" ]; then
             cp /tmp/dashboard-data.json data/dashboard-data.json
-            git add data/dashboard-data.json
+            cp /tmp/index.html index.html
+            git add data/dashboard-data.json index.html
           fi
           if git diff --cached --quiet; then
             echo "Ingen aendringer at gemme."
@@ -114,7 +116,7 @@ jobs:
             git config user.name "Dashboard automation"
             git config user.email "dashboard-automation@users.noreply.github.com"
             if [ "$code" = "0" ]; then
-              git commit -m "Opdater A-kasseindsigt data og status"
+              git commit -m "Opdater A-kasseindsigt data og visning"
             else
               git commit -m "Registrer fejl i A-kasseindsigt opdatering"
             fi
