@@ -4,7 +4,9 @@ on:
   push:
     branches: [feature/jobindsats-regioner]
     paths:
+      - scripts/jobindsats_api.py
       - scripts/fetch_jobindsats_regions.py
+      - scripts/run_regional_jobindsats.py
       - scripts/fetch_regions.py
       - scripts/validate_regions.py
       - assets/personal-view.js
@@ -13,7 +15,9 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - scripts/jobindsats_api.py
       - scripts/fetch_jobindsats_regions.py
+      - scripts/run_regional_jobindsats.py
       - scripts/fetch_regions.py
       - scripts/validate_regions.py
       - assets/personal-view.js
@@ -37,12 +41,12 @@ jobs:
           python-version: "3.12"
       - name: Syntakstjek
         run: |
-          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/fetch_regions.py scripts/fetch_jobindsats_regions.py scripts/validate_regions.py scripts/patch_ui.py
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/fetch_regions.py scripts/fetch_jobindsats_regions.py scripts/run_regional_jobindsats.py scripts/validate_regions.py scripts/patch_ui.py
           node --check assets/personal-view.js
       - name: Hent regionale DST-data
         run: python scripts/fetch_regions.py
       - name: Hent regionale Jobindsats-data
-        run: python scripts/fetch_jobindsats_regions.py
+        run: python scripts/run_regional_jobindsats.py
       - name: Valider regionerne
         run: python scripts/validate_regions.py
       - name: Test UI-patch
