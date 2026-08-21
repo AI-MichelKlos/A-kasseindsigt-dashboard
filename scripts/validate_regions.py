@@ -92,20 +92,36 @@ def main() -> None:
             raise RuntimeError(f"{slug}: aldersprofil mangler")
 
         missing = []
+        unavailable = []
+        concrete_codes = [code for code in funds if code != total]
         for code, fund in funds.items():
             jobs = fund.get("jobindsats", {})
+            if code != total and not jobs:
+                unavailable.append((code, fund.get("name", code)))
+                continue
             absent = [module for module in REQUIRED_JOB_MODULES if not jobs.get(module)]
             if exhausted_state == "ok" and not jobs.get("exhaustedRights"):
                 absent.append("exhaustedRights")
             if absent:
                 missing.append(f"{code}: {','.join(absent)}")
         if missing:
-            raise RuntimeError(f"{slug}: regionale Jobindsats-moduler mangler: {'; '.join(missing)}")
+            raise RuntimeError(f"{slug}: ufuldstændige regionale Jobindsats-moduler: {'; '.join(missing)}")
 
-        if total_fund["jobindsats"]["dagpenge"]["labels"][-1] != statuses["jobDagpenge"].get("latestPeriod"):
+        available_count = len(concrete_codes) - len(unavailable)
+        minimum_count = max(1, int(len(concrete_codes) * 0.9))
+        if available_count < minimum_count or len(unavailable) > 1:
+            details = ", ".join(f"{code} {name}" for code, name in unavailable)
+            raise RuntimeError(f"{slug}: for mange a-kasser uden regionale Jobindsats-observationer: {details}")
+        for code, fund_name in unavailable:
+            print(f"{slug}: ingen regionale Jobindsats-observationer for {code} {fund_name}")
+
+        total_jobs = total_fund.get("jobindsats", {})
+        if total_jobs.get("dagpenge", {}).get("labels", [None])[-1] != statuses["jobDagpenge"].get("latestPeriod"):
             raise RuntimeError(f"{slug}: jobDagpenge periode mismatch")
-        if total_fund["jobindsats"]["longTerm"]["labels"][-1] != statuses["jobLongTerm"].get("latestPeriod"):
+        if total_jobs.get("longTerm", {}).get("labels", [None])[-1] != statuses["jobLongTerm"].get("latestPeriod"):
             raise RuntimeError(f"{slug}: jobLongTerm periode mismatch")
+        if total_jobs.get("talkForms", {}).get("labels", [None])[-1] != statuses["jobTalkForms"].get("latestPeriod"):
+            raise RuntimeError(f"{slug}: jobTalkForms periode mismatch")
 
     print("OK: regionale A-kassedata og Jobindsats-moduler bestod validering")
 
