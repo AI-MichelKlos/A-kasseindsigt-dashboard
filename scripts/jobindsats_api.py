@@ -226,16 +226,23 @@ def required(item):
     return False
 
 
+def is_geo_hierarchy(item):
+    text = norm(f"{item.get('hierarchy_id', '')} {json.dumps(item, ensure_ascii=False)}")
+    return any(word in text for word in ("omraade", "geografi", "kommune", "region"))
+
+
 def query(table_id, spec, period, breakdowns=()):
     base = {"mgroup.*": "*", "format": "json"}
     used = set()
-    try:
-        geo = find_hierarchy(spec, ["omraade", "geografi", "kommune", "region"], ("_hele_landet", "_nykom", "_reko", "_region"))
-        geo_id = str(geo["hierarchy_id"])
-        base[f"hierarchy.{geo_id}"] = total_value(geo)
-        used.add(geo_id)
-    except RuntimeError:
-        pass
+    explicit_geo = any(is_geo_hierarchy(hierarchy) for hierarchy, _ in breakdowns)
+    if not explicit_geo:
+        try:
+            geo = find_hierarchy(spec, ["omraade", "geografi", "kommune", "region"], ("_hele_landet", "_nykom", "_reko", "_region"))
+            geo_id = str(geo["hierarchy_id"])
+            base[f"hierarchy.{geo_id}"] = total_value(geo)
+            used.add(geo_id)
+        except RuntimeError:
+            pass
     for hierarchy, selection in breakdowns:
         hierarchy_id = str(hierarchy["hierarchy_id"])
         base[f"hierarchy.{hierarchy_id}"] = selection
