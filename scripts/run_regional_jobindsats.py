@@ -102,7 +102,7 @@ def aggregate_talks(main_data):
             municipality_to_region[clean_place(name)] = slug
 
     unmatched = sorted({clean_place(row.get(ccol)) for row in rows if clean_place(row.get(ccol)) not in municipality_to_region})
-    unmatched = [name for name in unmatched if name and name not in {"hele landet", "i alt"}]
+    unmatched = [name for name in unmatched if name and name not in {"hele landet", "i alt", "uoplyst omraade"}]
     if unmatched:
         raise RuntimeError("Ukendte kommuner i samtaledata: " + ", ".join(unmatched[:20]))
 
@@ -156,7 +156,7 @@ def aggregate_talks(main_data):
             "unit": "antal jobsamtaler efter samtaleform",
             "area": data["meta"]["areaName"],
             "checkedAt": base.now_iso(),
-            "note": "Regionstal er summeret fra Jobindsats' bopælskommuner.",
+            "note": "Regionstal er summeret fra Jobindsats' bopælskommuner. Uoplyst område indgår ikke i en region.",
         }
         (REGION_DIR / f"{slug}.json").write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
         print(data["meta"]["areaName"], "jobTalkForms ok", labels[-1])
