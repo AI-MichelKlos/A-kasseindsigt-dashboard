@@ -7,6 +7,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import jobindsats_api as ji
+import patch_ui
 from fetch_sources import match_fund
 
 BASE = Path(__file__).resolve().parents[1]
@@ -150,6 +151,7 @@ def main():
     }
     data["meta"].setdefault("jobindsatsTables", {})["jobCompletedDuration"] = table
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    patch_ui.main()
     print("jobCompletedDuration ok", table, latest)
 
 
