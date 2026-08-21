@@ -58,6 +58,9 @@
       .regional-notice{display:none;margin:-2px 0 14px;padding:10px 12px;border:1px solid #d8e5dc;border-radius:8px;background:#f4f8f5;color:#405b63;font-size:.82rem;line-height:1.45}
       .regional-notice.show{display:block}.regional-notice strong{color:var(--ink)}
       .regional-unsupported{display:none!important}
+      .regional-no-jobdata #dashboard>.kpis>.kpi:nth-child(n+3){display:none!important}
+      .regional-no-jobdata #dashboard>section:nth-of-type(n+3){display:none!important}
+      .regional-no-jobdata #dashboard>section:nth-of-type(2) .grid>.card:not(.wide){display:none!important}
       .pv-bar{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:2px}.pv-details{position:relative}
       .pv-details>summary,.pv-btn{list-style:none;cursor:pointer;border:1px solid #d6dfd9;border-radius:8px;background:#fff;color:var(--ink);padding:9px 11px;font:inherit;font-weight:650}
       .pv-details>summary::-webkit-details-marker{display:none}.pv-details[open]>summary{border-color:var(--g)}
@@ -96,14 +99,22 @@
   function mergedRegionalData(payload){
     const unsupported=new Set(payload.meta?.unsupportedModules||[]),funds={};
     Object.entries(nationalData.funds||{}).forEach(([code,national])=>{
-      const regional=payload.funds?.[code]||{},regionalJobs={...(regional.jobindsats||{})};
+      const regional=payload.funds?.[code]||{},sourceJobs=regional.jobindsats||{},hasRegionalJobs=Object.keys(sourceJobs).length>0,regionalJobs={...sourceJobs};
       if(unsupported.has('exhaustedRights')&&national.jobindsats?.exhaustedRights)regionalJobs.exhaustedRights=national.jobindsats.exhaustedRights;
-      funds[code]={...national,members:regional.members||{labels:[],values:[]},profileAge:regional.profileAge||[],unemploymentRate:regional.unemploymentRate||{labels:[],values:[]},jobindsats:regionalJobs};
+      funds[code]={...national,members:regional.members||{labels:[],values:[]},profileAge:regional.profileAge||[],unemploymentRate:regional.unemploymentRate||{labels:[],values:[]},jobindsats:regionalJobs,_regionalJobAvailable:hasRegionalJobs};
     });
     return {...nationalData,meta:{...nationalData.meta,sourceStatus:payload.meta.sourceStatus||{},regional:payload.meta},funds};
   }
 
   async function loadRegion(key){if(regionCache.has(key))return regionCache.get(key);const file=REGION_FILES.get(key);if(!file)throw new Error('Ukendt region');const response=await fetch(file,{cache:'no-store'});if(!response.ok)throw new Error('Regional data kunne ikke hentes (HTTP '+response.status+')');const payload=await response.json();if(!payload?.funds||!payload?.meta)throw new Error('Regional datafil er ugyldig');regionCache.set(key,payload);return payload;}
+
+  function selectedRegionalJobsAvailable(){
+    if(activeRegion==='all')return true;
+    const code=document.getElementById('fundSelect')?.value;
+    return DATA?.funds?.[code]?._regionalJobAvailable!==false;
+  }
+
+  function updateAvailability(){document.body.classList.toggle('regional-no-jobdata',activeRegion!=='all'&&!selectedRegionalJobsAvailable());}
 
   function updateUnsupported(){
     const exhaustedCard=document.getElementById('exhaustedChart')?.closest('.card');if(!exhaustedCard)return;
@@ -119,23 +130,41 @@
     const note=document.getElementById('regionalNotice');if(!note)return;if(activeRegion==='all'&&!message){note.className='regional-notice';note.textContent='';return;}
     const name=DATA?.meta?.regional?.areaName||REGION_LABELS.get(activeRegion),unsupported=DATA?.meta?.regional?.unsupportedModules||[];
     note.className='regional-notice show';
-    note.innerHTML=message||'<strong>Regional visning:</strong> Tallene vises for '+name+' og den valgte a-kasse. Historikken går op til 5 år tilbage.'+(unsupported.includes('exhaustedRights')?' Målingen af opbrugt dagpengeret kan ikke opdeles regionalt i den konkrete Jobindsats-kilde og er derfor skjult.':'');
+    if(message){note.innerHTML=message;}
+    else if(!selectedRegionalJobsAvailable()){
+      note.innerHTML='<strong>Regional visning:</strong> DST-tallene vises for '+name+'. Jobindsats har ingen regionale observationer for den valgte a-kasse, så de pågældende afsnit er skjult.';
+    }else{
+      note.innerHTML='<strong>Regional visning:</strong> Tallene vises for '+name+' og den valgte a-kasse. Historikken går op til 5 år tilbage.'+(unsupported.includes('exhaustedRights')?' Målingen af opbrugt dagpengeret kan ikke opdeles regionalt i den konkrete Jobindsats-kilde og er derfor skjult.':'');
+    }
     note.style.borderColor=isError?'#e3b7b0':'';
   }
 
-  function wrapDraw(){if(drawWrapped||typeof draw!=='function')return;const baseDraw=draw;draw=function(){baseDraw();updateRegionalText();updateUnsupported();};drawWrapped=true;}
+  function wrapDraw(){
+    if(drawWrapped||typeof draw!=='function')return;
+    const baseDraw=draw;
+    draw=function(){
+      let restore=null;
+      if(activeRegion!=='all'&&!selectedRegionalJobsAvailable()){
+        const code=document.getElementById('fundSelect')?.value,regionalFund=DATA?.funds?.[code],nationalFund=nationalData?.funds?.[code];
+        if(regionalFund&&nationalFund){restore=regionalFund.jobindsats;regionalFund.jobindsats=nationalFund.jobindsats||{};}
+      }
+      try{baseDraw();}finally{if(restore!==null){const code=document.getElementById('fundSelect')?.value;if(DATA?.funds?.[code])DATA.funds[code].jobindsats=restore;}}
+      updateRegionalText();updateAvailability();updateUnsupported();if(activeRegion!=='all')updateNotice();
+    };
+    drawWrapped=true;
+  }
 
   async function setRegion(key){
     if(!nationalData)return;const select=document.getElementById('regionSelect'),periodSelect=document.getElementById('periodSelect');if(!REGION_FILES.has(key))key='all';
     if(key==='all'){
-      activeRegion='all';DATA=nationalData;setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateNotice();updateUnsupported();if(typeof draw==='function')draw();save();return;
+      activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateNotice();updateUnsupported();if(typeof draw==='function')draw();save();return;
     }
     if(activeRegion==='all'){nationalPeriod=periodSelect.value;if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;}else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
     activeRegion=key;if(select)select.value=key;setPeriodLimit(true);periodSelect.value=Number(regionalPeriod)<=60?String(regionalPeriod):'60';updateNotice('<strong>Henter '+REGION_LABELS.get(key)+'...</strong>');
-    const payload=await loadRegion(key);if(document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);updateNotice();if(typeof draw==='function')draw();save();
+    const payload=await loadRegion(key);if(document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);updateAvailability();updateNotice();if(typeof draw==='function')draw();save();
   }
 
-  function handleRegionError(error){console.error(error);updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateUnsupported();if(typeof draw==='function')draw();}
+  function handleRegionError(error){console.error(error);updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateUnsupported();if(typeof draw==='function')draw();}
 
   async function applyState(state){
     if(!state)return;applying=true;const fund=document.getElementById('fundSelect'),periodSelect=document.getElementById('periodSelect');
