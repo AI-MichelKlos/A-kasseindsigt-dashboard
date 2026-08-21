@@ -13,6 +13,32 @@ EXPECTED = {
     "midtjylland": "Region Midtjylland",
     "nordjylland": "Region Nordjylland",
 }
+REQUIRED_JOB_SOURCES = [
+    "jobDagpenge",
+    "jobDimittend",
+    "jobTalkForms",
+    "jobAfterlon",
+    "jobAfterlonContrib",
+    "jobLongTerm",
+    "jobSanctions",
+    "jobDagpengeforbrug",
+    "jobOverlevelse",
+    "jobStatusAfter",
+    "jobCompletedDuration",
+]
+REQUIRED_JOB_MODULES = [
+    "dagpenge",
+    "graduates",
+    "talkForms",
+    "afterlon",
+    "afterlonContrib",
+    "longTerm",
+    "sanctions",
+    "benefitConsumption",
+    "survival",
+    "statusAfter3m",
+    "completedDuration",
+]
 
 
 def valid_series(block: dict, key: str = "values") -> bool:
@@ -41,10 +67,16 @@ def main() -> None:
             raise RuntimeError(f"Forkert historiklængde i {slug}")
         if set(funds) != set(main_funds):
             raise RuntimeError(f"A-kassekoder afviger i {slug}")
+
         statuses = meta.get("sourceStatus", {})
-        for source in ("AUA01", "AUP03"):
+        for source in ("AUA01", "AUP03", *REQUIRED_JOB_SOURCES):
             if statuses.get(source, {}).get("state") != "ok":
                 raise RuntimeError(f"{slug}: {source} er ikke ok")
+
+        exhausted_state = statuses.get("jobExhaustedRights", {}).get("state")
+        if exhausted_state not in {"ok", "unsupported"}:
+            raise RuntimeError(f"{slug}: jobExhaustedRights har ugyldig status {exhausted_state}")
+
         total_fund = funds.get(total, {})
         members = total_fund.get("members", {})
         rate = total_fund.get("unemploymentRate", {})
@@ -59,7 +91,23 @@ def main() -> None:
         if not total_fund.get("profileAge"):
             raise RuntimeError(f"{slug}: aldersprofil mangler")
 
-    print("OK: regionale A-kassedata bestod validering")
+        missing = []
+        for code, fund in funds.items():
+            jobs = fund.get("jobindsats", {})
+            absent = [module for module in REQUIRED_JOB_MODULES if not jobs.get(module)]
+            if exhausted_state == "ok" and not jobs.get("exhaustedRights"):
+                absent.append("exhaustedRights")
+            if absent:
+                missing.append(f"{code}: {','.join(absent)}")
+        if missing:
+            raise RuntimeError(f"{slug}: regionale Jobindsats-moduler mangler: {'; '.join(missing)}")
+
+        if total_fund["jobindsats"]["dagpenge"]["labels"][-1] != statuses["jobDagpenge"].get("latestPeriod"):
+            raise RuntimeError(f"{slug}: jobDagpenge periode mismatch")
+        if total_fund["jobindsats"]["longTerm"]["labels"][-1] != statuses["jobLongTerm"].get("latestPeriod"):
+            raise RuntimeError(f"{slug}: jobLongTerm periode mismatch")
+
+    print("OK: regionale A-kassedata og Jobindsats-moduler bestod validering")
 
 
 if __name__ == "__main__":
