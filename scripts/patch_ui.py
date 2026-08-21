@@ -89,6 +89,8 @@ def main():
     text = HTML.read_text(encoding="utf-8")
 
     text = text.replace(".source a{color:var(--gd);font-weight:700;text-decoration:none}", ".source a{color:var(--gd);font-weight:400;text-decoration:none}")
+    text = text.replace("mailto:mk@danskeakasser.dk", "mailto:michel@klos.dk")
+    text = text.replace(">mk@danskeakasser.dk</a>", ">michel@klos.dk</a>")
 
     if PERIOD_CSS not in text:
         marker = ".desc{font-size:.86rem;color:var(--muted);margin:5px 0 12px;line-height:1.5}"
