@@ -32,6 +32,7 @@ def validate():
         "jobDagpengeforbrug",
         "jobOverlevelse",
         "jobStatusAfter",
+        "jobCompletedDuration",
     ]
     statuses = meta.get("sourceStatus", {})
     bad_sources = {
@@ -73,6 +74,7 @@ def validate():
         "benefitConsumption",
         "survival",
         "statusAfter3m",
+        "completedDuration",
     ]
     missing_modules = {}
     for code, fund in funds.items():
@@ -83,8 +85,6 @@ def validate():
         details = "; ".join(f"{code}: {','.join(keys)}" for code, keys in missing_modules.items())
         raise RuntimeError(f"Manglende Jobindsats-moduler pr. a-kasse: {details}")
 
-    # Langtidsledighed skal være komplet i standardvisningen (36 måneder)
-    # for alle aktive a-kasser. Vi udfylder aldrig manglende kildeværdier med 0.
     expected_long = total.get("jobindsats", {}).get("longTerm", {})
     expected_labels = expected_long.get("labels", [])[-36:]
     if len(expected_labels) < 36:
@@ -104,7 +104,6 @@ def validate():
     if long_errors:
         raise RuntimeError("Ufuldstændig langtidsledighed: " + "; ".join(long_errors))
 
-    # Rådighedssanktioner er kvartalsvise: 3 års standardvisning = 12 kvartaler.
     sanctions_total = total.get("jobindsats", {}).get("sanctions", {})
     sanctions_labels = sanctions_total.get("labels", [])[-12:]
     if len(sanctions_labels) < 12:
@@ -140,6 +139,7 @@ def validate():
         ("benefitConsumption", "period", "jobDagpengeforbrug"),
         ("survival", "period", "jobOverlevelse"),
         ("statusAfter3m", "period", "jobStatusAfter"),
+        ("completedDuration", "period", "jobCompletedDuration"),
     ]
     for module, period_kind, source in period_checks:
         block = total_jobs.get(module, {})
@@ -171,6 +171,10 @@ def validate():
         'id="gradCountChart"',
         'id="exhaustedChart"',
         'id="statusPeriodText"',
+        'id="statusPeriodHeadline"',
+        'id="survPeriodHeadline"',
+        'id="completedDurationPeriodHeadline"',
+        'id="completedDurationChart"',
         'id="talkPeriodText"',
         'id="afterlonPeriodText"',
         'id="afterlonContribPeriodText"',
@@ -183,6 +187,7 @@ def validate():
         'id="sanctionsPeriodText"',
         'Samtaleformer i a-kassen',
         'Efterløn',
+        'Varighed af afsluttede a-dagpengeforløb',
     ]
     missing = [item for item in required if item not in text]
     if missing:
@@ -193,6 +198,7 @@ def validate():
 def main():
     subprocess.run([sys.executable, str(BASE / "scripts" / "fetch_sources.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "jobindsats_patch.py")], check=True)
+    subprocess.run([sys.executable, str(BASE / "scripts" / "completed_duration.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "apply_dak_names.py")], check=True)
     validate()
 
