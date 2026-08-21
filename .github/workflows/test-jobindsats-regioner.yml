@@ -10,6 +10,16 @@ on:
       - assets/personal-view.js
       - scripts/patch_ui.py
       - .github/workflows/test-jobindsats-regioner.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/fetch_jobindsats_regions.py
+      - scripts/fetch_regions.py
+      - scripts/validate_regions.py
+      - assets/personal-view.js
+      - scripts/patch_ui.py
+      - .github/workflows/update-dashboard.yml
+      - .github/workflows/test-jobindsats-regioner.yml
 
 permissions:
   contents: read
