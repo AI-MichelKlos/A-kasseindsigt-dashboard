@@ -1,3 +1,4 @@
-status: ok
-tid_utc: 2026-08-21T07:37:15Z
+status: fejl
+tid_utc: 2026-08-21T08:54:55Z
 dato_dk: 2026-08-21
+fejl:  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/jobindsats_api.py", line 166, in find_hierarchy raise RuntimeError(f"Kunne ikke finde Jobindsats-hierarki for {words}") RuntimeError: Kunne ikke finde Jobindsats-hierarki for ['varighed', 'afsluttede forloeb'] Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 207, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 201, in main subprocess.run([sys.executable, str(BASE / "scripts" / "completed_duration.py")], check=True) File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/subprocess.py", line 571, in run raise CalledProcessError(retcode, process.args, subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.14/x64/bin/python', '/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/completed_duration.py']' returned non-zero exit status 1. 
