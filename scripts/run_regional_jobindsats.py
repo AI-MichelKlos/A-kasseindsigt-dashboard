@@ -85,7 +85,7 @@ def aggregate_talks(main_data):
         raise RuntimeError("Samtaleformer gav ingen kommunedata")
     fcol = base.exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
     pcol = base.exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
-    ccol = base.exact_col(rows, "Kommune") or ji.best_col(rows, ["kommune"], distinct=True)
+    ccol = base.exact_col(rows, "Område") or ji.best_col(rows, ["omraade"], distinct=True)
     cols = {
         "total": base.exact_col(rows, "Samtaler i alt"),
         "physical": base.exact_col(rows, "Fysiske samtaler"),
@@ -136,7 +136,6 @@ def aggregate_talks(main_data):
                 block[key] = [round(values[p].get(key, 0), 6) for p in labels]
             data["funds"][code].setdefault("jobindsats", {})["talkForms"] = block
 
-        # Totalen beregnes som summen af de konkrete a-kasser, fordi kommuneniveau-kaldet bruger a-kasseniveauet.
         concrete = [code for code in main_data["funds"] if code != total_code]
         periods = sorted({p for code in concrete for p in fund_group.get(code, {})}, key=base.pkey)
         if periods:
