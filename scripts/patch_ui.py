@@ -74,6 +74,8 @@ ENHANCEMENTS = r'''<script>
 </script>
 '''
 
+PERSONAL_VIEW_SCRIPT = '<script src="assets/personal-view.js"></script>\n'
+
 
 def require_replace(text: str, old: str, new: str, label: str) -> str:
     if new in text:
@@ -107,6 +109,12 @@ def main():
         if marker not in text:
             raise RuntimeError("Kunne ikke finde GoatCounter-markør")
         text = text.replace(marker, ENHANCEMENTS + marker, 1)
+
+    if PERSONAL_VIEW_SCRIPT.strip() not in text:
+        marker = '<script data-goatcounter="https://akassesiden.goatcounter.com/count"'
+        if marker not in text:
+            raise RuntimeError("Kunne ikke finde GoatCounter-markør til personlig visning")
+        text = text.replace(marker, PERSONAL_VIEW_SCRIPT + marker, 1)
 
     HTML.write_text(text, encoding="utf-8")
     print("OK: UI-patch anvendt")
