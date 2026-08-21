@@ -62,7 +62,7 @@ jobs:
         run: |
           mkdir -p status
           set +e
-          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/completed_duration.py scripts/fetch_regions.py scripts/fetch_jobindsats_regions.py scripts/validate_regions.py scripts/patch_ui.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/completed_duration.py scripts/fetch_regions.py scripts/fetch_jobindsats_regions.py scripts/run_regional_jobindsats.py scripts/validate_regions.py scripts/patch_ui.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
           code=$?
           if [ "$code" -eq 0 ]; then
             node --check assets/personal-view.js >> status/run.log 2>&1
@@ -81,7 +81,7 @@ jobs:
             code=$?
           fi
           if [ "$code" -eq 0 ]; then
-            python scripts/fetch_jobindsats_regions.py >> status/run.log 2>&1
+            python scripts/run_regional_jobindsats.py >> status/run.log 2>&1
             code=$?
           fi
           if [ "$code" -eq 0 ]; then
