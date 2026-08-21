@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -40,21 +41,20 @@ def fund_code(label, data):
     return match_fund(label, names, data["meta"]["totalFundCode"])
 
 
-def best_level(hierarchy):
-    levels = ji.levels(hierarchy)
-    if not levels:
+def query_rows(table, spec, fund_h, fund_selection):
+    return ji.query(table, spec, "latest:1", ((fund_h, fund_selection),))
+
+
+def duration_label(column):
+    text = str(column).strip()
+    if ":" in text:
+        label = text.rsplit(":", 1)[-1].strip()
+    else:
+        match = re.search(r"varighed\s*(?:af\s+afsluttede\s+forloeb)?\s*[-–]?\s*(.+)$", ji.norm(text))
+        label = match.group(1).strip() if match else ""
+    if not label or ji.norm(label) in {"i alt", "total"}:
         return None
-    ranked = sorted(levels, key=lambda level: len(ji.hierarchy_values(level)), reverse=True)
-    return ranked[0].get("level_id")
-
-
-def query_rows(table, spec, fund_h, fund_selection, duration_h, duration_selection):
-    return ji.query(
-        table,
-        spec,
-        "latest:1",
-        ((fund_h, fund_selection), (duration_h, duration_selection)),
-    )
+    return label
 
 
 def main():
@@ -65,27 +65,33 @@ def main():
     fund_level = ji.fund_level(fund_h)
     fund_selection = f"level:{fund_level}" if fund_level else "*"
 
-    duration_h = ji.find_hierarchy(spec, ["varighed", "afsluttede forloeb"])
-    duration_level = best_level(duration_h)
-    duration_selection = f"level:{duration_level}" if duration_level else "*"
-
-    rows = query_rows(table, spec, fund_h, fund_selection, duration_h, duration_selection)
-    total_rows = query_rows(table, spec, fund_h, ji.total_value(fund_h), duration_h, duration_selection)
+    rows = query_rows(table, spec, fund_h, fund_selection)
+    total_rows = query_rows(table, spec, fund_h, ji.total_value(fund_h))
     for row in total_rows:
         row["_dak_force_total"] = True
     rows.extend(total_rows)
 
     fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
     pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
-    dcol = exact_col(rows, "Varighed af afsluttede forløb") or ji.best_col(
-        rows, ["varighed", "afsluttede", "forloeb"], ["gnsn", "gennemsnit"], distinct=True
-    )
-    count_col = exact_col(rows, "Antal afsluttede forløb")
-    if not count_col:
-        count_col = ji.best_col(
-            rows,
-            ["antal", "afsluttede", "forloeb"],
-            ["gnsn", "gennemsnit"],
+
+    duration_cols = []
+    for col in ji.columns(rows):
+        norm = ji.norm(col)
+        if (
+            "antal" in norm
+            and "afsluttede" in norm
+            and "forloeb" in norm
+            and "varighed" in norm
+            and "gnsn" not in norm
+            and "gennemsnit" not in norm
+        ):
+            label = duration_label(col)
+            if label:
+                duration_cols.append((col, label))
+    if not duration_cols:
+        raise RuntimeError(
+            "Kunne ikke finde varighedskolonner for afsluttede forløb. "
+            f"Kolonner: {ji.columns(rows)}"
         )
 
     avg_candidates = [
@@ -94,6 +100,7 @@ def main():
         if ("gnsn" in ji.norm(col) or "gennemsnit" in ji.norm(col))
         and "varighed" in ji.norm(col)
         and "afsluttede" in ji.norm(col)
+        and "forloeb" in ji.norm(col)
     ]
     avg_col = avg_candidates[0] if avg_candidates else None
 
@@ -111,20 +118,20 @@ def main():
         code = total_code if row.get("_dak_force_total") else fund_code(row.get(fcol), data)
         if code not in data["funds"]:
             continue
-        label = str(row.get(dcol) or "").strip()
-        value = ji.number(row.get(count_col))
-        if label and ji.norm(label) not in {"i alt", "total"} and value is not None:
-            grouped[code].append({"label": label, "value": value})
-        if avg_col and code not in averages:
+        items = []
+        for col, label in duration_cols:
+            value = ji.number(row.get(col))
+            if value is not None:
+                items.append({"label": label, "value": value})
+        if items:
+            grouped[code] = items
+        if avg_col:
             avg = ji.number(row.get(avg_col))
             if avg is not None:
                 averages[code] = avg
 
     if not grouped:
-        raise RuntimeError(
-            "Afsluttede forløb gav ingen varighedsfordeling. "
-            f"Kolonner: {ji.columns(rows)}"
-        )
+        raise RuntimeError("Afsluttede forløb gav ingen varighedsfordeling")
 
     missing = []
     for code in data["funds"]:
@@ -152,7 +159,7 @@ def main():
     data["meta"].setdefault("jobindsatsTables", {})["jobCompletedDuration"] = table
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     patch_ui.main()
-    print("jobCompletedDuration ok", table, latest)
+    print("jobCompletedDuration ok", table, latest, [label for _, label in duration_cols])
 
 
 if __name__ == "__main__":
