@@ -63,14 +63,14 @@ jobs:
         run: |
           mkdir -p status
           set +e
-          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
+          python -m py_compile scripts/statbank_api.py scripts/jobindsats_api.py scripts/fetch_sources.py scripts/jobindsats_patch.py scripts/completed_duration.py scripts/apply_dak_names.py scripts/run_update.py scripts/validate_dashboard_repo.py > status/run.log 2>&1
           code=$?
           if [ "$code" -eq 0 ]; then
             python scripts/run_update.py >> status/run.log 2>&1
             code=$?
           fi
           if [ "$code" -eq 0 ]; then
-            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobTalkForms --require-source jobAfterlon --require-source jobAfterlonContrib --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobSanctions --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter >> status/run.log 2>&1
+            python scripts/validate_dashboard_repo.py --repo . --require-source AUA01 --require-source AUP03 --require-source jobDagpenge --require-source jobDimittend --require-source jobTalkForms --require-source jobAfterlon --require-source jobAfterlonContrib --require-source jobLongTerm --require-source jobExhaustedRights --require-source jobSanctions --require-source jobDagpengeforbrug --require-source jobOverlevelse --require-source jobStatusAfter --require-source jobCompletedDuration >> status/run.log 2>&1
             code=$?
           fi
           cat status/run.log || true
