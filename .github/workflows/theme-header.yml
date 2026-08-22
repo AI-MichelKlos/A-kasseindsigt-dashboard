@@ -1,0 +1,46 @@
+name: Opdater topdesign
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/theme-header.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  theme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gør baggrundsmønstret tydeligere
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+          start = '<style id="dak-header-visibility">'
+          end = '</style><!-- /dak-header-visibility -->'
+          css = '''<style id="dak-header-visibility">
+          header{position:relative;overflow:hidden;background-image:linear-gradient(135deg,#0F2B36,#244d4b)!important}
+          header::before{content:"";position:absolute;inset:0;background:url("assets/arbejdsmarkedets-puls.webp") center 46%/cover no-repeat;opacity:.48;filter:brightness(1.7) contrast(1.35);pointer-events:none}
+          header>.wrap{position:relative;z-index:1}
+          @media(max-width:720px){header::before{background-position:58% center;opacity:.44}}
+          </style><!-- /dak-header-visibility -->'''
+          if start in text and end in text:
+              a=text.index(start);b=text.index(end,a)+len(end);text=text[:a]+css+text[b:]
+          else:
+              text=text.replace('</head>',css+'\n</head>',1)
+          p.write_text(text,encoding='utf-8')
+          PY
+      - name: Gem ændringen
+        run: |
+          git add index.html
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "Dashboard design"
+          git config user.email "dashboard-design@users.noreply.github.com"
+          git commit -m "Gør mønstret tydeligere i A-kasseindsigt"
+          git push
