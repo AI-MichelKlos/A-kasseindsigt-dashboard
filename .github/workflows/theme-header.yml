@@ -26,9 +26,9 @@ jobs:
           end = '</style><!-- /dak-header-visibility -->'
           css = '''<style id="dak-header-visibility">
           header{position:relative;overflow:hidden;background-image:linear-gradient(135deg,#0F2B36,#244d4b)!important}
-          header::before{content:"";position:absolute;inset:0;background:url("assets/arbejdsmarkedets-puls.webp") center 46%/cover no-repeat;opacity:.48;filter:brightness(1.7) contrast(1.35);pointer-events:none}
+          header::before{content:"";position:absolute;inset:0;background:url("assets/arbejdsmarkedets-puls.webp") center 46%/cover no-repeat;opacity:.60;filter:brightness(1.9) contrast(1.45);pointer-events:none}
           header>.wrap{position:relative;z-index:1}
-          @media(max-width:720px){header::before{background-position:58% center;opacity:.44}}
+          @media(max-width:720px){header::before{background-position:58% center;opacity:.56}}
           </style><!-- /dak-header-visibility -->'''
           if start in text and end in text:
               a=text.index(start);b=text.index(end,a)+len(end);text=text[:a]+css+text[b:]
