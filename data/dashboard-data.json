@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "A-kasseindsigt",
-    "updated": "2026-08-27",
-    "checkedAt": "2026-08-27T20:19:39+02:00",
+    "updated": "2026-08-28",
+    "checkedAt": "2026-08-28T21:28:41+02:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
@@ -10,7 +10,7 @@
         "dataset": "AUA01",
         "latestPeriod": "2026M06",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-08-27T20:18:57+02:00",
+        "checkedAt": "2026-08-28T21:28:03+02:00",
         "sourceUpdated": "2026-07-30T08:00:00"
       },
       "AUP03": {
@@ -19,7 +19,7 @@
         "dataset": "AUP03",
         "latestPeriod": "2026M06",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-08-27T20:19:17+02:00",
+        "checkedAt": "2026-08-28T21:28:22+02:00",
         "sourceUpdated": "2026-07-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
@@ -29,7 +29,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M07",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-08-27T20:19:29+02:00"
+        "checkedAt": "2026-08-28T21:28:33+02:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -37,7 +37,7 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M07",
         "unit": "personer og pct.",
-        "checkedAt": "2026-08-27T20:19:33+02:00"
+        "checkedAt": "2026-08-28T21:28:36+02:00"
       },
       "jobDagpengeforbrug": {
         "state": "ok",
@@ -45,7 +45,7 @@
         "dataset": "y01a12",
         "latestPeriod": "2026M06",
         "unit": "personer efter forbrugt dagpengeperiode",
-        "checkedAt": "2026-08-27T20:20:43+02:00"
+        "checkedAt": "2026-08-28T21:29:12+02:00"
       },
       "jobOverlevelse": {
         "state": "ok",
@@ -53,7 +53,7 @@
         "dataset": "y01b01",
         "latestPeriod": "2025Q02",
         "unit": "pct. fortsat på dagpenge uden tilbagefald",
-        "checkedAt": "2026-08-27T20:20:45+02:00"
+        "checkedAt": "2026-08-28T21:29:13+02:00"
       },
       "jobStatusAfter": {
         "state": "ok",
@@ -61,7 +61,7 @@
         "dataset": "y01b15",
         "latestPeriod": "2025Q04",
         "unit": "pct. efter arbejdsmarkedsstatus 3 mdr. efter afsluttet forløb",
-        "checkedAt": "2026-08-27T20:20:57+02:00"
+        "checkedAt": "2026-08-28T21:29:26+02:00"
       },
       "jobTalkForms": {
         "state": "ok",
@@ -69,7 +69,7 @@
         "dataset": "smt02",
         "latestPeriod": "2026M06",
         "unit": "antal jobsamtaler efter samtaleform",
-        "checkedAt": "2026-08-27T20:19:47+02:00",
+        "checkedAt": "2026-08-28T21:28:46+02:00",
         "note": "Omfatter jobsamtaler afholdt i a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet. Serien findes fra januar 2024."
       },
       "jobAfterlon": {
@@ -78,7 +78,7 @@
         "dataset": "y28a02",
         "latestPeriod": "2026M07",
         "unit": "personer og fuldtidspersoner på efterløn",
-        "checkedAt": "2026-08-27T20:20:09+02:00"
+        "checkedAt": "2026-08-28T21:28:50+02:00"
       },
       "jobAfterlonContrib": {
         "state": "ok",
@@ -86,7 +86,7 @@
         "dataset": "y28a15",
         "latestPeriod": "2025Y01",
         "unit": "antal og pct. efterlønsbidragsbetalere blandt dagpengeforsikrede",
-        "checkedAt": "2026-08-27T20:20:22+02:00",
+        "checkedAt": "2026-08-28T21:28:57+02:00",
         "note": "Opgøres én gang årligt pr. 1. september, dog 1. november i 2012."
       },
       "jobLongTerm": {
@@ -95,7 +95,7 @@
         "dataset": "y25i09",
         "latestPeriod": "2026M07",
         "unit": "antal langtidsledige personer på a-dagpenge",
-        "checkedAt": "2026-08-27T20:20:30+02:00",
+        "checkedAt": "2026-08-28T21:29:03+02:00",
         "note": "Langtidsledige har været ledige eller aktiverede mindst 80 pct. af de seneste 12 måneder."
       },
       "jobExhaustedRights": {
@@ -104,7 +104,7 @@
         "dataset": "y01ud01di",
         "latestPeriod": "2026M05",
         "unit": "antal personer med opbrugt dagpengeret",
-        "checkedAt": "2026-08-27T20:20:32+02:00",
+        "checkedAt": "2026-08-28T21:29:05+02:00",
         "note": "A-kassefordelingen følger seneste udbetalende a-kasse."
       },
       "jobSanctions": {
@@ -113,7 +113,7 @@
         "dataset": "y01h01",
         "latestPeriod": "2026Q01",
         "unit": "antal rådighedssanktioner, pct. sanktionerede og gennemsnit pr. sanktioneret ledig",
-        "checkedAt": "2026-08-27T20:20:41+02:00",
+        "checkedAt": "2026-08-28T21:29:11+02:00",
         "note": "Databrud: 2019-2020 omfatter kun bestemte sager rejst via jobcentrene; fra 1. kvt. 2021 indgår også sager rejst af a-kasserne selv."
       },
       "jobCompletedDuration": {
@@ -122,7 +122,7 @@
         "dataset": "y01a27",
         "latestPeriod": "2026M06",
         "unit": "antal afsluttede a-dagpengeforløb efter varighed og gennemsnitlig varighed i uger",
-        "checkedAt": "2026-08-27T20:21:02+02:00",
+        "checkedAt": "2026-08-28T21:29:29+02:00",
         "note": "Et forløb er afsluttet, når der følger en sammenhængende kalendermåned uden udbetaling af a-dagpenge."
       }
     },
@@ -144,7 +144,7 @@
         "jobSanctions"
       ],
       "failed": [],
-      "checkedAt": "2026-08-27T20:20:57+02:00"
+      "checkedAt": "2026-08-28T21:29:26+02:00"
     },
     "methodNotes": [
       "Rå antal vises for den valgte a-kasse alene. Indeks, procenter og andele kan sammenlignes med I alt og flere valgte a-kasser.",
