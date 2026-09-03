@@ -9,6 +9,7 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parents[1]
 DATA = BASE / "data" / "dashboard-data.json"
 HTML = BASE / "index.html"
+PERSONAL_VIEW = BASE / "assets" / "personal-view.js"
 
 
 def validate():
@@ -192,6 +193,18 @@ def validate():
     missing = [item for item in required if item not in text]
     if missing:
         raise RuntimeError(f"HTML mangler: {missing}")
+
+    personal_view = PERSONAL_VIEW.read_text(encoding="utf-8")
+    required_personal_view = [
+        "DAK_CROSS_GEOGRAPHY_COMPARE_20260903",
+        "comparisonFundSelect",
+        "comparisonRegionSelect",
+        "Sammenligning:",
+        "DAK_GEOGRAPHY_CONTEXT_20260903",
+    ]
+    missing_personal_view = [item for item in required_personal_view if item not in personal_view]
+    if missing_personal_view:
+        raise RuntimeError(f"Sammenligningsvisning mangler: {missing_personal_view}")
     print("OK: A-kasseindsigt bestod datavalidering")
 
 
