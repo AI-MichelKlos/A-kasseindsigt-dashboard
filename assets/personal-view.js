@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const STORAGE_KEY='dak-a-kasseindsigt-personal-view-v4';
+  const STORAGE_KEY='dak-a-kasseindsigt-personal-view-v5';
   const PARAM='pv';
   const COMPARISON_CODE='__dak_cross_geography_comparison__';
   const COMPARISON_SENTINEL='__DAK_COMPARISON__';
@@ -34,7 +34,7 @@
   let nationalPeriod=null;
   let regionalPeriod='60';
   let comparisonFundCode='';
-  let comparisonRegionChoice='same';
+  let comparisonRegionChoice='';
   let comparisonData=null;
   let comparisonDataRegion=null;
   let comparisonLoadToken=0;
@@ -51,7 +51,7 @@
     try{let b64=value.replace(/-/g,'+').replace(/_/g,'/');while(b64.length%4)b64+='=';const binary=atob(b64),bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));return JSON.parse(new TextDecoder().decode(bytes));}catch(_){return null;}
   }
   function sharedState(){return decodeState(new URLSearchParams(location.search).get(PARAM)||'');}
-  function storedState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||localStorage.getItem('dak-a-kasseindsigt-personal-view-v3')||localStorage.getItem('dak-a-kasseindsigt-personal-view-v2')||localStorage.getItem('dak-a-kasseindsigt-personal-view-v1')||'null');}catch(_){return null;}}
+  function storedState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');}catch(_){return null;}}
   function moduleKey(el,index){return el.dataset.personalViewKey||(el.dataset.personalViewKey='section-'+(index+1));}
   function modules(){
     const result=[],kpis=document.querySelector('#dashboard > .kpis');
@@ -63,7 +63,7 @@
     return result;
   }
   function hiddenKeys(){return modules().filter(m=>m.nodes.some(n=>n.hidden)).map(m=>m.key);}
-  function currentState(){return{v:4,region:document.getElementById('regionSelect')?.value||'all',fund:document.getElementById('fundSelect')?.value||'',period:document.getElementById('periodSelect')?.value||'',comparisonFund:comparisonFundCode,comparisonRegion:comparisonRegionChoice,hidden:hiddenKeys()};}
+  function currentState(){return{v:5,region:document.getElementById('regionSelect')?.value||'all',fund:document.getElementById('fundSelect')?.value||'',period:document.getElementById('periodSelect')?.value||'',comparisonFund:comparisonFundCode,comparisonRegion:comparisonRegionChoice,hidden:hiddenKeys()};}
   function save(){if(applying)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(currentState()));}catch(_){} }
   function applyVisibility(hidden){const set=new Set(Array.isArray(hidden)?hidden:[]);modules().forEach(m=>m.nodes.forEach(n=>n.hidden=set.has(m.key)));document.querySelectorAll('[data-pv-module]').forEach(input=>input.checked=!set.has(input.value));}
   function refreshChecks(){
@@ -76,7 +76,7 @@
     if(document.getElementById('regionalPersonalViewStyle'))return;
     const style=document.createElement('style');style.id='regionalPersonalViewStyle';
     style.textContent=`
-      .controls.with-regions{grid-template-columns:1.25fr 1.6fr .7fr 1fr auto}
+      .controls.with-regions{grid-template-columns:1.15fr 1fr 1.15fr 1fr .7fr auto;align-items:start}.controls.with-regions>.pill{margin-top:20px}
       .regional-notice{display:none;margin:-2px 0 14px;padding:10px 12px;border:1px solid #d8e5dc;border-radius:8px;background:#f4f8f5;color:#405b63;font-size:.82rem;line-height:1.45}
       .regional-notice.show{display:block}.regional-notice strong{color:var(--ink)}
       .geography-context,.comparison-context{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px;width:max-content;max-width:100%;padding:4px 8px;border:1px solid #d8e5dc;border-radius:999px;background:#eef5f0;color:#405b63;font-size:.75rem;line-height:1.2;vertical-align:middle}
@@ -84,7 +84,7 @@
       .geography-context.is-national-fallback{border-color:#e8c9a9;background:#fff7ed}.geography-context.is-national-fallback .geography-context-note{color:#7a4b22;font-weight:650}
       .comparison-context{border-color:#c8ddeb;background:#f2f7fb}.comparison-context.is-national-fallback{border-color:#e8c9a9;background:#fff7ed}.comparison-context.is-unavailable{border-color:#d8d8d8;background:#f6f6f6}.comparison-context .comparison-context-note{font-weight:650}
       .kpi>.geography-context,.kpi>.comparison-context{margin:7px 6px 0 0}.card>.geography-context,.card>.comparison-context{margin:7px 6px 11px 0}
-      .compare-menu.comparison-menu{max-height:none;overflow:visible;padding:12px}.comparison-builder{display:grid;gap:10px}.comparison-field{display:grid;gap:5px;color:var(--muted);font-size:.78rem;font-weight:700}.comparison-field select{width:100%;min-height:40px}.comparison-note{font-size:.75rem;color:var(--muted);line-height:1.4}.comparison-note.error{color:#9a3f32}.comparison-note strong{color:var(--ink)}
+      .comparison-region-control{position:relative}.comparison-note{display:block;margin-top:5px;font-size:.72rem;color:var(--muted);font-weight:500;line-height:1.3}.comparison-note.error{color:#9a3f32}.comparison-region-control select:disabled{background:#f4f6f5;color:#899397;cursor:not-allowed}
       .pv-bar{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:2px}.pv-details{position:relative}
       .pv-details>summary,.pv-btn{list-style:none;cursor:pointer;border:1px solid #d6dfd9;border-radius:8px;background:#fff;color:var(--ink);padding:9px 11px;font:inherit;font-weight:650}
       .pv-details>summary::-webkit-details-marker{display:none}.pv-details[open]>summary{border-color:var(--g)}
@@ -95,7 +95,7 @@
       .comparison-kpi{margin-top:9px;padding-top:8px;border-top:1px solid var(--grid);font-size:.76rem;color:#405b63;line-height:1.35}.comparison-kpi strong{display:inline;font-size:inherit;margin:0;color:var(--ink)}
       .comparison-strip{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:8px 0 12px;font-size:.78rem;color:#405b63}.comparison-chip{padding:6px 8px;border:1px dashed #bdd4e3;border-radius:7px;background:#f2f7fb}.comparison-chip strong{color:var(--ink)}.comparison-period{color:var(--muted);font-size:.75rem}
       @media(max-width:1100px){.controls.with-regions{grid-template-columns:1fr 1fr 1fr}}
-      @media(max-width:720px){.controls.with-regions{grid-template-columns:1fr}.pv-panel{position:fixed;left:16px;right:16px;top:20%;width:auto;max-height:65vh;overflow:auto}.pv-btn,.pv-details>summary{width:auto}.comparison-strip{align-items:flex-start}}
+      @media(max-width:720px){.controls.with-regions{grid-template-columns:1fr}.controls.with-regions>.pill{margin-top:0}.pv-panel{position:fixed;left:16px;right:16px;top:20%;width:auto;max-height:65vh;overflow:auto}.pv-btn,.pv-details>summary{width:auto}.comparison-strip{align-items:flex-start}}
     `;
     document.head.appendChild(style);
   }
@@ -104,44 +104,41 @@
     const controls=document.querySelector('.controls');if(!controls||document.getElementById('regionSelect'))return;
     controls.classList.add('with-regions');
     const control=document.createElement('div');control.className='control region-control';control.innerHTML='<label for="regionSelect">Geografi</label><select id="regionSelect"></select>';
-    const status=document.getElementById('statusPill');controls.insertBefore(control,status||null);
+    const fundControl=document.getElementById('fundSelect')?.closest('.control');if(fundControl)fundControl.insertAdjacentElement('afterend',control);else controls.prepend(control);
     const select=control.querySelector('select');REGIONS.forEach(([key,label])=>select.add(new Option(label,key)));
     const notice=document.createElement('div');notice.className='regional-notice';notice.id='regionalNotice';controls.parentElement.appendChild(notice);
     select.addEventListener('change',()=>setRegion(select.value).catch(handleRegionError));
   }
 
+  /* DAK_CONTROL_ORDER_20260903 */
   /* DAK_CROSS_GEOGRAPHY_COMPARE_20260903 */
   function injectComparisonControls(){
-    const host=document.getElementById('compareOptions');if(!host||document.getElementById('comparisonFundSelect'))return;
-    host.classList.add('comparison-menu');
-    host.innerHTML='<div class="comparison-builder"><label class="comparison-field"><span>Enhed</span><select id="comparisonFundSelect"></select></label><label class="comparison-field"><span>Geografi</span><select id="comparisonRegionSelect"></select></label><div class="comparison-note" id="comparisonNote">Der vises én sammenligning ad gangen.</div></div>';
+    const host=document.getElementById('compareOptions'),comparisonControl=host?.closest('.control');if(!comparisonControl||document.getElementById('comparisonFundSelect'))return;
+    comparisonControl.className='control comparison-fund-control';
+    comparisonControl.innerHTML='<label for="comparisonFundSelect">Sammenlign med</label><select id="comparisonFundSelect"></select>';
+    const comparisonRegionControl=document.createElement('div');comparisonRegionControl.className='control comparison-region-control';comparisonRegionControl.innerHTML='<label for="comparisonRegionSelect">Sammenligningens geografi</label><select id="comparisonRegionSelect" aria-describedby="comparisonNote"></select><small class="comparison-note" id="comparisonNote">Vælg eventuelt en sammenligning.</small>';
+    comparisonControl.insertAdjacentElement('afterend',comparisonRegionControl);
     const fundSelect=document.getElementById('comparisonFundSelect'),regionSelect=document.getElementById('comparisonRegionSelect'),total=nationalData?.meta?.totalFundCode;
-    fundSelect.add(new Option('Ingen sammenligning',''));
+    fundSelect.add(new Option('Ingen',''));
     if(total&&nationalData?.funds?.[total])fundSelect.add(new Option('I alt',total));
     Object.entries(nationalData?.funds||{}).filter(([code])=>code!==total).sort((a,b)=>a[1].name.localeCompare(b[1].name,'da')).forEach(([code,item])=>fundSelect.add(new Option(item.name,code)));
-    regionSelect.add(new Option('Samme geografi som hovedvalget','same'));
+    regionSelect.add(new Option('Ingen',''));
     REGIONS.forEach(([key,label])=>regionSelect.add(new Option(label,key)));
-    comparisonFundCode=total&&nationalData?.funds?.[total]?total:'';comparisonRegionChoice='same';
+    comparisonFundCode='';comparisonRegionChoice='';
     fundSelect.value=comparisonFundCode;regionSelect.value=comparisonRegionChoice;
     fundSelect.addEventListener('change',()=>setComparisonSelection(fundSelect.value,regionSelect.value).catch(handleComparisonError));
     regionSelect.addEventListener('change',()=>setComparisonSelection(fundSelect.value,regionSelect.value).catch(handleComparisonError));
     updateComparisonControls();
   }
 
-  function updateSameRegionOption(){
-    const select=document.getElementById('comparisonRegionSelect'),option=select?.querySelector('option[value="same"]');
-    if(option)option.textContent='Samme geografi som hovedvalget ('+(REGION_LABELS.get(activeRegion)||'Hele landet')+')';
-  }
-
   function updateComparisonControls(message='',isError=false){
     const fundSelect=document.getElementById('comparisonFundSelect'),regionSelect=document.getElementById('comparisonRegionSelect'),note=document.getElementById('comparisonNote');
     if(fundSelect&&fundSelect.value!==comparisonFundCode)fundSelect.value=comparisonFundCode;
     if(regionSelect){if(regionSelect.value!==comparisonRegionChoice)regionSelect.value=comparisonRegionChoice;regionSelect.disabled=!comparisonFundCode;}
-    updateSameRegionOption();
     if(note){
       const sameChoice=comparisonFundCode===document.getElementById('fundSelect')?.value&&resolvedComparisonRegion()===activeRegion;
-      const isTotal=comparisonFundCode===nationalData?.meta?.totalFundCode;
-      const defaultMessage=!comparisonFundCode?'Vælg I alt eller en a-kasse for at tilføje en sammenligning.':sameChoice?'Sammenligningen er identisk med hovedvalget. Vælg en anden a-kasse eller geografi.':isTotal?'I alt vises direkte i procenter, indeks og fordelinger samt som tydelige sammenligningstal ved grafer med rå antal.':'Der vises én sammenligning ad gangen.';
+      const total=nationalData?.meta?.totalFundCode,involvesTotal=comparisonFundCode===total||document.getElementById('fundSelect')?.value===total;
+      const defaultMessage=!comparisonFundCode?'Vælg eventuelt I alt eller en a-kasse som sammenligning.':!comparisonRegionChoice?'Vælg geografi for sammenligningen.':sameChoice?'Sammenligningen er identisk med hovedvalget. Vælg en anden a-kasse eller geografi.':involvesTotal?'Når I alt indgår, vises tydelige sammenligningstal ved grafer med rå antal.':'Der vises én sammenligning ad gangen.';
       note.classList.toggle('error',isError);note.textContent=message||defaultMessage;
     }
     updateComparisonSummary();
@@ -155,7 +152,7 @@
     const details=document.getElementById('pvDetails');details?.addEventListener('mouseleave',()=>details.removeAttribute('open'));
     document.addEventListener('pointerdown',e=>{if(details?.open&&!details.contains(e.target))details.removeAttribute('open');});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&details?.open)details.removeAttribute('open');});
     document.getElementById('pvShare').addEventListener('click',async()=>{const url=new URL(location.href);url.searchParams.set(PARAM,encodeState(currentState()));try{await navigator.clipboard.writeText(url.toString());document.getElementById('pvFeedback').textContent='Link kopieret';}catch(_){prompt('Kopiér dette link',url.toString());}setTimeout(()=>{const f=document.getElementById('pvFeedback');if(f)f.textContent='';},2500);});
-    document.getElementById('pvReset').addEventListener('click',()=>{localStorage.removeItem(STORAGE_KEY);localStorage.removeItem('dak-a-kasseindsigt-personal-view-v3');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v2');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v1');const url=new URL(location.href);url.searchParams.delete(PARAM);location.replace(url.toString());});
+    document.getElementById('pvReset').addEventListener('click',()=>{localStorage.removeItem(STORAGE_KEY);localStorage.removeItem('dak-a-kasseindsigt-personal-view-v4');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v3');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v2');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v1');const url=new URL(location.href);url.searchParams.delete(PARAM);location.replace(url.toString());});
   }
 
   function setPeriodLimit(regional){const select=document.getElementById('periodSelect');if(!select)return;[...select.options].forEach(option=>{if(Number(option.value)>60){option.disabled=regional;option.hidden=regional;}});}
@@ -173,7 +170,7 @@
 
   async function loadRegion(key){if(regionCache.has(key))return regionCache.get(key);const file=REGION_FILES.get(key);if(!file)throw new Error('Ukendt region');const response=await fetch(file,{cache:'no-store'});if(!response.ok)throw new Error('Regional data kunne ikke hentes (HTTP '+response.status+')');const payload=await response.json();if(!payload?.funds||!payload?.meta)throw new Error('Regional datafil er ugyldig');regionCache.set(key,payload);return payload;}
 
-  function resolvedComparisonRegion(){return comparisonRegionChoice==='same'?activeRegion:comparisonRegionChoice;}
+  function resolvedComparisonRegion(){return comparisonRegionChoice;}
 
   async function dataForRegion(key){
     if(key==='all')return nationalData;
@@ -184,7 +181,8 @@
 
   async function ensureComparisonData(){
     const key=resolvedComparisonRegion(),token=++comparisonLoadToken;
-    if(!comparisonFundCode||key===activeRegion||key==='all'){
+    if(!comparisonFundCode||!key){comparisonData=null;comparisonDataRegion=null;return true;}
+    if(key===activeRegion||key==='all'){
       comparisonData=key==='all'?nationalData:DATA;comparisonDataRegion=key;return true;
     }
     updateComparisonControls('Henter '+(REGION_LABELS.get(key)||'sammenligningsdata')+'...');
@@ -199,7 +197,7 @@
 
   async function setComparisonSelection(fundCode,regionChoice,redraw=true){
     comparisonFundCode=nationalData?.funds?.[fundCode]?fundCode:'';
-    comparisonRegionChoice=regionChoice==='same'||REGION_FILES.has(regionChoice)?regionChoice:'same';
+    comparisonRegionChoice=comparisonFundCode&&REGION_FILES.has(regionChoice)?regionChoice:'';
     updateComparisonControls();
     await ensureComparisonData();
     if(redraw&&typeof draw==='function')draw();
@@ -232,7 +230,7 @@
   }
 
   function comparisonPair(){
-    if(!comparisonFundCode)return null;
+    if(!comparisonFundCode||!comparisonRegionChoice)return null;
     const regionKey=resolvedComparisonRegion(),dataset=comparisonDataset(),sourceFund=dataset?.funds?.[comparisonFundCode],primaryCode=document.getElementById('fundSelect')?.value;
     if(!sourceFund||(comparisonFundCode===primaryCode&&regionKey===activeRegion))return null;
     return{fundCode:comparisonFundCode,regionKey,sourceFund,drawFund:effectiveFund(sourceFund,comparisonFundCode,regionKey)};
@@ -285,7 +283,7 @@
   function installComparisonBridge(){
     if(comparisonBridgeInstalled)return;
     compareCodes=function(){return drawingComparisonPair&&DATA?.funds?.[COMPARISON_CODE]?[COMPARISON_CODE]:[];};
-    rawCompareCodes=function(){return drawingComparisonPair&&drawingComparisonPair.fundCode!==nationalData?.meta?.totalFundCode&&DATA?.funds?.[COMPARISON_CODE]?[COMPARISON_CODE]:[];};
+    rawCompareCodes=function(){const total=nationalData?.meta?.totalFundCode,primary=document.getElementById('fundSelect')?.value;return drawingComparisonPair&&primary!==total&&drawingComparisonPair.fundCode!==total&&DATA?.funds?.[COMPARISON_CODE]?[COMPARISON_CODE]:[];};
     updateCompareSummary=function(){updateComparisonSummary();};
     comparisonBridgeInstalled=true;
   }
@@ -398,8 +396,8 @@
 
   function applyComparison(pair){
     clearComparisonUi();updateComparisonSummary();updateComparisonContexts(pair);if(!pair)return;
-    const isTotal=pair.fundCode===nationalData?.meta?.totalFundCode;
-    if(isTotal){addTotalComparisonStrips(pair);addSanctionTypeStrip(pair);}else{addTalkComparison(pair);addComparisonLine('st','sanctions','total',pair);addSanctionTypeComparison(pair);}
+    const total=nationalData?.meta?.totalFundCode,involvesTotal=pair.fundCode===total||document.getElementById('fundSelect')?.value===total;
+    if(involvesTotal){addTotalComparisonStrips(pair);addSanctionTypeStrip(pair);}else{addTalkComparison(pair);addComparisonLine('st','sanctions','total',pair);addSanctionTypeComparison(pair);}
     const primaryDuration=moduleData(effectivePrimaryFund(),'completedDuration'),otherDuration=moduleData(pair.drawFund,'completedDuration');
     const primaryDurationPeriod=primaryDuration?.period||'',otherDurationPeriod=otherDuration?.period||'',durationPeriod=primaryDurationPeriod&&otherDurationPeriod&&primaryDurationPeriod!==otherDurationPeriod?period(primaryDurationPeriod)+' / '+period(otherDurationPeriod):period(primaryDurationPeriod||otherDurationPeriod||'');
     addDirectStrip('completedDurationChart','completedDuration',primaryDuration?.averageWeeks,otherDuration?.averageWeeks,pair,value=>pf.format(value)+' uger',durationPeriod);
@@ -474,20 +472,24 @@
   async function setRegion(key){
     if(!nationalData)return;const select=document.getElementById('regionSelect'),periodSelect=document.getElementById('periodSelect');if(!REGION_FILES.has(key))key='all';
     if(key==='all'){
-      activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateSameRegionOption();updateNotice();updateUnsupported();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();return;
+      activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateNotice();updateUnsupported();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();return;
     }
     if(activeRegion==='all'){nationalPeriod=periodSelect.value;if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;}else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
     activeRegion=key;if(select)select.value=key;setPeriodLimit(true);periodSelect.value=Number(regionalPeriod)<=60?String(regionalPeriod):'60';updateNotice('<strong>Henter '+REGION_LABELS.get(key)+'...</strong>');
-    const payload=await loadRegion(key);if(document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);mergedRegionCache.set(key,DATA);updateSameRegionOption();updateAvailability();updateNotice();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();
+    const payload=await loadRegion(key);if(document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);mergedRegionCache.set(key,DATA);updateAvailability();updateNotice();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();
   }
 
-  function handleRegionError(error){console.error(error);updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateSameRegionOption();updateUnsupported();ensureComparisonData().catch(comparisonError=>handleComparisonError(comparisonError,false)).finally(()=>{if(typeof draw==='function')draw();});}
+  function handleRegionError(error){console.error(error);updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateUnsupported();ensureComparisonData().catch(comparisonError=>handleComparisonError(comparisonError,false)).finally(()=>{if(typeof draw==='function')draw();});}
 
   function comparisonFromState(state){
-    if(Object.prototype.hasOwnProperty.call(state,'comparisonFund'))return{fundCode:nationalData?.funds?.[state.comparisonFund]?state.comparisonFund:'',regionChoice:state.comparisonRegion==='same'||REGION_FILES.has(state.comparisonRegion)?state.comparisonRegion:'same'};
+    if(Object.prototype.hasOwnProperty.call(state,'comparisonFund')){
+      const fundCode=nationalData?.funds?.[state.comparisonFund]?state.comparisonFund:'';if(!fundCode)return{fundCode:'',regionChoice:''};
+      const migratedRegion=state.comparisonRegion==='same'?(REGION_FILES.has(state.region)?state.region:'all'):state.comparisonRegion;
+      return{fundCode,regionChoice:REGION_FILES.has(migratedRegion)?migratedRegion:''};
+    }
     if(state.nationalReference&&nationalData?.funds?.[state.fund])return{fundCode:state.fund,regionChoice:'all'};
     const legacy=Array.isArray(state.compare)?state.compare.filter(code=>nationalData?.funds?.[code]):[];
-    return{fundCode:legacy.find(code=>code!==state.fund)||legacy[0]||'',regionChoice:'same'};
+    const fundCode=legacy.find(code=>code!==state.fund)||legacy[0]||'';return{fundCode,regionChoice:fundCode?(REGION_FILES.has(state.region)?state.region:'all'):''};
   }
 
   async function applyState(state){
@@ -495,7 +497,7 @@
     if(state.fund&&fundSelect&&[...fundSelect.options].some(option=>option.value===state.fund))fundSelect.value=state.fund;
     if(state.period&&periodSelect&&[...periodSelect.options].some(option=>option.value===String(state.period)))periodSelect.value=String(state.period);
     const choice=comparisonFromState(state);comparisonFundCode=choice.fundCode;comparisonRegionChoice=choice.regionChoice;updateComparisonControls();applyVisibility(state.hidden||[]);
-    const region=REGION_FILES.has(state.region)?state.region:'all';if(region!=='all'&&Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
+    const region=REGION_FILES.has(state.region)?state.region:'all';if(region==='all')nationalPeriod=periodSelect.value;else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
     try{await setRegion(region);}catch(error){handleRegionError(error);}
     refreshChecks();updateComparisonControls();applying=false;save();
   }
@@ -506,9 +508,13 @@
     document.getElementById('regionSelect')?.addEventListener('change',()=>setTimeout(save,0));
   }
   function ready(){return typeof DATA!=='undefined'&&DATA&&document.getElementById('fundSelect')?.options.length>0&&!document.getElementById('dashboard')?.hidden;}
+  function preparePrimaryFundOptions(){
+    const select=document.getElementById('fundSelect'),total=nationalData?.meta?.totalFundCode;if(!select||!total||!nationalData?.funds?.[total])return;
+    const entries=Object.entries(nationalData.funds).sort((a,b)=>{if(a[0]===total)return-1;if(b[0]===total)return 1;return a[1].name.localeCompare(b[1].name,'da');});select.textContent='';entries.forEach(([code,item])=>select.add(new Option(code===total?'I alt':item.name,code)));select.value=total;
+  }
   async function start(){
     injectStyle();injectRegionControls();if(!ready()){setTimeout(start,80);return;}
-    if(!nationalData){nationalData=DATA;nationalPeriod=document.getElementById('periodSelect')?.value||'36';}
+    if(!nationalData){nationalData=DATA;nationalPeriod=document.getElementById('periodSelect')?.value||'36';preparePrimaryFundOptions();}
     installComparisonBridge();wrapDraw();injectComparisonControls();injectPersonalControls();bindSave();
     const state=sharedState()||storedState();
     if(state)await applyState(state);else{refreshChecks();await ensureComparisonData();if(typeof draw==='function')draw();save();}

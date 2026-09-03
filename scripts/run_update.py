@@ -163,6 +163,8 @@ def validate():
         'akassesiden.goatcounter.com/count',
         'gc.zgo.at/count.js',
         'id="fundSelect"',
+        '<label for="fundSelect">A-kasse</label>',
+        "$('fundSelect').value=total",
         'id="compareOptions"',
         'id="periodSelect"',
         'id="membersRawChart"',
@@ -196,9 +198,13 @@ def validate():
 
     personal_view = PERSONAL_VIEW.read_text(encoding="utf-8")
     required_personal_view = [
+        "DAK_CONTROL_ORDER_20260903",
         "DAK_CROSS_GEOGRAPHY_COMPARE_20260903",
+        "dak-a-kasseindsigt-personal-view-v5",
         "comparisonFundSelect",
         "comparisonRegionSelect",
+        "new Option('Ingen','')",
+        "new Option('I alt',total)",
         "Sammenligning:",
         "DAK_GEOGRAPHY_CONTEXT_20260903",
     ]
