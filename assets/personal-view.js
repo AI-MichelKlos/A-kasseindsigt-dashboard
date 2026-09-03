@@ -12,6 +12,16 @@
   ];
   const REGION_FILES=new Map(REGIONS.map(([key,,file])=>[key,file]));
   const REGION_LABELS=new Map(REGIONS.map(([key,label])=>[key,label]));
+  const GEOGRAPHY_MODULES=new Map([
+    ['k1','members'],['k2','unemploymentRate'],['k3','longTerm'],['k4','dagpenge'],['k5','graduates'],['k6','talkForms'],
+    ['membersRawChart','members'],['membersIndexChart','members'],['ageChart','profileAge'],['unempChart','unemploymentRate'],
+    ['longRawChart','longTerm'],['longIndexChart','longTerm'],['dagChart','dagpenge'],['gradCountChart','graduates'],['gradChart','graduates'],
+    ['consChart','benefitConsumption'],['exhaustedChart','exhaustedRights'],['survChart','survival'],['completedDurationChart','completedDuration'],
+    ['statusChart','statusAfter3m'],['talkChart','talkForms'],['afterlonChart','afterlon'],['afterlonContribChart','afterlonContrib'],
+    ['sanctionsTotalChart','sanctions'],['sanctionsShareChart','sanctions'],['sanctionsTypeChart','sanctions'],['sanctionsAvgChart','sanctions'],
+    ['mi','members'],['age','profileAge'],['u','unemploymentRate'],['li','longTerm'],['gs','graduates'],['cons','benefitConsumption'],
+    ['surv','survival'],['status','statusAfter3m'],['ac','afterlonContrib'],['ss','sanctions'],['sa','sanctions'],['completedDuration','completedDuration']
+  ]);
   const regionCache=new Map();
   let applying=false;
   let nationalData=null;
@@ -58,13 +68,10 @@
       .controls.with-regions{grid-template-columns:1.25fr 1.6fr .7fr 1fr auto}
       .regional-notice{display:none;margin:-2px 0 14px;padding:10px 12px;border:1px solid #d8e5dc;border-radius:8px;background:#f4f8f5;color:#405b63;font-size:.82rem;line-height:1.45}
       .regional-notice.show{display:block}.regional-notice strong{color:var(--ink)}
-      .regional-unsupported{display:none!important}
       .geography-context{display:flex;align-items:center;gap:4px;width:max-content;max-width:100%;padding:4px 8px;border:1px solid #d8e5dc;border-radius:999px;background:#eef5f0;color:#405b63;font-size:.75rem;line-height:1.2}
       .geography-context span,.geography-context strong{display:inline;margin:0;font-size:inherit;line-height:inherit}.geography-context span{color:#405b63;font-weight:500}.geography-context strong{color:var(--ink);font-weight:700}
+      .geography-context.is-national-fallback{border-color:#e8c9a9;background:#fff7ed}.geography-context.is-national-fallback .geography-context-note{color:#7a4b22;font-weight:650}
       .kpi>.geography-context{margin:7px 0 0}.card>.geography-context{margin:7px 0 11px}
-      .regional-no-jobdata #dashboard>.kpis>.kpi:nth-child(n+3){display:none!important}
-      .regional-no-jobdata #dashboard>section:nth-of-type(n+3){display:none!important}
-      .regional-no-jobdata #dashboard>section:nth-of-type(2) .grid>.card:not(.wide){display:none!important}
       .pv-bar{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:2px}.pv-details{position:relative}
       .pv-details>summary,.pv-btn{list-style:none;cursor:pointer;border:1px solid #d6dfd9;border-radius:8px;background:#fff;color:var(--ink);padding:9px 11px;font:inherit;font-weight:650}
       .pv-details>summary::-webkit-details-marker{display:none}.pv-details[open]>summary{border-color:var(--g)}
@@ -107,9 +114,10 @@
   function mergedRegionalData(payload){
     const unsupported=new Set(payload.meta?.unsupportedModules||[]),funds={};
     Object.entries(nationalData.funds||{}).forEach(([code,national])=>{
-      const regional=payload.funds?.[code]||{},sourceJobs=regional.jobindsats||{},hasRegionalJobs=Object.keys(sourceJobs).length>0,regionalJobs={...sourceJobs};
-      if(unsupported.has('exhaustedRights')&&national.jobindsats?.exhaustedRights)regionalJobs.exhaustedRights=national.jobindsats.exhaustedRights;
-      funds[code]={...national,members:regional.members||{labels:[],values:[]},profileAge:regional.profileAge||[],unemploymentRate:regional.unemploymentRate||{labels:[],values:[]},jobindsats:regionalJobs,_regionalJobAvailable:hasRegionalJobs};
+      const regional=payload.funds?.[code]||{},sourceJobs=regional.jobindsats||{},nationalJobs=national.jobindsats||{},hasRegionalJobs=Object.keys(sourceJobs).length>0,regionalJobs={...sourceJobs},nationalFallbackModules=new Set();
+      if(!hasRegionalJobs)Object.keys(nationalJobs).forEach(module=>nationalFallbackModules.add(module));
+      unsupported.forEach(module=>{if(nationalJobs[module]){regionalJobs[module]=nationalJobs[module];nationalFallbackModules.add(module);}});
+      funds[code]={...national,members:regional.members||{labels:[],values:[]},profileAge:regional.profileAge||[],unemploymentRate:regional.unemploymentRate||{labels:[],values:[]},jobindsats:regionalJobs,_regionalJobAvailable:hasRegionalJobs,_nationalFallbackModules:[...nationalFallbackModules]};
     });
     return {...nationalData,meta:{...nationalData.meta,sourceStatus:payload.meta.sourceStatus||{},regional:payload.meta},funds};
   }
@@ -125,9 +133,7 @@
   function updateAvailability(){document.body.classList.toggle('regional-no-jobdata',activeRegion!=='all'&&!selectedRegionalJobsAvailable());}
 
   function updateUnsupported(){
-    const exhaustedCard=document.getElementById('exhaustedChart')?.closest('.card');if(!exhaustedCard)return;
-    const unsupported=activeRegion!=='all'&&(DATA?.meta?.regional?.unsupportedModules||[]).includes('exhaustedRights');
-    exhaustedCard.classList.toggle('regional-unsupported',unsupported);
+    document.querySelectorAll('.regional-unsupported').forEach(card=>card.classList.remove('regional-unsupported'));
   }
 
   function referenceActive(){return activeRegion!=='all'&&nationalReference&&!!nationalData;}
@@ -145,6 +151,7 @@
   function hasValues(values){return Array.isArray(values)&&values.some(v=>v!=null&&Number.isFinite(Number(v)));}
 
   function addNationalLine(chartKey,sourceData,field,useIndex=false){
+    if(moduleUsesNational(chartKey))return;
     const chart=charts?.[chartKey];if(!chart||!sourceData?.labels?.length)return;
     const labels=chart.data.labels||[];let values=mapValues(sourceData,field,labels);if(useIndex)values=indexed(values);if(!hasValues(values))return;
     if(chart.data.datasets?.[0])chart.data.datasets[0].label=regionalLabel();
@@ -159,6 +166,7 @@
   function normalizedItems(items){const total=(items||[]).reduce((sum,item)=>sum+(+item.value||0),0);return(items||[]).map(item=>({label:item.label,value:total?+item.value/total*100:null}));}
 
   function addNationalBars(chartKey,items,normalize=false){
+    if(moduleUsesNational(chartKey))return;
     const chart=charts?.[chartKey];if(!chart||!Array.isArray(items)||!items.length)return;
     const source=normalize?normalizedItems(items):items,m=new Map(source.map(item=>[item.label,item.value])),values=(chart.data.labels||[]).map(label=>m.has(label)?m.get(label):null);if(!hasValues(values))return;
     if(chart.data.datasets?.[0])chart.data.datasets[0].label=regionalLabel();
@@ -172,6 +180,7 @@
   }
 
   function addRawReference(canvasId,regional,national,key,formatter=num){
+    if(moduleUsesNational(canvasId))return;
     const canvas=document.getElementById(canvasId),wrap=canvas?.closest('.chart'),pair=alignedPair(regional,national,key);if(!wrap||!pair)return;
     const same=pair.regional.period===pair.national.period,strip=document.createElement('div');strip.className='national-ref-strip';
     strip.innerHTML='<span class="national-ref-chip"><strong>'+REGION_LABELS.get(activeRegion)+':</strong> '+formatter(pair.regional.value)+'</span><span class="national-ref-chip national"><strong>Hele landet:</strong> '+formatter(pair.national.value)+'</span><span class="national-ref-period">'+(same?period(pair.regional.period):period(pair.regional.period)+' / '+period(pair.national.period))+'</span>';
@@ -179,11 +188,13 @@
   }
 
   function addDirectReference(canvasId,regionalValue,nationalValue,formatter){
+    if(moduleUsesNational(canvasId))return;
     const canvas=document.getElementById(canvasId),wrap=canvas?.closest('.chart');if(!wrap||regionalValue==null||nationalValue==null)return;
     const strip=document.createElement('div');strip.className='national-ref-strip';strip.innerHTML='<span class="national-ref-chip"><strong>'+REGION_LABELS.get(activeRegion)+':</strong> '+formatter(regionalValue)+'</span><span class="national-ref-chip national"><strong>Hele landet:</strong> '+formatter(nationalValue)+'</span>';wrap.parentNode.insertBefore(strip,wrap);
   }
 
   function addKpiReference(id,regional,national,key,formatter){
+    if(moduleUsesNational(id))return;
     const kpi=document.getElementById(id)?.closest('.kpi'),pair=alignedPair(regional,national,key);if(!kpi||!pair)return;
     const div=document.createElement('div');div.className='national-ref-kpi';div.innerHTML='<strong>Hele landet:</strong> '+formatter(pair.national.value)+' · '+period(pair.national.period);kpi.appendChild(div);
   }
@@ -228,33 +239,43 @@
   }
 
   /* DAK_GEOGRAPHY_CONTEXT_20260903 */
-  function geographyLabel(){return REGION_LABELS.get(activeRegion)||'Hele landet';}
+  function moduleUsesNational(target){
+    if(activeRegion==='all')return false;
+    const module=GEOGRAPHY_MODULES.get(target)||target,fallback=fund()?._nationalFallbackModules;
+    return !!module&&Array.isArray(fallback)&&fallback.includes(module);
+  }
+
+  function geographyTarget(block){
+    const node=block.matches('.kpi')?block.querySelector(':scope > strong[id]'):block.querySelector('canvas[id]');
+    return node?.id||'';
+  }
 
   function updateGeographyContext(){
-    const label=geographyLabel();
     document.querySelectorAll('#dashboard > .kpis > .kpi, #dashboard .card').forEach(block=>{
+      const fallback=moduleUsesNational(geographyTarget(block)),label=activeRegion==='all'||fallback?'Hele landet':(REGION_LABELS.get(activeRegion)||'Valgt region');
       let context=block.querySelector(':scope > .geography-context');
       if(!context){
         context=document.createElement('div');context.className='geography-context';
         const anchor=block.querySelector(':scope > small, :scope > h3');
         if(anchor)anchor.insertAdjacentElement('afterend',context);else block.prepend(context);
       }
-      context.textContent='';
+      context.textContent='';context.classList.toggle('is-national-fallback',fallback);
       const caption=document.createElement('span'),value=document.createElement('strong');
       caption.textContent='Geografi:';value.textContent=label;context.append(caption,value);
-      context.setAttribute('aria-label','Geografi: '+label);
+      if(fallback){const explanation=document.createElement('span');explanation.className='geography-context-note';explanation.textContent='· ikke regionalt tilgængelig';context.append(explanation);}
+      context.setAttribute('aria-label','Geografi: '+label+(fallback?', ikke regionalt tilgængelig':''));
     });
   }
 
   function updateNotice(message,isError=false){
     const note=document.getElementById('regionalNotice');if(!note)return;if(activeRegion==='all'&&!message){note.className='regional-notice';note.textContent='';return;}
-    const name=DATA?.meta?.regional?.areaName||REGION_LABELS.get(activeRegion),unsupported=DATA?.meta?.regional?.unsupportedModules||[],refText=referenceActive()?' Hele landet er slået til som reference for den valgte a-kasse.':'';
+    const name=DATA?.meta?.regional?.areaName||REGION_LABELS.get(activeRegion),unsupported=DATA?.meta?.regional?.unsupportedModules||[],refText=referenceActive()?' Hele landet er slået til som reference dér, hvor figuren viser regionale tal.':'';
     note.className='regional-notice show';
     if(message){note.innerHTML=message;}
     else if(!selectedRegionalJobsAvailable()){
-      note.innerHTML='<strong>Regional visning:</strong> DST-tallene vises for '+name+'. Jobindsats har ingen regionale observationer for den valgte a-kasse, så de pågældende afsnit er skjult.'+refText;
+      note.innerHTML='<strong>Regional visning:</strong> DST-tallene vises for '+name+'. Jobindsats har ingen regionale observationer for den valgte a-kasse, så de pågældende figurer viser i stedet tal for hele landet og er mærket tydeligt.'+refText;
     }else{
-      note.innerHTML='<strong>Regional visning:</strong> Tallene vises for '+name+' og den valgte a-kasse. Historikken går op til 5 år tilbage.'+(unsupported.includes('exhaustedRights')?' Målingen af opbrugt dagpengeret kan ikke opdeles regionalt i den konkrete Jobindsats-kilde og er derfor skjult.':'')+refText;
+      note.innerHTML='<strong>Regional visning:</strong> Tallene vises for '+name+' og den valgte a-kasse. Historikken går op til 5 år tilbage.'+(unsupported.includes('exhaustedRights')?' Målingen af opbrugt dagpengeret kan ikke opdeles regionalt i den konkrete Jobindsats-kilde og vises derfor for hele landet med særskilt mærkning.':'')+refText;
     }
     note.style.borderColor=isError?'#e3b7b0':'';
   }
