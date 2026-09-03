@@ -59,6 +59,9 @@
       .regional-notice{display:none;margin:-2px 0 14px;padding:10px 12px;border:1px solid #d8e5dc;border-radius:8px;background:#f4f8f5;color:#405b63;font-size:.82rem;line-height:1.45}
       .regional-notice.show{display:block}.regional-notice strong{color:var(--ink)}
       .regional-unsupported{display:none!important}
+      .geography-context{display:flex;align-items:center;gap:4px;width:max-content;max-width:100%;padding:4px 8px;border:1px solid #d8e5dc;border-radius:999px;background:#eef5f0;color:#405b63;font-size:.75rem;line-height:1.2}
+      .geography-context span,.geography-context strong{display:inline;margin:0;font-size:inherit;line-height:inherit}.geography-context span{color:#405b63;font-weight:500}.geography-context strong{color:var(--ink);font-weight:700}
+      .kpi>.geography-context{margin:7px 0 0}.card>.geography-context{margin:7px 0 11px}
       .regional-no-jobdata #dashboard>.kpis>.kpi:nth-child(n+3){display:none!important}
       .regional-no-jobdata #dashboard>section:nth-of-type(n+3){display:none!important}
       .regional-no-jobdata #dashboard>section:nth-of-type(2) .grid>.card:not(.wide){display:none!important}
@@ -224,6 +227,25 @@
     document.querySelectorAll('#dashboard > section').forEach(section=>{const p=section.querySelector(':scope > p');if(p&&!p.dataset.nationalText)p.dataset.nationalText=p.textContent;if(activeRegion==='all'&&p?.dataset.nationalText)p.textContent=p.dataset.nationalText;});
   }
 
+  /* DAK_GEOGRAPHY_CONTEXT_20260903 */
+  function geographyLabel(){return REGION_LABELS.get(activeRegion)||'Hele landet';}
+
+  function updateGeographyContext(){
+    const label=geographyLabel();
+    document.querySelectorAll('#dashboard > .kpis > .kpi, #dashboard .card').forEach(block=>{
+      let context=block.querySelector(':scope > .geography-context');
+      if(!context){
+        context=document.createElement('div');context.className='geography-context';
+        const anchor=block.querySelector(':scope > small, :scope > h3');
+        if(anchor)anchor.insertAdjacentElement('afterend',context);else block.prepend(context);
+      }
+      context.textContent='';
+      const caption=document.createElement('span'),value=document.createElement('strong');
+      caption.textContent='Geografi:';value.textContent=label;context.append(caption,value);
+      context.setAttribute('aria-label','Geografi: '+label);
+    });
+  }
+
   function updateNotice(message,isError=false){
     const note=document.getElementById('regionalNotice');if(!note)return;if(activeRegion==='all'&&!message){note.className='regional-notice';note.textContent='';return;}
     const name=DATA?.meta?.regional?.areaName||REGION_LABELS.get(activeRegion),unsupported=DATA?.meta?.regional?.unsupportedModules||[],refText=referenceActive()?' Hele landet er slået til som reference for den valgte a-kasse.':'';
@@ -247,7 +269,7 @@
         if(regionalFund&&nationalFund){restore=regionalFund.jobindsats;regionalFund.jobindsats=nationalFund.jobindsats||{};}
       }
       try{baseDraw();}finally{if(restore!==null){const code=document.getElementById('fundSelect')?.value;if(DATA?.funds?.[code])DATA.funds[code].jobindsats=restore;}}
-      updateRegionalText();updateAvailability();updateUnsupported();applyNationalReference();if(activeRegion!=='all')updateNotice();
+      updateRegionalText();updateGeographyContext();updateAvailability();updateUnsupported();applyNationalReference();if(activeRegion!=='all')updateNotice();
     };
     drawWrapped=true;
   }
@@ -279,6 +301,6 @@
     document.getElementById('regionSelect')?.addEventListener('change',()=>setTimeout(save,0));
   }
   function ready(){return typeof DATA!=='undefined'&&DATA&&document.getElementById('fundSelect')?.options.length>0&&!document.getElementById('dashboard')?.hidden;}
-  async function start(){injectStyle();injectRegionControls();if(!ready()){setTimeout(start,80);return;}if(!nationalData){nationalData=DATA;nationalPeriod=document.getElementById('periodSelect')?.value||'36';}wrapDraw();injectPersonalControls();bindSave();const state=sharedState()||storedState();if(state)await applyState(state);else{refreshChecks();updateReferenceControl();save();}}
+  async function start(){injectStyle();injectRegionControls();if(!ready()){setTimeout(start,80);return;}if(!nationalData){nationalData=DATA;nationalPeriod=document.getElementById('periodSelect')?.value||'36';}wrapDraw();injectPersonalControls();updateGeographyContext();bindSave();const state=sharedState()||storedState();if(state)await applyState(state);else{refreshChecks();updateReferenceControl();save();}}
   start();
 })();
