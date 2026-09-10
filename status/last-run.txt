@@ -1,3 +1,4 @@
-status: ok
-tid_utc: 2026-09-09T12:28:41Z
-dato_dk: 2026-09-09
+status: fejl
+tid_utc: 2026-09-10T12:17:06Z
+dato_dk: 2026-09-10
+fejl:  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/jobindsats_api.py", line 87, in get raise last RuntimeError: Jobindsats HTTP 403: You do not have permission to view this directory or page. Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 229, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 223, in main subprocess.run([sys.executable, str(BASE / "scripts" / "completed_duration.py")], check=True) File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/subprocess.py", line 571, in run raise CalledProcessError(retcode, process.args, subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.14/x64/bin/python', '/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/completed_duration.py']' returned non-zero exit status 1. 
