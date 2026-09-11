@@ -1,4 +1,3 @@
-status: fejl
-tid_utc: 2026-09-11T10:58:35Z
+status: ok
+tid_utc: 2026-09-11T11:07:24Z
 dato_dk: 2026-09-11
-fejl: Region Midtjylland jobDagpengeforbrug ok Region Midtjylland jobOverlevelse ok Region Midtjylland jobStatusAfter ok Region Midtjylland jobCompletedDuration failed Jobindsats HTTP 403: You do not have permission to view this directory or page. Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_regional_jobindsats.py", line 179, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_regional_jobindsats.py", line 171, in main base.process_region(main_data, slug, region_name) File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/fetch_jobindsats_regions.py", line 462, in process_region raise RuntimeError(region_name + " mangler regionale Jobindsats-moduler: " + ", ".join(failed_required)) RuntimeError: Region Midtjylland mangler regionale Jobindsats-moduler: jobCompletedDuration 
