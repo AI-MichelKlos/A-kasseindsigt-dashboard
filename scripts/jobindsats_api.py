@@ -83,7 +83,12 @@ def get(path, params=None):
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")
             last = RuntimeError(f"Jobindsats HTTP {exc.code}: {detail[:500]}")
-            if exc.code not in {429, 500, 502, 503, 504}:
+            # Samme kald har virket ved genkørsel efter dette midlertidige serversvar.
+            # Genbrug uændret URL og token; vedvarende adgangsfejl skal stadig fejle.
+            temporary_forbidden = exc.code == 403 and (
+                "You do not have permission to view this directory or page." in detail
+            )
+            if exc.code not in {429, 500, 502, 503, 504} and not temporary_forbidden:
                 raise last
         except (TimeoutError, urllib.error.URLError, ConnectionError) as exc:
             last = exc
