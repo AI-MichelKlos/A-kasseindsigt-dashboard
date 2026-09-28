@@ -96,24 +96,13 @@
   function shift(period,offset){const m=/^(\d{4})M(\d{2})$/.exec(period);if(!m)return period;const d=new Date(Date.UTC(Number(m[1]),Number(m[2])-1+offset,1));return `${d.getUTCFullYear()}M${String(d.getUTCMonth()+1).padStart(2,'0')}`;}
   function addRow(body,values){const tr=document.createElement('tr');values.forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td);});body.append(tr);}
   function commonMonths(){return Object.keys(view.series.three.TOTAL).filter(p=>Object.hasOwn(view.series.six.TOTAL,p)).sort();}
-  function renderGap(){
-    const all=commonMonths(),limit=Number(byId('span').value),periods=limit?all.slice(-limit):all;
-    if(charts.gap)charts.gap.destroy();
-    charts.gap=new Chart(byId('gap-chart'),{
-      type:'line',data:{labels:periods.map(label),datasets:selection().map(code=>({
-        label:data.funds[code].short,
-        data:periods.map(p=>{const a=view.series.three[code]?.[p],b=view.series.six[code]?.[p];return Number.isFinite(a)&&Number.isFinite(b)?Math.round((b-a)*10)/10:null;}),
-        borderColor:color(code),backgroundColor:color(code),borderWidth:2.7,pointRadius:periods.length>30?2:3,pointHoverRadius:6,spanGaps:false,tension:.16
-      }))},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top'},tooltip:{callbacks:{title:items=>items[0]?`Nyledige ${label(periods[items[0].dataIndex])}`:'',label:item=>`${item.dataset.label}: ${diff(item.parsed.y)}`}}},scales:{x:{type:'category',grid:{display:false},ticks:{maxRotation:45,callback:(_,index)=>index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1?label(periods[index]):''}},y:{beginAtZero:true,title:{display:true,text:'Forskel, procentpoint'},ticks:{callback:v=>v+' pp.'}}}}
-    });
-  }
   function renderCohort(){
     const p=byId('cohort').value,codes=selection();
     byId('cohort-context').textContent=`Nyledige ${label(p)} · status efter 3 måneder: ${label(shift(p,3))} · efter 6 måneder: ${label(shift(p,6))}`;
     const body=byId('cohort-table').querySelector('tbody');body.replaceChildren();
     for(const code of codes){
       const a=view.series.three[code]?.[p],b=view.series.six[code]?.[p];
-      addRow(body,[data.funds[code].short,pct(a),pct(b),diff(Number.isFinite(a)&&Number.isFinite(b)?Math.round((b-a)*10)/10:null),num(view.counts.three[code]?.[p]),num(view.counts.six[code]?.[p])]);
+      addRow(body,[data.funds[code].short,pct(a),pct(b),num(view.counts.three[code]?.[p]),num(view.counts.six[code]?.[p])]);
     }
     const box=byId('cohort-chart').parentElement;box.style.height=`${Math.max(190,110+codes.length*35)}px`;
     if(charts.cohort)charts.cohort.destroy();
@@ -173,7 +162,7 @@
     }
     byId('average-context').textContent=periods.length===12?`Nyledige ${label(periods[0])} til ${label(periods.at(-1))} · samme startmåneder for begge nedslag`:'12 fælles startmåneder er endnu ikke tilgængelige';
   }
-  function render(){renderFunds();renderMetrics();renderTrend();renderCohort();renderGap();renderStatus();renderAverage();if(byId('extra-details').open){renderChart('three');renderChart('six');renderYear();}updateLink();}
+  function render(){renderFunds();renderMetrics();renderTrend();renderCohort();renderStatus();renderAverage();if(byId('extra-details').open){renderChart('three');renderChart('six');renderYear();}updateLink();}
   function renderCategories(preferred){
     const group=byId('group').value,select=byId('category');select.replaceChildren();
     const categories=data.subgroups?.[group]?.categories||[];

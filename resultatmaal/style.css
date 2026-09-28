@@ -48,6 +48,7 @@
 #dak-resultat .fund:has(input:checked){background:#eaf5eb;border-color:#7aaa82;font-weight:700}
 #dak-resultat .fund input{width:18px;height:18px;accent-color:#3d6b47;margin:0;flex:none}
 #dak-resultat .small,#dak-resultat .source{color:var(--muted);font-size:.78rem;margin:15px 0 0}
+#dak-resultat .method-note{background:#edf4ed;border-left:4px solid #6B9E78;border-radius:8px;padding:12px 16px;font-size:.87rem;color:var(--ink);margin:18px 0 0}
 #dak-resultat .chart{height:380px;position:relative}
 #dak-resultat .chart-flex{height:200px;min-height:200px}
 #dak-resultat .context{color:var(--muted);font-size:.88rem;margin:8px 0 16px}
