@@ -40,6 +40,7 @@ GROUPS = {
     "sex": ("Køn", "_kon", "kon", "Køn"),
     "age": ("Alder", "_alder5i30", "alder5i", "Alder"),
     "origin": ("Herkomst", "_oprinda", "oprinda", "Herkomst"),
+    "region": ("Region", "_region", "region", "Område"),
 }
 
 
@@ -154,7 +155,7 @@ def main() -> None:
             raise ValueError(f"Manglende kildeniveau: {level_id}")
         categories = []
         for node in api.walk(level_node):
-            if isinstance(node.get("value_id"), str) and node["value_id"] != "/" and isinstance(node.get("value_name"), str):
+            if isinstance(node.get("value_id"), str) and node["value_id"] != "/" and isinstance(node.get("value_name"), str) and (group_id != "region" or api.norm(node["value_name"]).startswith("region ")):
                 categories.append({"id": node["value_id"], "label": node["value_name"]})
         if len(categories) != len({item["id"] for item in categories}) or not categories:
             raise ValueError(f"Ugyldige kildekategorier for {group_id}")
@@ -169,7 +170,7 @@ def main() -> None:
                 raise ValueError(f"Uventede kolonner for {group_id}: {api.columns(rows)}")
             for row in rows:
                 name = api.norm(row[column])
-                if name in {"koen i alt", "alder i alt", "herkomst i alt"}:
+                if name in {"koen i alt", "alder i alt", "herkomst i alt", "hele landet", "uoplyst omraade"}:
                     continue
                 category = by_name.get(name)
                 if category is None:
@@ -200,7 +201,7 @@ def main() -> None:
             "latestCohort": {key: cohort(latest_status, n) for key, n in (("three", 3), ("six", 6))},
             "fetchedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "unit": "pct. af nyledige", "geography": "Hele landet",
-            "filters": "Hele landet; én valgt gruppe for køn, alder eller herkomst; a-kasse ved nyledighed",
+            "filters": "Én opdeling ad gangen: region, køn, alder eller herkomst; a-kasse ved nyledighed",
             "note": "Officiel totalrække og officielle a-kasserækker. Prikker/diskretionerede værdier er null. Ujusterede andele.",
         },
         "funds": funds, **overall, "subgroups": subgroups,
