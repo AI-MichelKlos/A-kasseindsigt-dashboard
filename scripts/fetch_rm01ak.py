@@ -20,6 +20,22 @@ COUNTS = {
     "three": "Personer i job og uddannelse 3 mdr. efter nyledighed: Antal nyledige for 3 mdr. siden",
     "six": "Personer i job og uddannelse 6 mdr. efter nyledighed: Antal nyledige for 6 mdr. siden",
 }
+STATUS = {
+    "three": {
+        "job": "Status 3 mdr. efter nyledighed, pct.: Job",
+        "education": "Status 3 mdr. efter nyledighed, pct.: Uddannelse",
+        "onBenefit": "Status 3 mdr. efter nyledighed, pct.: Fortsat på ydelsen",
+        "otherBenefit": "Status 3 mdr. efter nyledighed, pct.: Anden ydelse",
+        "selfSupport": "Status 3 mdr. efter nyledighed, pct.: Selvforsørgelse mv.",
+    },
+    "six": {
+        "job": "Status 6 mdr. efter nyledighed, pct.: Job",
+        "education": "Status 6 mdr. efter nyledighed, pct.: Uddannelse",
+        "onBenefit": "Status 6 mdr. efter nyledighed, pct.: Fortsat på ydelsen",
+        "otherBenefit": "Status 6 mdr. efter nyledighed, pct.: Anden ydelse",
+        "selfSupport": "Status 6 mdr. efter nyledighed, pct.: Selvforsørgelse mv.",
+    },
+}
 
 
 def cohort(status_month: str, offset: int) -> str:
@@ -47,7 +63,7 @@ def main() -> None:
     take = min(60, len(available))
     funds_rows = api.query(TABLE, spec, f"latest:{take}", ((fund_h, f"level:{level}"),))
     total_rows = api.query(TABLE, spec, f"latest:{take}", ((fund_h, api.total_value(fund_h)),))
-    expected_columns = {"Periode", "A-kasse", *MEASURES.values(), *COUNTS.values()}
+    expected_columns = {"Periode", "A-kasse", *MEASURES.values(), *COUNTS.values(), *(col for group in STATUS.values() for col in group.values())}
     if not expected_columns.issubset(api.columns(funds_rows)) or not expected_columns.issubset(api.columns(total_rows)):
         raise ValueError(f"Målingskolonner ændret: {api.columns(funds_rows)}")
 
@@ -59,6 +75,7 @@ def main() -> None:
     funds.update({item["starCode"]: {"short": item["dakShort"], "name": item["dakName"]} for item in config})
     series = {key: {code: {} for code in funds} for key in MEASURES}
     counts = {key: {code: {} for code in funds} for key in MEASURES}
+    status_shares = {key: {code: {} for code in funds} for key in MEASURES}
     observed = set()
 
     def add(row: dict, code: str) -> None:
@@ -75,6 +92,16 @@ def main() -> None:
                 raise ValueError(f"Dublet for {code} {key} {start_month}")
             series[key][code][start_month] = value
             counts[key][code][start_month] = count
+            shares = {name: api.number(row[col]) for name, col in STATUS[key].items()}
+            for name, share in shares.items():
+                if share is not None and not 0 <= share <= 100:
+                    raise ValueError(f"Ugyldig statusandel for {code} {status_month} {name}: {share}")
+            if all(share is not None for share in shares.values()):
+                if abs(sum(shares.values()) - 100) > 0.35:
+                    raise ValueError(f"Statusfordeling summerer ikke til 100 for {code} {status_month}")
+                if value is not None and abs(shares["job"] + shares["education"] - value) > 0.25:
+                    raise ValueError(f"Job og uddannelse matcher ikke hovedmålet for {code} {status_month}")
+            status_shares[key][code][start_month] = shares
 
     for row in funds_rows:
         source_name = api.norm(row["A-kasse"])
@@ -101,6 +128,9 @@ def main() -> None:
             raise ValueError(f"Manglende populationsstørrelse for {key} i {latest_status}")
         if len(series[key]["TOTAL"]) != take:
             raise ValueError(f"Ufuldstændig historik for {key}")
+        shares = status_shares[key]["TOTAL"].get(latest_cohort)
+        if not shares or not all(isinstance(value, (int, float)) for value in shares.values()):
+            raise ValueError(f"Manglende officiel statusfordeling for {key} i {latest_status}")
 
     payload = {
         "meta": {
@@ -112,7 +142,7 @@ def main() -> None:
             "filters": "Alle køn, aldre og herkomster; a-kasse ved nyledighed",
             "note": "Officiel totalrække og officielle a-kasserækker. Prikker/diskretionerede værdier er null. Ujusterede andele.",
         },
-        "funds": funds, "series": series, "counts": counts,
+        "funds": funds, "series": series, "counts": counts, "statusShares": status_shares,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
