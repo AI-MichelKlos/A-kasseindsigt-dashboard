@@ -36,6 +36,11 @@ STATUS = {
         "selfSupport": "Status 6 mdr. efter nyledighed, pct.: Selvforsørgelse mv.",
     },
 }
+GROUPS = {
+    "sex": ("Køn", "_kon", "kon", "Køn"),
+    "age": ("Alder", "_alder5i30", "alder5i", "Alder"),
+    "origin": ("Herkomst", "_oprinda", "oprinda", "Herkomst"),
+}
 
 
 def cohort(status_month: str, offset: int) -> str:
@@ -50,12 +55,6 @@ def main() -> None:
     spec = api.get(f"table/{TABLE}", {"format": "json"})
     if spec.get("table_id") != TABLE or "3 og 6" not in spec.get("table_name", ""):
         raise ValueError("Jobindsats-metadata matcher ikke den forventede resultatmåling")
-    for h_id, l_id in (("_kon", "kon"), ("_alder5i30", "alder30"), ("_alder5i30", "alder5i"), ("_oprinda", "oprinda")):
-        h = next(h for h in api.hierarchies(spec) if h["hierarchy_id"] == h_id)
-        fh = next(h for h in api.hierarchies(spec) if h["hierarchy_id"] == "_akassedp")
-        for fs in (f"level:{api.fund_level(fh)}", api.total_value(fh)):
-            rows = api.query(TABLE, spec, "latest:1", ((fh, fs), (h, f"level:{l_id}")))
-            print("QUERY", h_id, l_id, fs, len(rows), api.columns(rows), [(r.get("Periode"), r.get("A-kasse"), r.get("Køn"), r.get("Alder"), r.get("Herkomst")) for r in rows[:6]])
     available = next((p["values"] for p in spec.get("periods", []) if p.get("periodtype_id") == "M"), [])
     if not available:
         raise ValueError("Ingen månedlige perioder i Jobindsats-metadata")
@@ -79,12 +78,19 @@ def main() -> None:
         raise ValueError("Dublerede a-kassenavne i navnebroen")
     funds = {"TOTAL": {"short": "I alt", "name": "A-kasser i alt"}}
     funds.update({item["starCode"]: {"short": item["dakShort"], "name": item["dakName"]} for item in config})
-    series = {key: {code: {} for code in funds} for key in MEASURES}
-    counts = {key: {code: {} for code in funds} for key in MEASURES}
-    status_shares = {key: {code: {} for code in funds} for key in MEASURES}
+    def empty_view() -> dict:
+        return {
+            "series": {key: {code: {} for code in funds} for key in MEASURES},
+            "counts": {key: {code: {} for code in funds} for key in MEASURES},
+            "statusShares": {key: {code: {} for code in funds} for key in MEASURES},
+        }
+
+    overall = empty_view()
+    series, counts, status_shares = (overall[key] for key in ("series", "counts", "statusShares"))
     observed = set()
 
-    def add(row: dict, code: str) -> None:
+    def add(row: dict, code: str, view: dict) -> None:
+        series, counts, status_shares = (view[key] for key in ("series", "counts", "statusShares"))
         status_month = str(row["Periode"])
         for key, offset in (("three", 3), ("six", 6)):
             start_month = cohort(status_month, offset)
@@ -118,11 +124,11 @@ def main() -> None:
             raise ValueError(f"Ukendt a-kasse i Jobindsats: {row['A-kasse']}")
         code = item["starCode"]
         observed.add(code)
-        add(row, code)
+        add(row, code, overall)
     for row in total_rows:
         if api.norm(row["A-kasse"]) not in ("a kasse i alt", "i alt"):
             raise ValueError(f"Totalrækken er ikke en verificeret a-kassetotal: {row['A-kasse']}")
-        add(row, "TOTAL")
+        add(row, "TOTAL", overall)
 
     if observed != set(funds) - {"TOTAL"}:
         raise ValueError(f"A-kassedækning afviger: mangler {sorted(set(funds)-observed-{'TOTAL'})}")
@@ -138,6 +144,55 @@ def main() -> None:
         if not shares or not all(isinstance(value, (int, float)) for value in shares.values()):
             raise ValueError(f"Manglende officiel statusfordeling for {key} i {latest_status}")
 
+    subgroups = {}
+    for group_id, (title, hierarchy_id, level_id, column) in GROUPS.items():
+        hierarchy = next((h for h in api.hierarchies(spec) if h["hierarchy_id"] == hierarchy_id), None)
+        if hierarchy is None:
+            raise ValueError(f"Manglende kildehierarki: {hierarchy_id}")
+        level_node = next((l for l in api.levels(hierarchy) if l["level_id"] == level_id), None)
+        if level_node is None:
+            raise ValueError(f"Manglende kildeniveau: {level_id}")
+        categories = []
+        for node in api.walk(level_node):
+            if isinstance(node.get("value_id"), str) and node["value_id"] != "/" and isinstance(node.get("value_name"), str):
+                categories.append({"id": node["value_id"], "label": node["value_name"]})
+        if len(categories) != len({item["id"] for item in categories}) or not categories:
+            raise ValueError(f"Ugyldige kildekategorier for {group_id}")
+        by_name = {api.norm(item["label"]): item["id"] for item in categories}
+        if len(by_name) != len(categories):
+            raise ValueError(f"Dobbelte kategorinavne for {group_id}")
+        views = {item["id"]: empty_view() for item in categories}
+        period_count = min(25, len(available))
+        for fund_selection in (f"level:{level}", api.total_value(fund_h)):
+            rows = api.query(TABLE, spec, f"latest:{period_count}", ((fund_h, fund_selection), (hierarchy, f"level:{level_id}")))
+            if not expected_columns.issubset(api.columns(rows)) or column not in api.columns(rows):
+                raise ValueError(f"Uventede kolonner for {group_id}: {api.columns(rows)}")
+            for row in rows:
+                name = api.norm(row[column])
+                if name in {"koen i alt", "alder i alt", "herkomst i alt"}:
+                    continue
+                category = by_name.get(name)
+                if category is None:
+                    raise ValueError(f"Ukendt {title.lower()} i Jobindsats: {row[column]}")
+                fund_name = api.norm(row["A-kasse"])
+                if fund_selection == api.total_value(fund_h):
+                    if fund_name not in {"a kasse i alt", "i alt"}:
+                        raise ValueError(f"Uventet totalrække i {group_id}: {row['A-kasse']}")
+                    code = "TOTAL"
+                else:
+                    if fund_name in {"ingen a kasse", "a kasse i alt", "i alt", "uoplyst"}:
+                        continue
+                    item = names.get(fund_name)
+                    if item is None:
+                        raise ValueError(f"Ukendt a-kasse i {group_id}: {row['A-kasse']}")
+                    code = item["starCode"]
+                add(row, code, views[category])
+        for category in categories:
+            for key in MEASURES:
+                if len(views[category["id"]]["series"][key]["TOTAL"]) != period_count:
+                    raise ValueError(f"Ufuldstændig officiel total for {group_id}: {category['label']}")
+        subgroups[group_id] = {"label": title, "categories": categories, "slices": views}
+
     payload = {
         "meta": {
             "state": "ok", "source": "Jobindsats.dk / STAR", "dataset": TABLE,
@@ -145,14 +200,14 @@ def main() -> None:
             "latestCohort": {key: cohort(latest_status, n) for key, n in (("three", 3), ("six", 6))},
             "fetchedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "unit": "pct. af nyledige", "geography": "Hele landet",
-            "filters": "Alle køn, aldre og herkomster; a-kasse ved nyledighed",
+            "filters": "Hele landet; én valgt gruppe for køn, alder eller herkomst; a-kasse ved nyledighed",
             "note": "Officiel totalrække og officielle a-kasserækker. Prikker/diskretionerede værdier er null. Ujusterede andele.",
         },
-        "funds": funds, "series": series, "counts": counts, "statusShares": status_shares,
+        "funds": funds, **overall, "subgroups": subgroups,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"RM01AK: {latest_status}, {len(observed)} a-kasser, {take} måneder, 3 mdr. {series['three']['TOTAL'][cohort(latest_status,3)]} %, 6 mdr. {series['six']['TOTAL'][cohort(latest_status,6)]} %")
+    print(f"RM01AK: {latest_status}, {len(observed)} a-kasser, {take} måneder, {sum(len(group['categories']) for group in subgroups.values())} undergrupper, 3 mdr. {series['three']['TOTAL'][cohort(latest_status,3)]} %, 6 mdr. {series['six']['TOTAL'][cohort(latest_status,6)]} %")
 
 
 if __name__ == "__main__":
