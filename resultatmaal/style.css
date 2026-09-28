@@ -26,6 +26,14 @@
 #dak-resultat .fund input{width:18px;height:18px;accent-color:#3d6b47;margin:0;flex:none}
 #dak-resultat .small,#dak-resultat .source{color:var(--muted);font-size:.78rem;margin:15px 0 0}
 #dak-resultat .chart{height:380px;position:relative}
+#dak-resultat .chart-flex{height:200px;min-height:200px}
+#dak-resultat .context{color:var(--muted);font-size:.88rem;margin:8px 0 16px}
+#dak-resultat .table-wrap{overflow-x:auto;margin-top:16px}
+#dak-resultat table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:650px}
+#dak-resultat th,#dak-resultat td{padding:10px 9px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+#dak-resultat th:first-child,#dak-resultat td:first-child{text-align:left;font-weight:700}
+#dak-resultat thead{color:var(--muted);background:#f4f8f4}
+#dak-resultat tbody tr:hover{background:#f5faf5}
 #dak-resultat .values{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 #dak-resultat .value{border:1px solid var(--line);border-left:4px solid var(--color);background:#fbfdfb;border-radius:8px;padding:7px 12px;min-width:142px;font-size:.84rem}
 #dak-resultat .value strong{display:block;font-size:1.15rem;font-variant-numeric:tabular-nums}
@@ -36,5 +44,5 @@
 #dak-resultat .method .source{margin-top:25px}
 #dak-resultat .message{padding:17px;border:1px solid #dba878;background:#fff4e7;border-radius:10px;margin-bottom:20px}
 #dak-resultat footer{border-top:1px solid var(--line);color:var(--muted);padding:25px 0;font-size:.78rem}
-@media(max-width:700px){#dak-resultat .wrap{padding-left:16px;padding-right:16px}#dak-resultat .nav{padding:12px 16px}#dak-resultat .hero{padding:37px 0}#dak-resultat .panel{padding:18px}#dak-resultat .section-heading{display:block}#dak-resultat .section-heading p{margin-top:8px}#dak-resultat .toolbar label{margin-left:0}#dak-resultat .funds{grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .method-grid{grid-template-columns:1fr}#dak-resultat .chart{height:340px}}
+@media(max-width:700px){#dak-resultat .wrap{padding-left:16px;padding-right:16px}#dak-resultat .nav{padding:12px 16px}#dak-resultat .hero{padding:37px 0}#dak-resultat .panel{padding:18px}#dak-resultat .section-heading{display:block}#dak-resultat .section-heading p{margin-top:8px}#dak-resultat .toolbar label{margin-left:0}#dak-resultat .funds{grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .method-grid{grid-template-columns:1fr}#dak-resultat .chart{height:340px}#dak-resultat .chart-flex{height:200px}}
 @media(max-width:370px){#dak-resultat .funds{grid-template-columns:1fr}}
