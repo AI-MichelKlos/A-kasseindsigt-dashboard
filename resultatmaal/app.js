@@ -173,7 +173,7 @@
     }
     byId('average-context').textContent=periods.length===12?`Nyledige ${label(periods[0])} til ${label(periods.at(-1))} · samme startmåneder for begge nedslag`:'12 fælles startmåneder er endnu ikke tilgængelige';
   }
-  function render(){renderFunds();renderMetrics();renderTrend();renderCohort();renderGap();renderChart('three');renderChart('six');renderStatus();renderYear();renderAverage();updateLink();}
+  function render(){renderFunds();renderMetrics();renderTrend();renderCohort();renderGap();renderStatus();renderAverage();if(byId('extra-details').open){renderChart('three');renderChart('six');renderYear();}updateLink();}
   function renderCategories(preferred){
     const group=byId('group').value,select=byId('category');select.replaceChildren();
     const categories=data.subgroups?.[group]?.categories||[];
@@ -206,6 +206,7 @@
   byId('cohort').addEventListener('change',()=>data&&render());
   byId('trend-horizon').addEventListener('change',()=>data&&render());
   byId('status-horizon').addEventListener('change',()=>{if(data){renderStatus();updateLink();}});
+  byId('extra-details').addEventListener('toggle',()=>{if(data&&byId('extra-details').open){renderChart('three');renderChart('six');renderYear();}});
   byId('csv').addEventListener('click',()=>data&&csv());
   byId('share').addEventListener('click',async()=>{
     if(!data)return;

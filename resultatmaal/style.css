@@ -25,6 +25,17 @@
 #dak-resultat .filterbar select{background:#fff;max-width:100%}
 #dak-resultat .filterbar p{color:var(--muted);font-size:.81rem;margin:0 0 0 auto}
 #dak-resultat .lead{border-top:5px solid var(--green)}
+#dak-resultat .extra-details summary{cursor:pointer;list-style:none;position:relative;padding-right:35px}
+#dak-resultat .extra-details summary::-webkit-details-marker{display:none}
+#dak-resultat .extra-details summary:after{content:'+';position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:1.7rem;font-weight:400;color:#397044}
+#dak-resultat .extra-details[open] summary:after{content:'−'}
+#dak-resultat .extra-details summary:focus-visible{outline:3px solid #e29d50;outline-offset:5px;border-radius:4px}
+#dak-resultat .details-title{display:block;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;line-height:1.2;margin-top:5px}
+#dak-resultat .details-hint{display:block;color:var(--muted);font-size:.92rem;margin-top:6px}
+#dak-resultat .details-content{margin-top:24px;border-top:1px solid var(--line)}
+#dak-resultat .detail-block{padding:24px 0;border-bottom:1px solid var(--line)}
+#dak-resultat .detail-block:last-child{border-bottom:0;padding-bottom:0}
+#dak-resultat .detail-block h2{margin-top:0}
 #dak-resultat .metric-options{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px}
 #dak-resultat .metric-option{display:flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:.86rem}
 #dak-resultat .metric-option:has(input:checked){background:#eaf5eb;border-color:#7aaa82;font-weight:700}
