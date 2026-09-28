@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#0F2B36">
   <title>Fra nyledighed til job og uddannelse | A-kasseindsigt</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
-  <script src="app.js?v=20260928-2" defer></script>
-  <link rel="stylesheet" href="style.css?v=20260928-2">
+  <script src="app.js?v=20260928-3" defer></script>
+  <link rel="stylesheet" href="style.css?v=20260928-3">
 </head>
 <body style="margin:0">
 <div id="dak-resultat">
@@ -21,14 +21,23 @@
   <main class="wrap">
     <section class="panel controls" aria-labelledby="select-title">
       <div class="section-heading"><div><span class="section-no">01 / SAMMENLIGN</span><h2 id="select-title">Vælg a-kasser</h2></div><p>Vælg én, to eller flere. I alt er valgt fra start.</p></div>
-      <div class="toolbar"><button type="button" id="all">Vælg alle</button><button type="button" id="reset">Kun I alt</button><label for="span">Vis periode</label><select id="span"><option value="12">Seneste 12 måneder</option><option value="24">Seneste 24 måneder</option><option value="0">Alle måneder</option></select><button id="csv" type="button">Hent valgte tal som CSV</button></div>
-      <div class="filterbar"><label for="group">Opdel efter</label><select id="group"><option value="all">Alle nyledige</option></select><label for="category">Vis gruppe</label><select id="category" disabled><option value="all">Alle</option></select><p>Vælg én gruppe ad gangen. Sammenligningen mellem a-kasser opdateres på hele siden.</p></div>
+      <div class="toolbar"><button type="button" id="all">Vælg alle</button><button type="button" id="reset">Kun I alt</button><label for="span">Vis periode</label><select id="span"><option value="12">Seneste 12 måneder</option><option value="24">Seneste 24 måneder</option><option value="0">Alle måneder</option></select><button id="csv" type="button">Hent valgte tal som CSV</button><button id="share" type="button">Del denne visning</button></div>
+      <div id="share-box" class="share-box" hidden><label for="share-link">Link til valgte filtre</label><input id="share-link" type="text" readonly><span id="share-status" role="status"></span></div>
+      <div class="filterbar"><label for="group">Opdel efter</label><select id="group"><option value="all">Alle nyledige</option></select><label for="category">Vis gruppe eller region</label><select id="category" disabled><option value="all">Alle</option></select><p>Vælg én opdeling ad gangen. Sammenligningen mellem a-kasser opdateres på hele siden.</p></div>
       <div id="funds" class="funds" role="group" aria-label="A-kasser"></div>
       <p class="small">Forkortelser af navne kan være anvendt. Alle serier viser andele i procent af de nyledige i den valgte a-kasse, ikke antal medlemmer.</p>
     </section>
     <div id="message" class="message" role="alert" hidden></div>
+    <section class="panel lead" aria-labelledby="status-trend-title">
+      <div class="section-heading"><div><span class="section-no">02 / UDVIKLING OVER TID</span><h2 id="status-trend-title">Hvor er de nyledige over tid?</h2></div><p>Job er valgt fra start. Vælg andre statusser for at se dem i den samme tidsserie.</p></div>
+      <div class="toolbar"><label for="trend-horizon">Status efter</label><select id="trend-horizon"><option value="six">6 måneder</option><option value="three">3 måneder</option></select><span id="trend-context" class="context"></span></div>
+      <div id="metrics" class="metric-options" role="group" aria-label="Vælg arbejdsmarkedsstatus"></div>
+      <div class="chart"><canvas id="trend-chart" role="img" aria-label="Udvikling i arbejdsmarkedsstatus efter nyledighed for valgte a-kasser"></canvas></div>
+      <p class="small">En status er et nedslag efter 3 eller 6 måneder. Flere linjer betyder flere valgte statusser eller a-kasser. Manglende og diskretionerede værdier forbindes ikke på tværs.</p>
+      <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
+    </section>
     <section class="panel lead" aria-labelledby="cohort-title">
-      <div class="section-heading"><div><span class="section-no">02 / SAMME STARTMÅNED</span><h2 id="cohort-title">Efter 3 og 6 måneder for samme gruppe nyledige</h2></div><p>Vælg en måned, hvor begge nedslag er opgjort.</p></div>
+      <div class="section-heading"><div><span class="section-no">03 / SAMME STARTMÅNED</span><h2 id="cohort-title">Efter 3 og 6 måneder for samme gruppe nyledige</h2></div><p>Vælg en måned, hvor begge nedslag er opgjort.</p></div>
       <div class="toolbar"><label for="cohort">Nyledige i</label><select id="cohort" aria-label="Måned for nyledighed"></select></div>
       <div id="cohort-context" class="context"></div>
       <div class="chart chart-flex"><canvas id="cohort-chart" role="img" aria-label="Andel i job eller uddannelse efter 3 og 6 måneder for samme startmåned"></canvas></div>
@@ -36,38 +45,44 @@
       <p class="small">Forskellen er mellem to statusmålinger af gruppen fra samme startmåned. Personer, der dør eller udvandrer, udelades i den pågældende statusmåned, så antallet kan ændre sig. Forskellen beskriver ikke den enkelte persons vej mellem statusser.</p>
       <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
     </section>
+    <section class="panel" aria-labelledby="gap-title"><span class="section-no">04 / FORSKEL OVER TID</span><h2 id="gap-title">Forskellen mellem 3 og 6 måneder</h2>
+      <p class="context">Samme startmåned i begge målinger. Enheden er procentpoint.</p>
+      <div class="chart"><canvas id="gap-chart" role="img" aria-label="Forskel i andel job eller uddannelse mellem 3 og 6 måneder for samme startmåned"></canvas></div>
+      <p class="small">Kurven sammenligner to statusmålinger af samme startgruppe. Den viser ikke, hvilke enkeltpersoner der skiftede status.</p>
+      <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
+    </section>
     <section class="panel" aria-labelledby="three-title">
-      <div class="section-heading"><div><span class="section-no">03 / TRE MÅNEDER</span><h2 id="three-title">I job eller uddannelse efter 3 måneder</h2></div><p id="three-latest"></p></div>
+      <div class="section-heading"><div><span class="section-no">05 / TRE MÅNEDER</span><h2 id="three-title">I job eller uddannelse efter 3 måneder</h2></div><p id="three-latest"></p></div>
       <div class="chart"><canvas id="three-chart" role="img" aria-label="Andel i job eller uddannelse tre måneder efter nyledighed, fordelt på a-kasse og startmåned"></canvas></div>
       <div id="three-values" class="values"></div>
       <p class="source">Kilde: <a href="https://jobindsats.dk/databank/resultater/resultatmalinger/resultatmalinger-a-kasse/afgang-til-job-og-uddannelse-3-og-6-mdr-efter-nyledighed-i-a-kasserne/#!">Jobindsats.dk, RM01AK</a> | Grafik og databehandling: Danske A-kasser</p>
     </section>
     <section class="panel" aria-labelledby="six-title">
-      <div class="section-heading"><div><span class="section-no">04 / SEKS MÅNEDER</span><h2 id="six-title">I job eller uddannelse efter 6 måneder</h2></div><p id="six-latest"></p></div>
+      <div class="section-heading"><div><span class="section-no">06 / SEKS MÅNEDER</span><h2 id="six-title">I job eller uddannelse efter 6 måneder</h2></div><p id="six-latest"></p></div>
       <div class="chart"><canvas id="six-chart" role="img" aria-label="Andel i job eller uddannelse seks måneder efter nyledighed, fordelt på a-kasse og startmåned"></canvas></div>
       <div id="six-values" class="values"></div>
       <p class="source">Kilde: <a href="https://jobindsats.dk/databank/resultater/resultatmalinger/resultatmalinger-a-kasse/afgang-til-job-og-uddannelse-3-og-6-mdr-efter-nyledighed-i-a-kasserne/#!">Jobindsats.dk, RM01AK</a> | Grafik og databehandling: Danske A-kasser</p>
     </section>
     <section class="panel" aria-labelledby="status-title">
-      <div class="section-heading"><div><span class="section-no">05 / ARBEJDSMARKEDSSTATUS</span><h2 id="status-title">Hvor er de nyledige?</h2></div><p>Job, uddannelse, fortsat dagpenge, anden ydelse eller selvforsørgelse.</p></div>
+      <div class="section-heading"><div><span class="section-no">07 / ARBEJDSMARKEDSSTATUS</span><h2 id="status-title">Hvor er de nyledige i den valgte måned?</h2></div><p>Job, uddannelse, fortsat dagpenge, anden ydelse eller selvforsørgelse.</p></div>
       <div class="toolbar"><label for="status-horizon">Status efter</label><select id="status-horizon"><option value="three">3 måneder</option><option value="six">6 måneder</option></select><span id="status-context" class="context"></span></div>
       <div class="chart chart-flex"><canvas id="status-chart" role="img" aria-label="Fordeling på arbejdsmarkedsstatus for de valgte a-kasser"></canvas></div>
       <div class="table-wrap"><table id="status-table"><thead><tr><th scope="col">A-kasse</th><th scope="col">Job</th><th scope="col">Uddannelse</th><th scope="col">Fortsat på dagpenge</th><th scope="col">Anden ydelse</th><th scope="col">Selvforsørgelse mv.</th></tr></thead><tbody></tbody></table></div>
       <p class="small">Statusserne følger Jobindsats’ prioritering, hvis en person har flere statusser i samme måned. Diskretionerede tal vises som manglende og indgår ikke i den stablede graf.</p>
       <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
     </section>
-    <section class="panel" aria-labelledby="year-title"><span class="section-no">06 / UDVIKLING</span><h2 id="year-title">Sammenlignet med samme måned året før</h2>
+    <section class="panel" aria-labelledby="year-title"><span class="section-no">08 / UDVIKLING</span><h2 id="year-title">Sammenlignet med samme måned året før</h2>
       <p class="context">Seneste tilgængelige startmåned vises særskilt for 3 og 6 måneder.</p>
       <div class="table-wrap"><table id="year-table"><thead><tr><th scope="col">Nedslag</th><th scope="col">A-kasse</th><th scope="col">Seneste startmåned</th><th scope="col">Andel</th><th scope="col">Samme måned året før</th><th scope="col">Forskel</th></tr></thead><tbody></tbody></table></div>
       <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
     </section>
-    <section class="panel" aria-labelledby="average-title"><span class="section-no">07 / 12 MÅNEDER</span><h2 id="average-title">Vægtet gennemsnit for seneste 12 startmåneder</h2>
+    <section class="panel" aria-labelledby="average-title"><span class="section-no">09 / 12 MÅNEDER</span><h2 id="average-title">Vægtet gennemsnit for samme 12 startmåneder</h2>
       <p class="context" id="average-context"></p>
       <div class="table-wrap"><table id="average-table"><thead><tr><th scope="col">Nedslag</th><th scope="col">A-kasse</th><th scope="col">12-månedersandel</th><th scope="col">Forskel til I alt</th><th scope="col">Nyledige i alt</th></tr></thead><tbody></tbody></table></div>
-      <p class="small">Hver måneds andel vægtes med månedens antal nyledige. Gennemsnittet vises kun, hvis alle 12 måneder har andel og antal over nul. I alt er Jobindsats’ officielle total for samme gruppe og 12 måneder. 3 og 6 måneder har forskellige seneste startmåneder. Månedstal er afrundede i kilden.</p>
+      <p class="small">Begge nedslag bruger de samme 12 startmåneder, der er opgjort efter 6 måneder. Hver måneds andel vægtes med månedens antal nyledige. Gennemsnittet vises kun, hvis alle 12 måneder har andel og antal over nul. I alt er Jobindsats’ officielle total for samme opdeling og måneder. Månedstal er afrundede i kilden.</p>
       <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
     </section>
-    <section class="panel method" aria-labelledby="method-title"><span class="section-no">08 / SÅDAN LÆSES TALLENE</span><h2 id="method-title">Hvad viser målingen?</h2>
+    <section class="panel method" aria-labelledby="method-title"><span class="section-no">10 / SÅDAN LÆSES TALLENE</span><h2 id="method-title">Hvad viser målingen?</h2>
       <div class="method-grid"><div><h3>Nyledighed</h3><p>Personen er for første gang indplaceret i en ny dagpengeperiode og har haft dagpengeforbrug. Gentilmelding i samme periode tæller ikke som nyledighed. A-kassen registreres på tidspunktet for nyledighed.</p></div>
       <div><h3>To nedslag</h3><p>Grafernes vandrette akse viser måneden for nyledighed. 3- og 6-månedersmålingen viser status i forskellige opgørelsesmåneder for samme startmåned. De nyeste startmåneder er derfor forskellige for de to grafer.</p></div>
       <div><h3>Job og uddannelse</h3><p>Job er ordinær lønindkomst uden løntilskud, uddannelse er SU. Personer, der også modtager en ydelse i opgørelsesmåneden, placeres normalt på ydelsen, med de undtagelser der er beskrevet hos STAR.</p></div>
