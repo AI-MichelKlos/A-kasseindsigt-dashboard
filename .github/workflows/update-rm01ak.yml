@@ -1,0 +1,95 @@
+name: Opdater resultatmåling RM01AK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - resultatmaal/**
+      - scripts/fetch_rm01ak.py
+      - .github/workflows/update-rm01ak.yml
+  schedule:
+    - cron: "23 7,8,9,10 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: resultatmaal-rm01ak
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Afgør om dagens hentning er udført
+        id: gate
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          today="$(TZ=Europe/Copenhagen date +'%F')"
+          hour="$(TZ=Europe/Copenhagen date +'%H')"
+          if [ "$((10#$hour))" -lt 9 ] || { grep -Fq '"state": "ok"' status/rm01ak.json 2>/dev/null && grep -Fq "\"dateDK\": \"$today\"" status/rm01ak.json 2>/dev/null; }; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+      - name: Hent og kontroller RM01AK
+        id: fetch
+        if: steps.gate.outputs.run == 'true'
+        shell: bash
+        run: |
+          set +e
+          python -m py_compile scripts/jobindsats_api.py scripts/fetch_rm01ak.py
+          code=$?
+          if [ "$code" -eq 0 ]; then python scripts/fetch_rm01ak.py; code=$?; fi
+          if [ "$code" -eq 0 ]; then
+            python -m json.tool data/rm01ak.json > /dev/null
+            code=$?
+          fi
+          mkdir -p status
+          RUN_RESULT="$code" python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from zoneinfo import ZoneInfo
+          now=datetime.now(timezone.utc)
+          state='ok' if os.environ['RUN_RESULT']=='0' else 'failed'
+          status={'state':state,'dateDK':now.astimezone(ZoneInfo('Europe/Copenhagen')).strftime('%Y-%m-%d'),'checkedAt':now.isoformat(timespec='seconds'),'source':'Jobindsats.dk','dataset':'rm01ak'}
+          with open('status/rm01ak.json','w',encoding='utf-8') as file: json.dump(status,file,ensure_ascii=False,indent=2)
+          PY
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+      - name: Gem data og separat kildestatus
+        if: steps.gate.outputs.run == 'true'
+        shell: bash
+        run: |
+          cp status/rm01ak.json /tmp/rm01ak-status.json
+          if [ "${{ steps.fetch.outputs.exit_code }}" = "0" ]; then cp data/rm01ak.json /tmp/rm01ak-data.json; fi
+          git fetch origin main
+          git reset --hard origin/main
+          mkdir -p status data
+          cp /tmp/rm01ak-status.json status/rm01ak.json
+          git add status/rm01ak.json
+          if [ "${{ steps.fetch.outputs.exit_code }}" = "0" ]; then
+            cp /tmp/rm01ak-data.json data/rm01ak.json
+            git add data/rm01ak.json
+          fi
+          if ! git diff --cached --quiet; then
+            git config user.name "Dashboard automation"
+            git config user.email "dashboard-automation@users.noreply.github.com"
+            git commit -m "Opdater resultatmåling RM01AK og kildestatus"
+            git push origin HEAD:main
+          fi
+      - name: Marker datakildefejl
+        if: steps.gate.outputs.run == 'true' && steps.fetch.outputs.exit_code != '0'
+        run: exit "${{ steps.fetch.outputs.exit_code }}"

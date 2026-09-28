@@ -1,0 +1,40 @@
+#dak-resultat {--ink:#0F2B36;--green:#6B9E78;--light:#edf4ed;--line:#d8e2d9;--muted:#52656a;font:16px/1.5 Inter,system-ui,Segoe UI,Arial,sans-serif;color:var(--ink);background:#f3f7f1;min-height:100vh}
+#dak-resultat *,#dak-resultat *:before,#dak-resultat *:after{box-sizing:border-box}
+#dak-resultat .wrap{max-width:1220px;margin:auto;padding-left:24px;padding-right:24px}
+#dak-resultat .nav{display:flex;justify-content:space-between;gap:20px;max-width:1220px;margin:auto;padding:15px 24px;font-size:.88rem;font-weight:700}
+#dak-resultat a{color:#2f6441;text-underline-offset:3px}
+#dak-resultat .hero{background:linear-gradient(125deg,#0F2B36,#315b4f);color:white;padding:53px 0 49px}
+#dak-resultat .eyebrow,#dak-resultat .section-no{font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+#dak-resultat .eyebrow{color:#bbdfc4}
+#dak-resultat h1{font-size:clamp(2rem,4vw,3.6rem);line-height:1.1;max-width:800px;margin:12px 0 15px}
+#dak-resultat .hero p:not(.eyebrow){max-width:760px;font-size:1.08rem;margin:0 0 22px;color:#e7f2e8}
+#dak-resultat .freshness{display:inline-block;border:1px solid #89aa98;background:#ffffff18;border-radius:100px;padding:7px 13px;font-size:.85rem}
+#dak-resultat main{padding-top:30px;padding-bottom:60px}
+#dak-resultat .panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 25px #1435220a;padding:28px;margin:0 0 23px}
+#dak-resultat .section-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:19px}
+#dak-resultat .section-no{color:#397044}
+#dak-resultat h2{font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.2;margin:5px 0 0}
+#dak-resultat .section-heading p{color:var(--muted);margin:0;max-width:410px;font-size:.92rem}
+#dak-resultat .toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:17px}
+#dak-resultat button,#dak-resultat select{font:inherit;border-radius:9px;border:1px solid #aec8b0;background:#f5faf5;color:var(--ink);padding:8px 13px;cursor:pointer;min-height:42px}
+#dak-resultat button:hover{background:#e7f2e7}
+#dak-resultat button:focus-visible,#dak-resultat select:focus-visible,#dak-resultat input:focus-visible,#dak-resultat a:focus-visible{outline:3px solid #e29d50;outline-offset:2px}
+#dak-resultat .toolbar label{margin-left:auto;font-weight:700;font-size:.85rem}
+#dak-resultat .funds{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:9px}
+#dak-resultat .fund{display:flex;align-items:center;gap:10px;min-height:42px;padding:7px 11px;border:1px solid var(--line);border-radius:9px;cursor:pointer;font-size:.87rem;background:#fff}
+#dak-resultat .fund:has(input:checked){background:#eaf5eb;border-color:#7aaa82;font-weight:700}
+#dak-resultat .fund input{width:18px;height:18px;accent-color:#3d6b47;margin:0;flex:none}
+#dak-resultat .small,#dak-resultat .source{color:var(--muted);font-size:.78rem;margin:15px 0 0}
+#dak-resultat .chart{height:380px;position:relative}
+#dak-resultat .values{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+#dak-resultat .value{border:1px solid var(--line);border-left:4px solid var(--color);background:#fbfdfb;border-radius:8px;padding:7px 12px;min-width:142px;font-size:.84rem}
+#dak-resultat .value strong{display:block;font-size:1.15rem;font-variant-numeric:tabular-nums}
+#dak-resultat .value small{display:block;color:var(--muted);font-size:.75rem}
+#dak-resultat .method-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 30px}
+#dak-resultat h3{font-size:1rem;margin:14px 0 4px}
+#dak-resultat .method p{margin:0;color:var(--muted);font-size:.92rem}
+#dak-resultat .method .source{margin-top:25px}
+#dak-resultat .message{padding:17px;border:1px solid #dba878;background:#fff4e7;border-radius:10px;margin-bottom:20px}
+#dak-resultat footer{border-top:1px solid var(--line);color:var(--muted);padding:25px 0;font-size:.78rem}
+@media(max-width:700px){#dak-resultat .wrap{padding-left:16px;padding-right:16px}#dak-resultat .nav{padding:12px 16px}#dak-resultat .hero{padding:37px 0}#dak-resultat .panel{padding:18px}#dak-resultat .section-heading{display:block}#dak-resultat .section-heading p{margin-top:8px}#dak-resultat .toolbar label{margin-left:0}#dak-resultat .funds{grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .method-grid{grid-template-columns:1fr}#dak-resultat .chart{height:340px}}
+@media(max-width:370px){#dak-resultat .funds{grid-template-columns:1fr}}
