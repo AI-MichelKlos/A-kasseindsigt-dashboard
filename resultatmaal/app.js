@@ -9,7 +9,7 @@
   const num=v=>Number.isFinite(v)?new Intl.NumberFormat('da-DK').format(v):'Ingen tal';
   const diff=v=>Number.isFinite(v)?`${v>0?'+':''}${new Intl.NumberFormat('da-DK',{maximumFractionDigits:1,minimumFractionDigits:1}).format(v)} procentpoint`:'Ingen tal';
   const STATUS=[['job','Job','#4a90c4'],['education','Uddannelse','#9270af'],['onBenefit','Fortsat på dagpenge','#6b9e78'],['otherBenefit','Anden ydelse','#e7a352'],['selfSupport','Selvforsørgelse mv.','#b9c4be']];
-  let data,charts={},selected=new Set(['TOTAL']);
+  let data,view,charts={},selected=new Set(['TOTAL']);
   const message=byId('message');
   function error(text){message.hidden=false;message.textContent=text;}
   function keys(){return Object.keys(data.funds).sort((a,b)=>a==='TOTAL'?-1:b==='TOTAL'?1:data.funds[a].short.localeCompare(data.funds[b].short,'da'));}
@@ -28,7 +28,7 @@
     }
   }
   function renderChart(which){
-    const series=data.series[which], selectedCodes=selection();
+    const series=view.series[which], selectedCodes=selection();
     const allPeriods=[...new Set(Object.values(series).flatMap(rows=>Object.keys(rows)))].sort();
     const count=Number(byId('span').value);
     const periods=count?allPeriods.slice(-count):allPeriods;
@@ -41,7 +41,7 @@
       const card=document.createElement('div');card.className='value';card.style.setProperty('--color',color(code));
       const name=document.createElement('span');name.textContent=data.funds[code].short+(last&&last!==latest?` · ${label(last)}`:'');
       const value=document.createElement('strong');value.textContent=last?pct(r[last]):'Ingen tal';
-      const count=document.createElement('small');const n=last?data.counts?.[which]?.[code]?.[last]:null;
+      const count=document.createElement('small');const n=last?view.counts?.[which]?.[code]?.[last]:null;
       count.textContent=Number.isFinite(n)?`Nyledige: ${new Intl.NumberFormat('da-DK').format(n)}`:'Antal ikke oplyst';
       card.append(name,value,count);list.append(card);
     }
@@ -60,15 +60,15 @@
     byId('cohort-context').textContent=`Nyledige ${label(p)} · status efter 3 måneder: ${label(shift(p,3))} · efter 6 måneder: ${label(shift(p,6))}`;
     const body=byId('cohort-table').querySelector('tbody');body.replaceChildren();
     for(const code of codes){
-      const a=data.series.three[code]?.[p],b=data.series.six[code]?.[p];
-      addRow(body,[data.funds[code].short,pct(a),pct(b),diff(Number.isFinite(a)&&Number.isFinite(b)?Math.round((b-a)*10)/10:null),num(data.counts.three[code]?.[p]),num(data.counts.six[code]?.[p])]);
+      const a=view.series.three[code]?.[p],b=view.series.six[code]?.[p];
+      addRow(body,[data.funds[code].short,pct(a),pct(b),diff(Number.isFinite(a)&&Number.isFinite(b)?Math.round((b-a)*10)/10:null),num(view.counts.three[code]?.[p]),num(view.counts.six[code]?.[p])]);
     }
     const box=byId('cohort-chart').parentElement;box.style.height=`${Math.max(190,110+codes.length*35)}px`;
     if(charts.cohort)charts.cohort.destroy();
     charts.cohort=new Chart(byId('cohort-chart'),{
       type:'bar',data:{labels:codes.map(code=>data.funds[code].short),datasets:[
-        {label:'Efter 3 måneder',data:codes.map(code=>data.series.three[code]?.[p]??null),backgroundColor:'#6B9E78'},
-        {label:'Efter 6 måneder',data:codes.map(code=>data.series.six[code]?.[p]??null),backgroundColor:'#4A90C4'}
+        {label:'Efter 3 måneder',data:codes.map(code=>view.series.three[code]?.[p]??null),backgroundColor:'#6B9E78'},
+        {label:'Efter 6 måneder',data:codes.map(code=>view.series.six[code]?.[p]??null),backgroundColor:'#4A90C4'}
       ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}},y:{grid:{display:false}}}}
     });
   }
@@ -78,7 +78,7 @@
     const body=byId('status-table').querySelector('tbody');body.replaceChildren();
     const complete=[];
     for(const code of codes){
-      const shares=data.statusShares[which][code]?.[p]||{};
+      const shares=view.statusShares[which][code]?.[p]||{};
       addRow(body,[data.funds[code].short,...STATUS.map(([key])=>pct(shares[key]))]);
       if(STATUS.every(([key])=>Number.isFinite(shares[key])))complete.push(code);
     }
@@ -86,28 +86,59 @@
     if(charts.status)charts.status.destroy();
     if(!complete.length)return;
     charts.status=new Chart(byId('status-chart'),{
-      type:'bar',data:{labels:complete.map(code=>data.funds[code].short),datasets:STATUS.map(([key,name,color])=>({label:name,data:complete.map(code=>data.statusShares[which][code][p][key]),backgroundColor:color}))},
+      type:'bar',data:{labels:complete.map(code=>data.funds[code].short),datasets:STATUS.map(([key,name,color])=>({label:name,data:complete.map(code=>view.statusShares[which][code][p][key]),backgroundColor:color}))},
       options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:15}},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{stacked:true,beginAtZero:true,min:0,max:100,ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}},y:{stacked:true,grid:{display:false}}}}
     });
   }
   function renderYear(){
     const body=byId('year-table').querySelector('tbody');body.replaceChildren();
     for(const [which,name] of [['three','3 måneder'],['six','6 måneder']]){
-      const latest=Object.keys(data.series[which].TOTAL).sort().at(-1),yearBefore=latest.replace(/^\d{4}/,String(Number(latest.slice(0,4))-1));
+      const latest=Object.keys(view.series[which].TOTAL).sort().at(-1),yearBefore=latest.replace(/^\d{4}/,String(Number(latest.slice(0,4))-1));
       for(const code of selection()){
-        const a=data.series[which][code]?.[latest],b=data.series[which][code]?.[yearBefore];
+        const a=view.series[which][code]?.[latest],b=view.series[which][code]?.[yearBefore];
         addRow(body,[name,data.funds[code].short,label(latest),pct(a),pct(b),diff(Number.isFinite(a)&&Number.isFinite(b)?Math.round((a-b)*10)/10:null)]);
       }
     }
   }
-  function render(){renderFunds();renderChart('three');renderChart('six');renderCohort();renderStatus();renderYear();}
+  function average(which,code,periods){
+    let weighted=0,count=0;
+    for(const p of periods){
+      const share=view.series[which][code]?.[p],n=view.counts[which][code]?.[p];
+      if(!Number.isFinite(share)||!Number.isFinite(n)||n<=0)return null;
+      weighted+=share*n;count+=n;
+    }
+    return {share:weighted/count,count};
+  }
+  function renderAverage(){
+    const body=byId('average-table').querySelector('tbody');body.replaceChildren();
+    const contexts=[];
+    for(const [which,name] of [['three','3 måneder'],['six','6 måneder']]){
+      const periods=Object.keys(view.series[which].TOTAL).sort().slice(-12);
+      contexts.push(`${name}: ${label(periods[0])} til ${label(periods.at(-1))}`);
+      const total=periods.length===12?average(which,'TOTAL',periods):null;
+      for(const code of selection()){
+        const result=periods.length===12?average(which,code,periods):null;
+        addRow(body,[name,data.funds[code].short,pct(result?.share),diff(result&&total?result.share-total.share:null),num(result?.count)]);
+      }
+    }
+    byId('average-context').textContent=contexts.join(' · ');
+  }
+  function render(){renderFunds();renderChart('three');renderChart('six');renderCohort();renderStatus();renderYear();renderAverage();}
+  function renderCategories(){
+    const group=byId('group').value,select=byId('category');select.replaceChildren();
+    const categories=data.subgroups?.[group]?.categories||[];
+    select.disabled=!categories.length;
+    for(const item of categories){const option=document.createElement('option');option.value=item.id;option.textContent=item.label;select.append(option);}
+    view=categories.length?data.subgroups[group].slices[select.value]:data;
+    render();
+  }
   function csv(){
-    const header=['Nyledighedsmåned','Opgørelsesmåned','Nedslag','A-kasse','Antal nyledige','Andel i job eller uddannelse (pct.)',...STATUS.map(([,name])=>name+' (pct.)')];
+    const header=['Opdeling','Gruppe','Nyledighedsmåned','Opgørelsesmåned','Nedslag','A-kasse','Antal nyledige','Andel i job eller uddannelse (pct.)',...STATUS.map(([,name])=>name+' (pct.)')];
     const rows=[header];
     const raw=v=>Number.isFinite(v)?String(v).replace('.',','):'';
-    for(const which of ['three','six'])for(const code of selection())for(const [p,v] of Object.entries(data.series[which][code]||{}).sort()){
-      const shares=data.statusShares[which][code]?.[p]||{};
-      rows.push([p,shift(p,which==='three'?3:6),which==='three'?'3 måneder':'6 måneder',data.funds[code].name,raw(data.counts[which][code]?.[p]),raw(v),...STATUS.map(([key])=>raw(shares[key]))]);
+    for(const which of ['three','six'])for(const code of selection())for(const [p,v] of Object.entries(view.series[which][code]||{}).sort()){
+      const shares=view.statusShares[which][code]?.[p]||{};
+      rows.push([byId('group').selectedOptions[0].textContent,byId('category').disabled?'Alle':byId('category').selectedOptions[0].textContent,p,shift(p,which==='three'?3:6),which==='three'?'3 måneder':'6 måneder',data.funds[code].name,raw(view.counts[which][code]?.[p]),raw(v),...STATUS.map(([key])=>raw(shares[key]))]);
     }
     const esc=x=>'"'+String(x).replaceAll('"','""')+'"';
     const blob=new Blob(['\ufeff',rows.map(row=>row.map(esc).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});
@@ -116,6 +147,8 @@
   byId('all').addEventListener('click',()=>{selected=new Set(Object.keys(data.funds));render();});
   byId('reset').addEventListener('click',()=>{selected=new Set(['TOTAL']);render();});
   byId('span').addEventListener('change',()=>data&&render());
+  byId('group').addEventListener('change',()=>data&&renderCategories());
+  byId('category').addEventListener('change',()=>{if(data){view=data.subgroups[byId('group').value].slices[byId('category').value];render();}});
   byId('cohort').addEventListener('change',()=>data&&render());
   byId('status-horizon').addEventListener('change',()=>data&&renderStatus());
   byId('csv').addEventListener('click',()=>data&&csv());
@@ -125,7 +158,11 @@
   ]).then(([payload,status])=>{
     if(payload.meta?.state!=='ok'||!payload.funds?.TOTAL||!payload.series?.three?.TOTAL||!payload.series?.six?.TOTAL||!payload.statusShares?.three?.TOTAL||!payload.statusShares?.six?.TOTAL)throw Error('De nye datakategorier er endnu ikke verificeret');
     if(typeof Chart==='undefined')throw Error('Grafbiblioteket kunne ikke indlæses');
-    data=payload;
+    data=payload;view=data;
+    if(payload.subgroups)for(const [key,group] of Object.entries(payload.subgroups)){
+      if(!group.categories?.length||!group.categories.every(c=>group.slices?.[c.id]?.series?.three?.TOTAL))throw Error(`Manglende data for ${key}`);
+      const option=document.createElement('option');option.value=key;option.textContent=group.label;byId('group').append(option);
+    }
     const options=byId('cohort');
     for(const p of commonMonths().reverse()){
       const option=document.createElement('option');option.value=p;option.textContent=label(p);options.append(option);
