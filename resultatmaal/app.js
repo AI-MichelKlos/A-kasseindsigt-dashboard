@@ -14,6 +14,22 @@
   let data,view,charts={},selected=new Set(['TOTAL']),chosenMetrics=new Set(['job']);
   const message=byId('message');
   function error(text){message.hidden=false;message.textContent=text;}
+  function bindTooltipDismissal(canvas){
+    let timer;
+    const dismiss=()=>{
+      const chart=Chart.getChart(canvas);
+      if(!chart?.tooltip)return;
+      chart.tooltip.setActiveElements([],{x:0,y:0});
+      chart.setActiveElements([]);
+      chart.update('none');
+    };
+    const schedule=()=>{clearTimeout(timer);timer=setTimeout(dismiss,900);};
+    canvas.addEventListener('pointerdown',()=>clearTimeout(timer));
+    canvas.addEventListener('pointerup',schedule);
+    canvas.addEventListener('touchend',schedule);
+    canvas.addEventListener('pointercancel',dismiss);
+    canvas.addEventListener('pointerleave',dismiss);
+  }
   function keys(){return Object.keys(data.funds).sort((a,b)=>a==='TOTAL'?-1:b==='TOTAL'?1:data.funds[a].short.localeCompare(data.funds[b].short,'da'));}
   function color(code){return COLORS[keys().indexOf(code)%COLORS.length];}
   function selection(){return keys().filter(code=>selected.has(code));}
@@ -53,7 +69,7 @@
     if(charts.trend)charts.trend.destroy();
     charts.trend=new Chart(byId('trend-chart'),{
       type:'line',data:{labels:periods.map(label),datasets},
-      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',labels:{boxWidth:20,font:{size:12}}},tooltip:{callbacks:{title:items=>items[0]?`Opgjort ${label(periods[items[0].dataIndex])} · nyledige ${label(shift(periods[items[0].dataIndex],-offset))}`:'',label:item=>`${item.dataset.label}: ${pct(item.parsed.y)}`}}},scales:{x:{type:'category',grid:{display:false},ticks:{maxRotation:45,callback:(_,index)=>index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1?label(periods[index]):''}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel af nyledige, pct.'},ticks:{callback:v=>v+' %'}}}}
+      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'top',labels:{boxWidth:20,font:{size:12}}},tooltip:{callbacks:{title:items=>items[0]?`Opgjort ${label(periods[items[0].dataIndex])} · nyledige ${label(shift(periods[items[0].dataIndex],-offset))}`:'',label:item=>`${item.dataset.label}: ${pct(item.parsed.y)}`}}},scales:{x:{type:'category',grid:{display:false},ticks:{maxRotation:45,callback:(_,index)=>index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1?label(periods[index]):''}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel af nyledige, pct.'},ticks:{callback:v=>v+' %'}}}}
     });
   }
   function renderFunds(){
@@ -90,7 +106,7 @@
     if(charts[which])charts[which].destroy();
     charts[which]=new Chart(ctx,{
       type:'line',data:{labels:periods.map(label),datasets:selectedCodes.map(code=>({label:data.funds[code].short,data:periods.map(p=>Number.isFinite(series[code]?.[p])?series[code][p]:null),borderColor:color(code),backgroundColor:color(code),borderWidth:2.7,pointRadius:periods.length>30?2:3,pointHoverRadius:6,spanGaps:false,tension:.16}))},
-      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',labels:{boxWidth:18,usePointStyle:true,font:{size:13}}},tooltip:{callbacks:{title:items=>items[0]?`Nyledige ${periods[items[0].dataIndex]} · status ${shift(periods[items[0].dataIndex],which==='three'?3:6)}`:'',label:item=>`${item.dataset.label}: ${pct(item.parsed.y)}`}}},scales:{x:{type:'category',grid:{display:false},ticks:{color:'#52656a',maxRotation:45,callback:function(value,index){const p=periods[index];return (index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1)?label(p):''}}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}}}}
+      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'top',labels:{boxWidth:18,usePointStyle:true,font:{size:13}}},tooltip:{callbacks:{title:items=>items[0]?`Nyledige ${label(periods[items[0].dataIndex])} · status ${label(shift(periods[items[0].dataIndex],which==='three'?3:6))}`:'',label:item=>`${item.dataset.label}: ${pct(item.parsed.y)}`}}},scales:{x:{type:'category',grid:{display:false},ticks:{color:'#52656a',maxRotation:45,callback:function(value,index){const p=periods[index];return (index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1)?label(p):''}}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}}}}
     });
   }
   function shift(period,offset){const m=/^(\d{4})M(\d{2})$/.exec(period);if(!m)return period;const d=new Date(Date.UTC(Number(m[1]),Number(m[2])-1+offset,1));return `${d.getUTCFullYear()}M${String(d.getUTCMonth()+1).padStart(2,'0')}`;}
@@ -130,7 +146,7 @@
     if(charts.reportTrend)charts.reportTrend.destroy();
     charts.reportTrend=new Chart(byId('report-trend-chart'),{
       type:'line',data:{labels:periods.map(label),datasets},
-      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top'},tooltip:{callbacks:{title:items=>items[0]?`Opgjort ${label(periods[items[0].dataIndex])}`:'',label:item=>{const offset=item.dataset.label.endsWith('3 måneder')?3:6;return `${item.dataset.label} · nyledige ${label(shift(periods[item.dataIndex],-offset))}: ${pct(item.parsed.y)}`;}}}},scales:{x:{type:'category',grid:{display:false},ticks:{maxRotation:45,callback:(_,index)=>index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1?label(periods[index]):''}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'}}}}
+      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'top'},tooltip:{callbacks:{title:items=>items[0]?`Opgjort ${label(periods[items[0].dataIndex])}`:'',label:item=>{const offset=item.dataset.label.endsWith('3 måneder')?3:6;return `${item.dataset.label} · nyledige ${label(shift(periods[item.dataIndex],-offset))}: ${pct(item.parsed.y)}`;}}}},scales:{x:{type:'category',grid:{display:false},ticks:{maxRotation:45,callback:(_,index)=>index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1?label(periods[index]):''}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'}}}}
     });
   }
   function renderCohort(){
@@ -247,6 +263,13 @@
   ]).then(([payload,status])=>{
     if(payload.meta?.state!=='ok'||!payload.funds?.TOTAL||!payload.series?.three?.TOTAL||!payload.series?.six?.TOTAL||!payload.statusShares?.three?.TOTAL||!payload.statusShares?.six?.TOTAL)throw Error('De nye datakategorier er endnu ikke verificeret');
     if(typeof Chart==='undefined')throw Error('Grafbiblioteket kunne ikke indlæses');
+    Chart.defaults.events=['mousemove','mouseout','touchstart','touchmove'];
+    Chart.defaults.plugins.tooltip.mode='nearest';
+    Chart.defaults.plugins.tooltip.intersect=false;
+    Chart.defaults.plugins.tooltip.position='nearest';
+    Chart.defaults.plugins.tooltip.animation={duration:90};
+    Chart.defaults.plugins.tooltip.backgroundColor='rgba(15,43,54,.87)';
+    root.querySelectorAll('canvas').forEach(bindTooltipDismissal);
     data=payload;view=data;
     if(payload.subgroups)for(const [key,group] of Object.entries(payload.subgroups)){
       if(!group.categories?.length||!group.categories.every(c=>group.slices?.[c.id]?.series?.three?.TOTAL))throw Error(`Manglende data for ${key}`);
