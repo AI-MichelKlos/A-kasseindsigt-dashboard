@@ -8,7 +8,7 @@
       "three": "2026M04",
       "six": "2026M01"
     },
-    "fetchedAt": "2026-09-28T15:56:24+00:00",
+    "fetchedAt": "2026-09-28T16:25:39+00:00",
     "unit": "pct. af nyledige",
     "geography": "Hele landet",
     "filters": "Alle køn, aldre og herkomster; a-kasse ved nyledighed",
@@ -2489,6 +2489,7800 @@
         "2025M11": 599,
         "2025M12": 656,
         "2026M01": 1062
+      }
+    }
+  },
+  "statusShares": {
+    "three": {
+      "TOTAL": {
+        "2024M04": {
+          "job": 40,
+          "education": 0,
+          "onBenefit": 53.6,
+          "otherBenefit": 4.1,
+          "selfSupport": 2.3
+        },
+        "2024M05": {
+          "job": 36.9,
+          "education": 0.7,
+          "onBenefit": 56.4,
+          "otherBenefit": 4.1,
+          "selfSupport": 2
+        },
+        "2024M06": {
+          "job": 46.4,
+          "education": 2.2,
+          "onBenefit": 46.5,
+          "otherBenefit": 3.4,
+          "selfSupport": 1.6
+        },
+        "2024M07": {
+          "job": 46.6,
+          "education": 1.4,
+          "onBenefit": 46.7,
+          "otherBenefit": 3.3,
+          "selfSupport": 2
+        },
+        "2024M08": {
+          "job": 39.9,
+          "education": 1.1,
+          "onBenefit": 53.2,
+          "otherBenefit": 3.7,
+          "selfSupport": 2.2
+        },
+        "2024M09": {
+          "job": 35,
+          "education": 0,
+          "onBenefit": 58.9,
+          "otherBenefit": 4,
+          "selfSupport": 2.2
+        },
+        "2024M10": {
+          "job": 35.9,
+          "education": 0.4,
+          "onBenefit": 57.8,
+          "otherBenefit": 3.7,
+          "selfSupport": 2.2
+        },
+        "2024M11": {
+          "job": 36.9,
+          "education": 0.9,
+          "onBenefit": 56.1,
+          "otherBenefit": 3.9,
+          "selfSupport": 2.1
+        },
+        "2024M12": {
+          "job": 45.7,
+          "education": 0.7,
+          "onBenefit": 48.2,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.8
+        },
+        "2025M01": {
+          "job": 48.9,
+          "education": 0.3,
+          "onBenefit": 45.6,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.5
+        },
+        "2025M02": {
+          "job": 44.7,
+          "education": 0.1,
+          "onBenefit": 49.7,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.7
+        },
+        "2025M03": {
+          "job": 42.5,
+          "education": 0.1,
+          "onBenefit": 52.3,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.5
+        },
+        "2025M04": {
+          "job": 36.4,
+          "education": 0,
+          "onBenefit": 57.5,
+          "otherBenefit": 3.9,
+          "selfSupport": 2.1
+        },
+        "2025M05": {
+          "job": 36.7,
+          "education": 0.5,
+          "onBenefit": 57,
+          "otherBenefit": 3.9,
+          "selfSupport": 2
+        },
+        "2025M06": {
+          "job": 45.3,
+          "education": 2.1,
+          "onBenefit": 48.2,
+          "otherBenefit": 3.1,
+          "selfSupport": 1.4
+        },
+        "2025M07": {
+          "job": 46.5,
+          "education": 1.3,
+          "onBenefit": 47.1,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.9
+        },
+        "2025M08": {
+          "job": 39.7,
+          "education": 0.7,
+          "onBenefit": 53.6,
+          "otherBenefit": 3.9,
+          "selfSupport": 2.1
+        },
+        "2025M09": {
+          "job": 34.6,
+          "education": 0.1,
+          "onBenefit": 58.6,
+          "otherBenefit": 4.1,
+          "selfSupport": 2.6
+        },
+        "2025M10": {
+          "job": 34.3,
+          "education": 0.4,
+          "onBenefit": 59.4,
+          "otherBenefit": 3.8,
+          "selfSupport": 2
+        },
+        "2025M11": {
+          "job": 34.3,
+          "education": 0.7,
+          "onBenefit": 59.1,
+          "otherBenefit": 3.9,
+          "selfSupport": 1.9
+        },
+        "2025M12": {
+          "job": 42.9,
+          "education": 0.7,
+          "onBenefit": 50.9,
+          "otherBenefit": 3.4,
+          "selfSupport": 2.1
+        },
+        "2026M01": {
+          "job": 52.8,
+          "education": 0.3,
+          "onBenefit": 42.6,
+          "otherBenefit": 2.9,
+          "selfSupport": 1.4
+        },
+        "2026M02": {
+          "job": 51.3,
+          "education": 0.1,
+          "onBenefit": 44.3,
+          "otherBenefit": 2.1,
+          "selfSupport": 2.2
+        },
+        "2026M03": {
+          "job": 40.4,
+          "education": 0.2,
+          "onBenefit": 54,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.5
+        },
+        "2026M04": {
+          "job": 36.1,
+          "education": 0,
+          "onBenefit": 57.7,
+          "otherBenefit": 2.6,
+          "selfSupport": 3.7
+        }
+      },
+      "D86": {
+        "2024M04": {
+          "job": 35.8,
+          "education": 0,
+          "onBenefit": 58.6,
+          "otherBenefit": 3.1,
+          "selfSupport": 2.5
+        },
+        "2024M05": {
+          "job": 32.8,
+          "education": 0,
+          "onBenefit": 61.8,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.6
+        },
+        "2024M06": {
+          "job": 48.1,
+          "education": 0.8,
+          "onBenefit": 47.6,
+          "otherBenefit": 1.9,
+          "selfSupport": 1.6
+        },
+        "2024M07": {
+          "job": 48.1,
+          "education": 0.8,
+          "onBenefit": 46.6,
+          "otherBenefit": 2.3,
+          "selfSupport": 2.3
+        },
+        "2024M08": {
+          "job": 42.5,
+          "education": 0.5,
+          "onBenefit": 53,
+          "otherBenefit": 2.1,
+          "selfSupport": 1.9
+        },
+        "2024M09": {
+          "job": 34.9,
+          "education": 0,
+          "onBenefit": 60.5,
+          "otherBenefit": 2.2,
+          "selfSupport": 2.4
+        },
+        "2024M10": {
+          "job": 35.5,
+          "education": 0.3,
+          "onBenefit": 58.4,
+          "otherBenefit": 2.4,
+          "selfSupport": 3.4
+        },
+        "2024M11": {
+          "job": 37,
+          "education": 0.5,
+          "onBenefit": 57.8,
+          "otherBenefit": 1.8,
+          "selfSupport": 2.9
+        },
+        "2024M12": {
+          "job": 44,
+          "education": 0.3,
+          "onBenefit": 51.7,
+          "otherBenefit": 2.1,
+          "selfSupport": 1.8
+        },
+        "2025M01": {
+          "job": 48.3,
+          "education": 0.2,
+          "onBenefit": 47.3,
+          "otherBenefit": 2.6,
+          "selfSupport": 1.5
+        },
+        "2025M02": {
+          "job": 45.6,
+          "education": 0,
+          "onBenefit": 49.8,
+          "otherBenefit": 2.9,
+          "selfSupport": 1.7
+        },
+        "2025M03": {
+          "job": 39.4,
+          "education": 0.1,
+          "onBenefit": 56.4,
+          "otherBenefit": 2.7,
+          "selfSupport": 1.4
+        },
+        "2025M04": {
+          "job": 31.1,
+          "education": 0,
+          "onBenefit": 62.9,
+          "otherBenefit": 3.4,
+          "selfSupport": 2.6
+        },
+        "2025M05": {
+          "job": 34,
+          "education": 0.1,
+          "onBenefit": 60.6,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.4
+        },
+        "2025M06": {
+          "job": 43.6,
+          "education": 0.5,
+          "onBenefit": 52.2,
+          "otherBenefit": 1.9,
+          "selfSupport": 1.7
+        },
+        "2025M07": {
+          "job": 48.3,
+          "education": 0.6,
+          "onBenefit": 47.2,
+          "otherBenefit": 1.6,
+          "selfSupport": 2.4
+        },
+        "2025M08": {
+          "job": 38.6,
+          "education": 0.5,
+          "onBenefit": 56.3,
+          "otherBenefit": 2.2,
+          "selfSupport": 2.5
+        },
+        "2025M09": {
+          "job": 32.9,
+          "education": 0.1,
+          "onBenefit": 61.8,
+          "otherBenefit": 2.3,
+          "selfSupport": 2.8
+        },
+        "2025M10": {
+          "job": 32.9,
+          "education": 0.1,
+          "onBenefit": 61.1,
+          "otherBenefit": 2.9,
+          "selfSupport": 3
+        },
+        "2025M11": {
+          "job": 34.8,
+          "education": 0.5,
+          "onBenefit": 58.8,
+          "otherBenefit": 2.4,
+          "selfSupport": 3.6
+        },
+        "2025M12": {
+          "job": 35,
+          "education": 0.2,
+          "onBenefit": 59,
+          "otherBenefit": 2.8,
+          "selfSupport": 3
+        },
+        "2026M01": {
+          "job": 40.7,
+          "education": 0,
+          "onBenefit": 55.5,
+          "otherBenefit": 2,
+          "selfSupport": 1.8
+        },
+        "2026M02": {
+          "job": 41.2,
+          "education": 0,
+          "onBenefit": 55.2,
+          "otherBenefit": 0.8,
+          "selfSupport": 2.8
+        },
+        "2026M03": {
+          "job": 34.9,
+          "education": 0.1,
+          "onBenefit": 61.4,
+          "otherBenefit": 0.8,
+          "selfSupport": 2.8
+        },
+        "2026M04": {
+          "job": 29.9,
+          "education": 0,
+          "onBenefit": 63.7,
+          "otherBenefit": 1.2,
+          "selfSupport": 5.2
+        }
+      },
+      "D92": {
+        "2024M04": {
+          "job": 30.3,
+          "education": 0,
+          "onBenefit": 62.2,
+          "otherBenefit": 3.8,
+          "selfSupport": 3.8
+        },
+        "2024M05": {
+          "job": 35.9,
+          "education": 1.1,
+          "onBenefit": 59.1,
+          "otherBenefit": 2.2,
+          "selfSupport": 1.7
+        },
+        "2024M06": {
+          "job": 47.6,
+          "education": 2.4,
+          "onBenefit": 45.2,
+          "otherBenefit": 3.3,
+          "selfSupport": 1.5
+        },
+        "2024M07": {
+          "job": 48,
+          "education": 0.8,
+          "onBenefit": 46.4,
+          "otherBenefit": 2.7,
+          "selfSupport": 2
+        },
+        "2024M08": {
+          "job": 36.9,
+          "education": 1.4,
+          "onBenefit": 55,
+          "otherBenefit": 3.1,
+          "selfSupport": 3.7
+        },
+        "2024M09": {
+          "job": 30.6,
+          "education": 0,
+          "onBenefit": 62.5,
+          "otherBenefit": 4.1,
+          "selfSupport": 2.8
+        },
+        "2024M10": {
+          "job": 34.2,
+          "education": 0.4,
+          "onBenefit": 58.2,
+          "otherBenefit": 3.2,
+          "selfSupport": 4
+        },
+        "2024M11": {
+          "job": 38.9,
+          "education": 0.4,
+          "onBenefit": 53.7,
+          "otherBenefit": 3.7,
+          "selfSupport": 3.3
+        },
+        "2024M12": {
+          "job": 43,
+          "education": 0.4,
+          "onBenefit": 49.9,
+          "otherBenefit": 2.9,
+          "selfSupport": 3.7
+        },
+        "2025M01": {
+          "job": 45,
+          "education": 0.2,
+          "onBenefit": 50,
+          "otherBenefit": 2.8,
+          "selfSupport": 2
+        },
+        "2025M02": {
+          "job": 37.1,
+          "education": 0.1,
+          "onBenefit": 56.5,
+          "otherBenefit": 3.8,
+          "selfSupport": 2.5
+        },
+        "2025M03": {
+          "job": 35.3,
+          "education": 0.2,
+          "onBenefit": 59.2,
+          "otherBenefit": 3.1,
+          "selfSupport": 2.4
+        },
+        "2025M04": {
+          "job": 27.3,
+          "education": 0.2,
+          "onBenefit": 67.8,
+          "otherBenefit": 2.6,
+          "selfSupport": 2.1
+        },
+        "2025M05": {
+          "job": 36.2,
+          "education": 0.4,
+          "onBenefit": 57.8,
+          "otherBenefit": 3,
+          "selfSupport": 2.6
+        },
+        "2025M06": {
+          "job": 45.3,
+          "education": 2.9,
+          "onBenefit": 48.3,
+          "otherBenefit": 2.1,
+          "selfSupport": 1.4
+        },
+        "2025M07": {
+          "job": 46.5,
+          "education": 1.9,
+          "onBenefit": 45.7,
+          "otherBenefit": 2.9,
+          "selfSupport": 3
+        },
+        "2025M08": {
+          "job": 36.6,
+          "education": 0.7,
+          "onBenefit": 54.2,
+          "otherBenefit": 4,
+          "selfSupport": 4.5
+        },
+        "2025M09": {
+          "job": 29.8,
+          "education": 0.2,
+          "onBenefit": 64.6,
+          "otherBenefit": 3.4,
+          "selfSupport": 2.1
+        },
+        "2025M10": {
+          "job": 30.5,
+          "education": 0,
+          "onBenefit": 64.1,
+          "otherBenefit": 2.2,
+          "selfSupport": 3.2
+        },
+        "2025M11": {
+          "job": 33.2,
+          "education": 0.6,
+          "onBenefit": 60.1,
+          "otherBenefit": 2.9,
+          "selfSupport": 3.1
+        },
+        "2025M12": {
+          "job": 37.2,
+          "education": 1,
+          "onBenefit": 56,
+          "otherBenefit": 2.5,
+          "selfSupport": 3.3
+        },
+        "2026M01": {
+          "job": 41.1,
+          "education": 0.2,
+          "onBenefit": 54.5,
+          "otherBenefit": 2.3,
+          "selfSupport": 1.9
+        },
+        "2026M02": {
+          "job": 40,
+          "education": 0,
+          "onBenefit": 54.4,
+          "otherBenefit": 2.3,
+          "selfSupport": 3.3
+        },
+        "2026M03": {
+          "job": 39.3,
+          "education": 0.3,
+          "onBenefit": 54.3,
+          "otherBenefit": 2.1,
+          "selfSupport": 4
+        },
+        "2026M04": {
+          "job": 30.7,
+          "education": 0.2,
+          "onBenefit": 60.6,
+          "otherBenefit": 3,
+          "selfSupport": 5.5
+        }
+      },
+      "D10": {
+        "2024M04": {
+          "job": 22.6,
+          "education": 0,
+          "onBenefit": 70.5,
+          "otherBenefit": 2.7,
+          "selfSupport": 4.1
+        },
+        "2024M05": {
+          "job": 30.1,
+          "education": 0,
+          "onBenefit": 62.8,
+          "otherBenefit": 2.6,
+          "selfSupport": 4.5
+        },
+        "2024M06": {
+          "job": 33.1,
+          "education": 1.3,
+          "onBenefit": 58.6,
+          "otherBenefit": 2.5,
+          "selfSupport": 4.6
+        },
+        "2024M07": {
+          "job": 39.8,
+          "education": 1.6,
+          "onBenefit": 51.9,
+          "otherBenefit": 2.5,
+          "selfSupport": 4.3
+        },
+        "2024M08": {
+          "job": 23.4,
+          "education": 0.6,
+          "onBenefit": 70.9,
+          "otherBenefit": 0,
+          "selfSupport": 5.1
+        },
+        "2024M09": {
+          "job": 29.7,
+          "education": 0,
+          "onBenefit": 62.6,
+          "otherBenefit": 4.5,
+          "selfSupport": 3.2
+        },
+        "2024M10": {
+          "job": 20.8,
+          "education": 0,
+          "onBenefit": 76.4,
+          "otherBenefit": 2.1,
+          "selfSupport": 0.7
+        },
+        "2024M11": {
+          "job": 30.8,
+          "education": 0.7,
+          "onBenefit": 61.5,
+          "otherBenefit": 2.1,
+          "selfSupport": 4.9
+        },
+        "2024M12": {
+          "job": 33.1,
+          "education": 0,
+          "onBenefit": 61.4,
+          "otherBenefit": 0,
+          "selfSupport": 5.5
+        },
+        "2025M01": {
+          "job": 36.7,
+          "education": 0,
+          "onBenefit": 58.1,
+          "otherBenefit": 2.3,
+          "selfSupport": 2.9
+        },
+        "2025M02": {
+          "job": 30.3,
+          "education": 0,
+          "onBenefit": 62.6,
+          "otherBenefit": 3.6,
+          "selfSupport": 3.6
+        },
+        "2025M03": {
+          "job": 33.1,
+          "education": 0.7,
+          "onBenefit": 60.6,
+          "otherBenefit": 0.7,
+          "selfSupport": 4.9
+        },
+        "2025M04": {
+          "job": 15.8,
+          "education": 0,
+          "onBenefit": 74.4,
+          "otherBenefit": 5.3,
+          "selfSupport": 4.5
+        },
+        "2025M05": {
+          "job": 26.3,
+          "education": 0.7,
+          "onBenefit": 67.2,
+          "otherBenefit": 3.6,
+          "selfSupport": 2.2
+        },
+        "2025M06": {
+          "job": 31.1,
+          "education": 1.7,
+          "onBenefit": 60,
+          "otherBenefit": 4.3,
+          "selfSupport": 3
+        },
+        "2025M07": {
+          "job": 35.3,
+          "education": 0.4,
+          "onBenefit": 59.3,
+          "otherBenefit": 1.6,
+          "selfSupport": 3.5
+        },
+        "2025M08": {
+          "job": 30.1,
+          "education": 0,
+          "onBenefit": 64.2,
+          "otherBenefit": 1,
+          "selfSupport": 4.7
+        },
+        "2025M09": {
+          "job": 27.5,
+          "education": 0,
+          "onBenefit": 66.4,
+          "otherBenefit": 0.8,
+          "selfSupport": 5.3
+        },
+        "2025M10": {
+          "job": 34.5,
+          "education": 0.7,
+          "onBenefit": 59.5,
+          "otherBenefit": 0.7,
+          "selfSupport": 4.7
+        },
+        "2025M11": {
+          "job": 23.5,
+          "education": 0,
+          "onBenefit": 71.3,
+          "otherBenefit": 0.9,
+          "selfSupport": 4.3
+        },
+        "2025M12": {
+          "job": 31.7,
+          "education": 1.2,
+          "onBenefit": 61,
+          "otherBenefit": 3,
+          "selfSupport": 3
+        },
+        "2026M01": {
+          "job": 28.6,
+          "education": 0.4,
+          "onBenefit": 64,
+          "otherBenefit": 2.1,
+          "selfSupport": 4.9
+        },
+        "2026M02": {
+          "job": 29,
+          "education": 0,
+          "onBenefit": 64.1,
+          "otherBenefit": 1.8,
+          "selfSupport": 5.1
+        },
+        "2026M03": {
+          "job": 28.8,
+          "education": 0,
+          "onBenefit": 64.4,
+          "otherBenefit": 2.3,
+          "selfSupport": 4.5
+        },
+        "2026M04": {
+          "job": 26.6,
+          "education": 0,
+          "onBenefit": 66.4,
+          "otherBenefit": 1.6,
+          "selfSupport": 5.5
+        }
+      },
+      "D83": {
+        "2024M04": {
+          "job": 31.7,
+          "education": 0,
+          "onBenefit": 62.6,
+          "otherBenefit": 4.9,
+          "selfSupport": 0.8
+        },
+        "2024M05": {
+          "job": 35.1,
+          "education": 0.9,
+          "onBenefit": 55,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.7
+        },
+        "2024M06": {
+          "job": 34.8,
+          "education": 1.9,
+          "onBenefit": 60.9,
+          "otherBenefit": 2.5,
+          "selfSupport": 0
+        },
+        "2024M07": {
+          "job": 38.9,
+          "education": 3.1,
+          "onBenefit": 50.6,
+          "otherBenefit": 4.3,
+          "selfSupport": 3.1
+        },
+        "2024M08": {
+          "job": 39.7,
+          "education": 2.2,
+          "onBenefit": 52,
+          "otherBenefit": 3.9,
+          "selfSupport": 2.2
+        },
+        "2024M09": {
+          "job": 29.1,
+          "education": 0,
+          "onBenefit": 60,
+          "otherBenefit": 8.5,
+          "selfSupport": 2.4
+        },
+        "2024M10": {
+          "job": 35.6,
+          "education": 0,
+          "onBenefit": 58.8,
+          "otherBenefit": 4.5,
+          "selfSupport": 1.1
+        },
+        "2024M11": {
+          "job": 32.6,
+          "education": 0,
+          "onBenefit": 60.1,
+          "otherBenefit": 5.1,
+          "selfSupport": 2.2
+        },
+        "2024M12": {
+          "job": 41.8,
+          "education": 0.7,
+          "onBenefit": 51.6,
+          "otherBenefit": 2.6,
+          "selfSupport": 3.3
+        },
+        "2025M01": {
+          "job": 41.6,
+          "education": 0.5,
+          "onBenefit": 53,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.4
+        },
+        "2025M02": {
+          "job": 40.4,
+          "education": 0,
+          "onBenefit": 54.6,
+          "otherBenefit": 4.4,
+          "selfSupport": 0.5
+        },
+        "2025M03": {
+          "job": 39.2,
+          "education": 0,
+          "onBenefit": 52.4,
+          "otherBenefit": 6.6,
+          "selfSupport": 1.8
+        },
+        "2025M04": {
+          "job": 41.8,
+          "education": 0,
+          "onBenefit": 51.6,
+          "otherBenefit": 5.2,
+          "selfSupport": 1.3
+        },
+        "2025M05": {
+          "job": 35.2,
+          "education": 0,
+          "onBenefit": 61.8,
+          "otherBenefit": 1.8,
+          "selfSupport": 1.2
+        },
+        "2025M06": {
+          "job": 39,
+          "education": 1.1,
+          "onBenefit": 54.9,
+          "otherBenefit": 2.2,
+          "selfSupport": 2.7
+        },
+        "2025M07": {
+          "job": 41.7,
+          "education": 1.6,
+          "onBenefit": 51,
+          "otherBenefit": 3.6,
+          "selfSupport": 2.1
+        },
+        "2025M08": {
+          "job": 35.3,
+          "education": 0,
+          "onBenefit": 56.3,
+          "otherBenefit": 4.7,
+          "selfSupport": 3.7
+        },
+        "2025M09": {
+          "job": 32.9,
+          "education": 0,
+          "onBenefit": 60.1,
+          "otherBenefit": 3.5,
+          "selfSupport": 3.5
+        },
+        "2025M10": {
+          "job": 37,
+          "education": 0,
+          "onBenefit": 57.3,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.9
+        },
+        "2025M11": {
+          "job": 30,
+          "education": 1,
+          "onBenefit": 66.5,
+          "otherBenefit": 1.5,
+          "selfSupport": 1
+        },
+        "2025M12": {
+          "job": 38.5,
+          "education": 0.5,
+          "onBenefit": 56.8,
+          "otherBenefit": 2.8,
+          "selfSupport": 1.4
+        },
+        "2026M01": {
+          "job": 50.6,
+          "education": 0.3,
+          "onBenefit": 44.8,
+          "otherBenefit": 2,
+          "selfSupport": 2.3
+        },
+        "2026M02": {
+          "job": 53.6,
+          "education": 0,
+          "onBenefit": 44.4,
+          "otherBenefit": 1.2,
+          "selfSupport": 0.8
+        },
+        "2026M03": {
+          "job": 38.3,
+          "education": 0,
+          "onBenefit": 55.5,
+          "otherBenefit": 1.8,
+          "selfSupport": 4.4
+        },
+        "2026M04": {
+          "job": 33.3,
+          "education": 0,
+          "onBenefit": 60.1,
+          "otherBenefit": 2.7,
+          "selfSupport": 3.8
+        }
+      },
+      "D67": {
+        "2024M04": {
+          "job": 33.5,
+          "education": 0,
+          "onBenefit": 61.1,
+          "otherBenefit": 2.2,
+          "selfSupport": 3.2
+        },
+        "2024M05": {
+          "job": 33.2,
+          "education": 0,
+          "onBenefit": 63.1,
+          "otherBenefit": 2.4,
+          "selfSupport": 1.3
+        },
+        "2024M06": {
+          "job": 32.9,
+          "education": 0.7,
+          "onBenefit": 63.3,
+          "otherBenefit": 1.2,
+          "selfSupport": 1.9
+        },
+        "2024M07": {
+          "job": 38.2,
+          "education": 0.2,
+          "onBenefit": 57.1,
+          "otherBenefit": 2.7,
+          "selfSupport": 1.7
+        },
+        "2024M08": {
+          "job": 37.8,
+          "education": 0,
+          "onBenefit": 56.4,
+          "otherBenefit": 3,
+          "selfSupport": 2.8
+        },
+        "2024M09": {
+          "job": 36.5,
+          "education": 0,
+          "onBenefit": 59.5,
+          "otherBenefit": 1.7,
+          "selfSupport": 2.4
+        },
+        "2024M10": {
+          "job": 38.2,
+          "education": 0,
+          "onBenefit": 58.2,
+          "otherBenefit": 1.8,
+          "selfSupport": 1.8
+        },
+        "2024M11": {
+          "job": 41.9,
+          "education": 0,
+          "onBenefit": 54.4,
+          "otherBenefit": 2.4,
+          "selfSupport": 1.3
+        },
+        "2024M12": {
+          "job": 41.6,
+          "education": 0,
+          "onBenefit": 54.7,
+          "otherBenefit": 2.3,
+          "selfSupport": 1.5
+        },
+        "2025M01": {
+          "job": 39.8,
+          "education": 0.2,
+          "onBenefit": 56.5,
+          "otherBenefit": 2.2,
+          "selfSupport": 1.3
+        },
+        "2025M02": {
+          "job": 41.6,
+          "education": 0,
+          "onBenefit": 53.6,
+          "otherBenefit": 1.9,
+          "selfSupport": 2.8
+        },
+        "2025M03": {
+          "job": 39.4,
+          "education": 0,
+          "onBenefit": 56.6,
+          "otherBenefit": 1.5,
+          "selfSupport": 2.4
+        },
+        "2025M04": {
+          "job": 35.6,
+          "education": 0,
+          "onBenefit": 59.6,
+          "otherBenefit": 2.3,
+          "selfSupport": 2.5
+        },
+        "2025M05": {
+          "job": 33.6,
+          "education": 0,
+          "onBenefit": 62.9,
+          "otherBenefit": 1.7,
+          "selfSupport": 1.9
+        },
+        "2025M06": {
+          "job": 39.1,
+          "education": 0.7,
+          "onBenefit": 56.6,
+          "otherBenefit": 2.3,
+          "selfSupport": 1.4
+        },
+        "2025M07": {
+          "job": 37.4,
+          "education": 0.7,
+          "onBenefit": 57.6,
+          "otherBenefit": 2.7,
+          "selfSupport": 1.6
+        },
+        "2025M08": {
+          "job": 36.9,
+          "education": 0.2,
+          "onBenefit": 58.3,
+          "otherBenefit": 2.2,
+          "selfSupport": 2.4
+        },
+        "2025M09": {
+          "job": 34.4,
+          "education": 0,
+          "onBenefit": 59.8,
+          "otherBenefit": 2.4,
+          "selfSupport": 3.4
+        },
+        "2025M10": {
+          "job": 31.1,
+          "education": 0,
+          "onBenefit": 64.6,
+          "otherBenefit": 1.6,
+          "selfSupport": 2.7
+        },
+        "2025M11": {
+          "job": 30.7,
+          "education": 0.2,
+          "onBenefit": 65.6,
+          "otherBenefit": 1.7,
+          "selfSupport": 1.7
+        },
+        "2025M12": {
+          "job": 36.4,
+          "education": 0,
+          "onBenefit": 57.5,
+          "otherBenefit": 2,
+          "selfSupport": 4
+        },
+        "2026M01": {
+          "job": 34.2,
+          "education": 0.2,
+          "onBenefit": 62.1,
+          "otherBenefit": 2.2,
+          "selfSupport": 1.3
+        },
+        "2026M02": {
+          "job": 36.1,
+          "education": 0,
+          "onBenefit": 59.7,
+          "otherBenefit": 1.1,
+          "selfSupport": 3.1
+        },
+        "2026M03": {
+          "job": 37.5,
+          "education": 0,
+          "onBenefit": 58.7,
+          "otherBenefit": 1.9,
+          "selfSupport": 1.9
+        },
+        "2026M04": {
+          "job": 30.3,
+          "education": 0,
+          "onBenefit": 67.2,
+          "otherBenefit": 0.4,
+          "selfSupport": 2.1
+        }
+      },
+      "D81": {
+        "2024M04": {
+          "job": 46,
+          "education": 0,
+          "onBenefit": 45.3,
+          "otherBenefit": 6,
+          "selfSupport": 2.7
+        },
+        "2024M05": {
+          "job": 49.4,
+          "education": 0,
+          "onBenefit": 42.6,
+          "otherBenefit": 7.4,
+          "selfSupport": 0.6
+        },
+        "2024M06": {
+          "job": 63,
+          "education": 2,
+          "onBenefit": 28.4,
+          "otherBenefit": 5.8,
+          "selfSupport": 0.8
+        },
+        "2024M07": {
+          "job": 66.3,
+          "education": 2,
+          "onBenefit": 26.5,
+          "otherBenefit": 4.6,
+          "selfSupport": 0.7
+        },
+        "2024M08": {
+          "job": 56.5,
+          "education": 1.4,
+          "onBenefit": 33,
+          "otherBenefit": 7.7,
+          "selfSupport": 1.4
+        },
+        "2024M09": {
+          "job": 55.1,
+          "education": 0.6,
+          "onBenefit": 32.7,
+          "otherBenefit": 8.3,
+          "selfSupport": 3.2
+        },
+        "2024M10": {
+          "job": 41.3,
+          "education": 0,
+          "onBenefit": 48.8,
+          "otherBenefit": 8.3,
+          "selfSupport": 1.7
+        },
+        "2024M11": {
+          "job": 52.8,
+          "education": 1.6,
+          "onBenefit": 36.8,
+          "otherBenefit": 8,
+          "selfSupport": 0.8
+        },
+        "2024M12": {
+          "job": 47.1,
+          "education": 1,
+          "onBenefit": 42.2,
+          "otherBenefit": 8.8,
+          "selfSupport": 1
+        },
+        "2025M01": {
+          "job": 67.6,
+          "education": 0.3,
+          "onBenefit": 26,
+          "otherBenefit": 5.7,
+          "selfSupport": 0.4
+        },
+        "2025M02": {
+          "job": 58.8,
+          "education": 0,
+          "onBenefit": 36.2,
+          "otherBenefit": 4.1,
+          "selfSupport": 0.8
+        },
+        "2025M03": {
+          "job": 48.5,
+          "education": 0,
+          "onBenefit": 46.9,
+          "otherBenefit": 4.6,
+          "selfSupport": 0
+        },
+        "2025M04": {
+          "job": 39.9,
+          "education": 0,
+          "onBenefit": 51.7,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.1
+        },
+        "2025M05": {
+          "job": 54.5,
+          "education": 0,
+          "onBenefit": 39.1,
+          "otherBenefit": 4.5,
+          "selfSupport": 1.9
+        },
+        "2025M06": {
+          "job": 65.3,
+          "education": 0.7,
+          "onBenefit": 26.5,
+          "otherBenefit": 6.9,
+          "selfSupport": 0.6
+        },
+        "2025M07": {
+          "job": 67.3,
+          "education": 1,
+          "onBenefit": 25.6,
+          "otherBenefit": 5.1,
+          "selfSupport": 1
+        },
+        "2025M08": {
+          "job": 47.9,
+          "education": 1,
+          "onBenefit": 43.3,
+          "otherBenefit": 6.2,
+          "selfSupport": 1.5
+        },
+        "2025M09": {
+          "job": 51.6,
+          "education": 0,
+          "onBenefit": 37.7,
+          "otherBenefit": 8.2,
+          "selfSupport": 2.5
+        },
+        "2025M10": {
+          "job": 50,
+          "education": 0.7,
+          "onBenefit": 43.7,
+          "otherBenefit": 4.2,
+          "selfSupport": 1.4
+        },
+        "2025M11": {
+          "job": 49.6,
+          "education": 0.8,
+          "onBenefit": 36.4,
+          "otherBenefit": 9.9,
+          "selfSupport": 3.3
+        },
+        "2025M12": {
+          "job": 57.1,
+          "education": 2,
+          "onBenefit": 32.7,
+          "otherBenefit": 8.2,
+          "selfSupport": 0
+        },
+        "2026M01": {
+          "job": 68.3,
+          "education": 0.5,
+          "onBenefit": 25.8,
+          "otherBenefit": 5,
+          "selfSupport": 0.3
+        },
+        "2026M02": {
+          "job": 65.2,
+          "education": 0,
+          "onBenefit": 26.2,
+          "otherBenefit": 6,
+          "selfSupport": 2.6
+        },
+        "2026M03": {
+          "job": 53.9,
+          "education": 0,
+          "onBenefit": 37.5,
+          "otherBenefit": 5.5,
+          "selfSupport": 3.1
+        },
+        "2026M04": {
+          "job": 41.5,
+          "education": 0,
+          "onBenefit": 45.3,
+          "otherBenefit": 3.8,
+          "selfSupport": 9.4
+        }
+      },
+      "D98": {
+        "2024M04": {
+          "job": 25.5,
+          "education": 0,
+          "onBenefit": 69.5,
+          "otherBenefit": 2.1,
+          "selfSupport": 2.9
+        },
+        "2024M05": {
+          "job": 30.1,
+          "education": 0,
+          "onBenefit": 62.6,
+          "otherBenefit": 4.9,
+          "selfSupport": 2.4
+        },
+        "2024M06": {
+          "job": 53.4,
+          "education": 1.1,
+          "onBenefit": 43.1,
+          "otherBenefit": 1.6,
+          "selfSupport": 0.8
+        },
+        "2024M07": {
+          "job": 52.9,
+          "education": 0.7,
+          "onBenefit": 43.1,
+          "otherBenefit": 1.9,
+          "selfSupport": 1.5
+        },
+        "2024M08": {
+          "job": 38.3,
+          "education": 0.8,
+          "onBenefit": 55.3,
+          "otherBenefit": 1,
+          "selfSupport": 4.6
+        },
+        "2024M09": {
+          "job": 28.9,
+          "education": 0.3,
+          "onBenefit": 63.9,
+          "otherBenefit": 3.8,
+          "selfSupport": 3.1
+        },
+        "2024M10": {
+          "job": 33.1,
+          "education": 0.3,
+          "onBenefit": 62.7,
+          "otherBenefit": 1.4,
+          "selfSupport": 2.4
+        },
+        "2024M11": {
+          "job": 30.4,
+          "education": 0,
+          "onBenefit": 63,
+          "otherBenefit": 3.5,
+          "selfSupport": 3
+        },
+        "2024M12": {
+          "job": 38.2,
+          "education": 0,
+          "onBenefit": 58.6,
+          "otherBenefit": 1,
+          "selfSupport": 2.1
+        },
+        "2025M01": {
+          "job": 28.4,
+          "education": 0,
+          "onBenefit": 66.5,
+          "otherBenefit": 3.4,
+          "selfSupport": 1.8
+        },
+        "2025M02": {
+          "job": 31.9,
+          "education": 0,
+          "onBenefit": 63.6,
+          "otherBenefit": 2.1,
+          "selfSupport": 2.4
+        },
+        "2025M03": {
+          "job": 32.7,
+          "education": 0,
+          "onBenefit": 63.7,
+          "otherBenefit": 2.9,
+          "selfSupport": 0.8
+        },
+        "2025M04": {
+          "job": 21.8,
+          "education": 0.5,
+          "onBenefit": 73.8,
+          "otherBenefit": 2,
+          "selfSupport": 2
+        },
+        "2025M05": {
+          "job": 29.6,
+          "education": 0,
+          "onBenefit": 67.2,
+          "otherBenefit": 0.4,
+          "selfSupport": 2.8
+        },
+        "2025M06": {
+          "job": 50,
+          "education": 0.7,
+          "onBenefit": 46.4,
+          "otherBenefit": 1.8,
+          "selfSupport": 1.2
+        },
+        "2025M07": {
+          "job": 52.3,
+          "education": 0.5,
+          "onBenefit": 44.1,
+          "otherBenefit": 1.9,
+          "selfSupport": 1.3
+        },
+        "2025M08": {
+          "job": 37.3,
+          "education": 0,
+          "onBenefit": 58.7,
+          "otherBenefit": 1.7,
+          "selfSupport": 2.3
+        },
+        "2025M09": {
+          "job": 27,
+          "education": 0,
+          "onBenefit": 64.2,
+          "otherBenefit": 2.8,
+          "selfSupport": 6
+        },
+        "2025M10": {
+          "job": 32.5,
+          "education": 0,
+          "onBenefit": 64.3,
+          "otherBenefit": 2.5,
+          "selfSupport": 0.7
+        },
+        "2025M11": {
+          "job": 23.4,
+          "education": 0.5,
+          "onBenefit": 71.4,
+          "otherBenefit": 2.1,
+          "selfSupport": 2.6
+        },
+        "2025M12": {
+          "job": 32.5,
+          "education": 0,
+          "onBenefit": 63.4,
+          "otherBenefit": 1,
+          "selfSupport": 3.1
+        },
+        "2026M01": {
+          "job": 31.7,
+          "education": 0.3,
+          "onBenefit": 65.2,
+          "otherBenefit": 1.3,
+          "selfSupport": 1.5
+        },
+        "2026M02": {
+          "job": 39.3,
+          "education": 0,
+          "onBenefit": 58,
+          "otherBenefit": 0.3,
+          "selfSupport": 2.5
+        },
+        "2026M03": {
+          "job": 31.1,
+          "education": 0,
+          "onBenefit": 65,
+          "otherBenefit": 1.4,
+          "selfSupport": 2.5
+        },
+        "2026M04": {
+          "job": 22.1,
+          "education": 0,
+          "onBenefit": 73.2,
+          "otherBenefit": 2.5,
+          "selfSupport": 2.2
+        }
+      },
+      "D22": {
+        "2024M04": {
+          "job": 41.7,
+          "education": 0,
+          "onBenefit": 52.5,
+          "otherBenefit": 4.3,
+          "selfSupport": 1.5
+        },
+        "2024M05": {
+          "job": 38.6,
+          "education": 1.4,
+          "onBenefit": 54.1,
+          "otherBenefit": 4.5,
+          "selfSupport": 1.5
+        },
+        "2024M06": {
+          "job": 39.5,
+          "education": 2.9,
+          "onBenefit": 51.2,
+          "otherBenefit": 4.9,
+          "selfSupport": 1.5
+        },
+        "2024M07": {
+          "job": 41.2,
+          "education": 1.8,
+          "onBenefit": 50.4,
+          "otherBenefit": 5.1,
+          "selfSupport": 1.6
+        },
+        "2024M08": {
+          "job": 38.7,
+          "education": 1.2,
+          "onBenefit": 54.5,
+          "otherBenefit": 4.1,
+          "selfSupport": 1.5
+        },
+        "2024M09": {
+          "job": 36.2,
+          "education": 0.2,
+          "onBenefit": 58.5,
+          "otherBenefit": 3.5,
+          "selfSupport": 1.6
+        },
+        "2024M10": {
+          "job": 36.3,
+          "education": 0.5,
+          "onBenefit": 58.2,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.1
+        },
+        "2024M11": {
+          "job": 35.5,
+          "education": 0.9,
+          "onBenefit": 58.6,
+          "otherBenefit": 3.4,
+          "selfSupport": 1.5
+        },
+        "2024M12": {
+          "job": 44.6,
+          "education": 1,
+          "onBenefit": 49.8,
+          "otherBenefit": 3.4,
+          "selfSupport": 1.1
+        },
+        "2025M01": {
+          "job": 49.3,
+          "education": 0.5,
+          "onBenefit": 44.5,
+          "otherBenefit": 4,
+          "selfSupport": 1.7
+        },
+        "2025M02": {
+          "job": 46.6,
+          "education": 0,
+          "onBenefit": 48.4,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.4
+        },
+        "2025M03": {
+          "job": 42.6,
+          "education": 0.2,
+          "onBenefit": 51.9,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.6
+        },
+        "2025M04": {
+          "job": 39.5,
+          "education": 0,
+          "onBenefit": 54.8,
+          "otherBenefit": 3.9,
+          "selfSupport": 1.9
+        },
+        "2025M05": {
+          "job": 34.2,
+          "education": 0.6,
+          "onBenefit": 60.7,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.3
+        },
+        "2025M06": {
+          "job": 41.1,
+          "education": 1.9,
+          "onBenefit": 52.9,
+          "otherBenefit": 3.2,
+          "selfSupport": 1
+        },
+        "2025M07": {
+          "job": 40.9,
+          "education": 1.2,
+          "onBenefit": 51.1,
+          "otherBenefit": 4.8,
+          "selfSupport": 2
+        },
+        "2025M08": {
+          "job": 38.7,
+          "education": 0.9,
+          "onBenefit": 54.8,
+          "otherBenefit": 4.1,
+          "selfSupport": 1.5
+        },
+        "2025M09": {
+          "job": 34,
+          "education": 0.1,
+          "onBenefit": 59.9,
+          "otherBenefit": 4.7,
+          "selfSupport": 1.3
+        },
+        "2025M10": {
+          "job": 34.3,
+          "education": 0.6,
+          "onBenefit": 60.3,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.2
+        },
+        "2025M11": {
+          "job": 36.8,
+          "education": 0.6,
+          "onBenefit": 57.8,
+          "otherBenefit": 4.2,
+          "selfSupport": 0.7
+        },
+        "2025M12": {
+          "job": 47,
+          "education": 0.7,
+          "onBenefit": 48.4,
+          "otherBenefit": 2.9,
+          "selfSupport": 0.9
+        },
+        "2026M01": {
+          "job": 58.9,
+          "education": 0.5,
+          "onBenefit": 37,
+          "otherBenefit": 2.9,
+          "selfSupport": 0.7
+        },
+        "2026M02": {
+          "job": 57.4,
+          "education": 0.1,
+          "onBenefit": 38.7,
+          "otherBenefit": 2.2,
+          "selfSupport": 1.6
+        },
+        "2026M03": {
+          "job": 41.9,
+          "education": 0.3,
+          "onBenefit": 53.8,
+          "otherBenefit": 2.5,
+          "selfSupport": 1.5
+        },
+        "2026M04": {
+          "job": 37.6,
+          "education": 0.1,
+          "onBenefit": 57.7,
+          "otherBenefit": 2.1,
+          "selfSupport": 2.5
+        }
+      },
+      "D40": {
+        "2024M04": {
+          "job": 57.8,
+          "education": 0,
+          "onBenefit": 32.4,
+          "otherBenefit": 7.6,
+          "selfSupport": 2.2
+        },
+        "2024M05": {
+          "job": 52.1,
+          "education": 0,
+          "onBenefit": 38,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.7
+        },
+        "2024M06": {
+          "job": 59.6,
+          "education": 1.5,
+          "onBenefit": 31.5,
+          "otherBenefit": 6.5,
+          "selfSupport": 0.8
+        },
+        "2024M07": {
+          "job": 60.1,
+          "education": 2.8,
+          "onBenefit": 31.5,
+          "otherBenefit": 3.9,
+          "selfSupport": 1.7
+        },
+        "2024M08": {
+          "job": 59.2,
+          "education": 1,
+          "onBenefit": 35.7,
+          "otherBenefit": 1.5,
+          "selfSupport": 2.6
+        },
+        "2024M09": {
+          "job": 28.4,
+          "education": 0,
+          "onBenefit": 65.8,
+          "otherBenefit": 4.4,
+          "selfSupport": 1.4
+        },
+        "2024M10": {
+          "job": 44.4,
+          "education": 0.8,
+          "onBenefit": 48.6,
+          "otherBenefit": 5.1,
+          "selfSupport": 1.2
+        },
+        "2024M11": {
+          "job": 52.3,
+          "education": 0.7,
+          "onBenefit": 41.6,
+          "otherBenefit": 3.2,
+          "selfSupport": 2.2
+        },
+        "2024M12": {
+          "job": 51,
+          "education": 1.5,
+          "onBenefit": 40.6,
+          "otherBenefit": 4.6,
+          "selfSupport": 2.3
+        },
+        "2025M01": {
+          "job": 55.5,
+          "education": 1,
+          "onBenefit": 36.6,
+          "otherBenefit": 5.5,
+          "selfSupport": 1.4
+        },
+        "2025M02": {
+          "job": 63.8,
+          "education": 0,
+          "onBenefit": 30,
+          "otherBenefit": 5.2,
+          "selfSupport": 1
+        },
+        "2025M03": {
+          "job": 68.9,
+          "education": 0,
+          "onBenefit": 23.5,
+          "otherBenefit": 4.1,
+          "selfSupport": 3.4
+        },
+        "2025M04": {
+          "job": 54.8,
+          "education": 0,
+          "onBenefit": 39.3,
+          "otherBenefit": 4.2,
+          "selfSupport": 1.8
+        },
+        "2025M05": {
+          "job": 43.5,
+          "education": 1.1,
+          "onBenefit": 45.8,
+          "otherBenefit": 6.2,
+          "selfSupport": 3.4
+        },
+        "2025M06": {
+          "job": 48.2,
+          "education": 8.5,
+          "onBenefit": 36.2,
+          "otherBenefit": 5,
+          "selfSupport": 2.1
+        },
+        "2025M07": {
+          "job": 55.9,
+          "education": 2.6,
+          "onBenefit": 32.9,
+          "otherBenefit": 7.9,
+          "selfSupport": 0.7
+        },
+        "2025M08": {
+          "job": 63.1,
+          "education": 0.5,
+          "onBenefit": 29.6,
+          "otherBenefit": 5.3,
+          "selfSupport": 1.5
+        },
+        "2025M09": {
+          "job": 56.5,
+          "education": 0.5,
+          "onBenefit": 33.9,
+          "otherBenefit": 6.5,
+          "selfSupport": 2.7
+        },
+        "2025M10": {
+          "job": 42,
+          "education": 0.5,
+          "onBenefit": 46.4,
+          "otherBenefit": 8.2,
+          "selfSupport": 2.9
+        },
+        "2025M11": {
+          "job": 54.8,
+          "education": 0,
+          "onBenefit": 38.1,
+          "otherBenefit": 4.8,
+          "selfSupport": 2.4
+        },
+        "2025M12": {
+          "job": 49,
+          "education": 0.5,
+          "onBenefit": 44.2,
+          "otherBenefit": 4.8,
+          "selfSupport": 1.4
+        },
+        "2026M01": {
+          "job": 54.1,
+          "education": 0.9,
+          "onBenefit": 39.3,
+          "otherBenefit": 5.1,
+          "selfSupport": 0.6
+        },
+        "2026M02": {
+          "job": 63.2,
+          "education": 0,
+          "onBenefit": 31.9,
+          "otherBenefit": 2.9,
+          "selfSupport": 2
+        },
+        "2026M03": {
+          "job": 60,
+          "education": 0,
+          "onBenefit": 33.8,
+          "otherBenefit": 4.2,
+          "selfSupport": 2.1
+        },
+        "2026M04": {
+          "job": 55.9,
+          "education": 0,
+          "onBenefit": 35.5,
+          "otherBenefit": 3.8,
+          "selfSupport": 4.7
+        }
+      },
+      "D76": {
+        "2024M04": {
+          "job": 47.7,
+          "education": 0,
+          "onBenefit": 44.2,
+          "otherBenefit": 4.5,
+          "selfSupport": 3.5
+        },
+        "2024M05": {
+          "job": 45.5,
+          "education": 0.5,
+          "onBenefit": 45,
+          "otherBenefit": 7.9,
+          "selfSupport": 1.1
+        },
+        "2024M06": {
+          "job": 63.3,
+          "education": 1.5,
+          "onBenefit": 28.5,
+          "otherBenefit": 4.8,
+          "selfSupport": 2
+        },
+        "2024M07": {
+          "job": 61.2,
+          "education": 0.3,
+          "onBenefit": 32,
+          "otherBenefit": 4.7,
+          "selfSupport": 1.9
+        },
+        "2024M08": {
+          "job": 49.8,
+          "education": 3.4,
+          "onBenefit": 40.7,
+          "otherBenefit": 4.9,
+          "selfSupport": 1.1
+        },
+        "2024M09": {
+          "job": 51.5,
+          "education": 0,
+          "onBenefit": 41.9,
+          "otherBenefit": 4.6,
+          "selfSupport": 1.9
+        },
+        "2024M10": {
+          "job": 45.4,
+          "education": 0.5,
+          "onBenefit": 49.3,
+          "otherBenefit": 3.9,
+          "selfSupport": 1
+        },
+        "2024M11": {
+          "job": 50,
+          "education": 2.5,
+          "onBenefit": 42,
+          "otherBenefit": 4.9,
+          "selfSupport": 0.6
+        },
+        "2024M12": {
+          "job": 52.7,
+          "education": 0.6,
+          "onBenefit": 37.9,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.6
+        },
+        "2025M01": {
+          "job": 69.8,
+          "education": 0.1,
+          "onBenefit": 24.9,
+          "otherBenefit": 4.2,
+          "selfSupport": 1
+        },
+        "2025M02": {
+          "job": 57.5,
+          "education": 0.3,
+          "onBenefit": 35.1,
+          "otherBenefit": 5.5,
+          "selfSupport": 1.7
+        },
+        "2025M03": {
+          "job": 54.3,
+          "education": 0,
+          "onBenefit": 40,
+          "otherBenefit": 5.7,
+          "selfSupport": 0
+        },
+        "2025M04": {
+          "job": 47.3,
+          "education": 0.6,
+          "onBenefit": 43.8,
+          "otherBenefit": 4.7,
+          "selfSupport": 3.6
+        },
+        "2025M05": {
+          "job": 46,
+          "education": 0,
+          "onBenefit": 47.2,
+          "otherBenefit": 4.9,
+          "selfSupport": 1.8
+        },
+        "2025M06": {
+          "job": 67.4,
+          "education": 0.8,
+          "onBenefit": 26.9,
+          "otherBenefit": 4.1,
+          "selfSupport": 0.8
+        },
+        "2025M07": {
+          "job": 64.5,
+          "education": 2.1,
+          "onBenefit": 26.3,
+          "otherBenefit": 4.5,
+          "selfSupport": 2.6
+        },
+        "2025M08": {
+          "job": 53.4,
+          "education": 1.7,
+          "onBenefit": 37.3,
+          "otherBenefit": 6.8,
+          "selfSupport": 0.8
+        },
+        "2025M09": {
+          "job": 47.2,
+          "education": 0,
+          "onBenefit": 44,
+          "otherBenefit": 7.8,
+          "selfSupport": 1
+        },
+        "2025M10": {
+          "job": 47.1,
+          "education": 1.3,
+          "onBenefit": 41.9,
+          "otherBenefit": 5.2,
+          "selfSupport": 4.5
+        },
+        "2025M11": {
+          "job": 50.6,
+          "education": 1.1,
+          "onBenefit": 36.7,
+          "otherBenefit": 9.4,
+          "selfSupport": 2.2
+        },
+        "2025M12": {
+          "job": 49.6,
+          "education": 1.4,
+          "onBenefit": 42.4,
+          "otherBenefit": 4.3,
+          "selfSupport": 2.2
+        },
+        "2026M01": {
+          "job": 70.7,
+          "education": 0.1,
+          "onBenefit": 24.8,
+          "otherBenefit": 3.3,
+          "selfSupport": 1.1
+        },
+        "2026M02": {
+          "job": 53.2,
+          "education": 0.3,
+          "onBenefit": 37.7,
+          "otherBenefit": 2.9,
+          "selfSupport": 5.8
+        },
+        "2026M03": {
+          "job": 54.8,
+          "education": 0.5,
+          "onBenefit": 37.2,
+          "otherBenefit": 3.7,
+          "selfSupport": 3.7
+        },
+        "2026M04": {
+          "job": 40.7,
+          "education": 0,
+          "onBenefit": 50.3,
+          "otherBenefit": 3.2,
+          "selfSupport": 5.8
+        }
+      },
+      "D15": {
+        "2024M04": {
+          "job": 53.8,
+          "education": 0,
+          "onBenefit": 39.9,
+          "otherBenefit": 3.6,
+          "selfSupport": 2.7
+        },
+        "2024M05": {
+          "job": 40.3,
+          "education": 1.2,
+          "onBenefit": 51.5,
+          "otherBenefit": 4.1,
+          "selfSupport": 2.8
+        },
+        "2024M06": {
+          "job": 44.4,
+          "education": 2.3,
+          "onBenefit": 46.5,
+          "otherBenefit": 4.3,
+          "selfSupport": 2.6
+        },
+        "2024M07": {
+          "job": 48.8,
+          "education": 2.2,
+          "onBenefit": 43.2,
+          "otherBenefit": 3.4,
+          "selfSupport": 2.5
+        },
+        "2024M08": {
+          "job": 42.6,
+          "education": 0.5,
+          "onBenefit": 48.8,
+          "otherBenefit": 5.3,
+          "selfSupport": 2.8
+        },
+        "2024M09": {
+          "job": 38,
+          "education": 0,
+          "onBenefit": 54.7,
+          "otherBenefit": 4.1,
+          "selfSupport": 3.2
+        },
+        "2024M10": {
+          "job": 37.3,
+          "education": 0.3,
+          "onBenefit": 54.4,
+          "otherBenefit": 4.9,
+          "selfSupport": 3.1
+        },
+        "2024M11": {
+          "job": 38,
+          "education": 0.8,
+          "onBenefit": 55.1,
+          "otherBenefit": 3.7,
+          "selfSupport": 2.4
+        },
+        "2024M12": {
+          "job": 57.4,
+          "education": 0.4,
+          "onBenefit": 37.2,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.3
+        },
+        "2025M01": {
+          "job": 60.5,
+          "education": 0.2,
+          "onBenefit": 34.1,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.5
+        },
+        "2025M02": {
+          "job": 57.1,
+          "education": 0.1,
+          "onBenefit": 37.9,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.1
+        },
+        "2025M03": {
+          "job": 54.3,
+          "education": 0,
+          "onBenefit": 40.6,
+          "otherBenefit": 4.6,
+          "selfSupport": 0.5
+        },
+        "2025M04": {
+          "job": 50,
+          "education": 0.1,
+          "onBenefit": 44.2,
+          "otherBenefit": 3.7,
+          "selfSupport": 2.1
+        },
+        "2025M05": {
+          "job": 41.6,
+          "education": 0.4,
+          "onBenefit": 50.4,
+          "otherBenefit": 5.4,
+          "selfSupport": 2.2
+        },
+        "2025M06": {
+          "job": 42.2,
+          "education": 1.5,
+          "onBenefit": 48.5,
+          "otherBenefit": 5.9,
+          "selfSupport": 1.9
+        },
+        "2025M07": {
+          "job": 51.2,
+          "education": 1.2,
+          "onBenefit": 42.6,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.3
+        },
+        "2025M08": {
+          "job": 42.6,
+          "education": 1,
+          "onBenefit": 50.5,
+          "otherBenefit": 4.4,
+          "selfSupport": 1.5
+        },
+        "2025M09": {
+          "job": 37.4,
+          "education": 0.3,
+          "onBenefit": 55.8,
+          "otherBenefit": 4.1,
+          "selfSupport": 2.4
+        },
+        "2025M10": {
+          "job": 34.6,
+          "education": 0.6,
+          "onBenefit": 58.4,
+          "otherBenefit": 4.1,
+          "selfSupport": 2.2
+        },
+        "2025M11": {
+          "job": 32.8,
+          "education": 0.4,
+          "onBenefit": 60.3,
+          "otherBenefit": 4.7,
+          "selfSupport": 1.8
+        },
+        "2025M12": {
+          "job": 53.8,
+          "education": 0.4,
+          "onBenefit": 41.5,
+          "otherBenefit": 2.9,
+          "selfSupport": 1.4
+        },
+        "2026M01": {
+          "job": 72.5,
+          "education": 0.4,
+          "onBenefit": 23,
+          "otherBenefit": 2.8,
+          "selfSupport": 1.3
+        },
+        "2026M02": {
+          "job": 76.2,
+          "education": 0,
+          "onBenefit": 20.9,
+          "otherBenefit": 1.9,
+          "selfSupport": 1
+        },
+        "2026M03": {
+          "job": 51.1,
+          "education": 0.1,
+          "onBenefit": 43.3,
+          "otherBenefit": 4,
+          "selfSupport": 1.5
+        },
+        "2026M04": {
+          "job": 48,
+          "education": 0,
+          "onBenefit": 46.4,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.7
+        }
+      },
+      "D17": {
+        "2024M04": {
+          "job": 47.7,
+          "education": 0,
+          "onBenefit": 43.8,
+          "otherBenefit": 7.2,
+          "selfSupport": 1.3
+        },
+        "2024M05": {
+          "job": 48.4,
+          "education": 0.9,
+          "onBenefit": 43.2,
+          "otherBenefit": 6.6,
+          "selfSupport": 0.9
+        },
+        "2024M06": {
+          "job": 46.3,
+          "education": 3,
+          "onBenefit": 42.3,
+          "otherBenefit": 8.2,
+          "selfSupport": 0.2
+        },
+        "2024M07": {
+          "job": 46.3,
+          "education": 2.3,
+          "onBenefit": 43.8,
+          "otherBenefit": 6.2,
+          "selfSupport": 1.4
+        },
+        "2024M08": {
+          "job": 47.7,
+          "education": 1.7,
+          "onBenefit": 43.4,
+          "otherBenefit": 6.4,
+          "selfSupport": 0.8
+        },
+        "2024M09": {
+          "job": 42.4,
+          "education": 0,
+          "onBenefit": 50,
+          "otherBenefit": 6.3,
+          "selfSupport": 1.3
+        },
+        "2024M10": {
+          "job": 45.7,
+          "education": 0.9,
+          "onBenefit": 46.4,
+          "otherBenefit": 6.1,
+          "selfSupport": 1
+        },
+        "2024M11": {
+          "job": 45.3,
+          "education": 1.4,
+          "onBenefit": 45.8,
+          "otherBenefit": 6.4,
+          "selfSupport": 1.1
+        },
+        "2024M12": {
+          "job": 50.7,
+          "education": 1,
+          "onBenefit": 36.8,
+          "otherBenefit": 10,
+          "selfSupport": 1.5
+        },
+        "2025M01": {
+          "job": 52.3,
+          "education": 0.2,
+          "onBenefit": 39,
+          "otherBenefit": 6.9,
+          "selfSupport": 1.5
+        },
+        "2025M02": {
+          "job": 48.2,
+          "education": 0.2,
+          "onBenefit": 41.1,
+          "otherBenefit": 9.2,
+          "selfSupport": 1.2
+        },
+        "2025M03": {
+          "job": 54.9,
+          "education": 0,
+          "onBenefit": 39.1,
+          "otherBenefit": 5.4,
+          "selfSupport": 0.6
+        },
+        "2025M04": {
+          "job": 47.3,
+          "education": 0,
+          "onBenefit": 44.3,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.1
+        },
+        "2025M05": {
+          "job": 48.3,
+          "education": 0.8,
+          "onBenefit": 41.4,
+          "otherBenefit": 8.8,
+          "selfSupport": 0.8
+        },
+        "2025M06": {
+          "job": 45.9,
+          "education": 3.2,
+          "onBenefit": 43.4,
+          "otherBenefit": 6.3,
+          "selfSupport": 1.2
+        },
+        "2025M07": {
+          "job": 51.5,
+          "education": 1.8,
+          "onBenefit": 39.2,
+          "otherBenefit": 6.4,
+          "selfSupport": 1
+        },
+        "2025M08": {
+          "job": 47.5,
+          "education": 1,
+          "onBenefit": 42.4,
+          "otherBenefit": 7.4,
+          "selfSupport": 1.7
+        },
+        "2025M09": {
+          "job": 43,
+          "education": 0.2,
+          "onBenefit": 46,
+          "otherBenefit": 9.4,
+          "selfSupport": 1.3
+        },
+        "2025M10": {
+          "job": 49.3,
+          "education": 0.4,
+          "onBenefit": 43.4,
+          "otherBenefit": 6.3,
+          "selfSupport": 0.6
+        },
+        "2025M11": {
+          "job": 47.8,
+          "education": 2.5,
+          "onBenefit": 42.4,
+          "otherBenefit": 6.7,
+          "selfSupport": 0.7
+        },
+        "2025M12": {
+          "job": 55,
+          "education": 2,
+          "onBenefit": 34.8,
+          "otherBenefit": 7.4,
+          "selfSupport": 0.8
+        },
+        "2026M01": {
+          "job": 53.1,
+          "education": 0.6,
+          "onBenefit": 40.5,
+          "otherBenefit": 4.5,
+          "selfSupport": 1.2
+        },
+        "2026M02": {
+          "job": 47.1,
+          "education": 0.5,
+          "onBenefit": 42.2,
+          "otherBenefit": 6.8,
+          "selfSupport": 3.3
+        },
+        "2026M03": {
+          "job": 55.9,
+          "education": 0.4,
+          "onBenefit": 33.4,
+          "otherBenefit": 6.6,
+          "selfSupport": 3.7
+        },
+        "2026M04": {
+          "job": 55.1,
+          "education": 0,
+          "onBenefit": 35.7,
+          "otherBenefit": 5.6,
+          "selfSupport": 3.6
+        }
+      },
+      "D53": {
+        "2024M04": {
+          "job": 33,
+          "education": 0,
+          "onBenefit": 62.3,
+          "otherBenefit": 4.2,
+          "selfSupport": 0.6
+        },
+        "2024M05": {
+          "job": 30.7,
+          "education": 1.3,
+          "onBenefit": 62.7,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.5
+        },
+        "2024M06": {
+          "job": 35.2,
+          "education": 6.8,
+          "onBenefit": 52.7,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.5
+        },
+        "2024M07": {
+          "job": 38.8,
+          "education": 3.6,
+          "onBenefit": 53.4,
+          "otherBenefit": 2.6,
+          "selfSupport": 1.6
+        },
+        "2024M08": {
+          "job": 40.7,
+          "education": 2,
+          "onBenefit": 52.1,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.4
+        },
+        "2024M09": {
+          "job": 35,
+          "education": 0.1,
+          "onBenefit": 59.2,
+          "otherBenefit": 4,
+          "selfSupport": 1.7
+        },
+        "2024M10": {
+          "job": 31.3,
+          "education": 0.3,
+          "onBenefit": 63.1,
+          "otherBenefit": 3.5,
+          "selfSupport": 1.7
+        },
+        "2024M11": {
+          "job": 29.7,
+          "education": 1.6,
+          "onBenefit": 60.9,
+          "otherBenefit": 6.3,
+          "selfSupport": 1.6
+        },
+        "2024M12": {
+          "job": 35.7,
+          "education": 1.2,
+          "onBenefit": 57.8,
+          "otherBenefit": 3.2,
+          "selfSupport": 2.1
+        },
+        "2025M01": {
+          "job": 34.3,
+          "education": 0.5,
+          "onBenefit": 60.7,
+          "otherBenefit": 3.4,
+          "selfSupport": 1.2
+        },
+        "2025M02": {
+          "job": 38.9,
+          "education": 0.2,
+          "onBenefit": 56,
+          "otherBenefit": 4.3,
+          "selfSupport": 0.6
+        },
+        "2025M03": {
+          "job": 35.9,
+          "education": 0,
+          "onBenefit": 60.6,
+          "otherBenefit": 3,
+          "selfSupport": 0.5
+        },
+        "2025M04": {
+          "job": 29.1,
+          "education": 0,
+          "onBenefit": 64.1,
+          "otherBenefit": 5.2,
+          "selfSupport": 1.6
+        },
+        "2025M05": {
+          "job": 30.4,
+          "education": 1,
+          "onBenefit": 63.8,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.1
+        },
+        "2025M06": {
+          "job": 32.7,
+          "education": 9.1,
+          "onBenefit": 53.8,
+          "otherBenefit": 3,
+          "selfSupport": 1.4
+        },
+        "2025M07": {
+          "job": 39.2,
+          "education": 3.6,
+          "onBenefit": 52.1,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.4
+        },
+        "2025M08": {
+          "job": 39.9,
+          "education": 1.3,
+          "onBenefit": 53.1,
+          "otherBenefit": 4.2,
+          "selfSupport": 1.5
+        },
+        "2025M09": {
+          "job": 36.8,
+          "education": 0,
+          "onBenefit": 58,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.4
+        },
+        "2025M10": {
+          "job": 31,
+          "education": 0.6,
+          "onBenefit": 62.9,
+          "otherBenefit": 3.3,
+          "selfSupport": 2.2
+        },
+        "2025M11": {
+          "job": 29.8,
+          "education": 0.5,
+          "onBenefit": 64.3,
+          "otherBenefit": 4.1,
+          "selfSupport": 1.3
+        },
+        "2025M12": {
+          "job": 34.9,
+          "education": 1.7,
+          "onBenefit": 57.4,
+          "otherBenefit": 4.1,
+          "selfSupport": 1.9
+        },
+        "2026M01": {
+          "job": 35.9,
+          "education": 0.3,
+          "onBenefit": 59.5,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.1
+        },
+        "2026M02": {
+          "job": 35.3,
+          "education": 0.3,
+          "onBenefit": 60.3,
+          "otherBenefit": 2.2,
+          "selfSupport": 1.9
+        },
+        "2026M03": {
+          "job": 34.9,
+          "education": 0.1,
+          "onBenefit": 59.6,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.6
+        },
+        "2026M04": {
+          "job": 34,
+          "education": 0,
+          "onBenefit": 60.4,
+          "otherBenefit": 3,
+          "selfSupport": 2.6
+        }
+      },
+      "D73": {
+        "2024M04": {
+          "job": 32.3,
+          "education": 0,
+          "onBenefit": 59.8,
+          "otherBenefit": 5.2,
+          "selfSupport": 2.7
+        },
+        "2024M05": {
+          "job": 35.7,
+          "education": 0.6,
+          "onBenefit": 58.5,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.7
+        },
+        "2024M06": {
+          "job": 34.5,
+          "education": 2.2,
+          "onBenefit": 56.3,
+          "otherBenefit": 5.5,
+          "selfSupport": 1.5
+        },
+        "2024M07": {
+          "job": 41.2,
+          "education": 1.2,
+          "onBenefit": 50.9,
+          "otherBenefit": 4.7,
+          "selfSupport": 2
+        },
+        "2024M08": {
+          "job": 34,
+          "education": 1.2,
+          "onBenefit": 57.7,
+          "otherBenefit": 5.2,
+          "selfSupport": 2
+        },
+        "2024M09": {
+          "job": 29.7,
+          "education": 0,
+          "onBenefit": 63.1,
+          "otherBenefit": 5.2,
+          "selfSupport": 2.1
+        },
+        "2024M10": {
+          "job": 30.4,
+          "education": 0.4,
+          "onBenefit": 63,
+          "otherBenefit": 4.8,
+          "selfSupport": 1.4
+        },
+        "2024M11": {
+          "job": 32.5,
+          "education": 0.9,
+          "onBenefit": 62,
+          "otherBenefit": 2.9,
+          "selfSupport": 1.7
+        },
+        "2024M12": {
+          "job": 41.4,
+          "education": 0.6,
+          "onBenefit": 53.4,
+          "otherBenefit": 3.4,
+          "selfSupport": 1.2
+        },
+        "2025M01": {
+          "job": 42.9,
+          "education": 0.3,
+          "onBenefit": 50.3,
+          "otherBenefit": 4.2,
+          "selfSupport": 2.2
+        },
+        "2025M02": {
+          "job": 39.1,
+          "education": 0.1,
+          "onBenefit": 54.8,
+          "otherBenefit": 4.4,
+          "selfSupport": 1.5
+        },
+        "2025M03": {
+          "job": 36.4,
+          "education": 0.1,
+          "onBenefit": 58.8,
+          "otherBenefit": 3.7,
+          "selfSupport": 0.9
+        },
+        "2025M04": {
+          "job": 32.8,
+          "education": 0,
+          "onBenefit": 61.7,
+          "otherBenefit": 4,
+          "selfSupport": 1.5
+        },
+        "2025M05": {
+          "job": 34.5,
+          "education": 0.6,
+          "onBenefit": 59,
+          "otherBenefit": 4.5,
+          "selfSupport": 1.5
+        },
+        "2025M06": {
+          "job": 35.7,
+          "education": 1.9,
+          "onBenefit": 56.2,
+          "otherBenefit": 4.7,
+          "selfSupport": 1.5
+        },
+        "2025M07": {
+          "job": 42.5,
+          "education": 2.1,
+          "onBenefit": 50.4,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.3
+        },
+        "2025M08": {
+          "job": 36.8,
+          "education": 0.5,
+          "onBenefit": 56.4,
+          "otherBenefit": 4.7,
+          "selfSupport": 1.7
+        },
+        "2025M09": {
+          "job": 28.9,
+          "education": 0,
+          "onBenefit": 63.6,
+          "otherBenefit": 4.3,
+          "selfSupport": 3.2
+        },
+        "2025M10": {
+          "job": 29.4,
+          "education": 0.1,
+          "onBenefit": 64.9,
+          "otherBenefit": 4.1,
+          "selfSupport": 1.5
+        },
+        "2025M11": {
+          "job": 30.6,
+          "education": 1.7,
+          "onBenefit": 62.2,
+          "otherBenefit": 3.4,
+          "selfSupport": 2.2
+        },
+        "2025M12": {
+          "job": 43.6,
+          "education": 0.5,
+          "onBenefit": 50.1,
+          "otherBenefit": 3.5,
+          "selfSupport": 2.3
+        },
+        "2026M01": {
+          "job": 54.1,
+          "education": 0.1,
+          "onBenefit": 41.4,
+          "otherBenefit": 3.1,
+          "selfSupport": 1.4
+        },
+        "2026M02": {
+          "job": 51.6,
+          "education": 0,
+          "onBenefit": 44.1,
+          "otherBenefit": 2.8,
+          "selfSupport": 1.5
+        },
+        "2026M03": {
+          "job": 36.1,
+          "education": 0.3,
+          "onBenefit": 56.5,
+          "otherBenefit": 4.3,
+          "selfSupport": 2.8
+        },
+        "2026M04": {
+          "job": 31.6,
+          "education": 0,
+          "onBenefit": 63.2,
+          "otherBenefit": 3.1,
+          "selfSupport": 2
+        }
+      },
+      "D18": {
+        "2024M04": {
+          "job": 20.5,
+          "education": 0,
+          "onBenefit": 74.7,
+          "otherBenefit": 4.1,
+          "selfSupport": 0.7
+        },
+        "2024M05": {
+          "job": 43.2,
+          "education": 0,
+          "onBenefit": 54.5,
+          "otherBenefit": 2.3,
+          "selfSupport": 0
+        },
+        "2024M06": {
+          "job": 59.7,
+          "education": 3,
+          "onBenefit": 34,
+          "otherBenefit": 2.4,
+          "selfSupport": 0.9
+        },
+        "2024M07": {
+          "job": 63.3,
+          "education": 0.3,
+          "onBenefit": 31.2,
+          "otherBenefit": 4.3,
+          "selfSupport": 0.9
+        },
+        "2024M08": {
+          "job": 38.4,
+          "education": 1.5,
+          "onBenefit": 54.4,
+          "otherBenefit": 4.4,
+          "selfSupport": 1.2
+        },
+        "2024M09": {
+          "job": 31.9,
+          "education": 0,
+          "onBenefit": 61.3,
+          "otherBenefit": 5,
+          "selfSupport": 1.9
+        },
+        "2024M10": {
+          "job": 40,
+          "education": 0.6,
+          "onBenefit": 52.4,
+          "otherBenefit": 4.7,
+          "selfSupport": 2.4
+        },
+        "2024M11": {
+          "job": 43.4,
+          "education": 0.6,
+          "onBenefit": 48.2,
+          "otherBenefit": 6,
+          "selfSupport": 1.8
+        },
+        "2024M12": {
+          "job": 43,
+          "education": 0,
+          "onBenefit": 49.5,
+          "otherBenefit": 5.6,
+          "selfSupport": 1.9
+        },
+        "2025M01": {
+          "job": 40.1,
+          "education": 0,
+          "onBenefit": 56.3,
+          "otherBenefit": 2.6,
+          "selfSupport": 1
+        },
+        "2025M02": {
+          "job": 42.2,
+          "education": 0,
+          "onBenefit": 52.4,
+          "otherBenefit": 4.3,
+          "selfSupport": 1.1
+        },
+        "2025M03": {
+          "job": 30.8,
+          "education": 0,
+          "onBenefit": 61.5,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.1
+        },
+        "2025M04": {
+          "job": 18.5,
+          "education": 0,
+          "onBenefit": 77.5,
+          "otherBenefit": 3.3,
+          "selfSupport": 0.7
+        },
+        "2025M05": {
+          "job": 53.9,
+          "education": 0.6,
+          "onBenefit": 41.3,
+          "otherBenefit": 3,
+          "selfSupport": 1.2
+        },
+        "2025M06": {
+          "job": 65.5,
+          "education": 2,
+          "onBenefit": 29.3,
+          "otherBenefit": 2.7,
+          "selfSupport": 0.5
+        },
+        "2025M07": {
+          "job": 64.8,
+          "education": 1,
+          "onBenefit": 28.7,
+          "otherBenefit": 4.5,
+          "selfSupport": 1
+        },
+        "2025M08": {
+          "job": 42.1,
+          "education": 1.2,
+          "onBenefit": 51.5,
+          "otherBenefit": 3.4,
+          "selfSupport": 1.8
+        },
+        "2025M09": {
+          "job": 34.2,
+          "education": 0,
+          "onBenefit": 57.2,
+          "otherBenefit": 6.6,
+          "selfSupport": 2
+        },
+        "2025M10": {
+          "job": 37.6,
+          "education": 0,
+          "onBenefit": 53.9,
+          "otherBenefit": 7.1,
+          "selfSupport": 1.4
+        },
+        "2025M11": {
+          "job": 35.4,
+          "education": 0.8,
+          "onBenefit": 60.8,
+          "otherBenefit": 1.5,
+          "selfSupport": 1.5
+        },
+        "2025M12": {
+          "job": 36,
+          "education": 0,
+          "onBenefit": 57.7,
+          "otherBenefit": 2.7,
+          "selfSupport": 3.6
+        },
+        "2026M01": {
+          "job": 42.3,
+          "education": 0,
+          "onBenefit": 51.3,
+          "otherBenefit": 4.9,
+          "selfSupport": 1.5
+        },
+        "2026M02": {
+          "job": 45.3,
+          "education": 0,
+          "onBenefit": 51.6,
+          "otherBenefit": 1.2,
+          "selfSupport": 1.9
+        },
+        "2026M03": {
+          "job": 29.9,
+          "education": 0,
+          "onBenefit": 62.7,
+          "otherBenefit": 6.7,
+          "selfSupport": 0.7
+        },
+        "2026M04": {
+          "job": 20.2,
+          "education": 0,
+          "onBenefit": 74.8,
+          "otherBenefit": 1.7,
+          "selfSupport": 3.4
+        }
+      },
+      "D88": {
+        "2024M04": {
+          "job": 24.3,
+          "education": 0,
+          "onBenefit": 70.7,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.2
+        },
+        "2024M05": {
+          "job": 27.2,
+          "education": 0,
+          "onBenefit": 68,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.6
+        },
+        "2024M06": {
+          "job": 33.3,
+          "education": 1.8,
+          "onBenefit": 60.5,
+          "otherBenefit": 1.9,
+          "selfSupport": 2.5
+        },
+        "2024M07": {
+          "job": 40.3,
+          "education": 0.9,
+          "onBenefit": 53.2,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.8
+        },
+        "2024M08": {
+          "job": 31.3,
+          "education": 0.5,
+          "onBenefit": 63.1,
+          "otherBenefit": 3.3,
+          "selfSupport": 1.9
+        },
+        "2024M09": {
+          "job": 25.1,
+          "education": 0,
+          "onBenefit": 69.4,
+          "otherBenefit": 3.5,
+          "selfSupport": 2
+        },
+        "2024M10": {
+          "job": 26.2,
+          "education": 0,
+          "onBenefit": 66.9,
+          "otherBenefit": 3.2,
+          "selfSupport": 3.7
+        },
+        "2024M11": {
+          "job": 28.9,
+          "education": 2.5,
+          "onBenefit": 63.2,
+          "otherBenefit": 2.5,
+          "selfSupport": 2.8
+        },
+        "2024M12": {
+          "job": 32.7,
+          "education": 0.4,
+          "onBenefit": 59.8,
+          "otherBenefit": 3.8,
+          "selfSupport": 3.4
+        },
+        "2025M01": {
+          "job": 30.4,
+          "education": 0.2,
+          "onBenefit": 64.4,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.8
+        },
+        "2025M02": {
+          "job": 29.1,
+          "education": 0,
+          "onBenefit": 64.9,
+          "otherBenefit": 2.9,
+          "selfSupport": 3.1
+        },
+        "2025M03": {
+          "job": 26.9,
+          "education": 0,
+          "onBenefit": 67.8,
+          "otherBenefit": 3,
+          "selfSupport": 2.4
+        },
+        "2025M04": {
+          "job": 25.9,
+          "education": 0,
+          "onBenefit": 69.3,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.1
+        },
+        "2025M05": {
+          "job": 27.2,
+          "education": 0,
+          "onBenefit": 68.9,
+          "otherBenefit": 1.6,
+          "selfSupport": 2.3
+        },
+        "2025M06": {
+          "job": 33,
+          "education": 2,
+          "onBenefit": 61.3,
+          "otherBenefit": 2.6,
+          "selfSupport": 1.1
+        },
+        "2025M07": {
+          "job": 37.1,
+          "education": 0.6,
+          "onBenefit": 58.1,
+          "otherBenefit": 2.5,
+          "selfSupport": 1.7
+        },
+        "2025M08": {
+          "job": 33.1,
+          "education": 0.7,
+          "onBenefit": 61.7,
+          "otherBenefit": 2.3,
+          "selfSupport": 2.3
+        },
+        "2025M09": {
+          "job": 26.5,
+          "education": 0,
+          "onBenefit": 68.4,
+          "otherBenefit": 2.8,
+          "selfSupport": 2.3
+        },
+        "2025M10": {
+          "job": 23.8,
+          "education": 0.5,
+          "onBenefit": 73.2,
+          "otherBenefit": 1.9,
+          "selfSupport": 0.5
+        },
+        "2025M11": {
+          "job": 26.1,
+          "education": 0.3,
+          "onBenefit": 68.3,
+          "otherBenefit": 3.1,
+          "selfSupport": 2.2
+        },
+        "2025M12": {
+          "job": 26.2,
+          "education": 0.4,
+          "onBenefit": 65.4,
+          "otherBenefit": 2.3,
+          "selfSupport": 5.7
+        },
+        "2026M01": {
+          "job": 28,
+          "education": 0.3,
+          "onBenefit": 66.2,
+          "otherBenefit": 2.3,
+          "selfSupport": 3.1
+        },
+        "2026M02": {
+          "job": 27,
+          "education": 0,
+          "onBenefit": 68.2,
+          "otherBenefit": 1.3,
+          "selfSupport": 3.5
+        },
+        "2026M03": {
+          "job": 26.4,
+          "education": 0,
+          "onBenefit": 71.2,
+          "otherBenefit": 0.8,
+          "selfSupport": 1.6
+        },
+        "2026M04": {
+          "job": 20.8,
+          "education": 0,
+          "onBenefit": 75,
+          "otherBenefit": 1,
+          "selfSupport": 3.2
+        }
+      },
+      "D24": {
+        "2024M04": {
+          "job": 69.7,
+          "education": 0,
+          "onBenefit": 25.5,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.6
+        },
+        "2024M05": {
+          "job": 51.7,
+          "education": 1.5,
+          "onBenefit": 41.5,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.4
+        },
+        "2024M06": {
+          "job": 51.2,
+          "education": 2.4,
+          "onBenefit": 41.5,
+          "otherBenefit": 3.8,
+          "selfSupport": 1
+        },
+        "2024M07": {
+          "job": 55,
+          "education": 4.8,
+          "onBenefit": 35.4,
+          "otherBenefit": 3.5,
+          "selfSupport": 1.3
+        },
+        "2024M08": {
+          "job": 54.3,
+          "education": 0.4,
+          "onBenefit": 38.8,
+          "otherBenefit": 4.7,
+          "selfSupport": 1.8
+        },
+        "2024M09": {
+          "job": 52.7,
+          "education": 0,
+          "onBenefit": 44.2,
+          "otherBenefit": 2.3,
+          "selfSupport": 0.8
+        },
+        "2024M10": {
+          "job": 54.8,
+          "education": 0.4,
+          "onBenefit": 38,
+          "otherBenefit": 5.6,
+          "selfSupport": 1.2
+        },
+        "2024M11": {
+          "job": 49.8,
+          "education": 2.6,
+          "onBenefit": 40.6,
+          "otherBenefit": 5.5,
+          "selfSupport": 1.5
+        },
+        "2024M12": {
+          "job": 55.3,
+          "education": 1.8,
+          "onBenefit": 33.6,
+          "otherBenefit": 7.4,
+          "selfSupport": 1.8
+        },
+        "2025M01": {
+          "job": 58.6,
+          "education": 0.6,
+          "onBenefit": 34,
+          "otherBenefit": 5.9,
+          "selfSupport": 0.9
+        },
+        "2025M02": {
+          "job": 54.9,
+          "education": 0.3,
+          "onBenefit": 35.6,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.9
+        },
+        "2025M03": {
+          "job": 56.7,
+          "education": 0,
+          "onBenefit": 35.7,
+          "otherBenefit": 5,
+          "selfSupport": 2.5
+        },
+        "2025M04": {
+          "job": 47,
+          "education": 0,
+          "onBenefit": 43.9,
+          "otherBenefit": 5.7,
+          "selfSupport": 3.5
+        },
+        "2025M05": {
+          "job": 48.4,
+          "education": 0.9,
+          "onBenefit": 42.3,
+          "otherBenefit": 3.7,
+          "selfSupport": 4.7
+        },
+        "2025M06": {
+          "job": 44.4,
+          "education": 2.4,
+          "onBenefit": 46.9,
+          "otherBenefit": 3.9,
+          "selfSupport": 2.4
+        },
+        "2025M07": {
+          "job": 49.2,
+          "education": 3.4,
+          "onBenefit": 38.7,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.4
+        },
+        "2025M08": {
+          "job": 53.8,
+          "education": 1.1,
+          "onBenefit": 39.6,
+          "otherBenefit": 4,
+          "selfSupport": 1.5
+        },
+        "2025M09": {
+          "job": 46.7,
+          "education": 0.4,
+          "onBenefit": 42.4,
+          "otherBenefit": 9.2,
+          "selfSupport": 1.3
+        },
+        "2025M10": {
+          "job": 40.9,
+          "education": 1.1,
+          "onBenefit": 50.2,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.2
+        },
+        "2025M11": {
+          "job": 49.2,
+          "education": 2,
+          "onBenefit": 42.2,
+          "otherBenefit": 6.6,
+          "selfSupport": 0
+        },
+        "2025M12": {
+          "job": 49.2,
+          "education": 2.4,
+          "onBenefit": 41.7,
+          "otherBenefit": 5.2,
+          "selfSupport": 1.6
+        },
+        "2026M01": {
+          "job": 62.7,
+          "education": 0.9,
+          "onBenefit": 30.7,
+          "otherBenefit": 4.4,
+          "selfSupport": 1.3
+        },
+        "2026M02": {
+          "job": 63.7,
+          "education": 0,
+          "onBenefit": 29,
+          "otherBenefit": 4.9,
+          "selfSupport": 2.5
+        },
+        "2026M03": {
+          "job": 56.3,
+          "education": 0.4,
+          "onBenefit": 36.2,
+          "otherBenefit": 5.1,
+          "selfSupport": 2
+        },
+        "2026M04": {
+          "job": 51.1,
+          "education": 0,
+          "onBenefit": 38.2,
+          "otherBenefit": 4.9,
+          "selfSupport": 5.8
+        }
+      },
+      "D14": {
+        "2024M04": {
+          "job": 40.9,
+          "education": 0,
+          "onBenefit": 49.6,
+          "otherBenefit": 7,
+          "selfSupport": 2.6
+        },
+        "2024M05": {
+          "job": 46.7,
+          "education": 0.7,
+          "onBenefit": 43,
+          "otherBenefit": 8.9,
+          "selfSupport": 0.7
+        },
+        "2024M06": {
+          "job": 54.7,
+          "education": 1.7,
+          "onBenefit": 37,
+          "otherBenefit": 6.7,
+          "selfSupport": 0
+        },
+        "2024M07": {
+          "job": 58.6,
+          "education": 1.7,
+          "onBenefit": 32.2,
+          "otherBenefit": 5.7,
+          "selfSupport": 1.7
+        },
+        "2024M08": {
+          "job": 48.5,
+          "education": 1.5,
+          "onBenefit": 43.3,
+          "otherBenefit": 6,
+          "selfSupport": 0.7
+        },
+        "2024M09": {
+          "job": 49.1,
+          "education": 0,
+          "onBenefit": 44,
+          "otherBenefit": 5.2,
+          "selfSupport": 1.7
+        },
+        "2024M10": {
+          "job": 45.1,
+          "education": 0,
+          "onBenefit": 52,
+          "otherBenefit": 2.9,
+          "selfSupport": 0
+        },
+        "2024M11": {
+          "job": 41,
+          "education": 0,
+          "onBenefit": 48.6,
+          "otherBenefit": 9.5,
+          "selfSupport": 1
+        },
+        "2024M12": {
+          "job": 48.5,
+          "education": 0,
+          "onBenefit": 47.6,
+          "otherBenefit": 3.9,
+          "selfSupport": 0
+        },
+        "2025M01": {
+          "job": 61.3,
+          "education": 0,
+          "onBenefit": 32.2,
+          "otherBenefit": 5.8,
+          "selfSupport": 0.8
+        },
+        "2025M02": {
+          "job": 51.6,
+          "education": 0,
+          "onBenefit": 43.9,
+          "otherBenefit": 2.6,
+          "selfSupport": 1.9
+        },
+        "2025M03": {
+          "job": 50.8,
+          "education": 0,
+          "onBenefit": 40.9,
+          "otherBenefit": 6.1,
+          "selfSupport": 2.3
+        },
+        "2025M04": {
+          "job": 40.7,
+          "education": 0,
+          "onBenefit": 53.1,
+          "otherBenefit": 6.2,
+          "selfSupport": 0
+        },
+        "2025M05": {
+          "job": 48.2,
+          "education": 0,
+          "onBenefit": 43.6,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.7
+        },
+        "2025M06": {
+          "job": 63.4,
+          "education": 1.3,
+          "onBenefit": 30.8,
+          "otherBenefit": 4.4,
+          "selfSupport": 0
+        },
+        "2025M07": {
+          "job": 51.9,
+          "education": 1.3,
+          "onBenefit": 44.3,
+          "otherBenefit": 1.3,
+          "selfSupport": 1.3
+        },
+        "2025M08": {
+          "job": 55.2,
+          "education": 1,
+          "onBenefit": 36.2,
+          "otherBenefit": 7.6,
+          "selfSupport": 0
+        },
+        "2025M09": {
+          "job": 47.3,
+          "education": 0,
+          "onBenefit": 48.2,
+          "otherBenefit": 4.5,
+          "selfSupport": 0
+        },
+        "2025M10": {
+          "job": 50.9,
+          "education": 0,
+          "onBenefit": 41.5,
+          "otherBenefit": 6.6,
+          "selfSupport": 0.9
+        },
+        "2025M11": {
+          "job": 49.5,
+          "education": 0,
+          "onBenefit": 44.1,
+          "otherBenefit": 6.5,
+          "selfSupport": 0
+        },
+        "2025M12": {
+          "job": 50,
+          "education": 1,
+          "onBenefit": 42.2,
+          "otherBenefit": 4.9,
+          "selfSupport": 2
+        },
+        "2026M01": {
+          "job": 57.2,
+          "education": 0.3,
+          "onBenefit": 34.8,
+          "otherBenefit": 7,
+          "selfSupport": 0.8
+        },
+        "2026M02": {
+          "job": 57.1,
+          "education": 0,
+          "onBenefit": 36.8,
+          "otherBenefit": 4.9,
+          "selfSupport": 1.1
+        },
+        "2026M03": {
+          "job": 61.2,
+          "education": 0,
+          "onBenefit": 33.9,
+          "otherBenefit": 3.3,
+          "selfSupport": 1.7
+        },
+        "2026M04": {
+          "job": 48.8,
+          "education": 0,
+          "onBenefit": 46.4,
+          "otherBenefit": 2.4,
+          "selfSupport": 2.4
+        }
+      },
+      "D72": {
+        "2024M04": {
+          "job": 26.9,
+          "education": 0,
+          "onBenefit": 65.7,
+          "otherBenefit": 3,
+          "selfSupport": 4.5
+        },
+        "2024M05": {
+          "job": 37,
+          "education": 0,
+          "onBenefit": 54.3,
+          "otherBenefit": 6.5,
+          "selfSupport": 2.2
+        },
+        "2024M06": {
+          "job": 36.2,
+          "education": 8.2,
+          "onBenefit": 52.6,
+          "otherBenefit": 2,
+          "selfSupport": 1
+        },
+        "2024M07": {
+          "job": 37.8,
+          "education": 1.3,
+          "onBenefit": 57.7,
+          "otherBenefit": 1.9,
+          "selfSupport": 1.3
+        },
+        "2024M08": {
+          "job": 26.9,
+          "education": 0.7,
+          "onBenefit": 67.2,
+          "otherBenefit": 3,
+          "selfSupport": 2.2
+        },
+        "2024M09": {
+          "job": 27,
+          "education": 0,
+          "onBenefit": 67.6,
+          "otherBenefit": 2.7,
+          "selfSupport": 2.7
+        },
+        "2024M10": {
+          "job": 39.8,
+          "education": 1.2,
+          "onBenefit": 54.2,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.2
+        },
+        "2024M11": {
+          "job": 25.8,
+          "education": 2.2,
+          "onBenefit": 67.7,
+          "otherBenefit": 4.3,
+          "selfSupport": 0
+        },
+        "2024M12": {
+          "job": 33.7,
+          "education": 3,
+          "onBenefit": 59.4,
+          "otherBenefit": 3,
+          "selfSupport": 1
+        },
+        "2025M01": {
+          "job": 35.8,
+          "education": 1.1,
+          "onBenefit": 60.3,
+          "otherBenefit": 1.7,
+          "selfSupport": 1.1
+        },
+        "2025M02": {
+          "job": 37.2,
+          "education": 0,
+          "onBenefit": 58.9,
+          "otherBenefit": 3.9,
+          "selfSupport": 0
+        },
+        "2025M03": {
+          "job": 28.4,
+          "education": 0,
+          "onBenefit": 67,
+          "otherBenefit": 4.5,
+          "selfSupport": 0
+        },
+        "2025M04": {
+          "job": 28.8,
+          "education": 0,
+          "onBenefit": 67.1,
+          "otherBenefit": 2.7,
+          "selfSupport": 1.4
+        },
+        "2025M05": {
+          "job": 26.7,
+          "education": 0,
+          "onBenefit": 63.3,
+          "otherBenefit": 7.8,
+          "selfSupport": 2.2
+        },
+        "2025M06": {
+          "job": 36.8,
+          "education": 6.3,
+          "onBenefit": 54,
+          "otherBenefit": 1.7,
+          "selfSupport": 1.1
+        },
+        "2025M07": {
+          "job": 40,
+          "education": 0,
+          "onBenefit": 54,
+          "otherBenefit": 3.3,
+          "selfSupport": 2.7
+        },
+        "2025M08": {
+          "job": 31.7,
+          "education": 0,
+          "onBenefit": 63.4,
+          "otherBenefit": 4,
+          "selfSupport": 1
+        },
+        "2025M09": {
+          "job": 35.8,
+          "education": 0,
+          "onBenefit": 56.8,
+          "otherBenefit": 3.7,
+          "selfSupport": 3.7
+        },
+        "2025M10": {
+          "job": 31.7,
+          "education": 0,
+          "onBenefit": 63.4,
+          "otherBenefit": 2.4,
+          "selfSupport": 2.4
+        },
+        "2025M11": {
+          "job": 23.1,
+          "education": 0,
+          "onBenefit": 73.1,
+          "otherBenefit": 1.9,
+          "selfSupport": 1.9
+        },
+        "2025M12": {
+          "job": 30.4,
+          "education": 0,
+          "onBenefit": 67,
+          "otherBenefit": 2.7,
+          "selfSupport": 0
+        },
+        "2026M01": {
+          "job": 31.5,
+          "education": 0.5,
+          "onBenefit": 65.2,
+          "otherBenefit": 1.1,
+          "selfSupport": 1.6
+        },
+        "2026M02": {
+          "job": 31.8,
+          "education": 0,
+          "onBenefit": 64.9,
+          "otherBenefit": 1.3,
+          "selfSupport": 2
+        },
+        "2026M03": {
+          "job": 25.6,
+          "education": 0,
+          "onBenefit": 71.1,
+          "otherBenefit": 0.8,
+          "selfSupport": 2.5
+        },
+        "2026M04": {
+          "job": 27.8,
+          "education": 0,
+          "onBenefit": 65.8,
+          "otherBenefit": 2.5,
+          "selfSupport": 3.8
+        }
+      },
+      "D57": {
+        "2024M04": {
+          "job": 31.2,
+          "education": 0.3,
+          "onBenefit": 63.6,
+          "otherBenefit": 3.3,
+          "selfSupport": 1.5
+        },
+        "2024M05": {
+          "job": 33.1,
+          "education": 1.4,
+          "onBenefit": 58.9,
+          "otherBenefit": 3.9,
+          "selfSupport": 2.8
+        },
+        "2024M06": {
+          "job": 35.8,
+          "education": 3.8,
+          "onBenefit": 55.8,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.5
+        },
+        "2024M07": {
+          "job": 40.3,
+          "education": 2.2,
+          "onBenefit": 53.7,
+          "otherBenefit": 2.9,
+          "selfSupport": 0.9
+        },
+        "2024M08": {
+          "job": 34.6,
+          "education": 1.9,
+          "onBenefit": 58,
+          "otherBenefit": 3,
+          "selfSupport": 2.5
+        },
+        "2024M09": {
+          "job": 29.3,
+          "education": 0,
+          "onBenefit": 64.1,
+          "otherBenefit": 3.2,
+          "selfSupport": 3.4
+        },
+        "2024M10": {
+          "job": 33.3,
+          "education": 0.3,
+          "onBenefit": 61.9,
+          "otherBenefit": 1.6,
+          "selfSupport": 2.9
+        },
+        "2024M11": {
+          "job": 36.1,
+          "education": 1.1,
+          "onBenefit": 58.8,
+          "otherBenefit": 1.8,
+          "selfSupport": 2.2
+        },
+        "2024M12": {
+          "job": 36.3,
+          "education": 1.5,
+          "onBenefit": 59.5,
+          "otherBenefit": 1.2,
+          "selfSupport": 1.5
+        },
+        "2025M01": {
+          "job": 41.1,
+          "education": 0.6,
+          "onBenefit": 53,
+          "otherBenefit": 4.5,
+          "selfSupport": 0.8
+        },
+        "2025M02": {
+          "job": 34.4,
+          "education": 0,
+          "onBenefit": 60.9,
+          "otherBenefit": 1.8,
+          "selfSupport": 2.9
+        },
+        "2025M03": {
+          "job": 37.1,
+          "education": 0,
+          "onBenefit": 57.5,
+          "otherBenefit": 3.2,
+          "selfSupport": 2.2
+        },
+        "2025M04": {
+          "job": 31.4,
+          "education": 0,
+          "onBenefit": 64.7,
+          "otherBenefit": 3,
+          "selfSupport": 1
+        },
+        "2025M05": {
+          "job": 29.3,
+          "education": 1.5,
+          "onBenefit": 62,
+          "otherBenefit": 4.2,
+          "selfSupport": 3
+        },
+        "2025M06": {
+          "job": 32.3,
+          "education": 4.8,
+          "onBenefit": 59.7,
+          "otherBenefit": 1.5,
+          "selfSupport": 1.7
+        },
+        "2025M07": {
+          "job": 35.4,
+          "education": 2.2,
+          "onBenefit": 57.4,
+          "otherBenefit": 3.2,
+          "selfSupport": 1.7
+        },
+        "2025M08": {
+          "job": 34.5,
+          "education": 0,
+          "onBenefit": 58,
+          "otherBenefit": 4.2,
+          "selfSupport": 3.3
+        },
+        "2025M09": {
+          "job": 28.5,
+          "education": 0,
+          "onBenefit": 64.6,
+          "otherBenefit": 3.5,
+          "selfSupport": 3.5
+        },
+        "2025M10": {
+          "job": 33.3,
+          "education": 0.6,
+          "onBenefit": 60.5,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.9
+        },
+        "2025M11": {
+          "job": 24.2,
+          "education": 1.6,
+          "onBenefit": 68.4,
+          "otherBenefit": 3.5,
+          "selfSupport": 2.3
+        },
+        "2025M12": {
+          "job": 33.7,
+          "education": 0.4,
+          "onBenefit": 59.6,
+          "otherBenefit": 4.4,
+          "selfSupport": 1.9
+        },
+        "2026M01": {
+          "job": 32.3,
+          "education": 0.6,
+          "onBenefit": 62.2,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.1
+        },
+        "2026M02": {
+          "job": 34.9,
+          "education": 0.2,
+          "onBenefit": 60.8,
+          "otherBenefit": 1.8,
+          "selfSupport": 2.2
+        },
+        "2026M03": {
+          "job": 35.8,
+          "education": 0.3,
+          "onBenefit": 58.7,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.3
+        },
+        "2026M04": {
+          "job": 32.7,
+          "education": 0,
+          "onBenefit": 61.9,
+          "otherBenefit": 1.6,
+          "selfSupport": 3.8
+        }
+      },
+      "D94": {
+        "2024M04": {
+          "job": 39.3,
+          "education": 0,
+          "onBenefit": 52.4,
+          "otherBenefit": 4.4,
+          "selfSupport": 3.8
+        },
+        "2024M05": {
+          "job": 31.4,
+          "education": 0,
+          "onBenefit": 62.6,
+          "otherBenefit": 4,
+          "selfSupport": 2
+        },
+        "2024M06": {
+          "job": 34.6,
+          "education": 1.9,
+          "onBenefit": 59,
+          "otherBenefit": 2.9,
+          "selfSupport": 1.6
+        },
+        "2024M07": {
+          "job": 39.4,
+          "education": 0.7,
+          "onBenefit": 53.1,
+          "otherBenefit": 4,
+          "selfSupport": 2.8
+        },
+        "2024M08": {
+          "job": 31.9,
+          "education": 0.8,
+          "onBenefit": 61.1,
+          "otherBenefit": 3.5,
+          "selfSupport": 2.5
+        },
+        "2024M09": {
+          "job": 32.2,
+          "education": 0,
+          "onBenefit": 62.3,
+          "otherBenefit": 3.9,
+          "selfSupport": 1.5
+        },
+        "2024M10": {
+          "job": 30,
+          "education": 0.9,
+          "onBenefit": 64.5,
+          "otherBenefit": 3.6,
+          "selfSupport": 1.1
+        },
+        "2024M11": {
+          "job": 28.3,
+          "education": 0.4,
+          "onBenefit": 62.9,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.7
+        },
+        "2024M12": {
+          "job": 40.7,
+          "education": 0.5,
+          "onBenefit": 53.2,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.9
+        },
+        "2025M01": {
+          "job": 41.2,
+          "education": 0.2,
+          "onBenefit": 52,
+          "otherBenefit": 4,
+          "selfSupport": 2.6
+        },
+        "2025M02": {
+          "job": 41,
+          "education": 0.2,
+          "onBenefit": 52.9,
+          "otherBenefit": 3.6,
+          "selfSupport": 2.3
+        },
+        "2025M03": {
+          "job": 40.8,
+          "education": 0,
+          "onBenefit": 53.5,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.9
+        },
+        "2025M04": {
+          "job": 32.1,
+          "education": 0,
+          "onBenefit": 62.1,
+          "otherBenefit": 2.8,
+          "selfSupport": 3
+        },
+        "2025M05": {
+          "job": 36.1,
+          "education": 0.6,
+          "onBenefit": 57,
+          "otherBenefit": 4.9,
+          "selfSupport": 1.5
+        },
+        "2025M06": {
+          "job": 33.3,
+          "education": 2.2,
+          "onBenefit": 58.4,
+          "otherBenefit": 3.8,
+          "selfSupport": 2.2
+        },
+        "2025M07": {
+          "job": 42.3,
+          "education": 1.1,
+          "onBenefit": 51.5,
+          "otherBenefit": 3.7,
+          "selfSupport": 1.3
+        },
+        "2025M08": {
+          "job": 33.4,
+          "education": 0.6,
+          "onBenefit": 60.3,
+          "otherBenefit": 4.3,
+          "selfSupport": 1.4
+        },
+        "2025M09": {
+          "job": 29.4,
+          "education": 0.2,
+          "onBenefit": 63.8,
+          "otherBenefit": 3.7,
+          "selfSupport": 2.9
+        },
+        "2025M10": {
+          "job": 30.6,
+          "education": 0.5,
+          "onBenefit": 61.6,
+          "otherBenefit": 5.6,
+          "selfSupport": 1.7
+        },
+        "2025M11": {
+          "job": 27.2,
+          "education": 0.3,
+          "onBenefit": 67.2,
+          "otherBenefit": 4,
+          "selfSupport": 1.3
+        },
+        "2025M12": {
+          "job": 37.6,
+          "education": 0.6,
+          "onBenefit": 56.2,
+          "otherBenefit": 3.5,
+          "selfSupport": 2.1
+        },
+        "2026M01": {
+          "job": 52.6,
+          "education": 0.1,
+          "onBenefit": 43.2,
+          "otherBenefit": 3.1,
+          "selfSupport": 1
+        },
+        "2026M02": {
+          "job": 55.1,
+          "education": 0,
+          "onBenefit": 40.3,
+          "otherBenefit": 2.2,
+          "selfSupport": 2.3
+        },
+        "2026M03": {
+          "job": 34.1,
+          "education": 0.2,
+          "onBenefit": 60,
+          "otherBenefit": 3.3,
+          "selfSupport": 2.5
+        },
+        "2026M04": {
+          "job": 33,
+          "education": 0.2,
+          "onBenefit": 58.1,
+          "otherBenefit": 4.2,
+          "selfSupport": 4.6
+        }
+      }
+    },
+    "six": {
+      "TOTAL": {
+        "2024M01": {
+          "job": 64.5,
+          "education": 0.1,
+          "onBenefit": 27,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.8
+        },
+        "2024M02": {
+          "job": 58.6,
+          "education": 0.5,
+          "onBenefit": 32.5,
+          "otherBenefit": 5.5,
+          "selfSupport": 3
+        },
+        "2024M03": {
+          "job": 57.2,
+          "education": 2,
+          "onBenefit": 32,
+          "otherBenefit": 5.6,
+          "selfSupport": 3.3
+        },
+        "2024M04": {
+          "job": 58,
+          "education": 1.3,
+          "onBenefit": 31.4,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.1
+        },
+        "2024M05": {
+          "job": 52.7,
+          "education": 1.2,
+          "onBenefit": 36.3,
+          "otherBenefit": 6.9,
+          "selfSupport": 2.9
+        },
+        "2024M06": {
+          "job": 60.9,
+          "education": 1.4,
+          "onBenefit": 29.6,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.3
+        },
+        "2024M07": {
+          "job": 57.4,
+          "education": 1.4,
+          "onBenefit": 33.1,
+          "otherBenefit": 5.3,
+          "selfSupport": 2.8
+        },
+        "2024M08": {
+          "job": 51.5,
+          "education": 1.5,
+          "onBenefit": 37.4,
+          "otherBenefit": 5.9,
+          "selfSupport": 3.6
+        },
+        "2024M09": {
+          "job": 51.4,
+          "education": 0.7,
+          "onBenefit": 38.8,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.1
+        },
+        "2024M10": {
+          "job": 53.2,
+          "education": 0.7,
+          "onBenefit": 36.7,
+          "otherBenefit": 6,
+          "selfSupport": 3.4
+        },
+        "2024M11": {
+          "job": 57.8,
+          "education": 0.6,
+          "onBenefit": 32.2,
+          "otherBenefit": 6,
+          "selfSupport": 3.3
+        },
+        "2024M12": {
+          "job": 62,
+          "education": 0.4,
+          "onBenefit": 29.1,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.8
+        },
+        "2025M01": {
+          "job": 60.9,
+          "education": 0.2,
+          "onBenefit": 30.2,
+          "otherBenefit": 6,
+          "selfSupport": 2.8
+        },
+        "2025M02": {
+          "job": 58,
+          "education": 0.3,
+          "onBenefit": 33,
+          "otherBenefit": 5.9,
+          "selfSupport": 2.8
+        },
+        "2025M03": {
+          "job": 56.1,
+          "education": 2,
+          "onBenefit": 33.6,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.7
+        },
+        "2025M04": {
+          "job": 55,
+          "education": 1.2,
+          "onBenefit": 34.5,
+          "otherBenefit": 6.4,
+          "selfSupport": 3
+        },
+        "2025M05": {
+          "job": 52.9,
+          "education": 1.4,
+          "onBenefit": 36.1,
+          "otherBenefit": 6.2,
+          "selfSupport": 3.4
+        },
+        "2025M06": {
+          "job": 59.3,
+          "education": 1.3,
+          "onBenefit": 31.7,
+          "otherBenefit": 5.4,
+          "selfSupport": 2.3
+        },
+        "2025M07": {
+          "job": 57.5,
+          "education": 1.3,
+          "onBenefit": 33.4,
+          "otherBenefit": 5,
+          "selfSupport": 2.8
+        },
+        "2025M08": {
+          "job": 51.6,
+          "education": 1.2,
+          "onBenefit": 37.4,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.7
+        },
+        "2025M09": {
+          "job": 50.5,
+          "education": 0.7,
+          "onBenefit": 39.1,
+          "otherBenefit": 6.6,
+          "selfSupport": 3.2
+        },
+        "2025M10": {
+          "job": 51.7,
+          "education": 0.7,
+          "onBenefit": 38.9,
+          "otherBenefit": 5.6,
+          "selfSupport": 3.1
+        },
+        "2025M11": {
+          "job": 55.6,
+          "education": 0.6,
+          "onBenefit": 35.1,
+          "otherBenefit": 5,
+          "selfSupport": 3.8
+        },
+        "2025M12": {
+          "job": 60.4,
+          "education": 0.5,
+          "onBenefit": 31.3,
+          "otherBenefit": 4,
+          "selfSupport": 3.9
+        },
+        "2026M01": {
+          "job": 64.5,
+          "education": 0.2,
+          "onBenefit": 27.8,
+          "otherBenefit": 3.1,
+          "selfSupport": 4.4
+        }
+      },
+      "D86": {
+        "2024M01": {
+          "job": 63.9,
+          "education": 0.1,
+          "onBenefit": 28,
+          "otherBenefit": 4.5,
+          "selfSupport": 3.5
+        },
+        "2024M02": {
+          "job": 63.1,
+          "education": 0.3,
+          "onBenefit": 30.1,
+          "otherBenefit": 3.2,
+          "selfSupport": 3.3
+        },
+        "2024M03": {
+          "job": 59.6,
+          "education": 2.3,
+          "onBenefit": 29.9,
+          "otherBenefit": 4,
+          "selfSupport": 4.3
+        },
+        "2024M04": {
+          "job": 60,
+          "education": 1.1,
+          "onBenefit": 29.4,
+          "otherBenefit": 4.6,
+          "selfSupport": 4.9
+        },
+        "2024M05": {
+          "job": 55.9,
+          "education": 0.9,
+          "onBenefit": 34.3,
+          "otherBenefit": 4.9,
+          "selfSupport": 3.9
+        },
+        "2024M06": {
+          "job": 66.5,
+          "education": 0.5,
+          "onBenefit": 27.6,
+          "otherBenefit": 3.5,
+          "selfSupport": 1.8
+        },
+        "2024M07": {
+          "job": 62.2,
+          "education": 0.8,
+          "onBenefit": 29.7,
+          "otherBenefit": 3.7,
+          "selfSupport": 3.6
+        },
+        "2024M08": {
+          "job": 57.9,
+          "education": 0.6,
+          "onBenefit": 33.5,
+          "otherBenefit": 3.8,
+          "selfSupport": 4.2
+        },
+        "2024M09": {
+          "job": 54.9,
+          "education": 0.5,
+          "onBenefit": 36.1,
+          "otherBenefit": 4.7,
+          "selfSupport": 3.8
+        },
+        "2024M10": {
+          "job": 52.7,
+          "education": 0.4,
+          "onBenefit": 38.5,
+          "otherBenefit": 4.5,
+          "selfSupport": 3.9
+        },
+        "2024M11": {
+          "job": 57.6,
+          "education": 0.3,
+          "onBenefit": 33.6,
+          "otherBenefit": 3.9,
+          "selfSupport": 4.6
+        },
+        "2024M12": {
+          "job": 59.2,
+          "education": 0.2,
+          "onBenefit": 32.3,
+          "otherBenefit": 5.4,
+          "selfSupport": 2.9
+        },
+        "2025M01": {
+          "job": 62.2,
+          "education": 0.1,
+          "onBenefit": 30.2,
+          "otherBenefit": 4.7,
+          "selfSupport": 2.8
+        },
+        "2025M02": {
+          "job": 59.7,
+          "education": 0.2,
+          "onBenefit": 31.7,
+          "otherBenefit": 5.2,
+          "selfSupport": 3.2
+        },
+        "2025M03": {
+          "job": 56.1,
+          "education": 1.6,
+          "onBenefit": 34.6,
+          "otherBenefit": 4.5,
+          "selfSupport": 3.2
+        },
+        "2025M04": {
+          "job": 56.2,
+          "education": 0.5,
+          "onBenefit": 34.6,
+          "otherBenefit": 4.6,
+          "selfSupport": 4.2
+        },
+        "2025M05": {
+          "job": 55.4,
+          "education": 0.4,
+          "onBenefit": 36.3,
+          "otherBenefit": 4,
+          "selfSupport": 4
+        },
+        "2025M06": {
+          "job": 61.6,
+          "education": 0.4,
+          "onBenefit": 32.8,
+          "otherBenefit": 3.3,
+          "selfSupport": 1.9
+        },
+        "2025M07": {
+          "job": 61.7,
+          "education": 0.5,
+          "onBenefit": 32.2,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.6
+        },
+        "2025M08": {
+          "job": 55,
+          "education": 0.9,
+          "onBenefit": 36.3,
+          "otherBenefit": 3.6,
+          "selfSupport": 4.3
+        },
+        "2025M09": {
+          "job": 50.4,
+          "education": 0.4,
+          "onBenefit": 41,
+          "otherBenefit": 4.2,
+          "selfSupport": 4.1
+        },
+        "2025M10": {
+          "job": 49.7,
+          "education": 0.5,
+          "onBenefit": 42,
+          "otherBenefit": 3.9,
+          "selfSupport": 3.9
+        },
+        "2025M11": {
+          "job": 53.4,
+          "education": 0.3,
+          "onBenefit": 38.6,
+          "otherBenefit": 2.2,
+          "selfSupport": 5.5
+        },
+        "2025M12": {
+          "job": 52.1,
+          "education": 0.1,
+          "onBenefit": 41.4,
+          "otherBenefit": 1.9,
+          "selfSupport": 4.5
+        },
+        "2026M01": {
+          "job": 58.8,
+          "education": 0.1,
+          "onBenefit": 34.9,
+          "otherBenefit": 1.2,
+          "selfSupport": 5
+        }
+      },
+      "D92": {
+        "2024M01": {
+          "job": 57.9,
+          "education": 0.1,
+          "onBenefit": 34.5,
+          "otherBenefit": 3.9,
+          "selfSupport": 3.5
+        },
+        "2024M02": {
+          "job": 53.7,
+          "education": 0.3,
+          "onBenefit": 37.7,
+          "otherBenefit": 4.6,
+          "selfSupport": 3.8
+        },
+        "2024M03": {
+          "job": 52.3,
+          "education": 3.1,
+          "onBenefit": 34.6,
+          "otherBenefit": 5,
+          "selfSupport": 5
+        },
+        "2024M04": {
+          "job": 54.6,
+          "education": 1.1,
+          "onBenefit": 35.4,
+          "otherBenefit": 6,
+          "selfSupport": 3
+        },
+        "2024M05": {
+          "job": 49.2,
+          "education": 0.9,
+          "onBenefit": 42.7,
+          "otherBenefit": 4.3,
+          "selfSupport": 2.8
+        },
+        "2024M06": {
+          "job": 61.4,
+          "education": 1.4,
+          "onBenefit": 29.3,
+          "otherBenefit": 5.8,
+          "selfSupport": 2
+        },
+        "2024M07": {
+          "job": 56.3,
+          "education": 1.1,
+          "onBenefit": 35.3,
+          "otherBenefit": 4.5,
+          "selfSupport": 2.8
+        },
+        "2024M08": {
+          "job": 46.4,
+          "education": 2.2,
+          "onBenefit": 40.9,
+          "otherBenefit": 5.3,
+          "selfSupport": 5.2
+        },
+        "2024M09": {
+          "job": 51.5,
+          "education": 0.7,
+          "onBenefit": 37.3,
+          "otherBenefit": 6.3,
+          "selfSupport": 4.1
+        },
+        "2024M10": {
+          "job": 47.3,
+          "education": 0.6,
+          "onBenefit": 38.7,
+          "otherBenefit": 6.1,
+          "selfSupport": 7.3
+        },
+        "2024M11": {
+          "job": 54.5,
+          "education": 0.2,
+          "onBenefit": 35.1,
+          "otherBenefit": 5.4,
+          "selfSupport": 4.8
+        },
+        "2024M12": {
+          "job": 55.4,
+          "education": 0.2,
+          "onBenefit": 32.7,
+          "otherBenefit": 5.5,
+          "selfSupport": 6.1
+        },
+        "2025M01": {
+          "job": 58,
+          "education": 0.1,
+          "onBenefit": 34.1,
+          "otherBenefit": 4.8,
+          "selfSupport": 3
+        },
+        "2025M02": {
+          "job": 51.5,
+          "education": 0.5,
+          "onBenefit": 38.4,
+          "otherBenefit": 4.6,
+          "selfSupport": 4.9
+        },
+        "2025M03": {
+          "job": 49.2,
+          "education": 3.4,
+          "onBenefit": 38.6,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.4
+        },
+        "2025M04": {
+          "job": 51.6,
+          "education": 1.9,
+          "onBenefit": 38.2,
+          "otherBenefit": 4.1,
+          "selfSupport": 4.1
+        },
+        "2025M05": {
+          "job": 51.4,
+          "education": 1.3,
+          "onBenefit": 37.5,
+          "otherBenefit": 4.3,
+          "selfSupport": 5.4
+        },
+        "2025M06": {
+          "job": 57.6,
+          "education": 1.5,
+          "onBenefit": 33.9,
+          "otherBenefit": 3.5,
+          "selfSupport": 3.5
+        },
+        "2025M07": {
+          "job": 56.3,
+          "education": 1.8,
+          "onBenefit": 32.6,
+          "otherBenefit": 5.4,
+          "selfSupport": 4
+        },
+        "2025M08": {
+          "job": 47.9,
+          "education": 0.7,
+          "onBenefit": 39.5,
+          "otherBenefit": 4.6,
+          "selfSupport": 7.2
+        },
+        "2025M09": {
+          "job": 48.5,
+          "education": 0,
+          "onBenefit": 41.3,
+          "otherBenefit": 6,
+          "selfSupport": 4.1
+        },
+        "2025M10": {
+          "job": 49.7,
+          "education": 0.4,
+          "onBenefit": 41.7,
+          "otherBenefit": 4.6,
+          "selfSupport": 3.6
+        },
+        "2025M11": {
+          "job": 48.7,
+          "education": 1.1,
+          "onBenefit": 39.9,
+          "otherBenefit": 4,
+          "selfSupport": 6.3
+        },
+        "2025M12": {
+          "job": 53.3,
+          "education": 0.6,
+          "onBenefit": 36,
+          "otherBenefit": 3.7,
+          "selfSupport": 6.4
+        },
+        "2026M01": {
+          "job": 54.9,
+          "education": 0.1,
+          "onBenefit": 36.7,
+          "otherBenefit": 2.4,
+          "selfSupport": 5.9
+        }
+      },
+      "D10": {
+        "2024M01": {
+          "job": 44.5,
+          "education": 0,
+          "onBenefit": 46.5,
+          "otherBenefit": 3.5,
+          "selfSupport": 5.5
+        },
+        "2024M02": {
+          "job": 47.6,
+          "education": 1,
+          "onBenefit": 41.3,
+          "otherBenefit": 3.9,
+          "selfSupport": 6.3
+        },
+        "2024M03": {
+          "job": 38.5,
+          "education": 0.7,
+          "onBenefit": 49.7,
+          "otherBenefit": 3.5,
+          "selfSupport": 7.7
+        },
+        "2024M04": {
+          "job": 39.3,
+          "education": 2.1,
+          "onBenefit": 44.8,
+          "otherBenefit": 6.2,
+          "selfSupport": 7.6
+        },
+        "2024M05": {
+          "job": 42.9,
+          "education": 0.6,
+          "onBenefit": 45.5,
+          "otherBenefit": 4.5,
+          "selfSupport": 6.4
+        },
+        "2024M06": {
+          "job": 42.7,
+          "education": 1.3,
+          "onBenefit": 45.6,
+          "otherBenefit": 5,
+          "selfSupport": 5.4
+        },
+        "2024M07": {
+          "job": 45.8,
+          "education": 1.2,
+          "onBenefit": 45.2,
+          "otherBenefit": 3.4,
+          "selfSupport": 4.4
+        },
+        "2024M08": {
+          "job": 38.5,
+          "education": 0.6,
+          "onBenefit": 50.6,
+          "otherBenefit": 0.6,
+          "selfSupport": 9.8
+        },
+        "2024M09": {
+          "job": 40,
+          "education": 0.6,
+          "onBenefit": 50.3,
+          "otherBenefit": 3.2,
+          "selfSupport": 5.8
+        },
+        "2024M10": {
+          "job": 37.5,
+          "education": 0,
+          "onBenefit": 50,
+          "otherBenefit": 3.5,
+          "selfSupport": 9
+        },
+        "2024M11": {
+          "job": 44.4,
+          "education": 0.7,
+          "onBenefit": 40.8,
+          "otherBenefit": 4.2,
+          "selfSupport": 9.9
+        },
+        "2024M12": {
+          "job": 49.6,
+          "education": 0,
+          "onBenefit": 43.3,
+          "otherBenefit": 2.4,
+          "selfSupport": 4.7
+        },
+        "2025M01": {
+          "job": 47.1,
+          "education": 0,
+          "onBenefit": 41.3,
+          "otherBenefit": 4,
+          "selfSupport": 7.5
+        },
+        "2025M02": {
+          "job": 45.1,
+          "education": 0,
+          "onBenefit": 44.1,
+          "otherBenefit": 5.1,
+          "selfSupport": 5.6
+        },
+        "2025M03": {
+          "job": 41.1,
+          "education": 1.4,
+          "onBenefit": 49.6,
+          "otherBenefit": 1.4,
+          "selfSupport": 6.4
+        },
+        "2025M04": {
+          "job": 39.8,
+          "education": 0.8,
+          "onBenefit": 48.1,
+          "otherBenefit": 7.5,
+          "selfSupport": 3.8
+        },
+        "2025M05": {
+          "job": 43.8,
+          "education": 2.9,
+          "onBenefit": 40.1,
+          "otherBenefit": 7.3,
+          "selfSupport": 5.8
+        },
+        "2025M06": {
+          "job": 41.7,
+          "education": 0.9,
+          "onBenefit": 46,
+          "otherBenefit": 5.5,
+          "selfSupport": 6
+        },
+        "2025M07": {
+          "job": 43.8,
+          "education": 0,
+          "onBenefit": 48.1,
+          "otherBenefit": 3.5,
+          "selfSupport": 4.7
+        },
+        "2025M08": {
+          "job": 40.1,
+          "education": 0.5,
+          "onBenefit": 47.9,
+          "otherBenefit": 2.1,
+          "selfSupport": 9.4
+        },
+        "2025M09": {
+          "job": 40,
+          "education": 0,
+          "onBenefit": 43.8,
+          "otherBenefit": 5.4,
+          "selfSupport": 10.8
+        },
+        "2025M10": {
+          "job": 43.9,
+          "education": 0.7,
+          "onBenefit": 47.3,
+          "otherBenefit": 2,
+          "selfSupport": 6.1
+        },
+        "2025M11": {
+          "job": 37.4,
+          "education": 0,
+          "onBenefit": 45.2,
+          "otherBenefit": 4.3,
+          "selfSupport": 13
+        },
+        "2025M12": {
+          "job": 47.6,
+          "education": 0.6,
+          "onBenefit": 43.9,
+          "otherBenefit": 3,
+          "selfSupport": 4.9
+        },
+        "2026M01": {
+          "job": 39.5,
+          "education": 0,
+          "onBenefit": 47.7,
+          "otherBenefit": 2.5,
+          "selfSupport": 10.3
+        }
+      },
+      "D83": {
+        "2024M01": {
+          "job": 52.7,
+          "education": 0,
+          "onBenefit": 34.5,
+          "otherBenefit": 5.5,
+          "selfSupport": 7.3
+        },
+        "2024M02": {
+          "job": 46,
+          "education": 1.4,
+          "onBenefit": 48.9,
+          "otherBenefit": 2.9,
+          "selfSupport": 0.7
+        },
+        "2024M03": {
+          "job": 56.8,
+          "education": 0.7,
+          "onBenefit": 32.4,
+          "otherBenefit": 6.8,
+          "selfSupport": 3.4
+        },
+        "2024M04": {
+          "job": 44.7,
+          "education": 1.6,
+          "onBenefit": 42.3,
+          "otherBenefit": 8.9,
+          "selfSupport": 2.4
+        },
+        "2024M05": {
+          "job": 45.9,
+          "education": 0.9,
+          "onBenefit": 42.3,
+          "otherBenefit": 9,
+          "selfSupport": 1.8
+        },
+        "2024M06": {
+          "job": 45.3,
+          "education": 1.2,
+          "onBenefit": 46,
+          "otherBenefit": 6.8,
+          "selfSupport": 0.6
+        },
+        "2024M07": {
+          "job": 50,
+          "education": 1.9,
+          "onBenefit": 37.5,
+          "otherBenefit": 6.9,
+          "selfSupport": 3.8
+        },
+        "2024M08": {
+          "job": 48.3,
+          "education": 1.7,
+          "onBenefit": 39.9,
+          "otherBenefit": 7.9,
+          "selfSupport": 2.2
+        },
+        "2024M09": {
+          "job": 41.8,
+          "education": 0,
+          "onBenefit": 43,
+          "otherBenefit": 13.3,
+          "selfSupport": 1.8
+        },
+        "2024M10": {
+          "job": 49.2,
+          "education": 0.6,
+          "onBenefit": 43.5,
+          "otherBenefit": 3.4,
+          "selfSupport": 3.4
+        },
+        "2024M11": {
+          "job": 57.2,
+          "education": 0,
+          "onBenefit": 33.3,
+          "otherBenefit": 6.5,
+          "selfSupport": 2.9
+        },
+        "2024M12": {
+          "job": 61.2,
+          "education": 0,
+          "onBenefit": 30.3,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.3
+        },
+        "2025M01": {
+          "job": 53.7,
+          "education": 0,
+          "onBenefit": 38.1,
+          "otherBenefit": 4.6,
+          "selfSupport": 3.7
+        },
+        "2025M02": {
+          "job": 51.1,
+          "education": 0,
+          "onBenefit": 34.6,
+          "otherBenefit": 11,
+          "selfSupport": 3.3
+        },
+        "2025M03": {
+          "job": 57.8,
+          "education": 2.4,
+          "onBenefit": 30.7,
+          "otherBenefit": 7.2,
+          "selfSupport": 1.8
+        },
+        "2025M04": {
+          "job": 50.7,
+          "education": 3.9,
+          "onBenefit": 35.5,
+          "otherBenefit": 7.9,
+          "selfSupport": 2
+        },
+        "2025M05": {
+          "job": 47.9,
+          "education": 0.6,
+          "onBenefit": 45.5,
+          "otherBenefit": 3,
+          "selfSupport": 3
+        },
+        "2025M06": {
+          "job": 51.1,
+          "education": 1.1,
+          "onBenefit": 38.3,
+          "otherBenefit": 6.7,
+          "selfSupport": 2.8
+        },
+        "2025M07": {
+          "job": 46.9,
+          "education": 1,
+          "onBenefit": 40.1,
+          "otherBenefit": 7.3,
+          "selfSupport": 4.7
+        },
+        "2025M08": {
+          "job": 46,
+          "education": 0,
+          "onBenefit": 39.1,
+          "otherBenefit": 10.7,
+          "selfSupport": 4.2
+        },
+        "2025M09": {
+          "job": 50.3,
+          "education": 1.2,
+          "onBenefit": 40.5,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.3
+        },
+        "2025M10": {
+          "job": 52.4,
+          "education": 1,
+          "onBenefit": 33.8,
+          "otherBenefit": 8.1,
+          "selfSupport": 4.8
+        },
+        "2025M11": {
+          "job": 50,
+          "education": 1,
+          "onBenefit": 39,
+          "otherBenefit": 5.5,
+          "selfSupport": 4.5
+        },
+        "2025M12": {
+          "job": 52.8,
+          "education": 0.5,
+          "onBenefit": 37.7,
+          "otherBenefit": 4.7,
+          "selfSupport": 4.2
+        },
+        "2026M01": {
+          "job": 61.5,
+          "education": 0,
+          "onBenefit": 29.4,
+          "otherBenefit": 3.5,
+          "selfSupport": 5.5
+        }
+      },
+      "D67": {
+        "2024M01": {
+          "job": 46.9,
+          "education": 0.2,
+          "onBenefit": 41,
+          "otherBenefit": 5.1,
+          "selfSupport": 6.7
+        },
+        "2024M02": {
+          "job": 54.7,
+          "education": 0.2,
+          "onBenefit": 35.6,
+          "otherBenefit": 5.3,
+          "selfSupport": 4.1
+        },
+        "2024M03": {
+          "job": 56.4,
+          "education": 0.5,
+          "onBenefit": 37.3,
+          "otherBenefit": 3.2,
+          "selfSupport": 2.7
+        },
+        "2024M04": {
+          "job": 55.8,
+          "education": 0.5,
+          "onBenefit": 34.5,
+          "otherBenefit": 3.7,
+          "selfSupport": 5.5
+        },
+        "2024M05": {
+          "job": 55.1,
+          "education": 0,
+          "onBenefit": 38.3,
+          "otherBenefit": 3.7,
+          "selfSupport": 2.8
+        },
+        "2024M06": {
+          "job": 49.4,
+          "education": 0.7,
+          "onBenefit": 43.6,
+          "otherBenefit": 3,
+          "selfSupport": 3.3
+        },
+        "2024M07": {
+          "job": 53.6,
+          "education": 0.5,
+          "onBenefit": 37.5,
+          "otherBenefit": 4.2,
+          "selfSupport": 4.2
+        },
+        "2024M08": {
+          "job": 51.7,
+          "education": 0.2,
+          "onBenefit": 40.7,
+          "otherBenefit": 3,
+          "selfSupport": 4.3
+        },
+        "2024M09": {
+          "job": 58.2,
+          "education": 0.2,
+          "onBenefit": 34.8,
+          "otherBenefit": 3.3,
+          "selfSupport": 3.3
+        },
+        "2024M10": {
+          "job": 56,
+          "education": 0,
+          "onBenefit": 38.2,
+          "otherBenefit": 3.4,
+          "selfSupport": 2.5
+        },
+        "2024M11": {
+          "job": 58.7,
+          "education": 0,
+          "onBenefit": 34.1,
+          "otherBenefit": 5.1,
+          "selfSupport": 2.1
+        },
+        "2024M12": {
+          "job": 59.4,
+          "education": 0,
+          "onBenefit": 31.7,
+          "otherBenefit": 4.8,
+          "selfSupport": 4
+        },
+        "2025M01": {
+          "job": 56.2,
+          "education": 0,
+          "onBenefit": 36.5,
+          "otherBenefit": 4.1,
+          "selfSupport": 3.2
+        },
+        "2025M02": {
+          "job": 57.6,
+          "education": 0.2,
+          "onBenefit": 37.2,
+          "otherBenefit": 3.1,
+          "selfSupport": 1.9
+        },
+        "2025M03": {
+          "job": 54.3,
+          "education": 0.7,
+          "onBenefit": 39.8,
+          "otherBenefit": 1.8,
+          "selfSupport": 3.5
+        },
+        "2025M04": {
+          "job": 53.8,
+          "education": 0.5,
+          "onBenefit": 38.6,
+          "otherBenefit": 3.2,
+          "selfSupport": 3.9
+        },
+        "2025M05": {
+          "job": 52,
+          "education": 1.2,
+          "onBenefit": 39.9,
+          "otherBenefit": 3.1,
+          "selfSupport": 3.8
+        },
+        "2025M06": {
+          "job": 53,
+          "education": 0.5,
+          "onBenefit": 41.4,
+          "otherBenefit": 2.7,
+          "selfSupport": 2.5
+        },
+        "2025M07": {
+          "job": 51.8,
+          "education": 0.7,
+          "onBenefit": 41.6,
+          "otherBenefit": 3,
+          "selfSupport": 3
+        },
+        "2025M08": {
+          "job": 53.5,
+          "education": 0.7,
+          "onBenefit": 39.3,
+          "otherBenefit": 2.8,
+          "selfSupport": 3.7
+        },
+        "2025M09": {
+          "job": 53,
+          "education": 0,
+          "onBenefit": 40.1,
+          "otherBenefit": 3.4,
+          "selfSupport": 3.4
+        },
+        "2025M10": {
+          "job": 49.7,
+          "education": 0.2,
+          "onBenefit": 43.5,
+          "otherBenefit": 2.5,
+          "selfSupport": 4.1
+        },
+        "2025M11": {
+          "job": 50.7,
+          "education": 0,
+          "onBenefit": 42.9,
+          "otherBenefit": 2.9,
+          "selfSupport": 3.4
+        },
+        "2025M12": {
+          "job": 55.6,
+          "education": 0,
+          "onBenefit": 36.6,
+          "otherBenefit": 3.3,
+          "selfSupport": 4.5
+        },
+        "2026M01": {
+          "job": 49,
+          "education": 0.3,
+          "onBenefit": 42.3,
+          "otherBenefit": 3.2,
+          "selfSupport": 5.2
+        }
+      },
+      "D81": {
+        "2024M01": {
+          "job": 71.9,
+          "education": 0.2,
+          "onBenefit": 15.8,
+          "otherBenefit": 10.8,
+          "selfSupport": 1.4
+        },
+        "2024M02": {
+          "job": 69.8,
+          "education": 0,
+          "onBenefit": 21,
+          "otherBenefit": 6.9,
+          "selfSupport": 2.4
+        },
+        "2024M03": {
+          "job": 66.7,
+          "education": 1.4,
+          "onBenefit": 23.6,
+          "otherBenefit": 8.3,
+          "selfSupport": 0
+        },
+        "2024M04": {
+          "job": 66.7,
+          "education": 2,
+          "onBenefit": 21.3,
+          "otherBenefit": 9.3,
+          "selfSupport": 0.7
+        },
+        "2024M05": {
+          "job": 62.3,
+          "education": 1.2,
+          "onBenefit": 25.9,
+          "otherBenefit": 9.9,
+          "selfSupport": 0.6
+        },
+        "2024M06": {
+          "job": 74.3,
+          "education": 1.3,
+          "onBenefit": 12.4,
+          "otherBenefit": 10.4,
+          "selfSupport": 1.5
+        },
+        "2024M07": {
+          "job": 70.4,
+          "education": 0.7,
+          "onBenefit": 17.9,
+          "otherBenefit": 9.1,
+          "selfSupport": 2
+        },
+        "2024M08": {
+          "job": 65.1,
+          "education": 1,
+          "onBenefit": 20.1,
+          "otherBenefit": 11.5,
+          "selfSupport": 2.4
+        },
+        "2024M09": {
+          "job": 69.9,
+          "education": 0,
+          "onBenefit": 16,
+          "otherBenefit": 9.6,
+          "selfSupport": 4.5
+        },
+        "2024M10": {
+          "job": 62,
+          "education": 0,
+          "onBenefit": 24,
+          "otherBenefit": 11.6,
+          "selfSupport": 2.5
+        },
+        "2024M11": {
+          "job": 68.8,
+          "education": 0.8,
+          "onBenefit": 17.6,
+          "otherBenefit": 9.6,
+          "selfSupport": 3.2
+        },
+        "2024M12": {
+          "job": 58.8,
+          "education": 0,
+          "onBenefit": 28.4,
+          "otherBenefit": 10.8,
+          "selfSupport": 2
+        },
+        "2025M01": {
+          "job": 72.1,
+          "education": 0,
+          "onBenefit": 17.2,
+          "otherBenefit": 9.3,
+          "selfSupport": 1.4
+        },
+        "2025M02": {
+          "job": 69,
+          "education": 0.4,
+          "onBenefit": 20.7,
+          "otherBenefit": 7.4,
+          "selfSupport": 2.5
+        },
+        "2025M03": {
+          "job": 65.4,
+          "education": 3.8,
+          "onBenefit": 20.8,
+          "otherBenefit": 6.9,
+          "selfSupport": 3.1
+        },
+        "2025M04": {
+          "job": 66,
+          "education": 0.7,
+          "onBenefit": 20.6,
+          "otherBenefit": 10.6,
+          "selfSupport": 2.1
+        },
+        "2025M05": {
+          "job": 66,
+          "education": 1.3,
+          "onBenefit": 19.2,
+          "otherBenefit": 11.5,
+          "selfSupport": 1.9
+        },
+        "2025M06": {
+          "job": 71.4,
+          "education": 0.4,
+          "onBenefit": 12.7,
+          "otherBenefit": 14.2,
+          "selfSupport": 1.3
+        },
+        "2025M07": {
+          "job": 72.7,
+          "education": 1,
+          "onBenefit": 13.8,
+          "otherBenefit": 11.1,
+          "selfSupport": 1.3
+        },
+        "2025M08": {
+          "job": 56.2,
+          "education": 1.5,
+          "onBenefit": 28.9,
+          "otherBenefit": 8.2,
+          "selfSupport": 5.2
+        },
+        "2025M09": {
+          "job": 63.9,
+          "education": 0,
+          "onBenefit": 21.3,
+          "otherBenefit": 12.3,
+          "selfSupport": 2.5
+        },
+        "2025M10": {
+          "job": 66.2,
+          "education": 1.4,
+          "onBenefit": 21.8,
+          "otherBenefit": 8.5,
+          "selfSupport": 2.1
+        },
+        "2025M11": {
+          "job": 63.6,
+          "education": 0.8,
+          "onBenefit": 22.3,
+          "otherBenefit": 7.4,
+          "selfSupport": 5.8
+        },
+        "2025M12": {
+          "job": 66.3,
+          "education": 2,
+          "onBenefit": 22.4,
+          "otherBenefit": 7.1,
+          "selfSupport": 2
+        },
+        "2026M01": {
+          "job": 75.9,
+          "education": 0.2,
+          "onBenefit": 16.6,
+          "otherBenefit": 3.2,
+          "selfSupport": 4.3
+        }
+      },
+      "D98": {
+        "2024M01": {
+          "job": 54.4,
+          "education": 0,
+          "onBenefit": 37,
+          "otherBenefit": 4.6,
+          "selfSupport": 4
+        },
+        "2024M02": {
+          "job": 53,
+          "education": 0,
+          "onBenefit": 40,
+          "otherBenefit": 4.8,
+          "selfSupport": 2.2
+        },
+        "2024M03": {
+          "job": 62,
+          "education": 1.9,
+          "onBenefit": 30,
+          "otherBenefit": 2.3,
+          "selfSupport": 3.8
+        },
+        "2024M04": {
+          "job": 49,
+          "education": 1.6,
+          "onBenefit": 42.4,
+          "otherBenefit": 2.9,
+          "selfSupport": 4.1
+        },
+        "2024M05": {
+          "job": 53.1,
+          "education": 1.2,
+          "onBenefit": 38,
+          "otherBenefit": 5.7,
+          "selfSupport": 2
+        },
+        "2024M06": {
+          "job": 71,
+          "education": 0.4,
+          "onBenefit": 23.8,
+          "otherBenefit": 2.8,
+          "selfSupport": 2
+        },
+        "2024M07": {
+          "job": 65.5,
+          "education": 0.9,
+          "onBenefit": 28,
+          "otherBenefit": 2.2,
+          "selfSupport": 3.4
+        },
+        "2024M08": {
+          "job": 52.1,
+          "education": 1,
+          "onBenefit": 39.2,
+          "otherBenefit": 2.1,
+          "selfSupport": 5.7
+        },
+        "2024M09": {
+          "job": 47.9,
+          "education": 0.3,
+          "onBenefit": 39.6,
+          "otherBenefit": 4.9,
+          "selfSupport": 7.3
+        },
+        "2024M10": {
+          "job": 54.4,
+          "education": 0.7,
+          "onBenefit": 37.1,
+          "otherBenefit": 2.1,
+          "selfSupport": 5.7
+        },
+        "2024M11": {
+          "job": 46.5,
+          "education": 0,
+          "onBenefit": 42.5,
+          "otherBenefit": 5.3,
+          "selfSupport": 5.7
+        },
+        "2024M12": {
+          "job": 56,
+          "education": 0,
+          "onBenefit": 37.7,
+          "otherBenefit": 1,
+          "selfSupport": 5.2
+        },
+        "2025M01": {
+          "job": 42.5,
+          "education": 0,
+          "onBenefit": 45.9,
+          "otherBenefit": 5.9,
+          "selfSupport": 5.7
+        },
+        "2025M02": {
+          "job": 49.4,
+          "education": 0,
+          "onBenefit": 43.1,
+          "otherBenefit": 3.9,
+          "selfSupport": 3.6
+        },
+        "2025M03": {
+          "job": 47.9,
+          "education": 1.2,
+          "onBenefit": 43,
+          "otherBenefit": 2.9,
+          "selfSupport": 5
+        },
+        "2025M04": {
+          "job": 44,
+          "education": 0.5,
+          "onBenefit": 46.6,
+          "otherBenefit": 3.6,
+          "selfSupport": 5.2
+        },
+        "2025M05": {
+          "job": 53,
+          "education": 0.8,
+          "onBenefit": 39.8,
+          "otherBenefit": 2,
+          "selfSupport": 4.4
+        },
+        "2025M06": {
+          "job": 63.6,
+          "education": 0.3,
+          "onBenefit": 31.1,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.1
+        },
+        "2025M07": {
+          "job": 65.8,
+          "education": 0.6,
+          "onBenefit": 28.6,
+          "otherBenefit": 3,
+          "selfSupport": 1.9
+        },
+        "2025M08": {
+          "job": 54.5,
+          "education": 0,
+          "onBenefit": 38.2,
+          "otherBenefit": 3.5,
+          "selfSupport": 3.8
+        },
+        "2025M09": {
+          "job": 46.8,
+          "education": 0.7,
+          "onBenefit": 43.2,
+          "otherBenefit": 5,
+          "selfSupport": 4.3
+        },
+        "2025M10": {
+          "job": 53.4,
+          "education": 0,
+          "onBenefit": 40.2,
+          "otherBenefit": 3.9,
+          "selfSupport": 2.5
+        },
+        "2025M11": {
+          "job": 47.1,
+          "education": 0.5,
+          "onBenefit": 45,
+          "otherBenefit": 2.6,
+          "selfSupport": 4.7
+        },
+        "2025M12": {
+          "job": 54.2,
+          "education": 0,
+          "onBenefit": 39.6,
+          "otherBenefit": 2.6,
+          "selfSupport": 3.6
+        },
+        "2026M01": {
+          "job": 46.4,
+          "education": 0.3,
+          "onBenefit": 47.4,
+          "otherBenefit": 0.8,
+          "selfSupport": 5.1
+        }
+      },
+      "D22": {
+        "2024M01": {
+          "job": 66,
+          "education": 0.2,
+          "onBenefit": 26,
+          "otherBenefit": 5.3,
+          "selfSupport": 2.5
+        },
+        "2024M02": {
+          "job": 58.8,
+          "education": 0.7,
+          "onBenefit": 31.9,
+          "otherBenefit": 6.1,
+          "selfSupport": 2.4
+        },
+        "2024M03": {
+          "job": 56.7,
+          "education": 1.9,
+          "onBenefit": 31.3,
+          "otherBenefit": 6.9,
+          "selfSupport": 3.2
+        },
+        "2024M04": {
+          "job": 57.5,
+          "education": 1,
+          "onBenefit": 32.7,
+          "otherBenefit": 6.6,
+          "selfSupport": 2.2
+        },
+        "2024M05": {
+          "job": 53,
+          "education": 2,
+          "onBenefit": 35.3,
+          "otherBenefit": 7.5,
+          "selfSupport": 2.3
+        },
+        "2024M06": {
+          "job": 50.9,
+          "education": 2.1,
+          "onBenefit": 35.5,
+          "otherBenefit": 8.4,
+          "selfSupport": 3.1
+        },
+        "2024M07": {
+          "job": 50.8,
+          "education": 2.1,
+          "onBenefit": 37.9,
+          "otherBenefit": 7.2,
+          "selfSupport": 2
+        },
+        "2024M08": {
+          "job": 48.3,
+          "education": 1.7,
+          "onBenefit": 39.9,
+          "otherBenefit": 7.2,
+          "selfSupport": 2.9
+        },
+        "2024M09": {
+          "job": 51,
+          "education": 1.3,
+          "onBenefit": 40.2,
+          "otherBenefit": 4.6,
+          "selfSupport": 2.9
+        },
+        "2024M10": {
+          "job": 52.3,
+          "education": 1,
+          "onBenefit": 38.8,
+          "otherBenefit": 5.3,
+          "selfSupport": 2.5
+        },
+        "2024M11": {
+          "job": 57.4,
+          "education": 0.8,
+          "onBenefit": 33.3,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.6
+        },
+        "2024M12": {
+          "job": 61.5,
+          "education": 0.5,
+          "onBenefit": 30.8,
+          "otherBenefit": 5.8,
+          "selfSupport": 1.3
+        },
+        "2025M01": {
+          "job": 61.9,
+          "education": 0.4,
+          "onBenefit": 29.1,
+          "otherBenefit": 5,
+          "selfSupport": 3.5
+        },
+        "2025M02": {
+          "job": 58.5,
+          "education": 0.5,
+          "onBenefit": 32.1,
+          "otherBenefit": 6.8,
+          "selfSupport": 2.1
+        },
+        "2025M03": {
+          "job": 56.7,
+          "education": 1.5,
+          "onBenefit": 32.9,
+          "otherBenefit": 6.1,
+          "selfSupport": 2.8
+        },
+        "2025M04": {
+          "job": 55.2,
+          "education": 0.8,
+          "onBenefit": 34,
+          "otherBenefit": 6.9,
+          "selfSupport": 3.1
+        },
+        "2025M05": {
+          "job": 51.9,
+          "education": 1.5,
+          "onBenefit": 38,
+          "otherBenefit": 5.6,
+          "selfSupport": 3
+        },
+        "2025M06": {
+          "job": 54.5,
+          "education": 1.3,
+          "onBenefit": 35.6,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.8
+        },
+        "2025M07": {
+          "job": 53.1,
+          "education": 1.5,
+          "onBenefit": 36.7,
+          "otherBenefit": 6,
+          "selfSupport": 2.8
+        },
+        "2025M08": {
+          "job": 50.3,
+          "education": 1.5,
+          "onBenefit": 38.9,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.2
+        },
+        "2025M09": {
+          "job": 52.1,
+          "education": 0.8,
+          "onBenefit": 39.1,
+          "otherBenefit": 6.4,
+          "selfSupport": 1.7
+        },
+        "2025M10": {
+          "job": 52.5,
+          "education": 0.7,
+          "onBenefit": 38.8,
+          "otherBenefit": 5,
+          "selfSupport": 3.1
+        },
+        "2025M11": {
+          "job": 58.2,
+          "education": 0.2,
+          "onBenefit": 33.8,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.1
+        },
+        "2025M12": {
+          "job": 64.4,
+          "education": 0.5,
+          "onBenefit": 28.3,
+          "otherBenefit": 3.8,
+          "selfSupport": 3
+        },
+        "2026M01": {
+          "job": 68.8,
+          "education": 0.3,
+          "onBenefit": 24.2,
+          "otherBenefit": 3.5,
+          "selfSupport": 3.3
+        }
+      },
+      "D40": {
+        "2024M01": {
+          "job": 67,
+          "education": 0.3,
+          "onBenefit": 24.3,
+          "otherBenefit": 5,
+          "selfSupport": 3.5
+        },
+        "2024M02": {
+          "job": 71.7,
+          "education": 1.4,
+          "onBenefit": 19.6,
+          "otherBenefit": 4.8,
+          "selfSupport": 2.5
+        },
+        "2024M03": {
+          "job": 66.7,
+          "education": 2.7,
+          "onBenefit": 20.3,
+          "otherBenefit": 6.1,
+          "selfSupport": 4.2
+        },
+        "2024M04": {
+          "job": 70.7,
+          "education": 1.1,
+          "onBenefit": 16.3,
+          "otherBenefit": 7.6,
+          "selfSupport": 4.3
+        },
+        "2024M05": {
+          "job": 60.1,
+          "education": 1.8,
+          "onBenefit": 22.7,
+          "otherBenefit": 8,
+          "selfSupport": 7.4
+        },
+        "2024M06": {
+          "job": 70.3,
+          "education": 0.8,
+          "onBenefit": 20.5,
+          "otherBenefit": 6.6,
+          "selfSupport": 1.9
+        },
+        "2024M07": {
+          "job": 62.5,
+          "education": 2.3,
+          "onBenefit": 27.3,
+          "otherBenefit": 6.3,
+          "selfSupport": 1.7
+        },
+        "2024M08": {
+          "job": 61.7,
+          "education": 1,
+          "onBenefit": 30.6,
+          "otherBenefit": 4.6,
+          "selfSupport": 2
+        },
+        "2024M09": {
+          "job": 46.6,
+          "education": 0.2,
+          "onBenefit": 43.6,
+          "otherBenefit": 8.1,
+          "selfSupport": 1.6
+        },
+        "2024M10": {
+          "job": 66.3,
+          "education": 0.4,
+          "onBenefit": 25.5,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.4
+        },
+        "2024M11": {
+          "job": 71.7,
+          "education": 0.4,
+          "onBenefit": 19.2,
+          "otherBenefit": 7.2,
+          "selfSupport": 1.4
+        },
+        "2024M12": {
+          "job": 71.5,
+          "education": 1.2,
+          "onBenefit": 19.2,
+          "otherBenefit": 6.2,
+          "selfSupport": 1.9
+        },
+        "2025M01": {
+          "job": 69.8,
+          "education": 0.7,
+          "onBenefit": 18.6,
+          "otherBenefit": 9.1,
+          "selfSupport": 1.8
+        },
+        "2025M02": {
+          "job": 68.3,
+          "education": 0.4,
+          "onBenefit": 21.5,
+          "otherBenefit": 7.4,
+          "selfSupport": 2.5
+        },
+        "2025M03": {
+          "job": 72.9,
+          "education": 1.7,
+          "onBenefit": 15.8,
+          "otherBenefit": 6.8,
+          "selfSupport": 2.7
+        },
+        "2025M04": {
+          "job": 66.3,
+          "education": 2.4,
+          "onBenefit": 26.5,
+          "otherBenefit": 3,
+          "selfSupport": 1.8
+        },
+        "2025M05": {
+          "job": 53.7,
+          "education": 6.9,
+          "onBenefit": 28,
+          "otherBenefit": 6.9,
+          "selfSupport": 4.6
+        },
+        "2025M06": {
+          "job": 59.7,
+          "education": 5.8,
+          "onBenefit": 23,
+          "otherBenefit": 8.6,
+          "selfSupport": 2.9
+        },
+        "2025M07": {
+          "job": 64,
+          "education": 1.3,
+          "onBenefit": 22.7,
+          "otherBenefit": 10,
+          "selfSupport": 2
+        },
+        "2025M08": {
+          "job": 69,
+          "education": 2,
+          "onBenefit": 21.2,
+          "otherBenefit": 6.4,
+          "selfSupport": 1.5
+        },
+        "2025M09": {
+          "job": 62,
+          "education": 2.2,
+          "onBenefit": 24.5,
+          "otherBenefit": 8.2,
+          "selfSupport": 3.3
+        },
+        "2025M10": {
+          "job": 54.3,
+          "education": 1,
+          "onBenefit": 28.4,
+          "otherBenefit": 12,
+          "selfSupport": 4.3
+        },
+        "2025M11": {
+          "job": 73.1,
+          "education": 0,
+          "onBenefit": 17.3,
+          "otherBenefit": 5.6,
+          "selfSupport": 4
+        },
+        "2025M12": {
+          "job": 69.4,
+          "education": 0,
+          "onBenefit": 21.4,
+          "otherBenefit": 7.3,
+          "selfSupport": 1.9
+        },
+        "2026M01": {
+          "job": 67.4,
+          "education": 0.3,
+          "onBenefit": 21.3,
+          "otherBenefit": 7.6,
+          "selfSupport": 3.4
+        }
+      },
+      "D76": {
+        "2024M01": {
+          "job": 76.6,
+          "education": 0,
+          "onBenefit": 12.5,
+          "otherBenefit": 8.6,
+          "selfSupport": 2.3
+        },
+        "2024M02": {
+          "job": 69.4,
+          "education": 0,
+          "onBenefit": 20.9,
+          "otherBenefit": 6.6,
+          "selfSupport": 3
+        },
+        "2024M03": {
+          "job": 65.9,
+          "education": 2.4,
+          "onBenefit": 21.2,
+          "otherBenefit": 8.7,
+          "selfSupport": 1.9
+        },
+        "2024M04": {
+          "job": 67.2,
+          "education": 3.5,
+          "onBenefit": 18.7,
+          "otherBenefit": 7.6,
+          "selfSupport": 3
+        },
+        "2024M05": {
+          "job": 68.8,
+          "education": 2.6,
+          "onBenefit": 15.9,
+          "otherBenefit": 9.5,
+          "selfSupport": 3.2
+        },
+        "2024M06": {
+          "job": 75.2,
+          "education": 0.9,
+          "onBenefit": 13.4,
+          "otherBenefit": 8.2,
+          "selfSupport": 2.4
+        },
+        "2024M07": {
+          "job": 69.7,
+          "education": 0.8,
+          "onBenefit": 18.6,
+          "otherBenefit": 8.1,
+          "selfSupport": 2.8
+        },
+        "2024M08": {
+          "job": 58.3,
+          "education": 3.8,
+          "onBenefit": 25,
+          "otherBenefit": 10.6,
+          "selfSupport": 2.3
+        },
+        "2024M09": {
+          "job": 70.3,
+          "education": 0.4,
+          "onBenefit": 15.8,
+          "otherBenefit": 9.7,
+          "selfSupport": 3.9
+        },
+        "2024M10": {
+          "job": 64.6,
+          "education": 1,
+          "onBenefit": 26.2,
+          "otherBenefit": 6.8,
+          "selfSupport": 1.5
+        },
+        "2024M11": {
+          "job": 64.2,
+          "education": 0.6,
+          "onBenefit": 24.1,
+          "otherBenefit": 8,
+          "selfSupport": 3.1
+        },
+        "2024M12": {
+          "job": 67.9,
+          "education": 0,
+          "onBenefit": 20.8,
+          "otherBenefit": 6.5,
+          "selfSupport": 4.8
+        },
+        "2025M01": {
+          "job": 81.6,
+          "education": 0,
+          "onBenefit": 9.2,
+          "otherBenefit": 7.5,
+          "selfSupport": 1.8
+        },
+        "2025M02": {
+          "job": 70.3,
+          "education": 0,
+          "onBenefit": 20.3,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.3
+        },
+        "2025M03": {
+          "job": 65.7,
+          "education": 1.1,
+          "onBenefit": 21.7,
+          "otherBenefit": 9.1,
+          "selfSupport": 2.3
+        },
+        "2025M04": {
+          "job": 60.4,
+          "education": 1.8,
+          "onBenefit": 26.6,
+          "otherBenefit": 7.7,
+          "selfSupport": 3.6
+        },
+        "2025M05": {
+          "job": 66.9,
+          "education": 2.5,
+          "onBenefit": 20.9,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.7
+        },
+        "2025M06": {
+          "job": 79,
+          "education": 0.5,
+          "onBenefit": 11.2,
+          "otherBenefit": 7.2,
+          "selfSupport": 2.1
+        },
+        "2025M07": {
+          "job": 74.7,
+          "education": 1.3,
+          "onBenefit": 15,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.6
+        },
+        "2025M08": {
+          "job": 63.4,
+          "education": 3.8,
+          "onBenefit": 20.4,
+          "otherBenefit": 9.4,
+          "selfSupport": 3
+        },
+        "2025M09": {
+          "job": 61.7,
+          "education": 1,
+          "onBenefit": 22.8,
+          "otherBenefit": 13,
+          "selfSupport": 1.6
+        },
+        "2025M10": {
+          "job": 65.2,
+          "education": 1.3,
+          "onBenefit": 23.2,
+          "otherBenefit": 5.8,
+          "selfSupport": 4.5
+        },
+        "2025M11": {
+          "job": 68.7,
+          "education": 1.7,
+          "onBenefit": 19.6,
+          "otherBenefit": 6.7,
+          "selfSupport": 3.4
+        },
+        "2025M12": {
+          "job": 77.5,
+          "education": 0,
+          "onBenefit": 15.9,
+          "otherBenefit": 2.9,
+          "selfSupport": 3.6
+        },
+        "2026M01": {
+          "job": 83.4,
+          "education": 0,
+          "onBenefit": 11.2,
+          "otherBenefit": 1.1,
+          "selfSupport": 4.3
+        }
+      },
+      "D15": {
+        "2024M01": {
+          "job": 78.4,
+          "education": 0.1,
+          "onBenefit": 15.4,
+          "otherBenefit": 4.1,
+          "selfSupport": 2
+        },
+        "2024M02": {
+          "job": 64.9,
+          "education": 0.3,
+          "onBenefit": 26.7,
+          "otherBenefit": 5.4,
+          "selfSupport": 2.7
+        },
+        "2024M03": {
+          "job": 62.4,
+          "education": 1,
+          "onBenefit": 27.3,
+          "otherBenefit": 5.8,
+          "selfSupport": 3.4
+        },
+        "2024M04": {
+          "job": 65.2,
+          "education": 1,
+          "onBenefit": 26.2,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.1
+        },
+        "2024M05": {
+          "job": 52.6,
+          "education": 1.2,
+          "onBenefit": 35.1,
+          "otherBenefit": 8.2,
+          "selfSupport": 2.9
+        },
+        "2024M06": {
+          "job": 51.6,
+          "education": 1.3,
+          "onBenefit": 36.7,
+          "otherBenefit": 7.7,
+          "selfSupport": 2.7
+        },
+        "2024M07": {
+          "job": 52.9,
+          "education": 3,
+          "onBenefit": 35.7,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.8
+        },
+        "2024M08": {
+          "job": 47.3,
+          "education": 0.7,
+          "onBenefit": 40.1,
+          "otherBenefit": 7.9,
+          "selfSupport": 4
+        },
+        "2024M09": {
+          "job": 48.7,
+          "education": 0.5,
+          "onBenefit": 42.5,
+          "otherBenefit": 6.2,
+          "selfSupport": 2.1
+        },
+        "2024M10": {
+          "job": 54.9,
+          "education": 1.1,
+          "onBenefit": 32.9,
+          "otherBenefit": 8.3,
+          "selfSupport": 2.8
+        },
+        "2024M11": {
+          "job": 64.1,
+          "education": 0.6,
+          "onBenefit": 27.1,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.5
+        },
+        "2024M12": {
+          "job": 72.9,
+          "education": 0.3,
+          "onBenefit": 19.4,
+          "otherBenefit": 5.6,
+          "selfSupport": 1.8
+        },
+        "2025M01": {
+          "job": 70.6,
+          "education": 0.2,
+          "onBenefit": 21,
+          "otherBenefit": 5.9,
+          "selfSupport": 2.4
+        },
+        "2025M02": {
+          "job": 68.1,
+          "education": 0.3,
+          "onBenefit": 24.2,
+          "otherBenefit": 5.2,
+          "selfSupport": 2.2
+        },
+        "2025M03": {
+          "job": 62.3,
+          "education": 1.5,
+          "onBenefit": 27.8,
+          "otherBenefit": 6.6,
+          "selfSupport": 1.7
+        },
+        "2025M04": {
+          "job": 57.8,
+          "education": 1.4,
+          "onBenefit": 31.4,
+          "otherBenefit": 6.3,
+          "selfSupport": 3
+        },
+        "2025M05": {
+          "job": 54.3,
+          "education": 1.6,
+          "onBenefit": 33,
+          "otherBenefit": 7.8,
+          "selfSupport": 3.3
+        },
+        "2025M06": {
+          "job": 49.6,
+          "education": 1.3,
+          "onBenefit": 39.2,
+          "otherBenefit": 7.6,
+          "selfSupport": 2.3
+        },
+        "2025M07": {
+          "job": 54.9,
+          "education": 1.5,
+          "onBenefit": 36,
+          "otherBenefit": 5.3,
+          "selfSupport": 2.3
+        },
+        "2025M08": {
+          "job": 45.8,
+          "education": 1.5,
+          "onBenefit": 42.4,
+          "otherBenefit": 7.6,
+          "selfSupport": 2.8
+        },
+        "2025M09": {
+          "job": 50.5,
+          "education": 0.6,
+          "onBenefit": 39.9,
+          "otherBenefit": 7.4,
+          "selfSupport": 1.6
+        },
+        "2025M10": {
+          "job": 55.4,
+          "education": 1.2,
+          "onBenefit": 34.9,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.8
+        },
+        "2025M11": {
+          "job": 62.4,
+          "education": 0.3,
+          "onBenefit": 29.2,
+          "otherBenefit": 6.5,
+          "selfSupport": 1.7
+        },
+        "2025M12": {
+          "job": 73.1,
+          "education": 0.3,
+          "onBenefit": 20,
+          "otherBenefit": 3.8,
+          "selfSupport": 2.9
+        },
+        "2026M01": {
+          "job": 79.4,
+          "education": 0.1,
+          "onBenefit": 14.8,
+          "otherBenefit": 3.2,
+          "selfSupport": 2.5
+        }
+      },
+      "D17": {
+        "2024M01": {
+          "job": 59.6,
+          "education": 0.2,
+          "onBenefit": 28.1,
+          "otherBenefit": 9.9,
+          "selfSupport": 2.1
+        },
+        "2024M02": {
+          "job": 57.4,
+          "education": 1.4,
+          "onBenefit": 27.6,
+          "otherBenefit": 11.5,
+          "selfSupport": 2.1
+        },
+        "2024M03": {
+          "job": 59.8,
+          "education": 2.2,
+          "onBenefit": 26.2,
+          "otherBenefit": 11.2,
+          "selfSupport": 0.6
+        },
+        "2024M04": {
+          "job": 58.8,
+          "education": 3,
+          "onBenefit": 26.4,
+          "otherBenefit": 9.6,
+          "selfSupport": 2.1
+        },
+        "2024M05": {
+          "job": 58.4,
+          "education": 1.4,
+          "onBenefit": 25.8,
+          "otherBenefit": 12.6,
+          "selfSupport": 1.8
+        },
+        "2024M06": {
+          "job": 56,
+          "education": 1.9,
+          "onBenefit": 28.1,
+          "otherBenefit": 13.1,
+          "selfSupport": 0.9
+        },
+        "2024M07": {
+          "job": 55.5,
+          "education": 3.7,
+          "onBenefit": 30,
+          "otherBenefit": 9.6,
+          "selfSupport": 1.1
+        },
+        "2024M08": {
+          "job": 58,
+          "education": 1.9,
+          "onBenefit": 27.3,
+          "otherBenefit": 10.6,
+          "selfSupport": 2.3
+        },
+        "2024M09": {
+          "job": 52.8,
+          "education": 1.3,
+          "onBenefit": 33.7,
+          "otherBenefit": 9.7,
+          "selfSupport": 2.6
+        },
+        "2024M10": {
+          "job": 57.8,
+          "education": 1.7,
+          "onBenefit": 29.1,
+          "otherBenefit": 8.7,
+          "selfSupport": 2.8
+        },
+        "2024M11": {
+          "job": 60.1,
+          "education": 0.7,
+          "onBenefit": 27.5,
+          "otherBenefit": 9.9,
+          "selfSupport": 1.8
+        },
+        "2024M12": {
+          "job": 65.5,
+          "education": 0.3,
+          "onBenefit": 20.8,
+          "otherBenefit": 11.5,
+          "selfSupport": 2
+        },
+        "2025M01": {
+          "job": 62.5,
+          "education": 0.2,
+          "onBenefit": 25.7,
+          "otherBenefit": 9.5,
+          "selfSupport": 2.1
+        },
+        "2025M02": {
+          "job": 58.9,
+          "education": 0.5,
+          "onBenefit": 25.4,
+          "otherBenefit": 13.7,
+          "selfSupport": 1.5
+        },
+        "2025M03": {
+          "job": 66,
+          "education": 0.6,
+          "onBenefit": 24.4,
+          "otherBenefit": 7.8,
+          "selfSupport": 1.2
+        },
+        "2025M04": {
+          "job": 61.7,
+          "education": 0.9,
+          "onBenefit": 26.3,
+          "otherBenefit": 8.9,
+          "selfSupport": 2.1
+        },
+        "2025M05": {
+          "job": 59.2,
+          "education": 2.1,
+          "onBenefit": 26.7,
+          "otherBenefit": 10.9,
+          "selfSupport": 1.1
+        },
+        "2025M06": {
+          "job": 61,
+          "education": 2,
+          "onBenefit": 24.4,
+          "otherBenefit": 10.2,
+          "selfSupport": 2.4
+        },
+        "2025M07": {
+          "job": 61,
+          "education": 1.8,
+          "onBenefit": 25.1,
+          "otherBenefit": 10.1,
+          "selfSupport": 2.1
+        },
+        "2025M08": {
+          "job": 59,
+          "education": 1.7,
+          "onBenefit": 26.3,
+          "otherBenefit": 10.9,
+          "selfSupport": 2.1
+        },
+        "2025M09": {
+          "job": 55.6,
+          "education": 1.7,
+          "onBenefit": 27.5,
+          "otherBenefit": 12.4,
+          "selfSupport": 2.8
+        },
+        "2025M10": {
+          "job": 62.2,
+          "education": 0.8,
+          "onBenefit": 25.1,
+          "otherBenefit": 10.9,
+          "selfSupport": 1
+        },
+        "2025M11": {
+          "job": 59.7,
+          "education": 1.7,
+          "onBenefit": 26,
+          "otherBenefit": 8.2,
+          "selfSupport": 4.5
+        },
+        "2025M12": {
+          "job": 66.9,
+          "education": 2,
+          "onBenefit": 19.3,
+          "otherBenefit": 8.2,
+          "selfSupport": 3.7
+        },
+        "2026M01": {
+          "job": 63.8,
+          "education": 0.6,
+          "onBenefit": 25.1,
+          "otherBenefit": 6.4,
+          "selfSupport": 4.1
+        }
+      },
+      "D53": {
+        "2024M01": {
+          "job": 52.5,
+          "education": 0.3,
+          "onBenefit": 39.7,
+          "otherBenefit": 5.8,
+          "selfSupport": 1.6
+        },
+        "2024M02": {
+          "job": 53.5,
+          "education": 0.5,
+          "onBenefit": 37.4,
+          "otherBenefit": 6.5,
+          "selfSupport": 2
+        },
+        "2024M03": {
+          "job": 53.9,
+          "education": 3,
+          "onBenefit": 36.9,
+          "otherBenefit": 4.2,
+          "selfSupport": 2.1
+        },
+        "2024M04": {
+          "job": 54.7,
+          "education": 1.3,
+          "onBenefit": 34.6,
+          "otherBenefit": 7.6,
+          "selfSupport": 1.7
+        },
+        "2024M05": {
+          "job": 48.2,
+          "education": 1.6,
+          "onBenefit": 41.5,
+          "otherBenefit": 7.5,
+          "selfSupport": 1.2
+        },
+        "2024M06": {
+          "job": 49.9,
+          "education": 4.9,
+          "onBenefit": 36.7,
+          "otherBenefit": 6.2,
+          "selfSupport": 2.3
+        },
+        "2024M07": {
+          "job": 51,
+          "education": 3.4,
+          "onBenefit": 39,
+          "otherBenefit": 4.2,
+          "selfSupport": 2.4
+        },
+        "2024M08": {
+          "job": 52.3,
+          "education": 2.6,
+          "onBenefit": 38.5,
+          "otherBenefit": 4.3,
+          "selfSupport": 2.3
+        },
+        "2024M09": {
+          "job": 53.3,
+          "education": 0.8,
+          "onBenefit": 37.1,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.5
+        },
+        "2024M10": {
+          "job": 51.1,
+          "education": 0.6,
+          "onBenefit": 39.9,
+          "otherBenefit": 6,
+          "selfSupport": 2.4
+        },
+        "2024M11": {
+          "job": 50.1,
+          "education": 1.1,
+          "onBenefit": 38.6,
+          "otherBenefit": 7.1,
+          "selfSupport": 3.1
+        },
+        "2024M12": {
+          "job": 53.4,
+          "education": 0.9,
+          "onBenefit": 37,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.4
+        },
+        "2025M01": {
+          "job": 48.8,
+          "education": 0.4,
+          "onBenefit": 42,
+          "otherBenefit": 6.9,
+          "selfSupport": 1.9
+        },
+        "2025M02": {
+          "job": 54.5,
+          "education": 0.4,
+          "onBenefit": 35.9,
+          "otherBenefit": 7.4,
+          "selfSupport": 1.8
+        },
+        "2025M03": {
+          "job": 52.5,
+          "education": 4.3,
+          "onBenefit": 37.4,
+          "otherBenefit": 4.4,
+          "selfSupport": 1.3
+        },
+        "2025M04": {
+          "job": 51.7,
+          "education": 1.9,
+          "onBenefit": 35.8,
+          "otherBenefit": 9.1,
+          "selfSupport": 1.5
+        },
+        "2025M05": {
+          "job": 48.9,
+          "education": 1.4,
+          "onBenefit": 39.2,
+          "otherBenefit": 7.7,
+          "selfSupport": 2.7
+        },
+        "2025M06": {
+          "job": 50,
+          "education": 6.1,
+          "onBenefit": 35.8,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.7
+        },
+        "2025M07": {
+          "job": 51.1,
+          "education": 3.6,
+          "onBenefit": 37.9,
+          "otherBenefit": 5.7,
+          "selfSupport": 1.6
+        },
+        "2025M08": {
+          "job": 52.5,
+          "education": 2.2,
+          "onBenefit": 36.7,
+          "otherBenefit": 5.9,
+          "selfSupport": 2.6
+        },
+        "2025M09": {
+          "job": 51.9,
+          "education": 0.9,
+          "onBenefit": 38.7,
+          "otherBenefit": 6.5,
+          "selfSupport": 2
+        },
+        "2025M10": {
+          "job": 48.7,
+          "education": 1,
+          "onBenefit": 42.1,
+          "otherBenefit": 6,
+          "selfSupport": 2.1
+        },
+        "2025M11": {
+          "job": 51.7,
+          "education": 0.4,
+          "onBenefit": 40.2,
+          "otherBenefit": 5.2,
+          "selfSupport": 2.5
+        },
+        "2025M12": {
+          "job": 51.9,
+          "education": 1.3,
+          "onBenefit": 37.6,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.9
+        },
+        "2026M01": {
+          "job": 51.3,
+          "education": 0.4,
+          "onBenefit": 40.7,
+          "otherBenefit": 3.6,
+          "selfSupport": 3.9
+        }
+      },
+      "D73": {
+        "2024M01": {
+          "job": 64,
+          "education": 0.2,
+          "onBenefit": 27.5,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.7
+        },
+        "2024M02": {
+          "job": 52,
+          "education": 0.4,
+          "onBenefit": 37.9,
+          "otherBenefit": 6.7,
+          "selfSupport": 2.9
+        },
+        "2024M03": {
+          "job": 50.4,
+          "education": 1.1,
+          "onBenefit": 39.3,
+          "otherBenefit": 6.2,
+          "selfSupport": 2.9
+        },
+        "2024M04": {
+          "job": 49.2,
+          "education": 1.3,
+          "onBenefit": 38.3,
+          "otherBenefit": 6.9,
+          "selfSupport": 4.3
+        },
+        "2024M05": {
+          "job": 48.1,
+          "education": 0.9,
+          "onBenefit": 43.2,
+          "otherBenefit": 5.3,
+          "selfSupport": 2.5
+        },
+        "2024M06": {
+          "job": 46.3,
+          "education": 1.2,
+          "onBenefit": 41.8,
+          "otherBenefit": 8.4,
+          "selfSupport": 2.3
+        },
+        "2024M07": {
+          "job": 50.9,
+          "education": 0.8,
+          "onBenefit": 37.9,
+          "otherBenefit": 7.5,
+          "selfSupport": 2.9
+        },
+        "2024M08": {
+          "job": 44.5,
+          "education": 1.8,
+          "onBenefit": 42.9,
+          "otherBenefit": 7.6,
+          "selfSupport": 3.3
+        },
+        "2024M09": {
+          "job": 42.9,
+          "education": 1,
+          "onBenefit": 46.7,
+          "otherBenefit": 6.9,
+          "selfSupport": 2.6
+        },
+        "2024M10": {
+          "job": 48.7,
+          "education": 0.4,
+          "onBenefit": 40.5,
+          "otherBenefit": 7.4,
+          "selfSupport": 3
+        },
+        "2024M11": {
+          "job": 56.7,
+          "education": 0.6,
+          "onBenefit": 33.2,
+          "otherBenefit": 6.7,
+          "selfSupport": 2.8
+        },
+        "2024M12": {
+          "job": 59.6,
+          "education": 0.1,
+          "onBenefit": 32.2,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.2
+        },
+        "2025M01": {
+          "job": 53.9,
+          "education": 0.3,
+          "onBenefit": 36.2,
+          "otherBenefit": 6.6,
+          "selfSupport": 3
+        },
+        "2025M02": {
+          "job": 51.5,
+          "education": 0.7,
+          "onBenefit": 40.4,
+          "otherBenefit": 4.4,
+          "selfSupport": 3
+        },
+        "2025M03": {
+          "job": 47.7,
+          "education": 1.8,
+          "onBenefit": 42.3,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.6
+        },
+        "2025M04": {
+          "job": 48.8,
+          "education": 0.6,
+          "onBenefit": 40.4,
+          "otherBenefit": 7.2,
+          "selfSupport": 3
+        },
+        "2025M05": {
+          "job": 46,
+          "education": 1,
+          "onBenefit": 42.7,
+          "otherBenefit": 5.8,
+          "selfSupport": 4.5
+        },
+        "2025M06": {
+          "job": 47.6,
+          "education": 1.2,
+          "onBenefit": 43,
+          "otherBenefit": 6.6,
+          "selfSupport": 1.6
+        },
+        "2025M07": {
+          "job": 53.9,
+          "education": 1.8,
+          "onBenefit": 35.9,
+          "otherBenefit": 4.7,
+          "selfSupport": 3.7
+        },
+        "2025M08": {
+          "job": 46.9,
+          "education": 1.2,
+          "onBenefit": 40.8,
+          "otherBenefit": 7.9,
+          "selfSupport": 3.2
+        },
+        "2025M09": {
+          "job": 44.5,
+          "education": 0.7,
+          "onBenefit": 45.3,
+          "otherBenefit": 5.9,
+          "selfSupport": 3.6
+        },
+        "2025M10": {
+          "job": 45.7,
+          "education": 0.7,
+          "onBenefit": 45.1,
+          "otherBenefit": 5.8,
+          "selfSupport": 2.7
+        },
+        "2025M11": {
+          "job": 54.4,
+          "education": 1.2,
+          "onBenefit": 36.2,
+          "otherBenefit": 4.7,
+          "selfSupport": 3.5
+        },
+        "2025M12": {
+          "job": 59.5,
+          "education": 0.5,
+          "onBenefit": 32.2,
+          "otherBenefit": 4.4,
+          "selfSupport": 3.3
+        },
+        "2026M01": {
+          "job": 65.1,
+          "education": 0.1,
+          "onBenefit": 27,
+          "otherBenefit": 4,
+          "selfSupport": 3.8
+        }
+      },
+      "D18": {
+        "2024M01": {
+          "job": 41.7,
+          "education": 0,
+          "onBenefit": 50.2,
+          "otherBenefit": 5.3,
+          "selfSupport": 2.8
+        },
+        "2024M02": {
+          "job": 57.7,
+          "education": 0,
+          "onBenefit": 31,
+          "otherBenefit": 8.9,
+          "selfSupport": 2.4
+        },
+        "2024M03": {
+          "job": 56.3,
+          "education": 2.1,
+          "onBenefit": 31.7,
+          "otherBenefit": 6.3,
+          "selfSupport": 3.5
+        },
+        "2024M04": {
+          "job": 61.6,
+          "education": 0.7,
+          "onBenefit": 30.1,
+          "otherBenefit": 4.8,
+          "selfSupport": 2.7
+        },
+        "2024M05": {
+          "job": 56.8,
+          "education": 0.8,
+          "onBenefit": 34.8,
+          "otherBenefit": 6.1,
+          "selfSupport": 1.5
+        },
+        "2024M06": {
+          "job": 73.8,
+          "education": 1.8,
+          "onBenefit": 18.9,
+          "otherBenefit": 4.3,
+          "selfSupport": 1.2
+        },
+        "2024M07": {
+          "job": 70,
+          "education": 0.5,
+          "onBenefit": 21.2,
+          "otherBenefit": 6.8,
+          "selfSupport": 1.6
+        },
+        "2024M08": {
+          "job": 54.7,
+          "education": 2,
+          "onBenefit": 33.3,
+          "otherBenefit": 6.7,
+          "selfSupport": 3.4
+        },
+        "2024M09": {
+          "job": 50,
+          "education": 0,
+          "onBenefit": 39.4,
+          "otherBenefit": 8.1,
+          "selfSupport": 2.5
+        },
+        "2024M10": {
+          "job": 56.5,
+          "education": 1.2,
+          "onBenefit": 32.9,
+          "otherBenefit": 7.1,
+          "selfSupport": 2.4
+        },
+        "2024M11": {
+          "job": 52.1,
+          "education": 0.6,
+          "onBenefit": 36.4,
+          "otherBenefit": 5.5,
+          "selfSupport": 5.5
+        },
+        "2024M12": {
+          "job": 51.4,
+          "education": 0,
+          "onBenefit": 43.9,
+          "otherBenefit": 4.7,
+          "selfSupport": 0
+        },
+        "2025M01": {
+          "job": 41.1,
+          "education": 0,
+          "onBenefit": 51,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.3
+        },
+        "2025M02": {
+          "job": 61.6,
+          "education": 0,
+          "onBenefit": 31.4,
+          "otherBenefit": 5.4,
+          "selfSupport": 1.6
+        },
+        "2025M03": {
+          "job": 61.3,
+          "education": 2.1,
+          "onBenefit": 28.2,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.1
+        },
+        "2025M04": {
+          "job": 60.9,
+          "education": 2,
+          "onBenefit": 31.8,
+          "otherBenefit": 5.3,
+          "selfSupport": 0
+        },
+        "2025M05": {
+          "job": 66.5,
+          "education": 1.2,
+          "onBenefit": 24.6,
+          "otherBenefit": 6.6,
+          "selfSupport": 1.2
+        },
+        "2025M06": {
+          "job": 77.2,
+          "education": 0.7,
+          "onBenefit": 15.4,
+          "otherBenefit": 5.6,
+          "selfSupport": 1
+        },
+        "2025M07": {
+          "job": 73,
+          "education": 1,
+          "onBenefit": 16.1,
+          "otherBenefit": 8.8,
+          "selfSupport": 1
+        },
+        "2025M08": {
+          "job": 61.3,
+          "education": 0.6,
+          "onBenefit": 29.8,
+          "otherBenefit": 6.1,
+          "selfSupport": 2.1
+        },
+        "2025M09": {
+          "job": 53.3,
+          "education": 0,
+          "onBenefit": 36.2,
+          "otherBenefit": 9.2,
+          "selfSupport": 1.3
+        },
+        "2025M10": {
+          "job": 50.4,
+          "education": 1.4,
+          "onBenefit": 36.9,
+          "otherBenefit": 10.6,
+          "selfSupport": 0.7
+        },
+        "2025M11": {
+          "job": 51.5,
+          "education": 0.8,
+          "onBenefit": 40.8,
+          "otherBenefit": 3.1,
+          "selfSupport": 3.8
+        },
+        "2025M12": {
+          "job": 45.9,
+          "education": 1.8,
+          "onBenefit": 42.2,
+          "otherBenefit": 2.8,
+          "selfSupport": 7.3
+        },
+        "2026M01": {
+          "job": 45.7,
+          "education": 0,
+          "onBenefit": 45.3,
+          "otherBenefit": 3.8,
+          "selfSupport": 5.3
+        }
+      },
+      "D88": {
+        "2024M01": {
+          "job": 44.9,
+          "education": 0,
+          "onBenefit": 47.6,
+          "otherBenefit": 4.7,
+          "selfSupport": 2.8
+        },
+        "2024M02": {
+          "job": 47.6,
+          "education": 0.6,
+          "onBenefit": 43.7,
+          "otherBenefit": 4.8,
+          "selfSupport": 3.3
+        },
+        "2024M03": {
+          "job": 48.8,
+          "education": 6.3,
+          "onBenefit": 34.4,
+          "otherBenefit": 5.5,
+          "selfSupport": 5
+        },
+        "2024M04": {
+          "job": 50,
+          "education": 2.5,
+          "onBenefit": 40.6,
+          "otherBenefit": 4.7,
+          "selfSupport": 2.2
+        },
+        "2024M05": {
+          "job": 46.4,
+          "education": 1.6,
+          "onBenefit": 40.9,
+          "otherBenefit": 7.1,
+          "selfSupport": 3.9
+        },
+        "2024M06": {
+          "job": 53.4,
+          "education": 0.8,
+          "onBenefit": 40,
+          "otherBenefit": 2.9,
+          "selfSupport": 2.9
+        },
+        "2024M07": {
+          "job": 56.4,
+          "education": 0.9,
+          "onBenefit": 35.6,
+          "otherBenefit": 4.5,
+          "selfSupport": 2.5
+        },
+        "2024M08": {
+          "job": 47.5,
+          "education": 1.7,
+          "onBenefit": 42.8,
+          "otherBenefit": 4.2,
+          "selfSupport": 3.8
+        },
+        "2024M09": {
+          "job": 49,
+          "education": 1,
+          "onBenefit": 42.9,
+          "otherBenefit": 3.8,
+          "selfSupport": 3.3
+        },
+        "2024M10": {
+          "job": 45.5,
+          "education": 0.2,
+          "onBenefit": 45.2,
+          "otherBenefit": 4.4,
+          "selfSupport": 4.7
+        },
+        "2024M11": {
+          "job": 48.7,
+          "education": 1,
+          "onBenefit": 42.7,
+          "otherBenefit": 4.8,
+          "selfSupport": 2.9
+        },
+        "2024M12": {
+          "job": 47.4,
+          "education": 0.4,
+          "onBenefit": 45.1,
+          "otherBenefit": 4.9,
+          "selfSupport": 2.3
+        },
+        "2025M01": {
+          "job": 42.2,
+          "education": 0.3,
+          "onBenefit": 49.2,
+          "otherBenefit": 4.6,
+          "selfSupport": 3.7
+        },
+        "2025M02": {
+          "job": 45.7,
+          "education": 0.6,
+          "onBenefit": 46.1,
+          "otherBenefit": 5.2,
+          "selfSupport": 2.5
+        },
+        "2025M03": {
+          "job": 46.7,
+          "education": 3.9,
+          "onBenefit": 40.7,
+          "otherBenefit": 5.1,
+          "selfSupport": 3.6
+        },
+        "2025M04": {
+          "job": 53.1,
+          "education": 2.2,
+          "onBenefit": 36.2,
+          "otherBenefit": 6.6,
+          "selfSupport": 1.8
+        },
+        "2025M05": {
+          "job": 50.2,
+          "education": 1.3,
+          "onBenefit": 43,
+          "otherBenefit": 3.3,
+          "selfSupport": 2.3
+        },
+        "2025M06": {
+          "job": 49.1,
+          "education": 0.9,
+          "onBenefit": 42.6,
+          "otherBenefit": 4.5,
+          "selfSupport": 2.9
+        },
+        "2025M07": {
+          "job": 48.8,
+          "education": 0.4,
+          "onBenefit": 43.8,
+          "otherBenefit": 4.2,
+          "selfSupport": 2.9
+        },
+        "2025M08": {
+          "job": 47.6,
+          "education": 0.4,
+          "onBenefit": 44.3,
+          "otherBenefit": 4.9,
+          "selfSupport": 2.8
+        },
+        "2025M09": {
+          "job": 41.5,
+          "education": 0.2,
+          "onBenefit": 47.7,
+          "otherBenefit": 6.1,
+          "selfSupport": 4.5
+        },
+        "2025M10": {
+          "job": 38,
+          "education": 0.3,
+          "onBenefit": 57,
+          "otherBenefit": 2.2,
+          "selfSupport": 2.5
+        },
+        "2025M11": {
+          "job": 42.2,
+          "education": 0,
+          "onBenefit": 49.7,
+          "otherBenefit": 2.8,
+          "selfSupport": 5.3
+        },
+        "2025M12": {
+          "job": 38.3,
+          "education": 0,
+          "onBenefit": 53.8,
+          "otherBenefit": 2.3,
+          "selfSupport": 5.7
+        },
+        "2026M01": {
+          "job": 37.3,
+          "education": 0.4,
+          "onBenefit": 52.4,
+          "otherBenefit": 2.1,
+          "selfSupport": 7.9
+        }
+      },
+      "D24": {
+        "2024M01": {
+          "job": 73.4,
+          "education": 0.3,
+          "onBenefit": 18.1,
+          "otherBenefit": 6.4,
+          "selfSupport": 1.9
+        },
+        "2024M02": {
+          "job": 71.6,
+          "education": 0.6,
+          "onBenefit": 20.2,
+          "otherBenefit": 5,
+          "selfSupport": 2.6
+        },
+        "2024M03": {
+          "job": 64.8,
+          "education": 1.6,
+          "onBenefit": 25.7,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.4
+        },
+        "2024M04": {
+          "job": 80.3,
+          "education": 1.1,
+          "onBenefit": 12.2,
+          "otherBenefit": 4.8,
+          "selfSupport": 1.6
+        },
+        "2024M05": {
+          "job": 63.4,
+          "education": 0,
+          "onBenefit": 27.3,
+          "otherBenefit": 6.8,
+          "selfSupport": 2.4
+        },
+        "2024M06": {
+          "job": 60.7,
+          "education": 3.2,
+          "onBenefit": 27.7,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.8
+        },
+        "2024M07": {
+          "job": 61.6,
+          "education": 2.6,
+          "onBenefit": 27.5,
+          "otherBenefit": 5.7,
+          "selfSupport": 2.6
+        },
+        "2024M08": {
+          "job": 59.6,
+          "education": 2.5,
+          "onBenefit": 28.2,
+          "otherBenefit": 7.2,
+          "selfSupport": 2.5
+        },
+        "2024M09": {
+          "job": 66.1,
+          "education": 0.8,
+          "onBenefit": 25.7,
+          "otherBenefit": 5.4,
+          "selfSupport": 1.9
+        },
+        "2024M10": {
+          "job": 68.1,
+          "education": 0.4,
+          "onBenefit": 23,
+          "otherBenefit": 4.8,
+          "selfSupport": 3.6
+        },
+        "2024M11": {
+          "job": 68.6,
+          "education": 1.8,
+          "onBenefit": 20.3,
+          "otherBenefit": 5.9,
+          "selfSupport": 3.3
+        },
+        "2024M12": {
+          "job": 66.7,
+          "education": 1.4,
+          "onBenefit": 19.4,
+          "otherBenefit": 9.3,
+          "selfSupport": 3.2
+        },
+        "2025M01": {
+          "job": 68,
+          "education": 0,
+          "onBenefit": 23.4,
+          "otherBenefit": 7.1,
+          "selfSupport": 1.5
+        },
+        "2025M02": {
+          "job": 63.1,
+          "education": 1,
+          "onBenefit": 24.2,
+          "otherBenefit": 6.7,
+          "selfSupport": 5.1
+        },
+        "2025M03": {
+          "job": 64,
+          "education": 3,
+          "onBenefit": 23.3,
+          "otherBenefit": 6.8,
+          "selfSupport": 3
+        },
+        "2025M04": {
+          "job": 63,
+          "education": 3.1,
+          "onBenefit": 25.1,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.5
+        },
+        "2025M05": {
+          "job": 64.7,
+          "education": 1.4,
+          "onBenefit": 26.5,
+          "otherBenefit": 5.6,
+          "selfSupport": 1.9
+        },
+        "2025M06": {
+          "job": 58.9,
+          "education": 1.9,
+          "onBenefit": 29.5,
+          "otherBenefit": 8.7,
+          "selfSupport": 1
+        },
+        "2025M07": {
+          "job": 57.9,
+          "education": 3.8,
+          "onBenefit": 27.8,
+          "otherBenefit": 6.4,
+          "selfSupport": 4.1
+        },
+        "2025M08": {
+          "job": 63,
+          "education": 2.6,
+          "onBenefit": 27.5,
+          "otherBenefit": 7,
+          "selfSupport": 0
+        },
+        "2025M09": {
+          "job": 61.2,
+          "education": 2.2,
+          "onBenefit": 23.8,
+          "otherBenefit": 10.1,
+          "selfSupport": 2.6
+        },
+        "2025M10": {
+          "job": 60.1,
+          "education": 1.5,
+          "onBenefit": 28.7,
+          "otherBenefit": 7.5,
+          "selfSupport": 2.2
+        },
+        "2025M11": {
+          "job": 63.5,
+          "education": 1.6,
+          "onBenefit": 23.5,
+          "otherBenefit": 8.6,
+          "selfSupport": 2.7
+        },
+        "2025M12": {
+          "job": 62.5,
+          "education": 2,
+          "onBenefit": 26.2,
+          "otherBenefit": 6.5,
+          "selfSupport": 2.8
+        },
+        "2026M01": {
+          "job": 75.4,
+          "education": 0.9,
+          "onBenefit": 16.3,
+          "otherBenefit": 3.3,
+          "selfSupport": 4
+        }
+      },
+      "D14": {
+        "2024M01": {
+          "job": 71.8,
+          "education": 0,
+          "onBenefit": 17.6,
+          "otherBenefit": 8.4,
+          "selfSupport": 2.2
+        },
+        "2024M02": {
+          "job": 68.7,
+          "education": 0,
+          "onBenefit": 21.9,
+          "otherBenefit": 8.5,
+          "selfSupport": 1
+        },
+        "2024M03": {
+          "job": 70.7,
+          "education": 0.9,
+          "onBenefit": 21.6,
+          "otherBenefit": 5.2,
+          "selfSupport": 1.7
+        },
+        "2024M04": {
+          "job": 62.3,
+          "education": 0,
+          "onBenefit": 28.1,
+          "otherBenefit": 8.8,
+          "selfSupport": 0.9
+        },
+        "2024M05": {
+          "job": 61.2,
+          "education": 0,
+          "onBenefit": 26.1,
+          "otherBenefit": 11.2,
+          "selfSupport": 1.5
+        },
+        "2024M06": {
+          "job": 71,
+          "education": 1.7,
+          "onBenefit": 17,
+          "otherBenefit": 9,
+          "selfSupport": 1.3
+        },
+        "2024M07": {
+          "job": 69.8,
+          "education": 0.6,
+          "onBenefit": 22.1,
+          "otherBenefit": 5.8,
+          "selfSupport": 1.7
+        },
+        "2024M08": {
+          "job": 68.4,
+          "education": 1.5,
+          "onBenefit": 19.5,
+          "otherBenefit": 10.5,
+          "selfSupport": 0
+        },
+        "2024M09": {
+          "job": 63.5,
+          "education": 0,
+          "onBenefit": 27.8,
+          "otherBenefit": 6.1,
+          "selfSupport": 2.6
+        },
+        "2024M10": {
+          "job": 58.4,
+          "education": 0,
+          "onBenefit": 32.7,
+          "otherBenefit": 6.9,
+          "selfSupport": 2
+        },
+        "2024M11": {
+          "job": 64.8,
+          "education": 0,
+          "onBenefit": 29.5,
+          "otherBenefit": 5.7,
+          "selfSupport": 0
+        },
+        "2024M12": {
+          "job": 66,
+          "education": 0,
+          "onBenefit": 25.2,
+          "otherBenefit": 7.8,
+          "selfSupport": 1
+        },
+        "2025M01": {
+          "job": 72.5,
+          "education": 0,
+          "onBenefit": 18.8,
+          "otherBenefit": 7.6,
+          "selfSupport": 1
+        },
+        "2025M02": {
+          "job": 65.6,
+          "education": 0,
+          "onBenefit": 27.9,
+          "otherBenefit": 4.5,
+          "selfSupport": 1.9
+        },
+        "2025M03": {
+          "job": 66.4,
+          "education": 3.1,
+          "onBenefit": 19.8,
+          "otherBenefit": 7.6,
+          "selfSupport": 3.1
+        },
+        "2025M04": {
+          "job": 69.9,
+          "education": 0,
+          "onBenefit": 16.8,
+          "otherBenefit": 13.3,
+          "selfSupport": 0
+        },
+        "2025M05": {
+          "job": 57.3,
+          "education": 0.9,
+          "onBenefit": 28.2,
+          "otherBenefit": 10.9,
+          "selfSupport": 2.7
+        },
+        "2025M06": {
+          "job": 77.1,
+          "education": 0.4,
+          "onBenefit": 12.8,
+          "otherBenefit": 8.8,
+          "selfSupport": 0.9
+        },
+        "2025M07": {
+          "job": 72.6,
+          "education": 0,
+          "onBenefit": 21,
+          "otherBenefit": 5.1,
+          "selfSupport": 1.3
+        },
+        "2025M08": {
+          "job": 61.9,
+          "education": 1.9,
+          "onBenefit": 24.8,
+          "otherBenefit": 10.5,
+          "selfSupport": 1
+        },
+        "2025M09": {
+          "job": 63.3,
+          "education": 0,
+          "onBenefit": 28.4,
+          "otherBenefit": 5.5,
+          "selfSupport": 2.8
+        },
+        "2025M10": {
+          "job": 64.2,
+          "education": 0.9,
+          "onBenefit": 26.4,
+          "otherBenefit": 5.7,
+          "selfSupport": 2.8
+        },
+        "2025M11": {
+          "job": 69.9,
+          "education": 0,
+          "onBenefit": 21.5,
+          "otherBenefit": 5.4,
+          "selfSupport": 3.2
+        },
+        "2025M12": {
+          "job": 66.3,
+          "education": 1,
+          "onBenefit": 26.7,
+          "otherBenefit": 3,
+          "selfSupport": 3
+        },
+        "2026M01": {
+          "job": 69.1,
+          "education": 0,
+          "onBenefit": 19.8,
+          "otherBenefit": 5.9,
+          "selfSupport": 5.2
+        }
+      },
+      "D72": {
+        "2024M01": {
+          "job": 43.7,
+          "education": 0,
+          "onBenefit": 46.4,
+          "otherBenefit": 6,
+          "selfSupport": 4
+        },
+        "2024M02": {
+          "job": 54.9,
+          "education": 1.8,
+          "onBenefit": 38.1,
+          "otherBenefit": 4.4,
+          "selfSupport": 0.9
+        },
+        "2024M03": {
+          "job": 51.6,
+          "education": 1.1,
+          "onBenefit": 41.9,
+          "otherBenefit": 3.2,
+          "selfSupport": 2.2
+        },
+        "2024M04": {
+          "job": 40.3,
+          "education": 3,
+          "onBenefit": 47.8,
+          "otherBenefit": 7.5,
+          "selfSupport": 1.5
+        },
+        "2024M05": {
+          "job": 53.8,
+          "education": 1.1,
+          "onBenefit": 36.3,
+          "otherBenefit": 4.4,
+          "selfSupport": 4.4
+        },
+        "2024M06": {
+          "job": 52.3,
+          "education": 5.6,
+          "onBenefit": 36.9,
+          "otherBenefit": 4.1,
+          "selfSupport": 1
+        },
+        "2024M07": {
+          "job": 59,
+          "education": 1.3,
+          "onBenefit": 34.6,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.3
+        },
+        "2024M08": {
+          "job": 45.1,
+          "education": 0.8,
+          "onBenefit": 49.6,
+          "otherBenefit": 4.5,
+          "selfSupport": 0
+        },
+        "2024M09": {
+          "job": 48.6,
+          "education": 0,
+          "onBenefit": 50,
+          "otherBenefit": 1.4,
+          "selfSupport": 0
+        },
+        "2024M10": {
+          "job": 56.6,
+          "education": 1.2,
+          "onBenefit": 32.5,
+          "otherBenefit": 8.4,
+          "selfSupport": 1.2
+        },
+        "2024M11": {
+          "job": 52.7,
+          "education": 3.2,
+          "onBenefit": 35.5,
+          "otherBenefit": 7.5,
+          "selfSupport": 1.1
+        },
+        "2024M12": {
+          "job": 49.5,
+          "education": 3,
+          "onBenefit": 43.4,
+          "otherBenefit": 3,
+          "selfSupport": 1
+        },
+        "2025M01": {
+          "job": 50,
+          "education": 1.1,
+          "onBenefit": 41,
+          "otherBenefit": 3.9,
+          "selfSupport": 3.9
+        },
+        "2025M02": {
+          "job": 55.8,
+          "education": 0,
+          "onBenefit": 38,
+          "otherBenefit": 4.7,
+          "selfSupport": 1.6
+        },
+        "2025M03": {
+          "job": 50.6,
+          "education": 3.4,
+          "onBenefit": 37.9,
+          "otherBenefit": 6.9,
+          "selfSupport": 1.1
+        },
+        "2025M04": {
+          "job": 47.9,
+          "education": 2.7,
+          "onBenefit": 35.6,
+          "otherBenefit": 9.6,
+          "selfSupport": 4.1
+        },
+        "2025M05": {
+          "job": 46.1,
+          "education": 0,
+          "onBenefit": 42.7,
+          "otherBenefit": 9,
+          "selfSupport": 2.2
+        },
+        "2025M06": {
+          "job": 46,
+          "education": 4.6,
+          "onBenefit": 40.8,
+          "otherBenefit": 6.3,
+          "selfSupport": 2.3
+        },
+        "2025M07": {
+          "job": 55.3,
+          "education": 0.7,
+          "onBenefit": 37.3,
+          "otherBenefit": 3.3,
+          "selfSupport": 3.3
+        },
+        "2025M08": {
+          "job": 48,
+          "education": 0,
+          "onBenefit": 40,
+          "otherBenefit": 10,
+          "selfSupport": 2
+        },
+        "2025M09": {
+          "job": 49.4,
+          "education": 2.5,
+          "onBenefit": 38.3,
+          "otherBenefit": 7.4,
+          "selfSupport": 2.5
+        },
+        "2025M10": {
+          "job": 49.4,
+          "education": 0,
+          "onBenefit": 42,
+          "otherBenefit": 4.9,
+          "selfSupport": 3.7
+        },
+        "2025M11": {
+          "job": 44.2,
+          "education": 0,
+          "onBenefit": 50,
+          "otherBenefit": 1.9,
+          "selfSupport": 3.8
+        },
+        "2025M12": {
+          "job": 56.8,
+          "education": 0,
+          "onBenefit": 39.6,
+          "otherBenefit": 1.8,
+          "selfSupport": 1.8
+        },
+        "2026M01": {
+          "job": 45.3,
+          "education": 0,
+          "onBenefit": 48.6,
+          "otherBenefit": 2.2,
+          "selfSupport": 3.9
+        }
+      },
+      "D57": {
+        "2024M01": {
+          "job": 56.2,
+          "education": 0.4,
+          "onBenefit": 37.8,
+          "otherBenefit": 3.9,
+          "selfSupport": 1.8
+        },
+        "2024M02": {
+          "job": 48.3,
+          "education": 0,
+          "onBenefit": 42.1,
+          "otherBenefit": 3.7,
+          "selfSupport": 5.8
+        },
+        "2024M03": {
+          "job": 56.4,
+          "education": 3,
+          "onBenefit": 35.3,
+          "otherBenefit": 3.8,
+          "selfSupport": 1.5
+        },
+        "2024M04": {
+          "job": 49.4,
+          "education": 1.8,
+          "onBenefit": 40.8,
+          "otherBenefit": 4.9,
+          "selfSupport": 3.1
+        },
+        "2024M05": {
+          "job": 52.1,
+          "education": 2.5,
+          "onBenefit": 37.3,
+          "otherBenefit": 5.6,
+          "selfSupport": 2.5
+        },
+        "2024M06": {
+          "job": 50.1,
+          "education": 2.1,
+          "onBenefit": 39.1,
+          "otherBenefit": 4.9,
+          "selfSupport": 3.8
+        },
+        "2024M07": {
+          "job": 49.9,
+          "education": 1.8,
+          "onBenefit": 39,
+          "otherBenefit": 6.1,
+          "selfSupport": 3.2
+        },
+        "2024M08": {
+          "job": 48.2,
+          "education": 3.6,
+          "onBenefit": 38.9,
+          "otherBenefit": 4.9,
+          "selfSupport": 4.4
+        },
+        "2024M09": {
+          "job": 46.3,
+          "education": 0.9,
+          "onBenefit": 43.7,
+          "otherBenefit": 4.9,
+          "selfSupport": 4.3
+        },
+        "2024M10": {
+          "job": 52.7,
+          "education": 0.6,
+          "onBenefit": 38.3,
+          "otherBenefit": 4.5,
+          "selfSupport": 3.9
+        },
+        "2024M11": {
+          "job": 52.4,
+          "education": 1.1,
+          "onBenefit": 37.7,
+          "otherBenefit": 4,
+          "selfSupport": 4.8
+        },
+        "2024M12": {
+          "job": 53.7,
+          "education": 1.6,
+          "onBenefit": 36.2,
+          "otherBenefit": 5.1,
+          "selfSupport": 3.5
+        },
+        "2025M01": {
+          "job": 52.7,
+          "education": 0.8,
+          "onBenefit": 38.1,
+          "otherBenefit": 5.9,
+          "selfSupport": 2.5
+        },
+        "2025M02": {
+          "job": 51.6,
+          "education": 0.2,
+          "onBenefit": 40.9,
+          "otherBenefit": 3.9,
+          "selfSupport": 3.4
+        },
+        "2025M03": {
+          "job": 50.8,
+          "education": 2.5,
+          "onBenefit": 37.9,
+          "otherBenefit": 4.3,
+          "selfSupport": 4.5
+        },
+        "2025M04": {
+          "job": 55.3,
+          "education": 1,
+          "onBenefit": 37.4,
+          "otherBenefit": 5.6,
+          "selfSupport": 0.7
+        },
+        "2025M05": {
+          "job": 48.3,
+          "education": 1.5,
+          "onBenefit": 39.9,
+          "otherBenefit": 6.1,
+          "selfSupport": 4.2
+        },
+        "2025M06": {
+          "job": 50.1,
+          "education": 2.8,
+          "onBenefit": 39.8,
+          "otherBenefit": 3.9,
+          "selfSupport": 3.3
+        },
+        "2025M07": {
+          "job": 50,
+          "education": 2,
+          "onBenefit": 38.8,
+          "otherBenefit": 5,
+          "selfSupport": 4.2
+        },
+        "2025M08": {
+          "job": 45.7,
+          "education": 0.6,
+          "onBenefit": 39.1,
+          "otherBenefit": 8.4,
+          "selfSupport": 6.3
+        },
+        "2025M09": {
+          "job": 45.3,
+          "education": 1.1,
+          "onBenefit": 43.5,
+          "otherBenefit": 6.3,
+          "selfSupport": 3.9
+        },
+        "2025M10": {
+          "job": 50,
+          "education": 1.2,
+          "onBenefit": 42,
+          "otherBenefit": 3.4,
+          "selfSupport": 3.4
+        },
+        "2025M11": {
+          "job": 44.3,
+          "education": 2,
+          "onBenefit": 44.3,
+          "otherBenefit": 5.5,
+          "selfSupport": 3.9
+        },
+        "2025M12": {
+          "job": 55.4,
+          "education": 0.4,
+          "onBenefit": 34.6,
+          "otherBenefit": 4.5,
+          "selfSupport": 5.2
+        },
+        "2026M01": {
+          "job": 47.5,
+          "education": 0.4,
+          "onBenefit": 42,
+          "otherBenefit": 4.8,
+          "selfSupport": 5.4
+        }
+      },
+      "D94": {
+        "2024M01": {
+          "job": 63.3,
+          "education": 0.2,
+          "onBenefit": 27.4,
+          "otherBenefit": 5.3,
+          "selfSupport": 3.8
+        },
+        "2024M02": {
+          "job": 57.6,
+          "education": 0.6,
+          "onBenefit": 32.6,
+          "otherBenefit": 5.6,
+          "selfSupport": 3.6
+        },
+        "2024M03": {
+          "job": 52.6,
+          "education": 0.7,
+          "onBenefit": 35.5,
+          "otherBenefit": 7,
+          "selfSupport": 4.2
+        },
+        "2024M04": {
+          "job": 54.5,
+          "education": 0.6,
+          "onBenefit": 33.8,
+          "otherBenefit": 6,
+          "selfSupport": 5.1
+        },
+        "2024M05": {
+          "job": 43.6,
+          "education": 0.6,
+          "onBenefit": 43.2,
+          "otherBenefit": 8.1,
+          "selfSupport": 4.4
+        },
+        "2024M06": {
+          "job": 47.3,
+          "education": 1.1,
+          "onBenefit": 39.4,
+          "otherBenefit": 7.9,
+          "selfSupport": 4.3
+        },
+        "2024M07": {
+          "job": 52.6,
+          "education": 0.5,
+          "onBenefit": 38,
+          "otherBenefit": 5.7,
+          "selfSupport": 3.2
+        },
+        "2024M08": {
+          "job": 45.3,
+          "education": 0.5,
+          "onBenefit": 43.2,
+          "otherBenefit": 6.8,
+          "selfSupport": 4.2
+        },
+        "2024M09": {
+          "job": 47.9,
+          "education": 0.8,
+          "onBenefit": 43.3,
+          "otherBenefit": 5.1,
+          "selfSupport": 2.8
+        },
+        "2024M10": {
+          "job": 49.9,
+          "education": 0.2,
+          "onBenefit": 41,
+          "otherBenefit": 5.2,
+          "selfSupport": 3.6
+        },
+        "2024M11": {
+          "job": 52.8,
+          "education": 0.4,
+          "onBenefit": 34.8,
+          "otherBenefit": 7,
+          "selfSupport": 5.2
+        },
+        "2024M12": {
+          "job": 60.8,
+          "education": 0.2,
+          "onBenefit": 29.6,
+          "otherBenefit": 5.3,
+          "selfSupport": 4.1
+        },
+        "2025M01": {
+          "job": 56,
+          "education": 0.2,
+          "onBenefit": 34.2,
+          "otherBenefit": 5.5,
+          "selfSupport": 4
+        },
+        "2025M02": {
+          "job": 54.2,
+          "education": 0.2,
+          "onBenefit": 35.8,
+          "otherBenefit": 6.4,
+          "selfSupport": 3.3
+        },
+        "2025M03": {
+          "job": 54.9,
+          "education": 0.9,
+          "onBenefit": 35.7,
+          "otherBenefit": 5.9,
+          "selfSupport": 2.6
+        },
+        "2025M04": {
+          "job": 49.2,
+          "education": 0.6,
+          "onBenefit": 39.7,
+          "otherBenefit": 6.3,
+          "selfSupport": 4.1
+        },
+        "2025M05": {
+          "job": 49,
+          "education": 1.1,
+          "onBenefit": 37.9,
+          "otherBenefit": 8.8,
+          "selfSupport": 3.2
+        },
+        "2025M06": {
+          "job": 46.4,
+          "education": 1.4,
+          "onBenefit": 42.4,
+          "otherBenefit": 6.6,
+          "selfSupport": 3.3
+        },
+        "2025M07": {
+          "job": 49.8,
+          "education": 1,
+          "onBenefit": 40.5,
+          "otherBenefit": 5.4,
+          "selfSupport": 3.4
+        },
+        "2025M08": {
+          "job": 43.3,
+          "education": 0.8,
+          "onBenefit": 45,
+          "otherBenefit": 6.5,
+          "selfSupport": 4.4
+        },
+        "2025M09": {
+          "job": 45.6,
+          "education": 0.2,
+          "onBenefit": 43.3,
+          "otherBenefit": 6.7,
+          "selfSupport": 4.3
+        },
+        "2025M10": {
+          "job": 47,
+          "education": 0.2,
+          "onBenefit": 41.5,
+          "otherBenefit": 7.4,
+          "selfSupport": 3.9
+        },
+        "2025M11": {
+          "job": 53.9,
+          "education": 0.3,
+          "onBenefit": 37.1,
+          "otherBenefit": 4.3,
+          "selfSupport": 4.3
+        },
+        "2025M12": {
+          "job": 56.3,
+          "education": 0.2,
+          "onBenefit": 34.6,
+          "otherBenefit": 4.3,
+          "selfSupport": 4.7
+        },
+        "2026M01": {
+          "job": 62.7,
+          "education": 0.2,
+          "onBenefit": 26.8,
+          "otherBenefit": 4,
+          "selfSupport": 6.2
+        }
       }
     }
   }
