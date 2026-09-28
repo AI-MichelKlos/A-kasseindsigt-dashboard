@@ -78,7 +78,7 @@ def main() -> None:
 
     for row in funds_rows:
         source_name = api.norm(row["A-kasse"])
-        if source_name == "ingen a kasse":
+        if source_name in {"ingen a kasse", "a kasse i alt", "i alt"}:
             continue
         item = names.get(source_name)
         if item is None:
