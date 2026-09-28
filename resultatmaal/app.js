@@ -129,6 +129,9 @@
     const categories=data.subgroups?.[group]?.categories||[];
     select.disabled=!categories.length;
     for(const item of categories){const option=document.createElement('option');option.value=item.id;option.textContent=item.label;select.append(option);}
+    const suggested={age:'25-29 år',origin:'Personer med dansk oprindelse'}[group];
+    const initial=categories.find(item=>item.label===suggested);
+    if(initial)select.value=initial.id;
     view=categories.length?data.subgroups[group].slices[select.value]:data;
     render();
   }
