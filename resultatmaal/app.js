@@ -84,31 +84,6 @@
       item.append(input,document.createTextNode(fund.short));box.append(item);
     }
   }
-  function renderChart(which){
-    const series=view.series[which], selectedCodes=selection();
-    const allPeriods=[...new Set(Object.values(series).flatMap(rows=>Object.keys(rows)))].sort();
-    const count=Number(byId('span').value);
-    const periods=count?allPeriods.slice(-count):allPeriods;
-    const latest=allPeriods.at(-1);
-    const prefix=which==='three'?'three':'six';
-    byId(prefix+'-latest').textContent=latest?`Nyeste nyledighed: ${label(latest)} · Statusmåned: ${label(shift(latest,which==='three'?3:6))}`:'Ingen opgjorte måneder';
-    const list=byId(prefix+'-values');list.replaceChildren();
-    for(const code of selectedCodes){
-      const r=series[code]||{}, last=[...allPeriods].reverse().find(p=>Number.isFinite(r[p]));
-      const card=document.createElement('div');card.className='value';card.style.setProperty('--color',color(code));
-      const name=document.createElement('span');name.textContent=data.funds[code].short+(last&&last!==latest?` · ${label(last)}`:'');
-      const value=document.createElement('strong');value.textContent=last?pct(r[last]):'Ingen tal';
-      const count=document.createElement('small');const n=last?view.counts?.[which]?.[code]?.[last]:null;
-      count.textContent=Number.isFinite(n)?`Nyledige: ${new Intl.NumberFormat('da-DK').format(n)}`:'Antal ikke oplyst';
-      card.append(name,value,count);list.append(card);
-    }
-    const ctx=byId(prefix+'-chart');
-    if(charts[which])charts[which].destroy();
-    charts[which]=new Chart(ctx,{
-      type:'line',data:{labels:periods.map(label),datasets:selectedCodes.map(code=>({label:data.funds[code].short,data:periods.map(p=>Number.isFinite(series[code]?.[p])?series[code][p]:null),borderColor:color(code),backgroundColor:color(code),borderWidth:2.7,pointRadius:periods.length>30?2:3,pointHoverRadius:6,spanGaps:false,tension:.16}))},
-      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'top',labels:{boxWidth:18,usePointStyle:true,font:{size:13}}},tooltip:{callbacks:{title:items=>items[0]?`Nyledige ${label(periods[items[0].dataIndex])} · status ${label(shift(periods[items[0].dataIndex],which==='three'?3:6))}`:'',label:item=>`${item.dataset.label}: ${pct(item.parsed.y)}`}}},scales:{x:{type:'category',grid:{display:false},ticks:{color:'#52656a',maxRotation:45,callback:function(value,index){const p=periods[index];return (index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1)?label(p):''}}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}}}}
-    });
-  }
   function shift(period,offset){const m=/^(\d{4})M(\d{2})$/.exec(period);if(!m)return period;const d=new Date(Date.UTC(Number(m[1]),Number(m[2])-1+offset,1));return `${d.getUTCFullYear()}M${String(d.getUTCMonth()+1).padStart(2,'0')}`;}
   function addRow(body,values){const tr=document.createElement('tr');values.forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td);});body.append(tr);}
   function commonMonths(){return Object.keys(view.series.three.TOTAL).filter(p=>Object.hasOwn(view.series.six.TOTAL,p)).sort();}
@@ -246,7 +221,7 @@
     }
     byId('average-context').textContent=periods.length===12?`Nyledige ${label(periods[0])} til ${label(periods.at(-1))} · samme startmåneder for begge nedslag`:'12 fælles startmåneder er endnu ikke tilgængelige';
   }
-  function render(){renderFunds();renderMetrics();renderReport();renderReportTrend();renderTrend();renderStatus();renderSubgroups();renderCohort();renderAlignedTrend();renderAverage();if(byId('extra-details').open){renderChart('three');renderChart('six');renderYear();}updateLink();}
+  function render(){renderFunds();renderMetrics();renderReport();renderReportTrend();renderTrend();renderStatus();renderSubgroups();renderCohort();renderAlignedTrend();renderAverage();renderYear();updateLink();}
   function csv(){
     const header=['Opdeling','Gruppe','Nyledighedsmåned','Opgørelsesmåned','Nedslag','A-kasse','Antal nyledige','Andel i job eller uddannelse (pct.)',...STATUS.map(([,name])=>name+' (pct.)')];
     const rows=[header];
@@ -271,7 +246,6 @@
   byId('cohort').addEventListener('change',()=>data&&render());
   byId('trend-horizon').addEventListener('change',()=>data&&render());
   byId('status-horizon').addEventListener('change',()=>{if(data){renderStatus();updateLink();}});
-  byId('extra-details').addEventListener('toggle',()=>{if(data&&byId('extra-details').open){renderChart('three');renderChart('six');renderYear();}});
   byId('csv').addEventListener('click',()=>data&&csv());
   byId('share').addEventListener('click',async()=>{
     if(!data)return;

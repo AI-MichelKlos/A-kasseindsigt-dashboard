@@ -24,17 +24,6 @@
 #dak-resultat .part-intro{background:#e8f1e8;border-left:6px solid #397044;border-radius:14px;padding:23px 28px;margin:34px 0 22px}
 #dak-resultat .part-intro h2{margin:7px 0 10px}
 #dak-resultat .part-intro p{margin:0;max-width:1000px;color:#324e46}
-#dak-resultat .extra-details summary{cursor:pointer;list-style:none;position:relative;padding-right:35px}
-#dak-resultat .extra-details summary::-webkit-details-marker{display:none}
-#dak-resultat .extra-details summary:after{content:'+';position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:1.7rem;font-weight:400;color:#397044}
-#dak-resultat .extra-details[open] summary:after{content:'−'}
-#dak-resultat .extra-details summary:focus-visible{outline:3px solid #e29d50;outline-offset:5px;border-radius:4px}
-#dak-resultat .details-title{display:block;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;line-height:1.2;margin-top:5px}
-#dak-resultat .details-hint{display:block;color:var(--muted);font-size:.92rem;margin-top:6px}
-#dak-resultat .details-content{margin-top:24px;border-top:1px solid var(--line)}
-#dak-resultat .detail-block{padding:24px 0;border-bottom:1px solid var(--line)}
-#dak-resultat .detail-block:last-child{border-bottom:0;padding-bottom:0}
-#dak-resultat .detail-block h2{margin-top:0}
 #dak-resultat .metric-options{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px}
 #dak-resultat .metric-option{display:flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:.86rem}
 #dak-resultat .metric-option:has(input:checked){background:#eaf5eb;border-color:#7aaa82;font-weight:700}
@@ -62,10 +51,6 @@
 #dak-resultat th:first-child,#dak-resultat td:first-child{text-align:left;font-weight:700}
 #dak-resultat thead{color:var(--muted);background:#f4f8f4}
 #dak-resultat tbody tr:hover{background:#f5faf5}
-#dak-resultat .values{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-#dak-resultat .value{border:1px solid var(--line);border-left:4px solid var(--color);background:#fbfdfb;border-radius:8px;padding:7px 12px;min-width:142px;font-size:.84rem}
-#dak-resultat .value strong{display:block;font-size:1.15rem;font-variant-numeric:tabular-nums}
-#dak-resultat .value small{display:block;color:var(--muted);font-size:.75rem}
 #dak-resultat .method-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 30px}
 #dak-resultat h3{font-size:1rem;margin:14px 0 4px}
 #dak-resultat .method p{margin:0;color:var(--muted);font-size:.92rem}
