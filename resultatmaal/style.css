@@ -20,10 +20,6 @@
 #dak-resultat button:hover{background:#e7f2e7}
 #dak-resultat button:focus-visible,#dak-resultat select:focus-visible,#dak-resultat input:focus-visible,#dak-resultat a:focus-visible{outline:3px solid #e29d50;outline-offset:2px}
 #dak-resultat .toolbar label{margin-left:auto;font-weight:700;font-size:.85rem}
-#dak-resultat .filterbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#edf4ed;border:1px solid var(--line);padding:13px;border-radius:10px;margin:0 0 18px}
-#dak-resultat .filterbar label{font-weight:700;font-size:.86rem}
-#dak-resultat .filterbar select{background:#fff;max-width:100%}
-#dak-resultat .filterbar p{color:var(--muted);font-size:.81rem;margin:0 0 0 auto}
 #dak-resultat .lead{border-top:5px solid var(--green)}
 #dak-resultat .part-intro{background:#e8f1e8;border-left:6px solid #397044;border-radius:14px;padding:23px 28px;margin:34px 0 22px}
 #dak-resultat .part-intro h2{margin:7px 0 10px}
@@ -55,6 +51,10 @@
 #dak-resultat .chart{height:380px;position:relative}
 #dak-resultat .chart canvas{touch-action:pan-y}
 #dak-resultat .chart-flex{height:200px;min-height:200px}
+#dak-resultat .subgroup-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+#dak-resultat .subgroup-item{min-width:0;border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfdfb}
+#dak-resultat .subgroup-item h3{margin:0 0 8px}
+#dak-resultat .subgroup-chart{height:270px}
 #dak-resultat .context{color:var(--muted);font-size:.88rem;margin:8px 0 16px}
 #dak-resultat .table-wrap{overflow-x:auto;max-width:100%;margin-top:16px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 #dak-resultat table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:650px}
@@ -72,5 +72,5 @@
 #dak-resultat .method .source{margin-top:25px}
 #dak-resultat .message{padding:17px;border:1px solid #dba878;background:#fff4e7;border-radius:10px;margin-bottom:20px}
 #dak-resultat footer{border-top:1px solid var(--line);color:var(--muted);padding:25px 0;font-size:.78rem}
-@media(max-width:700px){#dak-resultat .wrap{padding-left:16px;padding-right:16px}#dak-resultat .nav{padding:12px 16px;flex-wrap:wrap}#dak-resultat .hero{padding:37px 0}#dak-resultat .panel{padding:18px}#dak-resultat .part-intro{padding:18px}#dak-resultat .section-heading{display:block}#dak-resultat .section-heading p{margin-top:8px}#dak-resultat .toolbar label{margin-left:0;width:100%}#dak-resultat .toolbar button{flex:1 1 140px}#dak-resultat .toolbar select{max-width:100%}#dak-resultat .toolbar .context{width:100%;margin:0}#dak-resultat .filterbar label,#dak-resultat .filterbar select,#dak-resultat .filterbar p{width:100%;margin-left:0}#dak-resultat .funds{grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .fund,#dak-resultat .metric-option{min-width:0;overflow-wrap:anywhere}#dak-resultat .metric-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .method-grid{grid-template-columns:1fr}#dak-resultat .chart{height:340px}#dak-resultat .chart-flex{height:220px}#dak-resultat .table-wrap:before{content:'Skub tabellen til siden for flere kolonner →';display:block;color:var(--muted);font-size:.75rem;margin-bottom:6px}#dak-resultat table{min-width:650px}}
+@media(max-width:700px){#dak-resultat .wrap{padding-left:16px;padding-right:16px}#dak-resultat .nav{padding:12px 16px;flex-wrap:wrap}#dak-resultat .hero{padding:37px 0}#dak-resultat .panel{padding:18px}#dak-resultat .part-intro{padding:18px}#dak-resultat .section-heading{display:block}#dak-resultat .section-heading p{margin-top:8px}#dak-resultat .toolbar label{margin-left:0;width:100%}#dak-resultat .toolbar button{flex:1 1 140px}#dak-resultat .toolbar select{max-width:100%}#dak-resultat .toolbar .context{width:100%;margin:0}#dak-resultat .funds{grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .fund,#dak-resultat .metric-option{min-width:0;overflow-wrap:anywhere}#dak-resultat .metric-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .method-grid,#dak-resultat .subgroup-grid{grid-template-columns:1fr}#dak-resultat .chart{height:340px}#dak-resultat .chart-flex{height:220px}#dak-resultat .subgroup-chart{height:270px}#dak-resultat .table-wrap:before{content:'Skub tabellen til siden for flere kolonner →';display:block;color:var(--muted);font-size:.75rem;margin-bottom:6px}#dak-resultat table{min-width:650px}}
 @media(max-width:370px){#dak-resultat .funds{grid-template-columns:1fr}}

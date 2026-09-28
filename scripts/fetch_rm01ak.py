@@ -201,7 +201,7 @@ def main() -> None:
             "latestCohort": {key: cohort(latest_status, n) for key, n in (("three", 3), ("six", 6))},
             "fetchedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "unit": "pct. af nyledige", "geography": "Hele landet",
-            "filters": "Én opdeling ad gangen: region, køn, alder eller herkomst; a-kasse ved nyledighed",
+            "filters": "Separate opdelinger efter region, køn, alder og herkomst; a-kasse ved nyledighed",
             "note": "Officiel totalrække og officielle a-kasserækker. Prikker/diskretionerede værdier er null. Ujusterede andele.",
         },
         "funds": funds, **overall, "subgroups": subgroups,

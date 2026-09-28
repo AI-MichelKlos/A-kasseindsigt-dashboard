@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#0F2B36">
   <title>Fra nyledighed til job og uddannelse | A-kasseindsigt</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
-  <script src="app.js?v=20260928-7" defer></script>
-  <link rel="stylesheet" href="style.css?v=20260928-7">
+  <script src="app.js?v=20260928-8" defer></script>
+  <link rel="stylesheet" href="style.css?v=20260928-8">
 </head>
 <body style="margin:0">
 <div id="dak-resultat">
@@ -23,7 +23,6 @@
       <div class="section-heading"><div><span class="section-no">VÆLG SAMMENLIGNING</span><h2 id="select-title">Vælg a-kasser</h2></div><p>Vælg én, to eller flere. I alt er valgt fra start.</p></div>
       <div class="toolbar"><button type="button" id="all">Vælg alle</button><button type="button" id="reset">Kun I alt</button><label for="span">Vis periode</label><select id="span"><option value="12">Seneste 12 måneder</option><option value="24">Seneste 24 måneder</option><option value="0">Alle måneder</option></select><button id="csv" type="button">Hent valgte tal som CSV</button><button id="share" type="button">Del denne visning</button></div>
       <div id="share-box" class="share-box" hidden><label for="share-link">Link til valgte filtre</label><input id="share-link" type="text" readonly><span id="share-status" role="status"></span></div>
-      <div class="filterbar"><label for="group">Opdel efter</label><select id="group"><option value="all">Alle nyledige</option></select><label for="category">Vis gruppe eller region</label><select id="category" disabled><option value="all">Alle</option></select><p>Vælg én opdeling ad gangen. Sammenligningen mellem a-kasser opdateres på hele siden.</p></div>
       <div id="funds" class="funds" role="group" aria-label="A-kasser"></div>
       <p class="small">Forkortelser af navne kan være anvendt. Alle serier viser andele i procent af de nyledige i den valgte a-kasse, ikke antal medlemmer.</p>
     </section>
@@ -60,6 +59,18 @@
       <p class="small">De 3- og 6-månedersvisninger, der vælges ovenfor, vedrører forskellige startgrupper. Statusserne følger Jobindsats’ prioritering, hvis en person har flere statusser i samme måned. Diskretionerede tal vises som manglende og indgår ikke i den stablede graf.</p>
       <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
     </section>
+    <section class="panel" aria-labelledby="subgroup-title">
+      <div class="section-heading"><div><span class="section-no">1.5 / FORSKELLE MELLEM GRUPPER</span><h2 id="subgroup-title">Køn, alder, herkomst og region</h2></div><p>Samme opgørelsesmåned som ovenfor. Sammenlign de valgte a-kasser inden for hver gruppe.</p></div>
+      <div class="toolbar"><label for="subgroup-horizon">Opgjort efter</label><select id="subgroup-horizon"><option value="three">3 måneder</option><option value="six">6 måneder</option></select><span id="subgroup-context" class="context"></span></div>
+      <div class="subgroup-grid">
+        <div class="subgroup-item"><h3>Køn</h3><div class="chart subgroup-chart"><canvas id="subgroup-sex" role="img" aria-label="Andel i job eller uddannelse fordelt på køn"></canvas></div></div>
+        <div class="subgroup-item"><h3>Herkomst</h3><div class="chart subgroup-chart"><canvas id="subgroup-origin" role="img" aria-label="Andel i job eller uddannelse fordelt på herkomst"></canvas></div></div>
+        <div class="subgroup-item"><h3>Alder</h3><div class="chart subgroup-chart"><canvas id="subgroup-age" role="img" aria-label="Andel i job eller uddannelse fordelt på alder"></canvas></div></div>
+        <div class="subgroup-item"><h3>Region</h3><div class="chart subgroup-chart"><canvas id="subgroup-region" role="img" aria-label="Andel i job eller uddannelse fordelt på region"></canvas></div></div>
+      </div>
+      <p class="small">Hver søjle er andelen blandt nyledige i netop denne gruppe og a-kasse. Grupperne har forskellig størrelse, og tallene er ikke korrigeret for medlemmernes sammensætning. Manglende eller diskretionerede tal vises ikke som nul.</p>
+      <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
+    </section>
     <div class="part-intro" aria-labelledby="cohort-part-title"><span class="section-no">DEL 2 / LEDIGHEDSMÅNED</span><h2 id="cohort-part-title">Regn tilbage til måneden for nyledighed</h2><p>Her regner vi baglæns fra den opgørelsesmåned, STAR viser, til den måned, hvor personerne blev nyledige. Nu er det <strong>ledighedsmåneden</strong>, der står på tidsaksen. Når 3 og 6 måneder vises ved samme startmåned, er deres status målt i to forskellige opgørelsesmåneder.</p></div>
     <section class="panel lead" aria-labelledby="cohort-title">
       <div class="section-heading"><div><span class="section-no">2.1 / SAMME LEDIGHEDSMÅNED</span><h2 id="cohort-title">Andel i job eller uddannelse efter 3 og 6 måneder</h2></div><p>To særskilte statusmålinger af nyledige fra den valgte startmåned.</p></div>
@@ -70,14 +81,21 @@
       <p class="method-note"><strong>Læs de to andele hver for sig.</strong> De tager udgangspunkt i samme startmåned, men personer, der er døde eller udvandret i opgørelsesmåneden, udelades. Derfor kan antallet og nævneren være forskellige efter 3 og 6 måneder. Tallene viser status på to tidspunkter, ikke hvor mange personer der er gået fra ledighed til job mellem dem.</p>
       <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
     </section>
-    <section class="panel" aria-labelledby="average-title"><span class="section-no">2.2 / 12 MÅNEDER</span><h2 id="average-title">Vægtet gennemsnit for samme 12 startmåneder</h2>
+    <section class="panel lead" aria-labelledby="aligned-title">
+      <div class="section-heading"><div><span class="section-no">2.2 / SAMME LEDIGHEDSMÅNED OVER TID</span><h2 id="aligned-title">3 og 6 måneder på samme tidsakse</h2></div><p>Andel i job eller uddannelse for nyledige i samme måned.</p></div>
+      <p id="aligned-context" class="method-note"></p>
+      <div class="chart"><canvas id="aligned-chart" role="img" aria-label="Tidsserie efter ledighedsmåned med 3-månedersmålingen forskudt tre måneder i forhold til 6-månedersmålingen"></canvas></div>
+      <p class="small">Det er status ved to tidspunkter for samme startmåned. Nævneren kan være forskellig, fordi døde og udvandrede udelades i den enkelte opgørelsesmåned. Afstanden mellem linjerne er derfor ikke antallet af personer, der er gået fra ledighed til job.</p>
+      <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
+    </section>
+    <section class="panel" aria-labelledby="average-title"><span class="section-no">2.3 / 12 MÅNEDER</span><h2 id="average-title">Vægtet gennemsnit for samme 12 startmåneder</h2>
       <p class="context" id="average-context"></p>
       <div class="table-wrap"><table id="average-table"><thead><tr><th scope="col">Nedslag</th><th scope="col">A-kasse</th><th scope="col">12-månedersandel</th><th scope="col">Forskel til I alt</th><th scope="col">Nyledige i alt</th></tr></thead><tbody></tbody></table></div>
       <p class="small">Begge nedslag bruger de samme 12 startmåneder, der er opgjort efter 6 måneder. Hvert nedslag beregnes særskilt med sit eget antal nyledige som vægt. Nævnerne kan variere mellem de to opgørelsesmåneder. Gennemsnittet vises kun, hvis alle 12 måneder har andel og antal over nul. I alt er Jobindsats’ officielle total for samme opdeling og måneder. Månedstal er afrundede i kilden.</p>
       <p class="source">Kilde: Jobindsats.dk, RM01AK | Grafik og databehandling: Danske A-kasser</p>
     </section>
     <details class="panel extra-details" id="extra-details">
-      <summary><span class="section-no">2.3 / FLERE DETALJER</span><span class="details-title">Tidsserier efter ledighedsmåned og årssammenligning</span><span class="details-hint">3 og 6 måneder hver for sig, grupperet efter måneden for nyledighed</span></summary>
+      <summary><span class="section-no">2.4 / FLERE DETALJER</span><span class="details-title">Tidsserier efter ledighedsmåned og årssammenligning</span><span class="details-hint">3 og 6 måneder hver for sig, grupperet efter måneden for nyledighed</span></summary>
       <div class="details-content">
       <section class="detail-block" aria-labelledby="three-title">
         <div class="section-heading"><div><h2 id="three-title">I job eller uddannelse efter 3 måneder</h2></div><p id="three-latest"></p></div>
