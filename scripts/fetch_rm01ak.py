@@ -50,7 +50,12 @@ def main() -> None:
     spec = api.get(f"table/{TABLE}", {"format": "json"})
     if spec.get("table_id") != TABLE or "3 og 6" not in spec.get("table_name", ""):
         raise ValueError("Jobindsats-metadata matcher ikke den forventede resultatmåling")
-    print("DIMENSIONS", json.dumps([{"id": h.get("hierarchy_id"), "levels": [{"id": l.get("level_id"), "values": api.hierarchy_values(l)} for l in api.levels(h)], "total": api.total_value(h)} for h in api.hierarchies(spec)], ensure_ascii=False))
+    for h_id, l_id in (("_kon", "kon"), ("_alder5i30", "alder30"), ("_alder5i30", "alder5i"), ("_oprinda", "oprinda")):
+        h = next(h for h in api.hierarchies(spec) if h["hierarchy_id"] == h_id)
+        fh = next(h for h in api.hierarchies(spec) if h["hierarchy_id"] == "_akassedp")
+        for fs in (f"level:{api.fund_level(fh)}", api.total_value(fh)):
+            rows = api.query(TABLE, spec, "latest:1", ((fh, fs), (h, f"level:{l_id}")))
+            print("QUERY", h_id, l_id, fs, len(rows), api.columns(rows), [(r.get("Periode"), r.get("A-kasse"), r.get("Køn"), r.get("Alder"), r.get("Herkomst")) for r in rows[:6]])
     available = next((p["values"] for p in spec.get("periods", []) if p.get("periodtype_id") == "M"), [])
     if not available:
         raise ValueError("Ingen månedlige perioder i Jobindsats-metadata")
