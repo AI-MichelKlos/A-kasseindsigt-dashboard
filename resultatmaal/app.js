@@ -2,14 +2,14 @@
   'use strict';
   const root=document.getElementById('dak-resultat');
   const byId=id=>root.querySelector('#'+id);
-  const COLORS=['#315f48','#c0622a','#4a6fa5','#8e4f9e','#b5874a','#1a7a6e','#c0392b','#2471a3','#7d6608','#117a65','#6e2f7a','#1e5799','#7a3b00','#4a235a','#1a5276','#784212','#0e6655','#6c3483','#1b4f72','#922b21','#1d6a3a','#596579'];
+  const COLORS=['#4A3428','#c0622a','#4a6fa5','#8e4f9e','#b5874a','#1a7a6e','#c0392b','#2471a3','#7d6608','#117a65','#6e2f7a','#1e5799','#7a3b00','#4a235a','#1a5276','#784212','#0e6655','#6c3483','#1b4f72','#922b21','#1d6a3a','#596579'];
   const months=['jan.','feb.','mar.','apr.','maj','jun.','jul.','aug.','sep.','okt.','nov.','dec.'];
   const label=p=>{const m=/^(\d{4})M(\d{2})$/.exec(p);return m?`${months[Number(m[2])-1]} ${m[1]}`:p};
   const pct=v=>Number.isFinite(v)?new Intl.NumberFormat('da-DK',{maximumFractionDigits:1,minimumFractionDigits:1}).format(v)+' %':'Ingen tal';
   const num=v=>Number.isFinite(v)?new Intl.NumberFormat('da-DK').format(v):'Ingen tal';
   const diff=v=>Number.isFinite(v)?`${v>0?'+':''}${new Intl.NumberFormat('da-DK',{maximumFractionDigits:1,minimumFractionDigits:1}).format(v)} procentpoint`:'Ingen tal';
-  const STATUS=[['job','Job','#4a90c4'],['education','Uddannelse','#9270af'],['onBenefit','Fortsat på dagpenge','#6b9e78'],['otherBenefit','Anden ydelse','#e7a352'],['selfSupport','Selvforsørgelse mv.','#b9c4be']];
-  const METRICS=[...STATUS,['combined','Job eller uddannelse','#315f48']];
+  const STATUS=[['job','Job','#146298'],['education','Uddannelse','#8C7FCF'],['onBenefit','Fortsat på dagpenge','#9A5B34'],['otherBenefit','Anden ydelse','#8C9C41'],['selfSupport','Selvforsørgelse mv.','#C9BCAE']];
+  const METRICS=[...STATUS,['combined','Job eller uddannelse','#4A3428']];
   const incoming=new URL(location.href).searchParams;
   let data,view,charts={},selected=new Set(['TOTAL']),chosenMetrics=new Set(['job']);
   const message=byId('message');
@@ -105,15 +105,15 @@
     if(charts.report)charts.report.destroy();
     charts.report=new Chart(byId('report-chart'),{
       type:'bar',data:{labels:codes.map(code=>data.funds[code].short),datasets:[
-        {label:`3 måneder · nyledige ${label(three)}`,data:codes.map(code=>view.series.three[code]?.[three]??null),backgroundColor:'#6B9E78'},
-        {label:`6 måneder · nyledige ${label(six)}`,data:codes.map(code=>view.series.six[code]?.[six]??null),backgroundColor:'#4A90C4'}
-      ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}},y:{grid:{display:false}}}}
+        {label:`3 måneder · nyledige ${label(three)}`,data:codes.map(code=>view.series.three[code]?.[three]??null),backgroundColor:'#9A5B34'},
+        {label:`6 måneder · nyledige ${label(six)}`,data:codes.map(code=>view.series.six[code]?.[six]??null),backgroundColor:'#146298'}
+      ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e6ddd2'}},y:{grid:{display:false}}}}
     });
   }
   function renderReportTrend(){
     const all=[...new Set(['three','six'].flatMap(which=>Object.keys(view.series[which].TOTAL).map(p=>shift(p,which==='three'?3:6))))].sort();
     const limit=Number(byId('span').value),periods=limit?all.slice(-limit):all,codes=selection();
-    const datasets=codes.flatMap(code=>[['three',3,'3 måneder','#6B9E78'],['six',6,'6 måneder','#4A90C4']].map(([which,offset,horizon,horizonColor])=>({
+    const datasets=codes.flatMap(code=>[['three',3,'3 måneder','#9A5B34'],['six',6,'6 måneder','#146298']].map(([which,offset,horizon,horizonColor])=>({
       label:`${data.funds[code].short} · ${horizon}`,
       data:periods.map(month=>{const value=view.series[which][code]?.[shift(month,-offset)];return Number.isFinite(value)?value:null;}),
       borderColor:codes.length===1?horizonColor:color(code),backgroundColor:codes.length===1?horizonColor:color(code),borderDash:offset===3?[]:[7,4],borderWidth:2.7,pointRadius:periods.length>30?2:3,pointHoverRadius:6,spanGaps:false,tension:.16
@@ -137,14 +137,14 @@
           data:categories.map(item=>{const value=group.slices[item.id].series[which][code]?.[p];return Number.isFinite(value)?value:null;}),
           backgroundColor:color(code)
         }))},
-        options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:codes.length>1,position:'top',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{title:items=>categories[items[0]?.dataIndex]?.label||'',label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,ticks:{callback:value=>value+' %'},grid:{color:'#e8ebe8'}},y:{grid:{display:false},ticks:{callback:value=>{const name=categories[value]?.label||'';const max=window.matchMedia('(max-width:700px)').matches?16:27;return name.length>max?name.slice(0,max-1)+'…':name;}}}}}
+        options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:codes.length>1,position:'top',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{title:items=>categories[items[0]?.dataIndex]?.label||'',label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,ticks:{callback:value=>value+' %'},grid:{color:'#e6ddd2'}},y:{grid:{display:false},ticks:{callback:value=>{const name=categories[value]?.label||'';const max=window.matchMedia('(max-width:700px)').matches?16:27;return name.length>max?name.slice(0,max-1)+'…':name;}}}}}
       });
     }
   }
   function renderAlignedTrend(){
     const all=commonMonths(),limit=Number(byId('span').value),periods=limit?all.slice(-limit):all,codes=selection();
     byId('aligned-context').textContent=`Vi forskyder 3-månedersmålingen tre måneder frem i forhold til dens opgørelsesmåned, så den står ud for 6-månedersmålingen af nyledige i samme måned. På tidsaksen står ledighedsmåneden: Nyledige ${label(periods.at(-1))} blev målt efter 3 måneder i ${label(shift(periods.at(-1),3))} og efter 6 måneder i ${label(shift(periods.at(-1),6))}.`;
-    const datasets=codes.flatMap(code=>[['three',3,'3 måneder','#6B9E78'],['six',6,'6 måneder','#4A90C4']].map(([which,offset,horizon,horizonColor])=>({
+    const datasets=codes.flatMap(code=>[['three',3,'3 måneder','#9A5B34'],['six',6,'6 måneder','#146298']].map(([which,offset,horizon,horizonColor])=>({
       label:`${data.funds[code].short} · ${horizon}`,
       data:periods.map(p=>{const value=view.series[which][code]?.[p];return Number.isFinite(value)?value:null;}),
       borderColor:codes.length===1?horizonColor:color(code),backgroundColor:codes.length===1?horizonColor:color(code),borderDash:offset===3?[]:[7,4],borderWidth:2.7,pointRadius:periods.length>30?2:3,pointHoverRadius:6,spanGaps:false,tension:.16
@@ -167,9 +167,9 @@
     if(charts.cohort)charts.cohort.destroy();
     charts.cohort=new Chart(byId('cohort-chart'),{
       type:'bar',data:{labels:codes.map(code=>data.funds[code].short),datasets:[
-        {label:'Efter 3 måneder',data:codes.map(code=>view.series.three[code]?.[p]??null),backgroundColor:'#6B9E78'},
-        {label:'Efter 6 måneder',data:codes.map(code=>view.series.six[code]?.[p]??null),backgroundColor:'#4A90C4'}
-      ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}},y:{grid:{display:false}}}}
+        {label:'Efter 3 måneder',data:codes.map(code=>view.series.three[code]?.[p]??null),backgroundColor:'#9A5B34'},
+        {label:'Efter 6 måneder',data:codes.map(code=>view.series.six[code]?.[p]??null),backgroundColor:'#146298'}
+      ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e6ddd2'}},y:{grid:{display:false}}}}
     });
   }
   function renderStatus(){
@@ -187,7 +187,7 @@
     if(!complete.length)return;
     charts.status=new Chart(byId('status-chart'),{
       type:'bar',data:{labels:complete.map(code=>data.funds[code].short),datasets:STATUS.map(([key,name,color])=>({label:name,data:complete.map(code=>view.statusShares[which][code][p][key]),backgroundColor:color}))},
-      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:15}},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{stacked:true,beginAtZero:true,min:0,max:100,ticks:{callback:v=>v+' %'},grid:{color:'#e8ebe8'}},y:{stacked:true,grid:{display:false}}}}
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:15}},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{stacked:true,beginAtZero:true,min:0,max:100,ticks:{callback:v=>v+' %'},grid:{color:'#e6ddd2'}},y:{stacked:true,grid:{display:false}}}}
     });
   }
   function renderYear(){
@@ -264,7 +264,7 @@
     Chart.defaults.plugins.tooltip.intersect=false;
     Chart.defaults.plugins.tooltip.position='nearest';
     Chart.defaults.plugins.tooltip.animation={duration:90};
-    Chart.defaults.plugins.tooltip.backgroundColor='rgba(15,43,54,.87)';
+    Chart.defaults.plugins.tooltip.backgroundColor='rgba(43,33,27,.87)';
     root.querySelectorAll('canvas').forEach(bindTooltipDismissal);
     data=payload;view=data;
     for(const [key,group] of Object.entries(payload.subgroups)){

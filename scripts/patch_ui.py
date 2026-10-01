@@ -5,7 +5,7 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parents[1]
 HTML = BASE / "index.html"
 
-PERIOD_CSS = ".period-highlight{margin:6px 0 12px;padding:8px 10px;border-left:3px solid var(--g);background:#f7faf8;color:#405b63;font-size:.84rem;line-height:1.4}.period-highlight strong{color:var(--ink)}"
+PERIOD_CSS = ".period-highlight{margin:6px 0 12px;padding:8px 10px;background:#f7f1ea;color:#4a3428;font-size:.84rem;line-height:1.4}.period-highlight strong{color:var(--ink)}"
 
 STATUS_OLD = '<div class="card"><h3>Arbejdsmarkedsstatus 3 måneder efter ophør i a-dagpenge</h3><div class="explain">'
 STATUS_NEW = '<div class="card"><h3>Arbejdsmarkedsstatus 3 måneder efter ophør i a-dagpenge</h3><div class="period-highlight">Afslutningsperiode: <strong id="statusPeriodHeadline">-</strong></div><div class="explain">'
