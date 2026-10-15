@@ -366,7 +366,7 @@
   }
 
   function addComparisonKpis(pair){
-    const primary=effectivePrimaryFund(),specs=[['k1','members','values',num],['k2','unemploymentRate','values',pct],['k3','longTerm','persons',num],['k4','dagpenge','persons',num],['k5','graduates','share',pct],['k6','talkForms','total',num]];
+    const primary=effectivePrimaryFund(),specs=[['k1','members','values',num],['k2','unemploymentRate','values',pct],['k3','longTerm','persons',num],['k4','dagpenge','fulltime',num],['k5','graduates','share',pct],['k6','talkForms','total',num]];
     specs.forEach(([id,module,key,formatter])=>{
       const block=document.getElementById(id)?.closest('.kpi'),values=alignedPair(moduleData(primary,module),moduleData(pair.drawFund,module),key);if(!block||!values)return;
       const row=document.createElement('div'),strong=document.createElement('strong');row.className='comparison-kpi';strong.textContent='Sammenligning:';row.append(strong,document.createTextNode(' '+comparisonSeriesLabel(pair,module)+': '+formatter(values.national.value)+' · '+period(values.national.period)));block.append(row);
@@ -375,7 +375,7 @@
 
   function addTotalComparisonStrips(pair){
     const primary=effectivePrimaryFund(),other=pair.drawFund,specs=[
-      ['membersRawChart','members','values',num],['longRawChart','longTerm','persons',num],['dagChart','dagpenge','persons',num],['gradCountChart','graduates','persons',num],
+      ['membersRawChart','members','values',num],['longRawChart','longTerm','persons',num],['dagChart','dagpenge','fulltime',num],['gradCountChart','graduates','persons',num],
       ['exhaustedChart','exhaustedRights','persons',num],['afterlonChart','afterlon','persons',num],['sanctionsTotalChart','sanctions','total',num]
     ];
     specs.forEach(([id,module,key,formatter])=>addSeriesStrip(id,module,moduleData(primary,module),moduleData(other,module),key,pair,formatter));
