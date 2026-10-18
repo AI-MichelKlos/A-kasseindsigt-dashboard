@@ -7,6 +7,7 @@ on:
     paths:
       - resultatmaal/**
       - scripts/fetch_rm01ak.py
+      - scripts/build_rm01ak_summary.py
       - .github/workflows/update-rm01ak.yml
   schedule:
     - cron: "23 7,8,9,10 * * *"
@@ -51,7 +52,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          python -m py_compile scripts/jobindsats_api.py scripts/fetch_rm01ak.py
+          python -m py_compile scripts/jobindsats_api.py scripts/build_rm01ak_summary.py scripts/fetch_rm01ak.py
           code=$?
           if [ "$code" -eq 0 ]; then python scripts/fetch_rm01ak.py; code=$?; fi
           if [ "$code" -eq 0 ]; then
@@ -74,7 +75,10 @@ jobs:
         shell: bash
         run: |
           cp status/rm01ak.json /tmp/rm01ak-status.json
-          if [ "${{ steps.fetch.outputs.exit_code }}" = "0" ]; then cp data/rm01ak.json /tmp/rm01ak-data.json; fi
+          if [ "${{ steps.fetch.outputs.exit_code }}" = "0" ]; then
+            cp data/rm01ak.json /tmp/rm01ak-data.json
+            cp data/rm01ak-summary.json /tmp/rm01ak-summary.json
+          fi
           git fetch origin main
           git reset --hard origin/main
           mkdir -p status data
@@ -82,7 +86,8 @@ jobs:
           git add status/rm01ak.json
           if [ "${{ steps.fetch.outputs.exit_code }}" = "0" ]; then
             cp /tmp/rm01ak-data.json data/rm01ak.json
-            git add data/rm01ak.json
+            cp /tmp/rm01ak-summary.json data/rm01ak-summary.json
+            git add data/rm01ak.json data/rm01ak-summary.json
           fi
           if ! git diff --cached --quiet; then
             git config user.name "Dashboard automation"

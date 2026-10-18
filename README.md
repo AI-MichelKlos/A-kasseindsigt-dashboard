@@ -30,6 +30,16 @@ GitHub Pages publicerer fra `main` og repository-root. `.nojekyll` er medtaget, 
 
 Forsiden indeholder GoatCounter for `akassesiden.goatcounter.com` efter aftale.
 
+## Forsidens brugeroplevelse
+
+Forsiden har et aktuelt overblik med retningspile, sektionsnavigation, en mobilvenlig
+filtermenu og mulighed for at vise eller hente data bag hver graf. Grafer uden for
+skærmbilledet oprettes først, når brugeren nærmer sig den relevante sektion.
+
+Den fulde RM01AK-fil bruges fortsat af resultatmålsiden. Forsiden henter i stedet
+`data/rm01ak-summary.json`, der kun indeholder metadata, a-kasser, tidsserier og
+populationstal. Den kompakte fil bygges automatisk sammen med `data/rm01ak.json`.
+
 ## Rådighedssanktioner
 
-Sektion 7 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Historikken starter i 2019, og der markeres databrud fra 1. kvt. 2021. `I alt` hentes som en selvstaendig officiel række fra samme Jobindsats-tabel og bruges som standardbenchmark; den beregnes ikke som sum eller gennemsnit af a-kasserne. Både totalrækken og de enkelte a-kasser valideres i den automatiske opdatering. Jobindsats' kvartalskoder normaliseres, så fx `2026Q01` fortolkes som 1. kvartal 2026.
+Sektion 9 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Historikken starter i 2019, og der markeres databrud fra 1. kvt. 2021. `I alt` hentes som en selvstaendig officiel række fra samme Jobindsats-tabel og bruges som standardbenchmark; den beregnes ikke som sum eller gennemsnit af a-kasserne. Både totalrækken og de enkelte a-kasser valideres i den automatiske opdatering. Jobindsats' kvartalskoder normaliseres, så fx `2026Q01` fortolkes som 1. kvartal 2026.
