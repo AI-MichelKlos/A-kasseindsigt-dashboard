@@ -10,9 +10,24 @@ def validate(repo, required_sources):
     warnings = []
     html = repo / "index.html"
     data_path = repo / "data" / "dashboard-data.json"
+    rm_summary_path = repo / "data" / "rm01ak-summary.json"
+    experience_assets = (
+        repo / "assets" / "dashboard-experience.css",
+        repo / "assets" / "dashboard-experience.js",
+    )
     workflow_dir = repo / ".github" / "workflows"
     if not html.is_file() or html.stat().st_size == 0:
         errors.append("index.html is missing or empty")
+    for asset in experience_assets:
+        if not asset.is_file() or asset.stat().st_size == 0:
+            errors.append(f"Experience asset is missing or empty: {asset.name}")
+    try:
+        rm_summary = json.loads(rm_summary_path.read_text(encoding="utf-8"))
+        for key in ("meta", "funds", "series", "counts"):
+            if key not in rm_summary:
+                errors.append(f"RM01AK summary is missing: {key}")
+    except Exception as exc:
+        errors.append(f"Invalid RM01AK summary: {exc}")
     try:
         data = json.loads(data_path.read_text(encoding="utf-8"))
     except Exception as exc:

@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import jobindsats_api as api
+from build_rm01ak_summary import write_summary
 
 BASE = Path(__file__).resolve().parents[1]
 OUT = BASE / "data" / "rm01ak.json"
@@ -208,6 +209,7 @@ def main() -> None:
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_summary(payload)
     print(f"RM01AK: {latest_status}, {len(observed)} a-kasser, {take} måneder, {sum(len(group['categories']) for group in subgroups.values())} undergrupper, 3 mdr. {series['three']['TOTAL'][cohort(latest_status,3)]} %, 6 mdr. {series['six']['TOTAL'][cohort(latest_status,6)]} %")
 
 
