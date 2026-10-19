@@ -8,6 +8,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import jobindsats_api as ji
+import jobindsats_patch as jp
 from fetch_sources import match_fund
 
 BASE = Path(__file__).resolve().parents[1]
@@ -280,20 +281,47 @@ def long_term(main, data, region):
     put_status(data, "jobLongTerm", table, latest, "antal langtidsledige personer på a-dagpenge")
 
 
+def has_region_value(spec, region_name):
+    """Kræv en egentlig værdi for regionen; et Område-hierarki med kun Hele landet tæller ikke."""
+    short = ji.norm(region_name).replace("region ", "").strip()
+    return any(
+        short and short in text
+        for hierarchy in ji.hierarchies(spec)
+        if ji.is_geo_hierarchy(hierarchy)
+        for _, text in ji.hierarchy_values(hierarchy)
+    )
+
+
 def exhausted_rights(main, data, region):
     table, spec = table_for(main, "jobExhaustedRights", ["opbrugt dagpengeret", "dimittender", "oevrige ledige"], ["efterfoelgende arbejdsmarkedsstatus"])
-    try:
-        rows = all_fund_rows(table, spec, 60, region)
-    except RuntimeError as exc:
-        data["meta"].setdefault("unsupportedModules", []).append("exhaustedRights")
+    if not has_region_value(spec, region):
+        # y01ud01di udgives kun for hele landet. Dashboardet viser derfor landstallene
+        # for den valgte a-kasse i regional visning og mærker dem tydeligt.
+        national = main.get("meta", {}).get("sourceStatus", {}).get("jobExhaustedRights", {})
+        unsupported = data["meta"].setdefault("unsupportedModules", [])
+        if "exhaustedRights" not in unsupported:
+            unsupported.append("exhaustedRights")
         data["meta"].setdefault("sourceStatus", {})["jobExhaustedRights"] = {
             "state": "unsupported", "source": "Jobindsats.dk / STAR", "dataset": table,
-            "area": data["meta"]["areaName"], "error": str(exc)[:300], "checkedAt": now_iso(),
+            "area": data["meta"]["areaName"], "nationalLatestPeriod": national.get("latestPeriod"),
+            "error": "Jobindsats udgiver kun opdelingen på dimittender og øvrige ledige for hele landet. Regional visning bruger derfor tallene for hele landet.",
+            "checkedAt": now_iso(),
         }
         return
+    dimittend_h, dimittend_selection = jp.exhausted_breakdown(spec)
+    rows = all_fund_rows(table, spec, 60, region, ((dimittend_h, dimittend_selection),))
     vcol = exact_col(rows, "Antal personer med opbrugt dagpengeret") or ji.best_col(rows, ["antal", "personer", "opbrugt", "dagpengeret"], ["andel", "pct"])
-    latest = store_timeseries(data, rows, "exhaustedRights", vcol, "persons")
-    put_status(data, "jobExhaustedRights", table, latest, "antal personer med opbrugt dagpengeret")
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    gcol = exact_col(rows, "Dimittend") or ji.best_col(rows, ["dimittend"], distinct=True)
+    series_by_fund = jp.exhausted_series(rows, data, lambda row: fund_code(row, fcol, data), vcol, gcol, pcol)
+    for code, block in series_by_fund.items():
+        data["funds"][code].setdefault("jobindsats", {})["exhaustedRights"] = block
+    latest = max((p for block in series_by_fund.values() for p in block["labels"]), key=pkey)
+    unsupported = data["meta"].get("unsupportedModules")
+    if isinstance(unsupported, list) and "exhaustedRights" in unsupported:
+        unsupported.remove("exhaustedRights")
+    put_status(data, "jobExhaustedRights", table, latest, "antal personer med opbrugt dagpengeret fordelt på dimittender og øvrige ledige")
 
 
 def sanctions(main, data, region):

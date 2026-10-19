@@ -342,7 +342,16 @@
     const primaryCode=document.getElementById('fundSelect')?.value,primaryName=DATA?.funds?.[primaryCode]?.name;
     Object.entries(charts||{}).forEach(([key,chart])=>{
       const module=moduleForTarget(key);if(!module||!chart?.data?.datasets)return;
-      chart.data.datasets.forEach(set=>{if(set.label===COMPARISON_SENTINEL)set.label=comparisonSeriesLabel(pair,module);else if(set.label===primaryName)set.label=primarySeriesLabel(module);});
+      chart.data.datasets.forEach(set=>{
+        if(set.label===COMPARISON_SENTINEL)set.label=comparisonSeriesLabel(pair,module);
+        else if(set.label===primaryName)set.label=primarySeriesLabel(module);
+        else if(key==='ex'&&typeof set.label==='string'){
+          /* DAK_EXHAUSTED_GROUP_LABELS_20261019 */
+          const otherSuffix=' · '+COMPARISON_SENTINEL,mainSuffix=primaryName?' · '+primaryName:'';
+          if(set.label.endsWith(otherSuffix))set.label=set.label.slice(0,-otherSuffix.length)+' · '+comparisonSeriesLabel(pair,module);
+          else if(mainSuffix&&set.label.endsWith(mainSuffix))set.label=set.label.slice(0,-mainSuffix.length)+' · '+primarySeriesLabel(module);
+        }
+      });
       chart.update('none');
     });
   }
@@ -378,8 +387,19 @@
       ['membersRawChart','members','values',num],['longRawChart','longTerm','persons',num],['dagChart','dagpenge','fulltime',num],['gradCountChart','graduates','persons',num],
       ['exhaustedChart','exhaustedRights','persons',num],['afterlonChart','afterlon','persons',num],['sanctionsTotalChart','sanctions','total',num]
     ];
-    specs.forEach(([id,module,key,formatter])=>addSeriesStrip(id,module,moduleData(primary,module),moduleData(other,module),key,pair,formatter));
+    specs.forEach(([id,module,key,formatter])=>{if(id==='exhaustedChart'&&addExhaustedGroupStrip(primary,other,pair))return;addSeriesStrip(id,module,moduleData(primary,module),moduleData(other,module),key,pair,formatter);});
     addTalkTotalStrip(primary,other,pair);
+  }
+
+  function addExhaustedGroupStrip(primary,other,pair){
+    const main=moduleData(primary,'exhaustedRights'),comparison=moduleData(other,'exhaustedRights'),wrap=document.getElementById('exhaustedChart')?.closest('.chart');
+    if(!wrap||!Array.isArray(main?.categories)||!Array.isArray(comparison?.categories)||!main.labels?.length||!comparison.labels?.length)return false;
+    const latest=last(main,'persons')?.period||main.labels[main.labels.length-1],mainIndex=main.labels.indexOf(latest),comparisonIndex=comparison.labels.includes(latest)?comparison.labels.indexOf(latest):comparison.labels.length-1,comparisonPeriod=comparison.labels[comparisonIndex];
+    const byKey=new Map(comparison.categories.map(item=>[item.key,item]));
+    const entries=main.categories.map(item=>({label:item.label,value:num(item.values?.[mainIndex])+' / '+num(byKey.get(item.key)?.values?.[comparisonIndex])}));
+    entries.push({label:'I alt',value:num(main.persons?.[mainIndex])+' / '+num(comparison.persons?.[comparisonIndex])});
+    appendStrip(wrap,entries,primarySeriesLabel('exhaustedRights')+' / '+comparisonSeriesLabel(pair,'exhaustedRights')+' · '+(latest===comparisonPeriod?period(latest):period(latest)+' / '+period(comparisonPeriod)));
+    return true;
   }
 
   function addTalkTotalStrip(primary,other,pair){

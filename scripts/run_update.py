@@ -127,6 +127,25 @@ def validate():
     if sanctions_errors:
         raise RuntimeError("Ufuldstændige rådighedssanktioner: " + "; ".join(sanctions_errors))
 
+    exhausted_keys = ["graduate_one_year", "graduate_two_year", "other_unemployed"]
+    exhausted_errors = []
+    for code, fund in funds.items():
+        block = fund.get("jobindsats", {}).get("exhaustedRights", {})
+        labels = block.get("labels", [])
+        categories = block.get("categories", [])
+        if [item.get("key") for item in categories] != exhausted_keys:
+            exhausted_errors.append(f"{code}: grupper {[item.get('key') for item in categories]}")
+            continue
+        if len(block.get("persons", [])) != len(labels) or any(len(item.get("values", [])) != len(labels) for item in categories):
+            exhausted_errors.append(f"{code}: labels/værdier har forskellig længde")
+    if exhausted_errors:
+        raise RuntimeError("Opbrugt dagpengeret mangler dimittendgrupper: " + "; ".join(exhausted_errors))
+    exhausted_total = total.get("jobindsats", {}).get("exhaustedRights", {})
+    latest_parts = [item["values"][-1] for item in exhausted_total["categories"]]
+    latest_total = exhausted_total["persons"][-1]
+    if any(value is None for value in latest_parts) or latest_total is None or sum(latest_parts) != latest_total:
+        raise RuntimeError(f"Opbrugt dagpengeret for I alt summer ikke: {latest_parts} != {latest_total}")
+
     total_jobs = total.get("jobindsats", {})
     period_checks = [
         ("dagpenge", "labels", "jobDagpenge"),
@@ -194,6 +213,7 @@ def validate():
         'Samtaleformer i a-kassen',
         'Efterløn',
         'Varighed af afsluttede a-dagpengeforløb',
+        'DAK_EXHAUSTED_GROUPS_20261019',
     ]
     missing = [item for item in required if item not in text]
     if missing:
@@ -210,6 +230,7 @@ def validate():
         "new Option('I alt',total)",
         "Sammenligning:",
         "DAK_GEOGRAPHY_CONTEXT_20260903",
+        "DAK_EXHAUSTED_GROUP_LABELS_20261019",
     ]
     missing_personal_view = [item for item in required_personal_view if item not in personal_view]
     if missing_personal_view:
