@@ -1,0 +1,103 @@
+OK: UI-patch anvendt
+A-kasseindsigt: partial
+AUA01 ok 2026M08 AUA01
+AUP03 ok 2026M08 AUP03
+AULK08 ok 2026M05 AULK08
+jobDagpenge ok 2026M09 y01a02
+jobDimittend ok 2026M08 y01dia02
+jobDagpengeforbrug stale 2026M07 None
+jobOverlevelse stale 2025Q02 None
+jobStatusAfter stale 2026Q01 None
+jobTalkForms ok 2026M07
+jobAfterlon ok 2026M08
+jobAfterlonContrib ok 2025Y01
+jobLongTerm ok 2026M09
+jobExhaustedRights ok 2026M07
+jobSanctions ok 2026Q02
+jobDagpengeforbrug ok 2026M08
+jobOverlevelse ok 2025Q02
+jobStatusAfter ok 2026Q01
+OK: UI-patch anvendt
+jobCompletedDuration ok y01a27 2026M08 ['under 2 uger', '2-4 uger', '5-13 uger', '14-26 uger', '27-39 uger', '40-52 uger', 'over 52 uger']
+DAK-navnestandard anvendt på 21 a-kasser
+OK: A-kasseindsigt bestod datavalidering
+Region Hovedstaden 2026M08 2026M08 22 /home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/data/regions/hovedstaden.json
+Region Sjælland 2026M08 2026M08 22 /home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/data/regions/sjaelland.json
+Region Syddanmark 2026M08 2026M08 22 /home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/data/regions/syddanmark.json
+Region Midtjylland 2026M08 2026M08 22 /home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/data/regions/midtjylland.json
+Region Nordjylland 2026M08 2026M08 22 /home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/data/regions/nordjylland.json
+Region Hovedstaden jobDagpenge ok
+Region Hovedstaden jobDimittend ok
+Region Hovedstaden jobTalkForms pending
+Region Hovedstaden jobAfterlon ok
+Region Hovedstaden jobAfterlonContrib ok
+Region Hovedstaden jobLongTerm ok
+Region Hovedstaden jobExhaustedRights unsupported
+Region Hovedstaden jobSanctions ok
+Region Hovedstaden jobDagpengeforbrug ok
+Region Hovedstaden jobOverlevelse ok
+Region Hovedstaden jobStatusAfter ok
+Region Hovedstaden jobCompletedDuration ok
+Region Sjælland jobDagpenge ok
+Region Sjælland jobDimittend ok
+Region Sjælland jobTalkForms pending
+Region Sjælland jobAfterlon ok
+Region Sjælland jobAfterlonContrib ok
+Region Sjælland jobLongTerm ok
+Region Sjælland jobExhaustedRights unsupported
+Region Sjælland jobSanctions ok
+Region Sjælland jobDagpengeforbrug ok
+Region Sjælland jobOverlevelse ok
+Region Sjælland jobStatusAfter ok
+Region Sjælland jobCompletedDuration ok
+Region Syddanmark jobDagpenge ok
+Region Syddanmark jobDimittend ok
+Region Syddanmark jobTalkForms pending
+Region Syddanmark jobAfterlon ok
+Region Syddanmark jobAfterlonContrib ok
+Region Syddanmark jobLongTerm ok
+Region Syddanmark jobExhaustedRights unsupported
+Region Syddanmark jobSanctions ok
+Region Syddanmark jobDagpengeforbrug ok
+Region Syddanmark jobOverlevelse ok
+Region Syddanmark jobStatusAfter ok
+Region Syddanmark jobCompletedDuration ok
+Region Midtjylland jobDagpenge ok
+Region Midtjylland jobDimittend ok
+Region Midtjylland jobTalkForms pending
+Region Midtjylland jobAfterlon ok
+Region Midtjylland jobAfterlonContrib ok
+Region Midtjylland jobLongTerm ok
+Region Midtjylland jobExhaustedRights unsupported
+Region Midtjylland jobSanctions ok
+Region Midtjylland jobDagpengeforbrug ok
+Region Midtjylland jobOverlevelse ok
+Region Midtjylland jobStatusAfter ok
+Region Midtjylland jobCompletedDuration ok
+Region Nordjylland jobDagpenge ok
+Region Nordjylland jobDimittend ok
+Region Nordjylland jobTalkForms pending
+Region Nordjylland jobAfterlon ok
+Region Nordjylland jobAfterlonContrib ok
+Region Nordjylland jobLongTerm ok
+Region Nordjylland jobExhaustedRights unsupported
+Region Nordjylland jobSanctions ok
+Region Nordjylland jobDagpengeforbrug ok
+Region Nordjylland jobOverlevelse ok
+Region Nordjylland jobStatusAfter ok
+Region Nordjylland jobCompletedDuration ok
+Region Hovedstaden jobTalkForms ok 2026M07
+Region Sjælland jobTalkForms ok 2026M07
+Region Syddanmark jobTalkForms ok 2026M07
+Region Midtjylland jobTalkForms ok 2026M07
+Region Nordjylland jobTalkForms ok 2026M07
+OK: regionale Jobindsats-data inkl. samtaleformer hentet
+hovedstaden: ingen regionale Jobindsats-observationer for 05 Børne- og Ungdomspædagogernes Landsdækkende A-kasse
+sjaelland: ingen regionale Jobindsats-observationer for 05 Børne- og Ungdomspædagogernes Landsdækkende A-kasse
+syddanmark: ingen regionale Jobindsats-observationer for 05 Børne- og Ungdomspædagogernes Landsdækkende A-kasse
+midtjylland: ingen regionale Jobindsats-observationer for 05 Børne- og Ungdomspædagogernes Landsdækkende A-kasse
+nordjylland: ingen regionale Jobindsats-observationer for 05 Børne- og Ungdomspædagogernes Landsdækkende A-kasse
+OK: regionale A-kassedata og Jobindsats-moduler bestod validering
+OK: dashboard repository passed structural validation
+I alt: {"name": "I alt", "periods": 120, "latest": "2026M07", "persons": 694, "groups": {"graduate_one_year": {"label": "Dimittender med étårig dagpengeret", "sourceLabel": "1 års dimittendret", "latest": 322}, "graduate_two_year": {"label": "Dimittender med toårig dagpengeret", "sourceLabel": "Øvrige dimittender", "latest": 31}, "other_unemployed": {"label": "Øvrige ledige", "sourceLabel": "Øvrige ledige", "latest": 341}}}
+exit_code=0

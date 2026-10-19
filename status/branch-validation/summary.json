@@ -1,0 +1,591 @@
+{
+  "status": {
+    "state": "ok",
+    "source": "Jobindsats.dk / STAR",
+    "dataset": "y01ud01di",
+    "latestPeriod": "2026M07",
+    "unit": "antal personer med opbrugt dagpengeret fordelt på dimittender og øvrige ledige",
+    "checkedAt": "2026-10-19T21:50:39+02:00",
+    "note": "A-kassefordelingen følger seneste udbetalende a-kasse. Grupperne er Jobindsats' kategorier 1 års dimittendret, Øvrige dimittender og Øvrige ledige. Opdelingen udgives kun for hele landet."
+  },
+  "funds": {
+    "TOT": {
+      "name": "I alt",
+      "periods": 120,
+      "latest": "2026M07",
+      "persons": 694,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 322
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 31
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 341
+        }
+      }
+    },
+    "11": {
+      "name": "A-kassen Frie",
+      "periods": 105,
+      "latest": "2026M07",
+      "persons": 9,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": null
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 8
+        }
+      }
+    },
+    "48": {
+      "name": "Akademikernes A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 158,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 124
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 7
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 27
+        }
+      }
+    },
+    "31": {
+      "name": "ASE",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 35,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 8
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 27
+        }
+      }
+    },
+    "05": {
+      "name": "Børne- og Ungdomspædagogernes Landsdækkende A-kasse",
+      "periods": 105,
+      "latest": "2026M07",
+      "persons": 5,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": null
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 3
+        }
+      }
+    },
+    "40": {
+      "name": "Det Faglige Hus - A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 56,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 12
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 4
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 40
+        }
+      }
+    },
+    "46": {
+      "name": "Din Faglige A-kasse",
+      "periods": 105,
+      "latest": "2026M07",
+      "persons": 9,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": null
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 8
+        }
+      }
+    },
+    "06": {
+      "name": "Din Sundhedsfaglige A-kasse",
+      "periods": 93,
+      "latest": "2026M07",
+      "persons": 5,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": null
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": null
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 3
+        }
+      }
+    },
+    "44": {
+      "name": "FOAs A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 17,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 3
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": null
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 13
+        }
+      }
+    },
+    "43": {
+      "name": "Faglig Fælles A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 33,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": null
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 31
+        }
+      }
+    },
+    "13": {
+      "name": "A-kassen A&Til",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 61,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 36
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 4
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 21
+        }
+      }
+    },
+    "15": {
+      "name": "HK A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 57,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 29
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": null
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 26
+        }
+      }
+    },
+    "41": {
+      "name": "A-kassen for Journalistik, Kommunikation & Sprog",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 16,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 5
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 11
+        }
+      }
+    },
+    "19": {
+      "name": "Kristelig A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 60,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 6
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": null
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 52
+        }
+      }
+    },
+    "22": {
+      "name": "Lærernes a-kasse",
+      "periods": 105,
+      "latest": "2026M07",
+      "persons": 15,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 6
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": null
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 7
+        }
+      }
+    },
+    "21": {
+      "name": "Lederne A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 14,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 0
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 14
+        }
+      }
+    },
+    "23": {
+      "name": "Magistrenes A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 63,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 42
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 5
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 16
+        }
+      }
+    },
+    "26": {
+      "name": "Metal A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 12,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 6
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": null
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 4
+        }
+      }
+    },
+    "49": {
+      "name": "Min A-kasse",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 29,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 13
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 16
+        }
+      }
+    },
+    "39": {
+      "name": "CA A-kasse & Karriereudvikling",
+      "periods": 106,
+      "latest": "2026M07",
+      "persons": 25,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 14
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": null
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 10
+        }
+      }
+    },
+    "33": {
+      "name": "Socialpædagogernes A-kasse",
+      "periods": 95,
+      "latest": "2026M07",
+      "persons": null,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 0
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": null
+        }
+      }
+    },
+    "36": {
+      "name": "Teknikernes A-kasse",
+      "periods": 104,
+      "latest": "2026M07",
+      "persons": 14,
+      "groups": {
+        "graduate_one_year": {
+          "label": "Dimittender med étårig dagpengeret",
+          "sourceLabel": "1 års dimittendret",
+          "latest": 11
+        },
+        "graduate_two_year": {
+          "label": "Dimittender med toårig dagpengeret",
+          "sourceLabel": "Øvrige dimittender",
+          "latest": 0
+        },
+        "other_unemployed": {
+          "label": "Øvrige ledige",
+          "sourceLabel": "Øvrige ledige",
+          "latest": 3
+        }
+      }
+    }
+  },
+  "regions": {
+    "hovedstaden": {
+      "status": {
+        "state": "unsupported",
+        "source": "Jobindsats.dk / STAR",
+        "dataset": "y01ud01di",
+        "area": "Region Hovedstaden",
+        "nationalLatestPeriod": "2026M07",
+        "error": "Jobindsats udgiver kun opdelingen på dimittender og øvrige ledige for hele landet. Regional visning bruger derfor tallene for hele landet.",
+        "checkedAt": "2026-10-19T21:52:23+02:00"
+      },
+      "unsupportedModules": [
+        "exhaustedRights"
+      ]
+    },
+    "midtjylland": {
+      "status": {
+        "state": "unsupported",
+        "source": "Jobindsats.dk / STAR",
+        "dataset": "y01ud01di",
+        "area": "Region Midtjylland",
+        "nationalLatestPeriod": "2026M07",
+        "error": "Jobindsats udgiver kun opdelingen på dimittender og øvrige ledige for hele landet. Regional visning bruger derfor tallene for hele landet.",
+        "checkedAt": "2026-10-19T21:54:02+02:00"
+      },
+      "unsupportedModules": [
+        "exhaustedRights"
+      ]
+    },
+    "nordjylland": {
+      "status": {
+        "state": "unsupported",
+        "source": "Jobindsats.dk / STAR",
+        "dataset": "y01ud01di",
+        "area": "Region Nordjylland",
+        "nationalLatestPeriod": "2026M07",
+        "error": "Jobindsats udgiver kun opdelingen på dimittender og øvrige ledige for hele landet. Regional visning bruger derfor tallene for hele landet.",
+        "checkedAt": "2026-10-19T21:54:35+02:00"
+      },
+      "unsupportedModules": [
+        "exhaustedRights"
+      ]
+    },
+    "sjaelland": {
+      "status": {
+        "state": "unsupported",
+        "source": "Jobindsats.dk / STAR",
+        "dataset": "y01ud01di",
+        "area": "Region Sjælland",
+        "nationalLatestPeriod": "2026M07",
+        "error": "Jobindsats udgiver kun opdelingen på dimittender og øvrige ledige for hele landet. Regional visning bruger derfor tallene for hele landet.",
+        "checkedAt": "2026-10-19T21:52:58+02:00"
+      },
+      "unsupportedModules": [
+        "exhaustedRights"
+      ]
+    },
+    "syddanmark": {
+      "status": {
+        "state": "unsupported",
+        "source": "Jobindsats.dk / STAR",
+        "dataset": "y01ud01di",
+        "area": "Region Syddanmark",
+        "nationalLatestPeriod": "2026M07",
+        "error": "Jobindsats udgiver kun opdelingen på dimittender og øvrige ledige for hele landet. Regional visning bruger derfor tallene for hele landet.",
+        "checkedAt": "2026-10-19T21:53:30+02:00"
+      },
+      "unsupportedModules": [
+        "exhaustedRights"
+      ]
+    }
+  }
+}
