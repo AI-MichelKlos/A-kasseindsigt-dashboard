@@ -124,7 +124,8 @@ function draw(){const f=fund();if(!f)return;const active=window.__dakLazySection
   rawJobTime=function(k,id,moduleKey,field,beginZero=false){
     const selected=fund(),primary=selected?.jobindsats?.exhaustedRights,primaryGroups=groups(primary);
     if(k!=='ex'||!primary?.labels?.length||!primaryGroups)return baseRawJobTime(k,id,moduleKey,field,beginZero);
-    const labels=primary.labels.slice(-+$('periodSelect').value),others=rawCompareCodes().map(code=>DATA.funds[code]).filter(item=>groups(item?.jobindsats?.exhaustedRights)),suffix=others.length?' · '+selected.name:'',sets=[];
+    /* Brug compareCodes her: opbrugt dagpengeret skal kunne sammenligne I alt og en a-kasse i begge retninger. */
+    const labels=primary.labels.slice(-+$('periodSelect').value),others=compareCodes().map(code=>DATA.funds[code]).filter(item=>groups(item?.jobindsats?.exhaustedRights)),suffix=others.length?' · '+selected.name:'',sets=[];
     primaryGroups.forEach((group,index)=>sets.push({label:group.label+suffix,data:groupValues(primary,group,labels),borderColor:GROUP_COLORS[index],backgroundColor:GROUP_COLORS[index],pointRadius:0,borderWidth:2.6,tension:.18,spanGaps:false}));
     others.forEach(item=>{const block=item.jobindsats.exhaustedRights;groups(block).forEach((group,index)=>sets.push({label:group.label+' · '+item.name,data:groupValues(block,group,labels),borderColor:GROUP_COLORS[index],backgroundColor:GROUP_COLORS[index],borderDash:[6,4],pointRadius:0,borderWidth:2,tension:.18,spanGaps:false}));});
     lineChart(k,id,labels,sets,false,beginZero);
