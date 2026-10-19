@@ -352,6 +352,8 @@
           else if(mainSuffix&&set.label.endsWith(mainSuffix))set.label=set.label.slice(0,-mainSuffix.length)+' · '+primarySeriesLabel(module);
         }
       });
+      /* Længere etiketter ændrer forklaringens højde; stop startanimationen, så linjerne tegnes i det nye plotområde. */
+      if(key==='ex')chart.stop();
       chart.update('none');
     });
   }
