@@ -293,28 +293,133 @@ def long_term(data):
     )
 
 
+# Jobindsats y01ud01di: dimensionen "Dimittend" har værdierne
+# "1 års dimittendret", "Øvrige dimittender", "Øvrige ledige" og "Ledige i alt".
+# Rækker uden personer udelades af API'et (= 0); diskretionerede celler er null.
+EXHAUSTED_GROUPS = {
+    "graduate_one_year": "Dimittender med étårig dagpengeret",
+    "graduate_two_year": "Dimittender med toårig dagpengeret",
+    "other_unemployed": "Øvrige ledige",
+}
+EXHAUSTED_TOTAL = "total"
+
+
+def exhausted_group(value):
+    text = ji.norm(value)
+    if not text:
+        return None
+    if "i alt" in text:
+        return EXHAUSTED_TOTAL
+    if "oevrige ledige" in text:
+        return "other_unemployed"
+    if "dimittend" in text and any(word in text for word in ("1 aar", "1aar", "etaarig", "et aar")):
+        return "graduate_one_year"
+    if "dimittend" in text and any(word in text for word in ("oevrige", "2 aar", "2aar", "toaarig", "to aar")):
+        return "graduate_two_year"
+    return None
+
+
+def exhausted_breakdown(spec):
+    """Find dimittend-hierarkiet og de præcise value_id'er for de tre grupper og totalen."""
+    hierarchy = ji.find_hierarchy(spec, ["dimittend"])
+    if "dimittend" not in ji.norm(f"{hierarchy.get('hierarchy_id', '')} {hierarchy.get('hierarchy_name', '')}"):
+        raise RuntimeError("Jobindsats-tabellen har ikke en dimittenddimension")
+    found = defaultdict(list)
+    for value_id, label in ji.hierarchy_values(hierarchy):
+        group = exhausted_group(label)
+        if group:
+            found[group].append(value_id)
+    wanted = [*EXHAUSTED_GROUPS, EXHAUSTED_TOTAL]
+    missing = [key for key in wanted if not found.get(key)]
+    ambiguous = {key: ids for key, ids in found.items() if len(ids) > 1}
+    if missing or ambiguous:
+        raise RuntimeError(f"Dimittenddimensionen kan ikke mappes entydigt: mangler {missing}, flertydige {ambiguous}")
+    return hierarchy, ",".join(found[key][0] for key in wanted)
+
+
+def exhausted_series(rows, data, code_for_row, vcol, gcol, pcol):
+    """Saml rækker pr. a-kasse og periode i de tre grupper plus total og kontrollér summen."""
+    grouped = defaultdict(lambda: defaultdict(dict))
+    source_labels = {}
+    for row in rows:
+        group = exhausted_group(row.get(gcol))
+        if group is None:
+            raise RuntimeError(f"Ukendt dimittendgruppe i Jobindsats-data: {row.get(gcol)!r}")
+        source_labels.setdefault(group, str(row.get(gcol)).strip())
+        code = code_for_row(row)
+        period = str(row.get(pcol) or "")
+        if code in data["funds"] and period:
+            grouped[code][period][group] = ji.number(row.get(vcol))
+    missing = [key for key in EXHAUSTED_GROUPS if key not in source_labels]
+    if missing:
+        raise RuntimeError(f"Opbrugt dagpengeret mangler dimittendgrupper: {missing}")
+    if not grouped:
+        raise RuntimeError("Opbrugt dagpengeret gav ingen a-kassedata")
+    result = {}
+    for code, periods in grouped.items():
+        labels = sorted(periods, key=pkey)
+        categories = []
+        for key, label in EXHAUSTED_GROUPS.items():
+            # En manglende række betyder 0 personer; None betyder diskretioneret værdi.
+            values = [periods[p][key] if key in periods[p] else 0 for p in labels]
+            categories.append({"key": key, "label": label, "sourceLabel": source_labels[key], "values": values})
+        persons = []
+        for index, period in enumerate(labels):
+            parts = [item["values"][index] for item in categories]
+            total = periods[period].get(EXHAUSTED_TOTAL)
+            if total is None and EXHAUSTED_TOTAL not in periods[period] and all(v is not None for v in parts):
+                total = sum(parts)
+            if total is not None and all(v is not None for v in parts) and abs(sum(parts) - total) > 1e-9:
+                raise RuntimeError(
+                    f"Dimittendgrupperne summer ikke til Ledige i alt for {code} {period}: {parts} != {total}"
+                )
+            persons.append(total)
+        result[code] = {"labels": labels, "persons": persons, "categories": categories}
+    return result
+
+
 def exhausted_rights(data):
     table, spec = discover(
         ["opbrugt dagpengeret", "dimittender", "oevrige ledige"],
         ["efterfoelgende arbejdsmarkedsstatus"],
     )
     fund_h, selection = setup_spec(spec)
-    rows = ji.query(table, spec, "latest:120", ((fund_h, selection),))
+    dimittend_h, dimittend_selection = exhausted_breakdown(spec)
+    rows = query_up_to(table, spec, 120, ((fund_h, selection), (dimittend_h, dimittend_selection)))
+    total_rows = query_up_to(table, spec, 120, ((fund_h, ji.total_value(fund_h)), (dimittend_h, dimittend_selection)))
+    for row in total_rows:
+        row["_dak_force_total"] = True
+    rows.extend(total_rows)
     vcol = exact_col(rows, "Antal personer med opbrugt dagpengeret") or ji.best_col(
         rows,
         ["antal", "personer", "opbrugt", "dagpengeret"],
         ["andel", "pct", "beskaeftigelse", "uddannelse"],
     )
-    latest = store_timeseries(data, rows, "exhaustedRights", vcol, "persons")
+    fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
+    pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
+    gcol = exact_col(rows, "Dimittend") or ji.best_col(rows, ["dimittend"], distinct=True)
+    series_by_fund = exhausted_series(rows, data, lambda row: row_fund_code(row, fcol, data), vcol, gcol, pcol)
+    total_code = data["meta"]["totalFundCode"]
+    total_block = series_by_fund.get(total_code)
+    if not total_block:
+        raise RuntimeError("Opbrugt dagpengeret mangler I alt")
+    latest = max((p for block in series_by_fund.values() for p in block["labels"]), key=pkey)
+    if total_block["labels"][-1] != latest:
+        raise RuntimeError("Opbrugt dagpengeret mangler seneste periode for I alt")
+    empty = [item["sourceLabel"] for item in total_block["categories"] if item["values"][-1] is None]
+    if empty:
+        raise RuntimeError(f"Opbrugt dagpengeret har tomme grupper for I alt i {latest}: {empty}")
+    for code, block in series_by_fund.items():
+        data["funds"][code]["jobindsats"]["exhaustedRights"] = block
     put_status(
         data,
         "jobExhaustedRights",
         table,
         latest,
-        "antal personer med opbrugt dagpengeret",
-        "A-kassefordelingen følger seneste udbetalende a-kasse.",
+        "antal personer med opbrugt dagpengeret fordelt på dimittender og øvrige ledige",
+        "A-kassefordelingen følger seneste udbetalende a-kasse. Grupperne er Jobindsats' kategorier "
+        "1 års dimittendret, Øvrige dimittender og Øvrige ledige. Opdelingen udgives kun for hele landet.",
     )
-
 
 
 def sanctions(data):

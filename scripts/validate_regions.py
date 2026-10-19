@@ -76,6 +76,8 @@ def main() -> None:
         exhausted_state = statuses.get("jobExhaustedRights", {}).get("state")
         if exhausted_state not in {"ok", "unsupported"}:
             raise RuntimeError(f"{slug}: jobExhaustedRights har ugyldig status {exhausted_state}")
+        if exhausted_state == "unsupported" and "exhaustedRights" not in meta.get("unsupportedModules", []):
+            raise RuntimeError(f"{slug}: opbrugt dagpengeret er ikke markeret til landsvisning")
 
         total_fund = funds.get(total, {})
         members = total_fund.get("members", {})
@@ -102,6 +104,10 @@ def main() -> None:
             absent = [module for module in REQUIRED_JOB_MODULES if not jobs.get(module)]
             if exhausted_state == "ok" and not jobs.get("exhaustedRights"):
                 absent.append("exhaustedRights")
+            if exhausted_state == "ok" and jobs.get("exhaustedRights"):
+                keys = [item.get("key") for item in jobs["exhaustedRights"].get("categories", [])]
+                if keys != ["graduate_one_year", "graduate_two_year", "other_unemployed"]:
+                    absent.append("exhaustedRights-grupper")
             if absent:
                 missing.append(f"{code}: {','.join(absent)}")
         if missing:
