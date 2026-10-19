@@ -36,6 +36,8 @@
       id: 'dakComparisonStyle',
       beforeUpdate(chart) {
         if (!COMPARISON_CHARTS.has(chart.canvas?.id)) return;
+        // Grafer med egne serier pr. gruppe (fx opbrugt dagpengeret) styrer selv farverne.
+        if (chart.data.datasets.some(dataset => dataset.dakKeepStyle)) return;
         const line = chart.config.type === 'line';
         chart.data.datasets.forEach((dataset, index) => {
           const total = index > 0 && /^(I alt|Total)(?:\s|$)/i.test(String(dataset.label || ''));

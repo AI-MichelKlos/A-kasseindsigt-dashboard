@@ -118,15 +118,17 @@ function draw(){const f=fund();if(!f)return;const active=window.__dakLazySection
 <script>
 /* DAK_EXHAUSTED_GROUPS_20261019 */
 (function(){
-  const baseRawJobTime=rawJobTime,baseSetSources=setSources,GROUP_COLORS=[C.gd,C.b,C.o];
+  const baseRawJobTime=rawJobTime,baseSetSources=setSources,GROUP_COLORS=['#3d6b47','#4a90c4','#9a5b34'];
+  const lastPoint=size=>context=>{const data=context.dataset.data||[];let index=data.length-1;while(index>=0&&data[index]==null)index-=1;return context.dataIndex===index?size:0;};
+  const groupSet=(label,data,index,comparison)=>({label,data,dakKeepStyle:true,borderColor:GROUP_COLORS[index],backgroundColor:GROUP_COLORS[index],borderDash:comparison?[6,4]:[],borderWidth:comparison?2:3,pointRadius:lastPoint(comparison?3:4),pointHoverRadius:6,tension:.18,spanGaps:false});
   const groups=block=>Array.isArray(block?.categories)&&block.categories.length===3?block.categories:null;
   const groupValues=(block,group,labels)=>mapValues({labels:block.labels,values:group.values},'values',labels);
   rawJobTime=function(k,id,moduleKey,field,beginZero=false){
     const selected=fund(),primary=selected?.jobindsats?.exhaustedRights,primaryGroups=groups(primary);
     if(k!=='ex'||!primary?.labels?.length||!primaryGroups)return baseRawJobTime(k,id,moduleKey,field,beginZero);
     const labels=primary.labels.slice(-+$('periodSelect').value),others=rawCompareCodes().map(code=>DATA.funds[code]).filter(item=>groups(item?.jobindsats?.exhaustedRights)),suffix=others.length?' · '+selected.name:'',sets=[];
-    primaryGroups.forEach((group,index)=>sets.push({label:group.label+suffix,data:groupValues(primary,group,labels),borderColor:GROUP_COLORS[index],backgroundColor:GROUP_COLORS[index],pointRadius:0,borderWidth:2.6,tension:.18,spanGaps:false}));
-    others.forEach(item=>{const block=item.jobindsats.exhaustedRights;groups(block).forEach((group,index)=>sets.push({label:group.label+' · '+item.name,data:groupValues(block,group,labels),borderColor:GROUP_COLORS[index],backgroundColor:GROUP_COLORS[index],borderDash:[6,4],pointRadius:0,borderWidth:2,tension:.18,spanGaps:false}));});
+    primaryGroups.forEach((group,index)=>sets.push(groupSet(group.label+suffix,groupValues(primary,group,labels),index,false)));
+    others.forEach(item=>{const block=item.jobindsats.exhaustedRights;groups(block).forEach((group,index)=>sets.push(groupSet(group.label+' · '+item.name,groupValues(block,group,labels),index,true)));});
     lineChart(k,id,labels,sets,false,beginZero);
   };
   setSources=function(){
