@@ -464,11 +464,15 @@
     document.querySelectorAll('#dashboard .card').forEach(card => {
       if (!card.querySelector('canvas')) return;
       const heading = card.querySelector(':scope > h3');
-      if (!heading || heading.querySelector('.figure-number')) return;
-      const label = document.createElement('span');
-      label.className = 'figure-number';
-      label.textContent = 'Figur ' + (++figure) + ': ';
-      heading.prepend(label);
+      if (!heading) return;
+      let label = heading.querySelector('.figure-number');
+      if (!label) {
+        label = document.createElement('span');
+        label.className = 'figure-number';
+        heading.prepend(label);
+      }
+      const visible = !card.closest('section[hidden]') && !card.hidden;
+      label.textContent = visible ? 'Figur ' + (++figure) + ': ' : '';
     });
   }
 
@@ -481,6 +485,9 @@
 
     setupOverview();
     numberFigures();
+    const figureSections = document.querySelectorAll('#dashboard > section');
+    const figureObserver = new MutationObserver(numberFigures);
+    figureSections.forEach(section => figureObserver.observe(section, { attributes: true, attributeFilter: ['hidden'] }));
     const sections = setupSections();
     setupNavigation(sections);
     setupFilters();
