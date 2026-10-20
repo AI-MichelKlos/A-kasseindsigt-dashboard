@@ -459,6 +459,19 @@
     });
   }
 
+  function numberFigures() {
+    let figure = 0;
+    document.querySelectorAll('#dashboard .card').forEach(card => {
+      if (!card.querySelector('canvas')) return;
+      const heading = card.querySelector(':scope > h3');
+      if (!heading || heading.querySelector('.figure-number')) return;
+      const label = document.createElement('span');
+      label.className = 'figure-number';
+      label.textContent = 'Figur ' + (++figure) + ': ';
+      heading.prepend(label);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const skip = document.createElement('a');
     skip.className = 'skip-link';
@@ -467,6 +480,7 @@
     document.body.prepend(skip);
 
     setupOverview();
+    numberFigures();
     const sections = setupSections();
     setupNavigation(sections);
     setupFilters();
