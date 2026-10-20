@@ -1,3 +1,4 @@
-status: ok
-tid_utc: 2026-10-20T18:32:34Z
+status: fejl
+tid_utc: 2026-10-20T18:32:45Z
 dato_dk: 2026-10-20
+fejl: Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/patch_ui.py", line 126, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/patch_ui.py", line 98, in main raise RuntimeError("Kunne ikke finde CSS-markør til periodefelt") RuntimeError: Kunne ikke finde CSS-markør til periodefelt 
