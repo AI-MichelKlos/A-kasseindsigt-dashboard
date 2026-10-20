@@ -10,10 +10,10 @@
   --dak-orange: #e07a40;
   --dak-good: #2f7d4a;
   --dak-bad: #b3433f;
-  --control-height: 116px;
+  
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--control-height) + 62px); }
+html { scroll-behavior: smooth; scroll-padding-top: 62px; }
 body { background: var(--bg); color: var(--ink); font-family: "Segoe UI", Arial, sans-serif; }
 a, button, select, summary { touch-action: manipulation; }
 a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible, input:focus-visible {
@@ -37,7 +37,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .skip-link:focus { transform: translateY(0); }
 
 .control-band {
-  position: sticky;
+  position: static;
   z-index: 90;
   top: 0;
   border-bottom-color: var(--grid);
@@ -63,7 +63,7 @@ body.has-comparison .comparison-region-control { display: block; }
 .section-nav {
   position: sticky;
   z-index: 80;
-  top: var(--control-height);
+  top: 0;
   background: rgba(245, 248, 245, .96);
   border-bottom: 1px solid var(--grid);
   backdrop-filter: blur(10px);
@@ -152,7 +152,7 @@ main { padding-top: 22px; }
 .delta-bad { color: var(--dak-bad); }
 .delta-neutral { color: var(--muted); }
 
-section { scroll-margin-top: calc(var(--control-height) + 64px); }
+section { scroll-margin-top: 62px; }
 section h2 { color: var(--ink); }
 section > p { max-width: 850px; }
 .card {
@@ -224,7 +224,7 @@ section > p { max-width: 850px; }
 
 @media (max-width: 720px) {
   :root { --control-height: 54px; }
-  html { scroll-padding-top: 112px; }
+  html { scroll-padding-top: 56px; }
   header { padding: 25px 18px; }
   header .sub { font-size: .9rem; }
   .control-band { padding: 0 16px !important; }
@@ -246,7 +246,7 @@ section > p { max-width: 850px; }
   .control-band .controls.with-regions { display: none; grid-template-columns: 1fr; padding-top: 0; max-height: calc(100vh - 70px); overflow-y: auto; }
   .control-band.filters-open .controls.with-regions { display: grid; }
   .control-band .controls.with-regions > .pill { justify-self: start; }
-  .section-nav { top: 52px; }
+  .section-nav { top: 0; }
   .section-nav-inner { padding: 8px 16px; }
   main { padding-left: 16px; padding-right: 16px; }
   .insight-summary { grid-template-columns: 1fr; gap: 3px; }
@@ -255,7 +255,7 @@ section > p { max-width: 850px; }
   .section-reveal { display: block; }
   section:not([data-expanded="true"]) .section-body { display: none; }
   section[data-expanded="true"] .section-body { display: block; }
-  section { margin-top: 28px; scroll-margin-top: 108px; }
+  section { margin-top: 28px; scroll-margin-top: 56px; }
   section > p { margin-bottom: 10px; }
   .chart { height: 300px; min-height: 260px; }
   .card { padding: 16px; }
