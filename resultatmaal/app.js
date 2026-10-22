@@ -146,11 +146,13 @@
     byId('cohort-context').textContent=`Vi følger personer, der blev nyledige i ${label(p)}, og viser, hvor stor en andel der er i job eller uddannelse i ${label(shift(p,3))} og ${label(shift(p,6))}.`;
     const points=codes.flatMap(code=>[['three',3],['six',6]].map(([which,offset])=>({
       code,which,offset,value:view.series[which][code]?.[p]??null,
-      count:view.counts[which][code]?.[p],month:shift(p,offset)
+      count:view.counts[which][code]?.[p],month:shift(p,offset),pending:shift(p,offset)>data.meta.latestStatusMonth
     })));
+    const pendingOffsets=[...new Set(points.filter(v=>v.pending).map(v=>v.offset))];
+    if(pendingOffsets.length)byId('cohort-context').textContent+=` Resultatet efter ${pendingOffsets.join(' og ')} måneder er endnu ikke opgjort. Seneste tilgængelige opgørelsesmåned er ${label(data.meta.latestStatusMonth)}.`;
     const canvas=byId('cohort-chart');
     canvas.parentElement.style.minWidth=`${Math.max(260,codes.length*240)}px`;
-    canvas.setAttribute('aria-label',points.map(v=>`${data.funds[v.code].short}, efter ${v.offset} måneder, ${label(v.month)}: ${pct(v.value)}`).join('. '));
+    canvas.setAttribute('aria-label',points.map(v=>`${data.funds[v.code].short}, efter ${v.offset} måneder, ${label(v.month)}: ${v.pending?'Endnu ikke opgjort':pct(v.value)}`).join('. '));
     if(charts.cohort)charts.cohort.destroy();
     charts.cohort=new Chart(canvas,{
       type:'bar',
@@ -160,7 +162,12 @@
         const ctx=chart.ctx;ctx.save();ctx.font='bold 16px Arial';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillStyle='#2B211B';
         chart.getDatasetMeta(0).data.forEach((bar,i)=>{
           const value=points[i].value;
-          ctx.fillText(Number.isFinite(value)?pct(value):'Ingen tal',bar.x,Number.isFinite(value)?bar.y-7:chart.scales.y.getPixelForValue(0)-7);
+          const x=chart.scales.x.getPixelForValue(i),baseline=chart.scales.y.getPixelForValue(0);
+          if(points[i].pending){
+            ctx.font='13px Arial';ctx.fillText('Endnu ikke',x,baseline-25);ctx.fillText('opgjort',x,baseline-7);ctx.font='bold 16px Arial';
+          }else{
+            ctx.fillText(Number.isFinite(value)?pct(value):'Ingen tal',x,Number.isFinite(value)?bar.y-7:baseline-7);
+          }
         });ctx.restore();
       }}],
       options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:24}},
@@ -241,7 +248,7 @@
       if(!group.categories?.length||!group.categories.every(c=>group.slices?.[c.id]?.series?.three?.TOTAL))throw Error(`Manglende data for ${key}`);
     }
     const options=byId('cohort');
-    for(const p of Object.keys(data.series.three.TOTAL).filter(p=>Object.hasOwn(data.series.six.TOTAL,p)).sort().reverse()){
+    for(const p of Object.keys(data.series.three.TOTAL).sort().reverse()){
       const option=document.createElement('option');option.value=p;option.textContent=label(p);options.append(option);
     }
     const reports=byId('report-month');
