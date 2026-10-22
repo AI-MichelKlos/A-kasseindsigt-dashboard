@@ -141,35 +141,36 @@
       });
     }
   }
-  function renderAlignedTrend(){
-    const all=commonMonths(),limit=Number(byId('span').value),periods=limit?all.slice(-limit):all,codes=selection();
-    byId('aligned-context').textContent=`Vi forskyder 3-månedersmålingen tre måneder frem i forhold til dens opgørelsesmåned, så den står ud for 6-månedersmålingen af nyledige i samme måned. På tidsaksen står ledighedsmåneden: Nyledige ${label(periods.at(-1))} blev målt efter 3 måneder i ${label(shift(periods.at(-1),3))} og efter 6 måneder i ${label(shift(periods.at(-1),6))}.`;
-    const datasets=codes.flatMap(code=>[['three',3,'3 måneder','#9A5B34'],['six',6,'6 måneder','#146298']].map(([which,offset,horizon,horizonColor])=>({
-      label:`${data.funds[code].short} · ${horizon}`,
-      data:periods.map(p=>{const value=view.series[which][code]?.[p];return Number.isFinite(value)?value:null;}),
-      borderColor:codes.length===1?horizonColor:color(code),backgroundColor:codes.length===1?horizonColor:color(code),borderDash:offset===3?[]:[7,4],borderWidth:2.7,pointRadius:periods.length>30?2:3,pointHoverRadius:6,spanGaps:false,tension:.16
-    })));
-    if(charts.aligned)charts.aligned.destroy();
-    charts.aligned=new Chart(byId('aligned-chart'),{
-      type:'line',data:{labels:periods.map(label),datasets},
-      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'top'},tooltip:{callbacks:{title:items=>items[0]?`Nyledige ${label(periods[items[0].dataIndex])}`:'',label:item=>{const offset=item.dataset.label.endsWith('3 måneder')?3:6;return `${item.dataset.label} · opgjort ${label(shift(periods[item.dataIndex],offset))}: ${pct(item.parsed.y)}`;}}}},scales:{x:{type:'category',title:{display:true,text:'Måned for nyledighed'},grid:{display:false},ticks:{maxRotation:45,callback:(_,index)=>index%Math.max(1,Math.ceil(periods.length/12))===0||index===periods.length-1?label(periods[index]):''}},y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'}}}}
-    });
-  }
   function renderCohort(){
     const p=byId('cohort').value,codes=selection();
-    byId('cohort-context').textContent=`Nyledige ${label(p)} · status efter 3 måneder: ${label(shift(p,3))} · efter 6 måneder: ${label(shift(p,6))}`;
-    const body=byId('cohort-table').querySelector('tbody');body.replaceChildren();
-    for(const code of codes){
-      const a=view.series.three[code]?.[p],b=view.series.six[code]?.[p];
-      addRow(body,[data.funds[code].short,pct(a),pct(b),num(view.counts.three[code]?.[p]),num(view.counts.six[code]?.[p])]);
-    }
-    const box=byId('cohort-chart').parentElement;box.style.height=`${Math.max(190,110+codes.length*35)}px`;
+    byId('cohort-context').textContent=`Vi følger personer, der blev nyledige i ${label(p)}, og viser, hvor stor en andel der er i job eller uddannelse i ${label(shift(p,3))} og ${label(shift(p,6))}.`;
+    const points=codes.flatMap(code=>[['three',3],['six',6]].map(([which,offset])=>({
+      code,which,offset,value:view.series[which][code]?.[p]??null,
+      count:view.counts[which][code]?.[p],month:shift(p,offset)
+    })));
+    const canvas=byId('cohort-chart');
+    canvas.parentElement.style.minWidth=`${Math.max(260,codes.length*240)}px`;
+    canvas.setAttribute('aria-label',points.map(v=>`${data.funds[v.code].short}, efter ${v.offset} måneder, ${label(v.month)}: ${pct(v.value)}`).join('. '));
     if(charts.cohort)charts.cohort.destroy();
-    charts.cohort=new Chart(byId('cohort-chart'),{
-      type:'bar',data:{labels:codes.map(code=>data.funds[code].short),datasets:[
-        {label:'Efter 3 måneder',data:codes.map(code=>view.series.three[code]?.[p]??null),backgroundColor:'#9A5B34'},
-        {label:'Efter 6 måneder',data:codes.map(code=>view.series.six[code]?.[p]??null),backgroundColor:'#146298'}
-      ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{beginAtZero:true,min:0,max:100,title:{display:true,text:'Andel i job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e6ddd2'}},y:{grid:{display:false}}}}
+    charts.cohort=new Chart(canvas,{
+      type:'bar',
+      data:{labels:points.map(v=>codes.length===1?[`Efter ${v.offset} måneder`,label(v.month)]:[data.funds[v.code].short,`Efter ${v.offset} mdr.`,label(v.month)]),
+        datasets:[{data:points.map(v=>v.value),backgroundColor:points.map(v=>v.offset===3?'#9A5B34':'#146298'),maxBarThickness:96,borderRadius:4}]},
+      plugins:[{id:'cohortValues',afterDatasetsDraw(chart){
+        const ctx=chart.ctx;ctx.save();ctx.font='bold 16px Arial';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillStyle='#2B211B';
+        chart.getDatasetMeta(0).data.forEach((bar,i)=>{
+          const value=points[i].value;
+          ctx.fillText(Number.isFinite(value)?pct(value):'Ingen tal',bar.x,Number.isFinite(value)?bar.y-7:chart.scales.y.getPixelForValue(0)-7);
+        });ctx.restore();
+      }}],
+      options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:24}},
+        plugins:{legend:{display:false},tooltip:{callbacks:{
+          title:items=>{const v=points[items[0]?.dataIndex];return v?data.funds[v.code].name:'';},
+          label:item=>`I job eller uddannelse: ${pct(item.parsed.y)}`,
+          afterLabel:item=>{const v=points[item.dataIndex];return [`Nyledige i ${label(p)}`,`Status i ${label(v.month)} (efter ${v.offset} måneder)`,`Antal personer i opgørelsen: ${num(v.count)}`];}
+        }}},
+        scales:{x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:0,font:{size:12}}},
+          y:{beginAtZero:true,min:0,max:100,title:{display:true,text:'I job eller uddannelse, pct.'},ticks:{callback:v=>v+' %'},grid:{color:'#e6ddd2'}}}}
     });
   }
   function renderStatus(){
@@ -190,38 +191,7 @@
       options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:15}},tooltip:{callbacks:{label:item=>`${item.dataset.label}: ${pct(item.parsed.x)}`}}},scales:{x:{stacked:true,beginAtZero:true,min:0,max:100,ticks:{callback:v=>v+' %'},grid:{color:'#e6ddd2'}},y:{stacked:true,grid:{display:false}}}}
     });
   }
-  function renderYear(){
-    const body=byId('year-table').querySelector('tbody');body.replaceChildren();
-    for(const [which,name] of [['three','3 måneder'],['six','6 måneder']]){
-      const latest=Object.keys(view.series[which].TOTAL).sort().at(-1),yearBefore=latest.replace(/^\d{4}/,String(Number(latest.slice(0,4))-1));
-      for(const code of selection()){
-        const a=view.series[which][code]?.[latest],b=view.series[which][code]?.[yearBefore];
-        addRow(body,[name,data.funds[code].short,label(latest),pct(a),pct(b),diff(Number.isFinite(a)&&Number.isFinite(b)?Math.round((a-b)*10)/10:null)]);
-      }
-    }
-  }
-  function average(which,code,periods){
-    let weighted=0,count=0;
-    for(const p of periods){
-      const share=view.series[which][code]?.[p],n=view.counts[which][code]?.[p];
-      if(!Number.isFinite(share)||!Number.isFinite(n)||n<=0)return null;
-      weighted+=share*n;count+=n;
-    }
-    return {share:weighted/count,count};
-  }
-  function renderAverage(){
-    const body=byId('average-table').querySelector('tbody');body.replaceChildren();
-    const periods=commonMonths().slice(-12);
-    for(const [which,name] of [['three','3 måneder'],['six','6 måneder']]){
-      const total=periods.length===12?average(which,'TOTAL',periods):null;
-      for(const code of selection()){
-        const result=periods.length===12?average(which,code,periods):null;
-        addRow(body,[name,data.funds[code].short,pct(result?.share),diff(result&&total?result.share-total.share:null),num(result?.count)]);
-      }
-    }
-    byId('average-context').textContent=periods.length===12?`Nyledige ${label(periods[0])} til ${label(periods.at(-1))} · samme startmåneder for begge nedslag`:'12 fælles startmåneder er endnu ikke tilgængelige';
-  }
-  function render(){renderFunds();renderMetrics();renderReport();renderReportTrend();renderTrend();renderStatus();renderSubgroups();renderCohort();renderAlignedTrend();renderAverage();renderYear();updateLink();}
+  function render(){renderFunds();renderMetrics();renderReport();renderReportTrend();renderTrend();renderStatus();renderSubgroups();renderCohort();updateLink();}
   function csv(){
     const header=['Opdeling','Gruppe','Nyledighedsmåned','Opgørelsesmåned','Nedslag','A-kasse','Antal nyledige','Andel i job eller uddannelse (pct.)',...STATUS.map(([,name])=>name+' (pct.)')];
     const rows=[header];

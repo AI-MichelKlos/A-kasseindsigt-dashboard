@@ -59,3 +59,8 @@
 #dak-resultat footer{border-top:1px solid var(--line);color:var(--muted);padding:25px 0;font-size:.78rem}
 @media(max-width:700px){#dak-resultat .wrap{padding-left:16px;padding-right:16px}#dak-resultat .nav{padding:12px 16px;flex-wrap:wrap}#dak-resultat .hero{padding:37px 0}#dak-resultat .panel{padding:18px}#dak-resultat .part-intro{padding:18px}#dak-resultat .section-heading{display:block}#dak-resultat .section-heading p{margin-top:8px}#dak-resultat .toolbar label{margin-left:0;width:100%}#dak-resultat .toolbar button{flex:1 1 140px}#dak-resultat .toolbar select{max-width:100%}#dak-resultat .toolbar .context{width:100%;margin:0}#dak-resultat .funds{grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .fund,#dak-resultat .metric-option{min-width:0;overflow-wrap:anywhere}#dak-resultat .metric-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#dak-resultat .method-grid,#dak-resultat .subgroup-grid{grid-template-columns:1fr}#dak-resultat .chart{height:340px}#dak-resultat .chart-flex{height:220px}#dak-resultat .subgroup-chart{height:270px}#dak-resultat .table-wrap:before{content:'Skub tabellen til siden for flere kolonner →';display:block;color:var(--muted);font-size:.75rem;margin-bottom:6px}#dak-resultat table{min-width:650px}}
 @media(max-width:370px){#dak-resultat .funds{grid-template-columns:1fr}}
+
+#dak-resultat .cohort-toolbar{margin-top:24px}
+#dak-resultat .cohort-toolbar label{margin-left:0}
+#dak-resultat .cohort-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+#dak-resultat .cohort-chart{height:390px}
