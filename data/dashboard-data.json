@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "A-kasseindsigt",
-    "updated": "2026-10-25",
-    "checkedAt": "2026-10-25T13:37:10+01:00",
+    "updated": "2026-10-26",
+    "checkedAt": "2026-10-26T10:15:15+01:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
@@ -10,7 +10,7 @@
         "dataset": "AUA01",
         "latestPeriod": "2026M08",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-10-25T13:36:26+01:00",
+        "checkedAt": "2026-10-26T10:14:11+01:00",
         "sourceUpdated": "2026-09-30T08:00:00"
       },
       "AUP03": {
@@ -19,7 +19,7 @@
         "dataset": "AUP03",
         "latestPeriod": "2026M08",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-10-25T13:36:47+01:00",
+        "checkedAt": "2026-10-26T10:14:33+01:00",
         "sourceUpdated": "2026-09-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
@@ -29,7 +29,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M09",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-10-25T13:37:00+01:00"
+        "checkedAt": "2026-10-26T10:14:46+01:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -37,7 +37,7 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M09",
         "unit": "personer og pct.",
-        "checkedAt": "2026-10-25T13:37:03+01:00"
+        "checkedAt": "2026-10-26T10:14:50+01:00"
       },
       "jobDagpengeforbrug": {
         "state": "ok",
@@ -45,15 +45,15 @@
         "dataset": "y01a12",
         "latestPeriod": "2026M08",
         "unit": "personer efter forbrugt dagpengeperiode",
-        "checkedAt": "2026-10-25T13:37:53+01:00"
+        "checkedAt": "2026-10-26T10:16:02+01:00"
       },
       "jobOverlevelse": {
         "state": "ok",
         "source": "Jobindsats.dk / STAR",
         "dataset": "y01b01",
-        "latestPeriod": "2025Q02",
+        "latestPeriod": "2025Q03",
         "unit": "pct. fortsat på dagpenge uden tilbagefald",
-        "checkedAt": "2026-10-25T13:37:55+01:00"
+        "checkedAt": "2026-10-26T10:16:04+01:00"
       },
       "jobStatusAfter": {
         "state": "ok",
@@ -61,7 +61,7 @@
         "dataset": "y01b15",
         "latestPeriod": "2026Q01",
         "unit": "pct. efter arbejdsmarkedsstatus 3 mdr. efter afsluttet forløb",
-        "checkedAt": "2026-10-25T13:38:03+01:00"
+        "checkedAt": "2026-10-26T10:16:14+01:00"
       },
       "jobTalkForms": {
         "state": "ok",
@@ -69,7 +69,7 @@
         "dataset": "smt02",
         "latestPeriod": "2026M07",
         "unit": "antal jobsamtaler efter samtaleform",
-        "checkedAt": "2026-10-25T13:37:17+01:00",
+        "checkedAt": "2026-10-26T10:15:23+01:00",
         "note": "Omfatter jobsamtaler afholdt i a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet. Serien findes fra januar 2024."
       },
       "jobAfterlon": {
@@ -78,7 +78,7 @@
         "dataset": "y28a02",
         "latestPeriod": "2026M09",
         "unit": "personer og fuldtidspersoner på efterløn",
-        "checkedAt": "2026-10-25T13:37:21+01:00"
+        "checkedAt": "2026-10-26T10:15:28+01:00"
       },
       "jobAfterlonContrib": {
         "state": "ok",
@@ -86,7 +86,7 @@
         "dataset": "y28a15",
         "latestPeriod": "2025Y01",
         "unit": "antal og pct. efterlønsbidragsbetalere blandt dagpengeforsikrede",
-        "checkedAt": "2026-10-25T13:37:32+01:00",
+        "checkedAt": "2026-10-26T10:15:38+01:00",
         "note": "Opgøres én gang årligt pr. 1. september, dog 1. november i 2012."
       },
       "jobLongTerm": {
@@ -95,7 +95,7 @@
         "dataset": "y25i09",
         "latestPeriod": "2026M09",
         "unit": "antal langtidsledige personer på a-dagpenge",
-        "checkedAt": "2026-10-25T13:37:39+01:00",
+        "checkedAt": "2026-10-26T10:15:46+01:00",
         "note": "Langtidsledige har været ledige eller aktiverede mindst 80 pct. af de seneste 12 måneder."
       },
       "jobExhaustedRights": {
@@ -104,7 +104,7 @@
         "dataset": "y01ud01di",
         "latestPeriod": "2026M07",
         "unit": "antal personer med opbrugt dagpengeret fordelt på dimittender og øvrige ledige",
-        "checkedAt": "2026-10-25T13:37:43+01:00",
+        "checkedAt": "2026-10-26T10:15:51+01:00",
         "note": "A-kassefordelingen følger seneste udbetalende a-kasse. Grupperne er Jobindsats' kategorier 1 års dimittendret, Øvrige dimittender og Øvrige ledige. Opdelingen udgives kun for hele landet."
       },
       "jobSanctions": {
@@ -113,7 +113,7 @@
         "dataset": "y01h01",
         "latestPeriod": "2026Q02",
         "unit": "antal rådighedssanktioner, pct. sanktionerede og gennemsnit pr. sanktioneret ledig",
-        "checkedAt": "2026-10-25T13:37:51+01:00",
+        "checkedAt": "2026-10-26T10:16:00+01:00",
         "note": "Databrud: 2019-2020 omfatter kun bestemte sager rejst via jobcentrene; fra 1. kvt. 2021 indgår også sager rejst af a-kasserne selv."
       },
       "jobCompletedDuration": {
@@ -122,7 +122,7 @@
         "dataset": "y01a27",
         "latestPeriod": "2026M08",
         "unit": "antal afsluttede a-dagpengeforløb efter varighed og gennemsnitlig varighed i uger",
-        "checkedAt": "2026-10-25T13:38:08+01:00",
+        "checkedAt": "2026-10-26T10:16:18+01:00",
         "note": "Et forløb er afsluttet, når der følger en sammenhængende kalendermåned uden udbetaling af a-dagpenge."
       }
     },
@@ -144,7 +144,7 @@
         "jobSanctions"
       ],
       "failed": [],
-      "checkedAt": "2026-10-25T13:38:03+01:00"
+      "checkedAt": "2026-10-26T10:16:14+01:00"
     },
     "methodNotes": [
       "Rå antal vises for den valgte a-kasse alene. Indeks, procenter og andele kan sammenlignes med I alt og flere valgte a-kasser.",
@@ -3420,7 +3420,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -3428,51 +3428,51 @@
             },
             {
               "label": "4 uger",
-              "value": 39.8
+              "value": 43.7
             },
             {
               "label": "8 uger",
-              "value": 24.9
+              "value": 28.3
             },
             {
               "label": "13 uger",
-              "value": 13.8
+              "value": 17.6
             },
             {
               "label": "17 uger",
-              "value": 9.2
+              "value": 12.6
             },
             {
               "label": "21 uger",
-              "value": 6.3
+              "value": 8.6
             },
             {
               "label": "26 uger",
-              "value": 4.2
+              "value": 5.6
             },
             {
               "label": "30 uger",
-              "value": 3
+              "value": 4.4
             },
             {
               "label": "34 uger",
-              "value": 2.1
+              "value": 3.4
             },
             {
               "label": "39 uger",
-              "value": 1.5
+              "value": 2.6
             },
             {
               "label": "43 uger",
-              "value": 1.3
+              "value": 2.1
             },
             {
               "label": "47 uger",
-              "value": 1
+              "value": 1.5
             },
             {
               "label": "52 uger",
-              "value": 0.7
+              "value": 0.9
             }
           ]
         },
@@ -6942,7 +6942,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -6950,51 +6950,51 @@
             },
             {
               "label": "4 uger",
-              "value": 36.7
+              "value": 45.8
             },
             {
               "label": "8 uger",
-              "value": 25.1
+              "value": 31.1
             },
             {
               "label": "13 uger",
-              "value": 13.9
+              "value": 19.8
             },
             {
               "label": "17 uger",
-              "value": 9.9
+              "value": 15
             },
             {
               "label": "21 uger",
-              "value": 7.5
+              "value": 10.9
             },
             {
               "label": "26 uger",
-              "value": 5
+              "value": 7.7
             },
             {
               "label": "30 uger",
-              "value": 3.8
+              "value": 6.5
             },
             {
               "label": "34 uger",
-              "value": 3
+              "value": 5
             },
             {
               "label": "39 uger",
-              "value": 2.3
+              "value": 4.1
             },
             {
               "label": "43 uger",
-              "value": 2
+              "value": 3.4
             },
             {
               "label": "47 uger",
-              "value": 1.8
+              "value": 2.7
             },
             {
               "label": "52 uger",
-              "value": 1.5
+              "value": 1.7
             }
           ]
         },
@@ -10467,7 +10467,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -10475,51 +10475,51 @@
             },
             {
               "label": "4 uger",
-              "value": 47
+              "value": 47.9
             },
             {
               "label": "8 uger",
-              "value": 29.2
+              "value": 30.8
             },
             {
               "label": "13 uger",
-              "value": 16.3
+              "value": 19.4
             },
             {
               "label": "17 uger",
-              "value": 10.6
+              "value": 13.8
             },
             {
               "label": "21 uger",
-              "value": 7.3
+              "value": 9.2
             },
             {
               "label": "26 uger",
-              "value": 4.9
+              "value": 5.7
             },
             {
               "label": "30 uger",
-              "value": 3.6
+              "value": 4.3
             },
             {
               "label": "34 uger",
-              "value": 2.6
+              "value": 3.4
             },
             {
               "label": "39 uger",
-              "value": 1.8
+              "value": 2.5
             },
             {
               "label": "43 uger",
-              "value": 1.5
+              "value": 1.9
             },
             {
               "label": "47 uger",
-              "value": 1.1
+              "value": 1.4
             },
             {
               "label": "52 uger",
-              "value": 0.6
+              "value": 0.7
             }
           ]
         },
@@ -13996,7 +13996,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -14004,51 +14004,51 @@
             },
             {
               "label": "4 uger",
-              "value": 38.9
+              "value": 45.1
             },
             {
               "label": "8 uger",
-              "value": 25.2
+              "value": 30.4
             },
             {
               "label": "13 uger",
-              "value": 15.5
+              "value": 19.8
             },
             {
               "label": "17 uger",
-              "value": 10.7
+              "value": 14.6
             },
             {
               "label": "21 uger",
-              "value": 7.6
+              "value": 11
             },
             {
               "label": "26 uger",
-              "value": 5.4
+              "value": 7.6
             },
             {
               "label": "30 uger",
-              "value": 3.9
+              "value": 6
             },
             {
               "label": "34 uger",
-              "value": 3
+              "value": 4.7
             },
             {
               "label": "39 uger",
-              "value": 2.4
+              "value": 3.6
             },
             {
               "label": "43 uger",
-              "value": 2
+              "value": 2.9
             },
             {
               "label": "47 uger",
-              "value": 1.8
+              "value": 2.2
             },
             {
               "label": "52 uger",
-              "value": 1.3
+              "value": 1.5
             }
           ]
         },
@@ -17520,7 +17520,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -17528,51 +17528,51 @@
             },
             {
               "label": "4 uger",
-              "value": 48.2
+              "value": 42
             },
             {
               "label": "8 uger",
-              "value": 29.4
+              "value": 25.6
             },
             {
               "label": "13 uger",
-              "value": 15.1
+              "value": 13.8
             },
             {
               "label": "17 uger",
-              "value": 9.5
+              "value": 10.4
             },
             {
               "label": "21 uger",
-              "value": 6
+              "value": 7.2
             },
             {
               "label": "26 uger",
-              "value": 3.9
+              "value": 4.8
             },
             {
               "label": "30 uger",
-              "value": 2.8
+              "value": 3.8
             },
             {
               "label": "34 uger",
-              "value": 2.1
+              "value": 2.7
             },
             {
               "label": "39 uger",
-              "value": 1.5
+              "value": 2
             },
             {
               "label": "43 uger",
-              "value": 1.3
+              "value": 1.4
             },
             {
               "label": "47 uger",
-              "value": 0.8
+              "value": 1.2
             },
             {
               "label": "52 uger",
-              "value": 0.6
+              "value": 0.8
             }
           ]
         },
@@ -21041,7 +21041,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -21049,51 +21049,51 @@
             },
             {
               "label": "4 uger",
-              "value": 38.8
+              "value": 43.1
             },
             {
               "label": "8 uger",
-              "value": 24.8
+              "value": 28.6
             },
             {
               "label": "13 uger",
-              "value": 14.3
+              "value": 18.1
             },
             {
               "label": "17 uger",
-              "value": 10.1
+              "value": 12.9
             },
             {
               "label": "21 uger",
-              "value": 6.8
+              "value": 8.9
             },
             {
               "label": "26 uger",
-              "value": 4.4
+              "value": 6.1
             },
             {
               "label": "30 uger",
-              "value": 3.1
+              "value": 4.8
             },
             {
               "label": "34 uger",
-              "value": 2.1
+              "value": 3.8
             },
             {
               "label": "39 uger",
-              "value": 1.4
+              "value": 2.8
             },
             {
               "label": "43 uger",
-              "value": 1.3
+              "value": 2.3
             },
             {
               "label": "47 uger",
-              "value": 1.1
+              "value": 1.6
             },
             {
               "label": "52 uger",
-              "value": 0.8
+              "value": 0.9
             }
           ]
         },
@@ -24565,7 +24565,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -24573,51 +24573,51 @@
             },
             {
               "label": "4 uger",
-              "value": 42.6
+              "value": 48.1
             },
             {
               "label": "8 uger",
-              "value": 25
+              "value": 28.5
             },
             {
               "label": "13 uger",
-              "value": 13.8
+              "value": 17
             },
             {
               "label": "17 uger",
-              "value": 8.5
+              "value": 11.9
             },
             {
               "label": "21 uger",
-              "value": 5.5
+              "value": 7.7
             },
             {
               "label": "26 uger",
-              "value": 3.4
+              "value": 4.9
             },
             {
               "label": "30 uger",
-              "value": 2.3
+              "value": 3.7
             },
             {
               "label": "34 uger",
-              "value": 1.4
+              "value": 3
             },
             {
               "label": "39 uger",
-              "value": 1.1
+              "value": 2.3
             },
             {
               "label": "43 uger",
-              "value": 0.9
+              "value": 2.1
             },
             {
               "label": "47 uger",
-              "value": 0.7
+              "value": 1.6
             },
             {
               "label": "52 uger",
-              "value": 0.7
+              "value": 0.9
             }
           ]
         },
@@ -28029,7 +28029,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -28037,51 +28037,51 @@
             },
             {
               "label": "4 uger",
-              "value": 35.1
+              "value": 34.6
             },
             {
               "label": "8 uger",
-              "value": 18.4
+              "value": 19.2
             },
             {
               "label": "13 uger",
-              "value": 8.6
+              "value": 9.9
             },
             {
               "label": "17 uger",
-              "value": 5.5
+              "value": 6.9
             },
             {
               "label": "21 uger",
-              "value": 3.6
+              "value": 4.6
             },
             {
               "label": "26 uger",
-              "value": 2
+              "value": 2.8
             },
             {
               "label": "30 uger",
-              "value": 1.5
+              "value": 1.9
             },
             {
               "label": "34 uger",
-              "value": 1.1
+              "value": 1.5
             },
             {
               "label": "39 uger",
-              "value": 0.7
+              "value": 1
             },
             {
               "label": "43 uger",
-              "value": 0.6
+              "value": 0.8
             },
             {
               "label": "47 uger",
-              "value": 0.5
+              "value": 0.6
             },
             {
               "label": "52 uger",
-              "value": 0.4
+              "value": 0.3
             }
           ]
         },
@@ -31546,7 +31546,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -31554,51 +31554,51 @@
             },
             {
               "label": "4 uger",
-              "value": 29
+              "value": 33.6
             },
             {
               "label": "8 uger",
-              "value": 16.6
+              "value": 20.3
             },
             {
               "label": "13 uger",
-              "value": 9.1
+              "value": 11.6
             },
             {
               "label": "17 uger",
-              "value": 6.1
+              "value": 7.5
             },
             {
               "label": "21 uger",
-              "value": 3.9
+              "value": 5
             },
             {
               "label": "26 uger",
-              "value": 2.3
+              "value": 3.3
             },
             {
               "label": "30 uger",
-              "value": 1.8
+              "value": 2.7
             },
             {
               "label": "34 uger",
-              "value": 1.3
+              "value": 2.1
             },
             {
               "label": "39 uger",
-              "value": 0.7
+              "value": 1.5
             },
             {
               "label": "43 uger",
-              "value": 0.6
+              "value": 1.2
             },
             {
               "label": "47 uger",
-              "value": 0.4
+              "value": 0.9
             },
             {
               "label": "52 uger",
-              "value": 0.3
+              "value": 0.5
             }
           ]
         },
@@ -35075,7 +35075,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -35083,51 +35083,51 @@
             },
             {
               "label": "4 uger",
-              "value": 29.9
+              "value": 36.4
             },
             {
               "label": "8 uger",
-              "value": 18.1
+              "value": 23.5
             },
             {
               "label": "13 uger",
-              "value": 9.9
+              "value": 14.9
             },
             {
               "label": "17 uger",
-              "value": 6.8
+              "value": 10.6
             },
             {
               "label": "21 uger",
-              "value": 4.7
+              "value": 7.7
             },
             {
               "label": "26 uger",
-              "value": 3.3
+              "value": 5.4
             },
             {
               "label": "30 uger",
-              "value": 2.4
+              "value": 4.3
             },
             {
               "label": "34 uger",
-              "value": 1.8
+              "value": 3.4
             },
             {
               "label": "39 uger",
-              "value": 1.3
+              "value": 2.5
             },
             {
               "label": "43 uger",
-              "value": 1
+              "value": 2
             },
             {
               "label": "47 uger",
-              "value": 0.8
+              "value": 1.6
             },
             {
               "label": "52 uger",
-              "value": 0.6
+              "value": 1.1
             }
           ]
         },
@@ -38604,7 +38604,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -38612,51 +38612,51 @@
             },
             {
               "label": "4 uger",
-              "value": 40.4
+              "value": 42.7
             },
             {
               "label": "8 uger",
-              "value": 26.3
+              "value": 26.9
             },
             {
               "label": "13 uger",
-              "value": 14.4
+              "value": 16.2
             },
             {
               "label": "17 uger",
-              "value": 9.9
+              "value": 11.9
             },
             {
               "label": "21 uger",
-              "value": 6.9
+              "value": 8.4
             },
             {
               "label": "26 uger",
-              "value": 4.3
+              "value": 5.3
             },
             {
               "label": "30 uger",
-              "value": 3.1
+              "value": 4.1
             },
             {
               "label": "34 uger",
-              "value": 2.3
+              "value": 3.2
             },
             {
               "label": "39 uger",
-              "value": 1.7
+              "value": 2.4
             },
             {
               "label": "43 uger",
-              "value": 1.4
+              "value": 1.9
             },
             {
               "label": "47 uger",
-              "value": 1.2
+              "value": 1.4
             },
             {
               "label": "52 uger",
-              "value": 0.9
+              "value": 0.8
             }
           ]
         },
@@ -42129,7 +42129,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -42137,51 +42137,51 @@
             },
             {
               "label": "4 uger",
-              "value": 43.3
+              "value": 45.5
             },
             {
               "label": "8 uger",
-              "value": 27.5
+              "value": 29.8
             },
             {
               "label": "13 uger",
-              "value": 14.6
+              "value": 18.5
             },
             {
               "label": "17 uger",
-              "value": 9.5
+              "value": 13.3
             },
             {
               "label": "21 uger",
-              "value": 6.4
+              "value": 9.1
             },
             {
               "label": "26 uger",
-              "value": 4.3
+              "value": 6
             },
             {
               "label": "30 uger",
-              "value": 2.8
+              "value": 4.8
             },
             {
               "label": "34 uger",
-              "value": 2.1
+              "value": 3.8
             },
             {
               "label": "39 uger",
-              "value": 1.5
+              "value": 2.8
             },
             {
               "label": "43 uger",
-              "value": 1.2
+              "value": 2.4
             },
             {
               "label": "47 uger",
-              "value": 1
+              "value": 1.7
             },
             {
               "label": "52 uger",
-              "value": 0.7
+              "value": 0.9
             }
           ]
         },
@@ -45658,7 +45658,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -45666,47 +45666,47 @@
             },
             {
               "label": "4 uger",
-              "value": 34
+              "value": 39.3
             },
             {
               "label": "8 uger",
-              "value": 20.1
+              "value": 24.5
             },
             {
               "label": "13 uger",
-              "value": 10.2
+              "value": 14.1
             },
             {
               "label": "17 uger",
-              "value": 6.5
+              "value": 9.5
             },
             {
               "label": "21 uger",
-              "value": 4.3
+              "value": 5.8
             },
             {
               "label": "26 uger",
-              "value": 2.8
+              "value": 3.6
             },
             {
               "label": "30 uger",
-              "value": 2
+              "value": 2.5
             },
             {
               "label": "34 uger",
-              "value": 1.3
+              "value": 1.8
             },
             {
               "label": "39 uger",
-              "value": 0.7
+              "value": 1.3
             },
             {
               "label": "43 uger",
-              "value": 0.6
+              "value": 1
             },
             {
               "label": "47 uger",
-              "value": 0.5
+              "value": 0.9
             },
             {
               "label": "52 uger",
@@ -49175,7 +49175,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -49183,51 +49183,51 @@
             },
             {
               "label": "4 uger",
-              "value": 39.8
+              "value": 46.8
             },
             {
               "label": "8 uger",
-              "value": 26
+              "value": 32
             },
             {
               "label": "13 uger",
-              "value": 14.7
+              "value": 20.8
             },
             {
               "label": "17 uger",
-              "value": 9.8
+              "value": 14.9
             },
             {
               "label": "21 uger",
-              "value": 6.7
+              "value": 10.3
             },
             {
               "label": "26 uger",
-              "value": 4.5
+              "value": 6.9
             },
             {
               "label": "30 uger",
-              "value": 3.1
+              "value": 5.3
             },
             {
               "label": "34 uger",
-              "value": 2.3
+              "value": 4.2
             },
             {
               "label": "39 uger",
-              "value": 1.7
+              "value": 3.2
             },
             {
               "label": "43 uger",
-              "value": 1.4
+              "value": 2.5
             },
             {
               "label": "47 uger",
-              "value": 1.2
+              "value": 2
             },
             {
               "label": "52 uger",
-              "value": 0.9
+              "value": 1.1
             }
           ]
         },
@@ -52699,7 +52699,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -52707,51 +52707,51 @@
             },
             {
               "label": "4 uger",
-              "value": 47.4
+              "value": 41.4
             },
             {
               "label": "8 uger",
-              "value": 24
+              "value": 24.3
             },
             {
               "label": "13 uger",
-              "value": 11.5
+              "value": 13.4
             },
             {
               "label": "17 uger",
-              "value": 6.8
+              "value": 9.1
             },
             {
               "label": "21 uger",
-              "value": 4.3
+              "value": 5.8
             },
             {
               "label": "26 uger",
-              "value": 2.6
+              "value": 3.3
             },
             {
               "label": "30 uger",
-              "value": 1.6
+              "value": 2.5
             },
             {
               "label": "34 uger",
-              "value": 1
+              "value": 2
             },
             {
               "label": "39 uger",
-              "value": 0.6
+              "value": 1.5
             },
             {
               "label": "43 uger",
-              "value": 0.5
+              "value": 1.2
             },
             {
               "label": "47 uger",
-              "value": 0.5
+              "value": 1
             },
             {
               "label": "52 uger",
-              "value": 0.3
+              "value": 0.5
             }
           ]
         },
@@ -56220,7 +56220,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -56228,51 +56228,51 @@
             },
             {
               "label": "4 uger",
-              "value": 54.8
+              "value": 58.5
             },
             {
               "label": "8 uger",
-              "value": 38.4
+              "value": 40.6
             },
             {
               "label": "13 uger",
-              "value": 22.5
+              "value": 25.8
             },
             {
               "label": "17 uger",
-              "value": 15.6
+              "value": 18.5
             },
             {
               "label": "21 uger",
-              "value": 10.9
+              "value": 11.9
             },
             {
               "label": "26 uger",
-              "value": 6.9
+              "value": 7.7
             },
             {
               "label": "30 uger",
-              "value": 5
+              "value": 5.8
             },
             {
               "label": "34 uger",
-              "value": 3.2
+              "value": 4.8
             },
             {
               "label": "39 uger",
-              "value": 2.2
+              "value": 3.7
             },
             {
               "label": "43 uger",
-              "value": 1.9
+              "value": 3
             },
             {
               "label": "47 uger",
-              "value": 1.6
+              "value": 2.4
             },
             {
               "label": "52 uger",
-              "value": 1.2
+              "value": 1.4
             }
           ]
         },
@@ -59745,7 +59745,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -59753,47 +59753,47 @@
             },
             {
               "label": "4 uger",
-              "value": 41.3
+              "value": 44.5
             },
             {
               "label": "8 uger",
-              "value": 26.1
+              "value": 29.1
             },
             {
               "label": "13 uger",
-              "value": 14
+              "value": 18.4
             },
             {
               "label": "17 uger",
-              "value": 9.3
+              "value": 13.3
             },
             {
               "label": "21 uger",
-              "value": 6
+              "value": 8.8
             },
             {
               "label": "26 uger",
-              "value": 4.2
+              "value": 5.6
             },
             {
               "label": "30 uger",
-              "value": 2.9
+              "value": 4.3
             },
             {
               "label": "34 uger",
-              "value": 2.1
+              "value": 3.2
             },
             {
               "label": "39 uger",
-              "value": 1.6
+              "value": 2.4
             },
             {
               "label": "43 uger",
-              "value": 1.4
+              "value": 1.8
             },
             {
               "label": "47 uger",
-              "value": 1.1
+              "value": 1.2
             },
             {
               "label": "52 uger",
@@ -63266,7 +63266,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -63274,51 +63274,51 @@
             },
             {
               "label": "4 uger",
-              "value": 44.4
+              "value": 46
             },
             {
               "label": "8 uger",
-              "value": 25.9
+              "value": 28.5
             },
             {
               "label": "13 uger",
-              "value": 12.8
+              "value": 16.7
             },
             {
               "label": "17 uger",
-              "value": 7.8
+              "value": 11.8
             },
             {
               "label": "21 uger",
-              "value": 4.5
+              "value": 7.6
             },
             {
               "label": "26 uger",
-              "value": 3
+              "value": 4.4
             },
             {
               "label": "30 uger",
-              "value": 2.1
+              "value": 3.4
             },
             {
               "label": "34 uger",
-              "value": 1.3
+              "value": 2.8
             },
             {
               "label": "39 uger",
-              "value": 0.8
+              "value": 2.1
             },
             {
               "label": "43 uger",
-              "value": 0.6
+              "value": 1.6
             },
             {
               "label": "47 uger",
-              "value": 0.4
+              "value": 1.3
             },
             {
               "label": "52 uger",
-              "value": 0.3
+              "value": 0.7
             }
           ]
         },
@@ -66795,7 +66795,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -66803,51 +66803,51 @@
             },
             {
               "label": "4 uger",
-              "value": 46.5
+              "value": 49.4
             },
             {
               "label": "8 uger",
-              "value": 30.6
+              "value": 34.6
             },
             {
               "label": "13 uger",
-              "value": 18.5
+              "value": 22.4
             },
             {
               "label": "17 uger",
-              "value": 12.6
+              "value": 15.8
             },
             {
               "label": "21 uger",
-              "value": 9.3
+              "value": 10.6
             },
             {
               "label": "26 uger",
-              "value": 5.6
+              "value": 6.9
             },
             {
               "label": "30 uger",
-              "value": 4
+              "value": 5.7
             },
             {
               "label": "34 uger",
-              "value": 2.8
+              "value": 4.9
             },
             {
               "label": "39 uger",
-              "value": 2.1
+              "value": 3.6
             },
             {
               "label": "43 uger",
-              "value": 1.9
+              "value": 2.9
             },
             {
               "label": "47 uger",
-              "value": 1.5
+              "value": 2.1
             },
             {
               "label": "52 uger",
-              "value": 1
+              "value": 1.2
             }
           ]
         },
@@ -70320,7 +70320,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -70328,51 +70328,51 @@
             },
             {
               "label": "4 uger",
-              "value": 45.7
+              "value": 46.3
             },
             {
               "label": "8 uger",
-              "value": 29.2
+              "value": 30.4
             },
             {
               "label": "13 uger",
-              "value": 16.7
+              "value": 19.1
             },
             {
               "label": "17 uger",
-              "value": 11.1
+              "value": 13.5
             },
             {
               "label": "21 uger",
-              "value": 8
+              "value": 9.5
             },
             {
               "label": "26 uger",
-              "value": 5.4
+              "value": 6.2
             },
             {
               "label": "30 uger",
-              "value": 3.7
+              "value": 4.6
             },
             {
               "label": "34 uger",
-              "value": 2.8
+              "value": 3.7
             },
             {
               "label": "39 uger",
-              "value": 1.9
+              "value": 2.6
             },
             {
               "label": "43 uger",
-              "value": 1.6
+              "value": 2.1
             },
             {
               "label": "47 uger",
-              "value": 1.3
+              "value": 1.6
             },
             {
               "label": "52 uger",
-              "value": 0.7
+              "value": 0.9
             }
           ]
         },
@@ -73782,7 +73782,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -73794,43 +73794,43 @@
             },
             {
               "label": "8 uger",
-              "value": 18.1
+              "value": 17.8
             },
             {
               "label": "13 uger",
-              "value": 8.3
+              "value": 9.8
             },
             {
               "label": "17 uger",
-              "value": 5.1
+              "value": 5.8
             },
             {
               "label": "21 uger",
-              "value": 3.2
+              "value": 3.5
             },
             {
               "label": "26 uger",
-              "value": 1.7
+              "value": 2.1
             },
             {
               "label": "30 uger",
-              "value": 1.4
+              "value": 1.6
             },
             {
               "label": "34 uger",
-              "value": 0.8
+              "value": 1.2
             },
             {
               "label": "39 uger",
-              "value": 0.4
+              "value": 0.7
             },
             {
               "label": "43 uger",
-              "value": 0.3
+              "value": 0.6
             },
             {
               "label": "47 uger",
-              "value": 0.3
+              "value": 0.4
             },
             {
               "label": "52 uger",
@@ -77289,7 +77289,7 @@
           ]
         },
         "survival": {
-          "period": "2025Q02",
+          "period": "2025Q03",
           "items": [
             {
               "label": "0 uger",
@@ -77297,51 +77297,51 @@
             },
             {
               "label": "4 uger",
-              "value": 39.1
+              "value": 46.7
             },
             {
               "label": "8 uger",
-              "value": 26.1
+              "value": 30.3
             },
             {
               "label": "13 uger",
-              "value": 14.6
+              "value": 18.4
             },
             {
               "label": "17 uger",
-              "value": 9
+              "value": 13.4
             },
             {
               "label": "21 uger",
-              "value": 6.8
+              "value": 8.1
             },
             {
               "label": "26 uger",
-              "value": 4.4
+              "value": 4.8
             },
             {
               "label": "30 uger",
-              "value": 2.9
+              "value": 4
             },
             {
               "label": "34 uger",
-              "value": 2.1
+              "value": 3.3
             },
             {
               "label": "39 uger",
-              "value": 1.5
+              "value": 2.4
             },
             {
               "label": "43 uger",
-              "value": 1.2
+              "value": 2.1
             },
             {
               "label": "47 uger",
-              "value": 1
+              "value": 1.4
             },
             {
               "label": "52 uger",
-              "value": 0.8
+              "value": 0.7
             }
           ]
         },
