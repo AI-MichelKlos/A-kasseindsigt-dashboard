@@ -243,6 +243,7 @@ def main():
     subprocess.run([sys.executable, str(BASE / "scripts" / "jobindsats_patch.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "completed_duration.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "apply_dak_names.py")], check=True)
+    subprocess.run([sys.executable, str(BASE / "scripts" / "import_jobsearch.py")], check=True)
     validate()
 
 

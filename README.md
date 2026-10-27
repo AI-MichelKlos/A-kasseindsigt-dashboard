@@ -40,6 +40,19 @@ Den fulde RM01AK-fil bruges fortsat af resultatmålsiden. Forsiden henter i sted
 `data/rm01ak-summary.json`, der kun indeholder metadata, a-kasser, tidsserier og
 populationstal. Den kompakte fil bygges automatisk sammen med `data/rm01ak.json`.
 
+## Jobsøgning
+
+Sektion 10 viser, hvor stor en andel af dagpengemodtagerne der har mindst én registreret jobansøgning i måneden. Jobindsats har ikke en API-tabel for rapporten [Dagpengemodtageres jobsøgning](https://jobindsats.dk/rapportbank/rapporter/dagpengemodtageres-jobsogning/). Tallene kommer derfor fra to manuelle Excel-eksporter pr. måned. Workflowet `discover-jobsearch-source` kører den 3. i hver måned og igen, hvis der senere dukker en API-tabel op.
+
+Hver måned, når rapporten er opdateret:
+
+1. Åbn rapporten og sæt Område til Alle kommuner, A-kasse til Alle A-kasser og Periode til den nye måned.
+2. Eksportér søjlediagrammet Opsummerede data som `YYYYMM-fordeling.xlsx`.
+3. Eksportér tabellen som `YYYYMM-tabel.xlsx`.
+4. Læg begge filer i `data/raw/jobsearch/`. Filnavnet angiver måneden, for eksempel `202607-fordeling.xlsx` og `202607-tabel.xlsx` for juli 2026.
+
+Næste kørsel af opdateringen læser filerne ind i `funds[kode].jobindsats.jobSearch`. En manglende måned springes over og stopper ikke resten af opdateringen. Importen er endnu ikke et krav i valideringen. Betegnelser, der ikke kan matches til navnestandarden eller de eksplicitte eksportaliaser i `scripts/import_jobsearch.py`, udelades og skrives i kildestatus i stedet for at blive gættet.
+
 ## Rådighedssanktioner
 
 Sektion 9 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Historikken starter i 2019, og der markeres databrud fra 1. kvt. 2021. `I alt` hentes som en selvstaendig officiel række fra samme Jobindsats-tabel og bruges som standardbenchmark; den beregnes ikke som sum eller gennemsnit af a-kasserne. Både totalrækken og de enkelte a-kasser valideres i den automatiske opdatering. Jobindsats' kvartalskoder normaliseres, så fx `2026Q01` fortolkes som 1. kvartal 2026.

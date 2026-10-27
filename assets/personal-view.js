@@ -21,10 +21,11 @@
     ['consChart','benefitConsumption'],['exhaustedChart','exhaustedRights'],['survChart','survival'],['completedDurationChart','completedDuration'],
     ['statusChart','statusAfter3m'],['talkChart','talkForms'],['afterlonChart','afterlon'],['afterlonContribChart','afterlonContrib'],
     ['sanctionsTotalChart','sanctions'],['sanctionsShareChart','sanctions'],['sanctionsTypeChart','sanctions'],['sanctionsAvgChart','sanctions'],
+    ['jobSearchChart','jobSearch'],['jobSearchWith','jobSearch'],['jobSearchWithout','jobSearch'],['jobSearchAvg','jobSearch'],['jobSearchAll','jobSearch'],
     ['mr','members'],['mi','members'],['age','profileAge'],['u','unemploymentRate'],['lr','longTerm'],['li','longTerm'],
     ['d','dagpenge'],['gc','graduates'],['gs','graduates'],['cons','benefitConsumption'],['ex','exhaustedRights'],
     ['surv','survival'],['completedDuration','completedDuration'],['status','statusAfter3m'],['talk','talkForms'],
-    ['al','afterlon'],['ac','afterlonContrib'],['st','sanctions'],['ss','sanctions'],['sty','sanctions'],['sa','sanctions']
+    ['al','afterlon'],['ac','afterlonContrib'],['st','sanctions'],['ss','sanctions'],['sty','sanctions'],['sa','sanctions'],['js','jobSearch']
   ]);
   const regionCache=new Map();
   const mergedRegionCache=new Map();
@@ -163,6 +164,7 @@
       const regional=payload.funds?.[code]||{},sourceJobs=regional.jobindsats||{},nationalJobs=national.jobindsats||{},hasRegionalJobs=Object.keys(sourceJobs).length>0,regionalJobs={...sourceJobs},nationalFallbackModules=new Set();
       if(!hasRegionalJobs)Object.keys(nationalJobs).forEach(module=>nationalFallbackModules.add(module));
       unsupported.forEach(module=>{if(nationalJobs[module]){regionalJobs[module]=nationalJobs[module];nationalFallbackModules.add(module);}});
+      if(nationalJobs.jobSearch){regionalJobs.jobSearch=nationalJobs.jobSearch;nationalFallbackModules.add('jobSearch');}
       funds[code]={...national,members:regional.members||{labels:[],values:[]},profileAge:regional.profileAge||[],unemploymentRate:regional.unemploymentRate||{labels:[],values:[]},jobindsats:regionalJobs,_regionalJobAvailable:hasRegionalJobs,_nationalFallbackModules:[...nationalFallbackModules]};
     });
     return {...nationalData,meta:{...nationalData.meta,sourceStatus:payload.meta.sourceStatus||{},regional:payload.meta},funds};

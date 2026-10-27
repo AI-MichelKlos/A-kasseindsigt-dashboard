@@ -11,6 +11,9 @@
 :root{--g:#9A5B34;--gd:#4a3428;--ink:#2B211B;--o:#8C9C41;--b:#146298;--p:#8C7FCF;--grid:#E6DDD2;--muted:#6f6258;--bg:#f7f1ea;--paper:#fff}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--ink)}header{background-color:#2B211B;background-image:url('assets/arbejdsmarkedets-puls.webp'),linear-gradient(135deg,#2B211B,#4a3428);background-position:center 46%,center;background-size:cover,cover;background-repeat:no-repeat;color:#fff;padding:32px 20px}.wrap{max-width:1280px;margin:auto}h1{font-size:clamp(2.1rem,4vw,3.4rem);margin:5px 0}.byline{font-size:.78rem;color:#e2d2bf;font-weight:600;margin-top:4px}.sub{max-width:900px;color:#f7f1ea;line-height:1.5;margin-top:8px}.control-band{background:#fff;border-bottom:1px solid var(--grid);box-shadow:0 4px 14px rgba(43,33,27,.04)}.controls{display:grid;grid-template-columns:1.3fr 1.7fr .75fr auto;gap:12px;padding:16px 0;align-items:end}.control label{display:block;font-size:.78rem;font-weight:700;margin-bottom:5px;color:var(--muted)}.control select{width:100%;padding:11px;border:1px solid #c9bcae;border-radius:8px;background:#fff;color:var(--ink);font:inherit}.compare{position:relative}.compare details{background:#fff;color:var(--ink);border:1px solid #c9bcae;border-radius:8px;min-height:43px}.compare summary{list-style:none;cursor:pointer;padding:11px 36px 11px 12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative}.compare summary::-webkit-details-marker{display:none}.compare summary:after{content:'▾';position:absolute;right:12px;color:var(--muted)}.compare details[open] summary:after{content:'▴'}.compare-menu{position:absolute;z-index:50;top:calc(100% + 6px);left:0;right:0;max-height:330px;overflow:auto;background:#fff;border:1px solid #e6ddd2;border-radius:10px;box-shadow:0 12px 30px rgba(43,33,27,.18);padding:8px}.compare-option{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;font-size:.84rem}.compare-option:hover{background:#f7f1ea}.compare-option input{accent-color:var(--gd)}.pill{padding:10px 14px;background:#efe4d6;color:var(--gd);font-weight:700;border-radius:999px;font-size:.82rem}.pill.partial{background:#fff0d6;color:#8a5d1d}.pill.failed{background:#ffe1dd;color:#963b31}main{padding:28px 20px 55px}.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.kpi,.card{background:var(--paper);border:1px solid var(--grid);border-radius:12px;box-shadow:none}.kpi{padding:16px}.kpi small{display:block;color:var(--g);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.kpi strong{display:block;font-size:1.65rem;margin-top:8px;color:#4A3428}.kpi span{display:block;font-size:.76rem;color:var(--muted);line-height:1.35;margin-top:4px}section{margin-top:36px}section h2{margin:0 0 8px;font-size:1.6rem;color:#4A3428}section>p{margin:0 0 16px;color:var(--muted);line-height:1.5}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:20px}.card.wide{grid-column:1/-1}.card h3{margin:0;color:#4A3428}.desc{font-size:.86rem;color:var(--muted);margin:5px 0 12px;line-height:1.5}.period-highlight{margin:6px 0 12px;padding:8px 10px;background:#f7f1ea;color:#4a3428;font-size:.84rem;line-height:1.4}.period-highlight strong{color:var(--ink)}.explain{font-size:.82rem;color:#4a3428;margin:0 0 14px;padding:10px 12px;background:#f7f1ea;border:1px solid #e6ddd2;border-radius:8px;line-height:1.5}.explain strong{color:var(--ink)}.chart{height:380px;position:relative}.source{border-top:1px solid var(--grid);padding-top:10px;margin-top:12px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.source a{color:var(--gd);font-weight:400;text-decoration:none}.source a:hover{text-decoration:underline}.missing{height:230px;display:grid;place-items:center;text-align:center;border:1px dashed #c9bcae;border-radius:9px;color:var(--muted);padding:18px}.note{margin-top:26px;background:#efe4d6;padding:14px 16px;border-radius:8px;font-size:.88rem;line-height:1.5}.foot{margin-top:25px;color:var(--muted);font-size:.78rem;text-align:center}@media(max-width:1050px){.controls{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:repeat(3,1fr)}}@media(max-width:720px){header{background-position:58% center,center}.controls,.grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.chart{height:330px}.card.wide{grid-column:auto}.compare-menu{position:static;box-shadow:none;border:0;border-top:1px solid var(--grid);border-radius:0}}@media(max-width:450px){.kpis{grid-template-columns:1fr}}
 .result-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}.result-toolbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px}.result-toolbar h3{margin-bottom:5px}.result-select{min-width:170px}.result-select label{display:block;font-size:.76rem;font-weight:700;color:var(--muted);margin-bottom:5px}.result-select select{width:100%;padding:9px;border:1px solid #c9bcae;border-radius:8px;background:#fff;color:var(--ink);font:inherit}.result-actions{display:flex;justify-content:flex-end;margin-top:14px}.result-link{display:inline-block;padding:10px 15px;border-radius:8px;background:var(--gd);color:#fff;text-decoration:none;font-weight:700}.result-link:hover,.result-link:focus{background:#2B211B}.result-kpis .kpi span+span{margin-top:8px;font-weight:700;color:var(--gd)}@media(max-width:700px){.result-kpis{grid-template-columns:1fr}.result-toolbar{display:block}.result-select{margin-top:12px;max-width:220px}}
 </style>
+<style>
+.jobsearch-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 18px}.jobsearch-kpis .kpi span{font-weight:600;color:var(--gd)}@media(max-width:900px){.jobsearch-kpis{grid-template-columns:1fr 1fr}}@media(max-width:560px){.jobsearch-kpis{grid-template-columns:1fr}}
+</style>
 <style id="dak-header-visibility">
 header{position:relative;overflow:hidden;background-image:linear-gradient(135deg,#2B211B,#4a3428)!important}
 header::before{content:"";position:absolute;inset:0;background:url("assets/arbejdsmarkedets-puls.webp") center 46%/cover no-repeat;opacity:.9;filter:none;pointer-events:none}
@@ -33,6 +36,7 @@ header>.wrap{position:relative;z-index:1}
 <section><h2>7. Samtaler i a-kassen</h2><p>Hvor mange jobsamtaler a-kassen afholder, og hvordan samtalerne gennemføres.</p><div class="card"><h3>Samtaleformer i a-kassen</h3><div class="explain"><strong>Hvad måles:</strong> Alle jobsamtaler afholdt af a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet, fordelt på fysisk fremmøde, telefon, video og anden kontakt. Serien starter i januar 2024. <strong>Seneste periode:</strong> <span id="talkPeriodText">-</span>.</div><div id="talkWrap" class="chart"><canvas id="talkChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/databank/indsatser/tilbud-og-samtaler/samtaler/samtaleformer-i-a-kassen/" target="_blank" rel="noopener">Jobindsats.dk - Samtaleformer i a-kassen</a></span><span id="sTalk"></span></div></div></section>
 <section><h2>8. Efterløn</h2><p>Efterløn er fortsat en a-kasseopgave. Her vises både brugen af ordningen og tilslutningen via efterlønsbidrag.</p><div class="grid"><div class="card"><h3>Personer på efterløn</h3><div class="desc">Antal personer, der er inde i efterlønsordningen i måneden. Hvis der vælges en sammenligning uden I alt, vises den som en ekstra serie. Når I alt indgår, vises tydelige sammenligningstal ved grafen.</div><div class="explain"><strong>Seneste periode:</strong> <span id="afterlonPeriodText">-</span>. Personer kan indgå uden at have fået efterløn udbetalt i den pågældende måned.</div><div id="afterlonWrap" class="chart"><canvas id="afterlonChart"></canvas></div><div class="source"><span>Kilde: <a href="https://www.jobindsats.dk/information/om-malinger/om-ydelser/om-efterlon/om-antal-personer-og-fuldtidspersoner-pa-efterlon/" target="_blank" rel="noopener">Jobindsats.dk - Antal personer og fuldtidspersoner på efterløn</a></span><span id="sAfterlon"></span></div></div><div class="card"><h3>Efterlønsbidragsbetalere blandt dagpengeforsikrede</h3><div class="desc">Andel af de dagpengeforsikrede, der indbetaler efterlønsbidrag. Målingen viser den fremtidige tilslutning til ordningen.</div><div class="explain"><strong>Seneste år:</strong> <span id="afterlonContribPeriodText">-</span>. Opgøres én gang årligt pr. 1. september, dog 1. november i 2012.</div><div id="afterlonContribWrap" class="chart"><canvas id="afterlonContribChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-efterlon/om-antal-og-andel-efterlonsbidragsbetalere-blandt-dagpengeforsikrede/" target="_blank" rel="noopener">Jobindsats.dk - Efterlønsbidragsbetalere blandt dagpengeforsikrede</a></span><span id="sAfterlonContrib"></span></div></div></div></section>
 <section><h2>9. Rådighedssanktioner</h2><p>Sanktioner blandt a-dagpengemodtagere, både som antal, andel, sanktionstype og gennemsnit pr. sanktioneret ledig. Afgrænsningen ændres fra 1. kvt. 2021, se datanoten.</p><div class="explain"><strong>Vigtig datanote:</strong> I 2019-2020 omfatter opgørelsen kun bestemte rådighedssager på baggrund af hændelser fra jobcentrene. Fra 1. kvt. 2021 omfatter den også sanktioner på baggrund af sager, som a-kasserne selv har rejst. Tallene hen over 2020/2021 er derfor ikke fuldt sammenlignelige. <strong>Seneste periode:</strong> <span id="sanctionsPeriodText">-</span>.</div><div class="grid"><div class="card"><h3>Rådighedssanktioner, antal</h3><div class="desc">Faktisk antal sanktioner i den valgte enhed pr. kvartal.</div><div class="explain"><strong>Hvad måles:</strong> Det samlede antal rådighedssanktioner i den officielle Jobindsats-måling. Fra 1. kvt. 2021 omfatter målingen både sanktioner på baggrund af sager rejst via jobcentrene og sager rejst af a-kasserne selv. For 2019-2020 omfatter den kun bestemte sager på baggrund af hændelser fra jobcentrene. En person kan have mere end én sanktion i samme periode.</div><div id="sanctionsTotalWrap" class="chart"><canvas id="sanctionsTotalChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsTotal"></span></div></div><div class="card"><h3>Andel sanktionerede ledige</h3><div class="desc">Andel af de ledighedsberørte dagpengemodtagere i kvartalet, der har fået mindst én sanktion.</div><div class="explain"><strong>Hvad måles:</strong> Procentdelen med mindst én rådighedssanktion i kvartalet. Ledighedsberørte er personer, der har været berørt af ledighed i perioden; det er ikke kun aktuelt ledige på et bestemt tidspunkt. Samme databrud i 2021 som i antal-grafen gælder. Sammenligning er valgfri og kan vælges med en selvstændig geografi.</div><div id="sanctionsShareWrap" class="chart"><canvas id="sanctionsShareChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsShare"></span></div></div><div class="card"><h3>Rådighedssanktioner efter type</h3><div class="desc">Fordeling på sanktionstype i seneste kvartal for den valgte enhed.</div><div class="explain"><strong>Sanktionstyper:</strong> Udelukkelse fra dagpenge i en periode, karantæne ved selvforskyldt ledighed, gentagelsesvirkning/arbejdskrav og andre arbejdskrav. Manglende kildeværdier vises ikke som 0. Samme databrud i 2021 som i antal-grafen gælder.</div><div id="sanctionsTypeWrap" class="chart"><canvas id="sanctionsTypeChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsTypes"></span></div></div><div class="card"><h3>Gns. antal sanktioner pr. sanktioneret ledig</h3><div class="desc">Hvor mange sanktioner en sanktioneret ledig i gennemsnit har fået i kvartalet.</div><div class="explain"><strong>Hvad måles:</strong> Antal sanktioner divideret med antallet af sanktionerede ledige. Samme afgrænsning og databrud i 2021 som i antal-grafen gælder. Sammenligning er valgfri og kan vælges med en selvstændig geografi.</div><div id="sanctionsAvgWrap" class="chart"><canvas id="sanctionsAvgChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsAvg"></span></div></div></div></section>
+<section><h2>10. Jobsøgning</h2><p>Hvor stor en andel af dagpengemodtagerne har registreret mindst én jobansøgning i måneden?</p><div class="explain"><strong>Seneste periode:</strong> <span id="jobSearchPeriodText">-</span>. Andelen gælder dagpengemodtagere i alle kommuner.</div><div class="jobsearch-kpis"><div class="kpi"><small>Med mindst én ansøgning</small><strong id="jobSearchWith">-</strong><span id="jobSearchWithSub">-</span></div><div class="kpi"><small>Uden ansøgning</small><strong id="jobSearchWithout">-</strong><span id="jobSearchWithoutSub">-</span></div><div class="kpi"><small>Gns. antal jobansøgninger</small><strong id="jobSearchAvg">-</strong><span id="jobSearchAvgSub">-</span></div><div class="kpi"><small>Alle a-kasser</small><strong id="jobSearchAll">-</strong><span id="jobSearchAllSub">-</span></div></div><div class="card wide"><h3>Andel med mindst én jobansøgning</h3><div class="desc">Den valgte a-kasses andel over tid sammenholdt med andelen for alle a-kasser. Seneste måned viser antal med og uden mindst én jobansøgning. Det gennemsnitlige antal jobansøgninger vises, når eksporten indeholder det. Tal, som Jobindsats ikke viser, står tomme og sættes ikke til 0.</div><div id="jobSearchWrap" class="chart"><canvas id="jobSearchChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/rapportbank/rapporter/dagpengemodtageres-jobsogning/" target="_blank" rel="noopener">Jobindsats.dk – Dagpengemodtageres jobsøgning</a></span><span id="sJobSearch"></span></div></div></section>
 <div id="method" class="note"></div><div class="foot">Grafik og databehandling: Michel Klos. Kontakt: <a href="mailto:michel@klos.dk" style="color:var(--gd)">michel@klos.dk</a>. Kildestatus og faktisk seneste periode vises særskilt for hvert modul.</div></div></div></main>
 <script>
 Chart.defaults.layout.padding={top:10,right:8,bottom:4,left:4};
@@ -138,6 +142,89 @@ function draw(){const f=fund();if(!f)return;const active=window.__dakLazySection
     baseSetSources();
     const status=DATA.meta.sourceStatus?.jobExhaustedRights,target=$('sExhausted');
     if(target&&status?.state==='unsupported')target.textContent='Hele landet · seneste: '+period(status.nationalLatestPeriod||fund()?.jobindsats?.exhaustedRights?.labels?.slice(-1)[0]);
+  };
+})();
+</script>
+<script>
+/* DAK_JOBSEARCH_20261027 */
+(function(){
+  const percent2=new Intl.NumberFormat('da-DK',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const average2=new Intl.NumberFormat('da-DK',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const formatPercent=value=>value==null?'–':percent2.format(value)+' %';
+  const formatAverage=value=>value==null?'–':average2.format(value);
+  function endPoint(block,key){
+    if(!block?.labels?.length||!Array.isArray(block[key]))return null;
+    return {period:block.labels[block.labels.length-1],value:block[key][block[key].length-1]};
+  }
+  function setKpi(valueId,subId,valueText,subText){
+    if($(valueId))$(valueId).textContent=valueText;
+    if($(subId))$(subId).textContent=subText;
+  }
+  function countLine(point,populationPoint){
+    if(!point)return '–';
+    if(point.value==null)return 'Ikke vist i eksporten';
+    const people=populationPoint&&populationPoint.value!=null?num(point.value)+' af '+num(populationPoint.value)+' personer':num(point.value)+' personer';
+    return people+' · '+period(point.period);
+  }
+  function publishJobSearch(){
+    const selected=typeof fund==='function'?fund():null;
+    const block=selected?.jobindsats?.jobSearch;
+    const totalCode=DATA?.meta?.totalFundCode;
+    const total=totalCode?DATA.funds[totalCode]?.jobindsats?.jobSearch:null;
+    const withShare=endPoint(block,'shareWithApplication');
+    const withCount=endPoint(block,'countWith');
+    const withoutShare=endPoint(block,'shareWithout');
+    const withoutCount=endPoint(block,'countWithout');
+    const population=endPoint(block,'population');
+    const average=endPoint(block,'avgApplications');
+    const totalShare=endPoint(total,'allFundsShare')||endPoint(total,'shareWithApplication');
+    const totalWith=endPoint(total,'countWith');
+    const totalWithout=endPoint(total,'countWithout');
+    setKpi('jobSearchWith','jobSearchWithSub',withShare?formatPercent(withShare.value):'–',countLine(withCount,population));
+    setKpi('jobSearchWithout','jobSearchWithoutSub',withoutShare?formatPercent(withoutShare.value):'–',countLine(withoutCount,null));
+    const averageSub=average&&average.value!=null?period(average.period):(selected?.code===totalCode?'Ikke opgjort for alle a-kasser samlet':'Ikke vist i eksporten');
+    setKpi('jobSearchAvg','jobSearchAvgSub',average?formatAverage(average.value):'–',block?averageSub:'–');
+    const allSub=totalWith&&totalWith.value!=null&&totalWithout&&totalWithout.value!=null?num(totalWith.value)+' med mindst én · '+num(totalWithout.value)+' uden · '+period(totalWith.period):'–';
+    setKpi('jobSearchAll','jobSearchAllSub',totalShare?formatPercent(totalShare.value):'–',allSub);
+    const latest=DATA?.meta?.sourceStatus?.jobJobSearch?.latestPeriod||block?.labels?.slice(-1)[0]||total?.labels?.slice(-1)[0];
+    if($('jobSearchPeriodText'))$('jobSearchPeriodText').textContent=period(latest);
+    if($('sJobSearch')){
+      const status=DATA?.meta?.sourceStatus?.jobJobSearch;
+      $('sJobSearch').textContent=status?.state==='ok'?source('jobJobSearch'):(latest?'Seneste: '+period(latest):'Status: ukendt');
+    }
+  }
+  function jobSearchChart(){
+    publishJobSearch();
+    const selected=fund(),block=selected?.jobindsats?.jobSearch;
+    if(!block?.labels?.length){missing('jobSearchWrap');return;}
+    const totalCode=DATA.meta.totalFundCode,total=DATA.funds[totalCode]?.jobindsats?.jobSearch;
+    const windowed=seriesWindow(block,'shareWithApplication',+$('periodSelect').value);
+    const sets=[{label:selected.name,data:windowed.values,borderColor:C.gd,backgroundColor:C.gd,pointRadius:0,borderWidth:2.6,tension:.18,spanGaps:false}];
+    if(selected.code!==totalCode&&total?.labels?.length){
+      const key=Array.isArray(total.allFundsShare)?'allFundsShare':'shareWithApplication';
+      sets.push({label:'I alt',data:mapValues(total,key,windowed.labels),borderColor:'#6F6258',backgroundColor:'#6F6258',borderDash:[7,5],pointRadius:0,borderWidth:2,tension:.18,spanGaps:false});
+    }
+    compareCodes().forEach((code,index)=>{
+      const item=DATA.funds[code];
+      const other=item?.jobindsats?.jobSearch;
+      if(!item||!other?.labels?.length||item.code===totalCode||item.code===selected.code||code===totalCode)return;
+      sets.push({label:item.name,data:mapValues(other,'shareWithApplication',windowed.labels),borderColor:color(index),backgroundColor:color(index),pointRadius:0,borderWidth:2,tension:.18,spanGaps:false});
+    });
+    lineChart('js','jobSearchChart',windowed.labels,sets,true,false);
+    const chart=charts.js;
+    if(!chart)return;
+    chart.options.plugins.tooltip={callbacks:{label(context){
+      const value=context.parsed&&Number.isFinite(context.parsed.y)?context.parsed.y:context.raw;
+      return context.dataset.label+': '+formatPercent(value);
+    }}};
+    chart.update('none');
+  }
+  const baseSetSources=setSources;
+  setSources=function(){baseSetSources();publishJobSearch();};
+  const baseDraw=draw;
+  draw=function(){
+    baseDraw();
+    if((window.__dakLazySections||new Set(['jobsearch'])).has('jobsearch'))jobSearchChart();
   };
 })();
 </script>

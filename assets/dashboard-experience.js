@@ -10,7 +10,8 @@
     ['after-benefits', 'Efter dagpenge'],
     ['talks', 'Samtaler'],
     ['retirement', 'Efterløn'],
-    ['sanctions', 'Sanktioner']
+    ['sanctions', 'Sanktioner'],
+    ['jobsearch', 'Jobsøgning']
   ];
   const COMPARISON_CHARTS = new Set([
     'membersRawChart', 'membersIndexChart', 'ageChart', 'unempChart',
@@ -18,7 +19,7 @@
     'gradChart', 'consChart', 'exhaustedChart', 'survChart',
     'completedDurationChart', 'statusChart', 'afterlonChart',
     'afterlonContribChart', 'sanctionsTotalChart', 'sanctionsShareChart',
-    'sanctionsAvgChart', 'rmMainChart'
+    'sanctionsAvgChart', 'jobSearchChart', 'rmMainChart'
   ]);
   const PRIMARY = '#3d6b47';
   const COMPARE = '#4a90c4';
