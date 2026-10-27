@@ -33,6 +33,7 @@ header>.wrap{position:relative;z-index:1}
 <section><h2>7. Samtaler i a-kassen</h2><p>Hvor mange jobsamtaler a-kassen afholder, og hvordan samtalerne gennemføres.</p><div class="card"><h3>Samtaleformer i a-kassen</h3><div class="explain"><strong>Hvad måles:</strong> Alle jobsamtaler afholdt af a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet, fordelt på fysisk fremmøde, telefon, video og anden kontakt. Serien starter i januar 2024. <strong>Seneste periode:</strong> <span id="talkPeriodText">-</span>.</div><div id="talkWrap" class="chart"><canvas id="talkChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/databank/indsatser/tilbud-og-samtaler/samtaler/samtaleformer-i-a-kassen/" target="_blank" rel="noopener">Jobindsats.dk - Samtaleformer i a-kassen</a></span><span id="sTalk"></span></div></div></section>
 <section><h2>8. Efterløn</h2><p>Efterløn er fortsat en a-kasseopgave. Her vises både brugen af ordningen og tilslutningen via efterlønsbidrag.</p><div class="grid"><div class="card"><h3>Personer på efterløn</h3><div class="desc">Antal personer, der er inde i efterlønsordningen i måneden. Hvis der vælges en sammenligning uden I alt, vises den som en ekstra serie. Når I alt indgår, vises tydelige sammenligningstal ved grafen.</div><div class="explain"><strong>Seneste periode:</strong> <span id="afterlonPeriodText">-</span>. Personer kan indgå uden at have fået efterløn udbetalt i den pågældende måned.</div><div id="afterlonWrap" class="chart"><canvas id="afterlonChart"></canvas></div><div class="source"><span>Kilde: <a href="https://www.jobindsats.dk/information/om-malinger/om-ydelser/om-efterlon/om-antal-personer-og-fuldtidspersoner-pa-efterlon/" target="_blank" rel="noopener">Jobindsats.dk - Antal personer og fuldtidspersoner på efterløn</a></span><span id="sAfterlon"></span></div></div><div class="card"><h3>Efterlønsbidragsbetalere blandt dagpengeforsikrede</h3><div class="desc">Andel af de dagpengeforsikrede, der indbetaler efterlønsbidrag. Målingen viser den fremtidige tilslutning til ordningen.</div><div class="explain"><strong>Seneste år:</strong> <span id="afterlonContribPeriodText">-</span>. Opgøres én gang årligt pr. 1. september, dog 1. november i 2012.</div><div id="afterlonContribWrap" class="chart"><canvas id="afterlonContribChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-efterlon/om-antal-og-andel-efterlonsbidragsbetalere-blandt-dagpengeforsikrede/" target="_blank" rel="noopener">Jobindsats.dk - Efterlønsbidragsbetalere blandt dagpengeforsikrede</a></span><span id="sAfterlonContrib"></span></div></div></div></section>
 <section><h2>9. Rådighedssanktioner</h2><p>Sanktioner blandt a-dagpengemodtagere, både som antal, andel, sanktionstype og gennemsnit pr. sanktioneret ledig. Afgrænsningen ændres fra 1. kvt. 2021, se datanoten.</p><div class="explain"><strong>Vigtig datanote:</strong> I 2019-2020 omfatter opgørelsen kun bestemte rådighedssager på baggrund af hændelser fra jobcentrene. Fra 1. kvt. 2021 omfatter den også sanktioner på baggrund af sager, som a-kasserne selv har rejst. Tallene hen over 2020/2021 er derfor ikke fuldt sammenlignelige. <strong>Seneste periode:</strong> <span id="sanctionsPeriodText">-</span>.</div><div class="grid"><div class="card"><h3>Rådighedssanktioner, antal</h3><div class="desc">Faktisk antal sanktioner i den valgte enhed pr. kvartal.</div><div class="explain"><strong>Hvad måles:</strong> Det samlede antal rådighedssanktioner i den officielle Jobindsats-måling. Fra 1. kvt. 2021 omfatter målingen både sanktioner på baggrund af sager rejst via jobcentrene og sager rejst af a-kasserne selv. For 2019-2020 omfatter den kun bestemte sager på baggrund af hændelser fra jobcentrene. En person kan have mere end én sanktion i samme periode.</div><div id="sanctionsTotalWrap" class="chart"><canvas id="sanctionsTotalChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsTotal"></span></div></div><div class="card"><h3>Andel sanktionerede ledige</h3><div class="desc">Andel af de ledighedsberørte dagpengemodtagere i kvartalet, der har fået mindst én sanktion.</div><div class="explain"><strong>Hvad måles:</strong> Procentdelen med mindst én rådighedssanktion i kvartalet. Ledighedsberørte er personer, der har været berørt af ledighed i perioden; det er ikke kun aktuelt ledige på et bestemt tidspunkt. Samme databrud i 2021 som i antal-grafen gælder. Sammenligning er valgfri og kan vælges med en selvstændig geografi.</div><div id="sanctionsShareWrap" class="chart"><canvas id="sanctionsShareChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsShare"></span></div></div><div class="card"><h3>Rådighedssanktioner efter type</h3><div class="desc">Fordeling på sanktionstype i seneste kvartal for den valgte enhed.</div><div class="explain"><strong>Sanktionstyper:</strong> Udelukkelse fra dagpenge i en periode, karantæne ved selvforskyldt ledighed, gentagelsesvirkning/arbejdskrav og andre arbejdskrav. Manglende kildeværdier vises ikke som 0. Samme databrud i 2021 som i antal-grafen gælder.</div><div id="sanctionsTypeWrap" class="chart"><canvas id="sanctionsTypeChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsTypes"></span></div></div><div class="card"><h3>Gns. antal sanktioner pr. sanktioneret ledig</h3><div class="desc">Hvor mange sanktioner en sanktioneret ledig i gennemsnit har fået i kvartalet.</div><div class="explain"><strong>Hvad måles:</strong> Antal sanktioner divideret med antallet af sanktionerede ledige. Samme afgrænsning og databrud i 2021 som i antal-grafen gælder. Sammenligning er valgfri og kan vælges med en selvstændig geografi.</div><div id="sanctionsAvgWrap" class="chart"><canvas id="sanctionsAvgChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/a-dagpenge-antal-radighedssanktioner" target="_blank" rel="noopener">Jobindsats.dk – Antal rådighedssanktioner</a></span><span id="sSanctionsAvg"></span></div></div></div></section>
+<section id="section-jobsearch"><h2>10. Jobsøgning</h2><p>Andel af dagpengemodtagere med mindst én registreret jobansøgning i måneden. Opgørelsen dækker alle kommuner.</p><div class="explain"><strong>Hvad måles:</strong> Andelen er personer med mindst én registreret jobansøgning i måneden, sat i forhold til grundpopulationen af dagpengemodtagere. Linjen for alle a-kasser er den samlede andel i samme opgørelse. En værdi, som kilden har skjult, vises ikke som 0. <strong>Seneste periode:</strong> <span id="jobSearchPeriodText">-</span>.</div><div class="card"><h3>Andel med mindst én jobansøgning</h3><div class="desc">Den valgte a-kasse sammenholdt med andelen for alle a-kasser. Perioden følger de eksporterede måneder.</div><div class="period-highlight">Seneste måned: <strong id="jobSearchPeriodHeadline">-</strong></div><div class="result-kpis"><div class="kpi"><small>Andel med mindst én</small><strong id="jobSearchShare">-</strong><span id="jobSearchShareNote">Af dagpengemodtagerne i måneden</span></div><div class="kpi"><small>Antal med mindst én</small><strong id="jobSearchWith">-</strong><span id="jobSearchWithNote">Personer</span></div><div class="kpi"><small>Antal uden</small><strong id="jobSearchWithout">-</strong><span id="jobSearchWithoutNote">Personer uden registreret jobansøgning</span></div><div class="kpi"><small>Gennemsnitligt antal jobsøgninger</small><strong id="jobSearchAvg">-</strong><span id="jobSearchAvgNote">Fra rapportens opsummerede data</span></div></div><div id="jobSearchShareWrap" class="chart"><canvas id="jobSearchShareChart"></canvas></div><div class="source"><span>Kilde: <a href="https://jobindsats.dk/rapportbank/rapporter/dagpengemodtageres-jobsogning/" target="_blank" rel="noopener">Jobindsats.dk – Dagpengemodtageres jobsøgning</a></span><span id="sJobSearch"></span></div></div></section>
 <div id="method" class="note"></div><div class="foot">Grafik og databehandling: Michel Klos. Kontakt: <a href="mailto:michel@klos.dk" style="color:var(--gd)">michel@klos.dk</a>. Kildestatus og faktisk seneste periode vises særskilt for hvert modul.</div></div></div></main>
 <script>
 Chart.defaults.layout.padding={top:10,right:8,bottom:4,left:4};
@@ -109,10 +110,76 @@ function draw(){const f=fund();if(!f)return;const active=window.__dakLazySection
     if($('survPeriodHeadline'))$('survPeriodHeadline').textContent=survivalPeriod;
     if($('completedDurationPeriodHeadline'))$('completedDurationPeriodHeadline').textContent=completedPeriod;
     if($('sCompletedDuration'))$('sCompletedDuration').textContent=source('jobCompletedDuration');
+    const jobSearchPeriod=period(DATA.meta.sourceStatus?.jobJobSearch?.latestPeriod);
+    if($('jobSearchPeriodText'))$('jobSearchPeriodText').textContent=jobSearchPeriod;
+    if($('jobSearchPeriodHeadline'))$('jobSearchPeriodHeadline').textContent=jobSearchPeriod;
+    if($('sJobSearch'))$('sJobSearch').textContent=source('jobJobSearch');
   };
 
+  function jobSearchShareText(value){
+    if(value==null||!Number.isFinite(Number(value)))return '-';
+    return new Intl.NumberFormat('da-DK',{minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(value))+' %';
+  }
+  function jobSearchText(id,value){const el=$(id);if(el)el.textContent=value;}
+  function jobSearchAt(block,key){
+    const values=block?.[key];
+    if(!Array.isArray(values)||!values.length)return null;
+    return values[values.length-1]==null?null:values[values.length-1];
+  }
+  function jobSearchChart(){
+    const selected=fund();
+    const block=selected?.jobindsats?.jobSearch;
+    const latestLabel=block?.labels?.length?block.labels[block.labels.length-1]:null;
+    if($('jobSearchPeriodHeadline'))$('jobSearchPeriodHeadline').textContent=latestLabel?period(latestLabel):'-';
+    if(!block?.labels?.length){
+      missing('jobSearchShareWrap');
+      ['jobSearchShare','jobSearchWith','jobSearchWithout','jobSearchAvg'].forEach(id=>jobSearchText(id,'-'));
+      jobSearchText('jobSearchShareNote','Ingen importeret måned for den valgte a-kasse.');
+      jobSearchText('jobSearchWithNote','');
+      jobSearchText('jobSearchWithoutNote','');
+      jobSearchText('jobSearchAvgNote','');
+      return;
+    }
+    const population=jobSearchAt(block,'basePopulation');
+    const withoutShare=jobSearchAt(block,'shareWithoutApplication');
+    const average=jobSearchAt(block,'avgApplications');
+    jobSearchText('jobSearchShare',jobSearchShareText(jobSearchAt(block,'shareWithApplication')));
+    jobSearchText('jobSearchShareNote',population==null?'Af dagpengemodtagerne i måneden':'Grundpopulation: '+num(population));
+    jobSearchText('jobSearchWith',jobSearchAt(block,'countWithApplication')==null?'-':num(jobSearchAt(block,'countWithApplication')));
+    jobSearchText('jobSearchWithNote','Personer med mindst én registreret jobansøgning');
+    jobSearchText('jobSearchWithout',jobSearchAt(block,'countWithoutApplication')==null?'-':num(jobSearchAt(block,'countWithoutApplication')));
+    jobSearchText('jobSearchWithoutNote',withoutShare==null?'Ikke oplyst i eksporten':'Andel uden: '+jobSearchShareText(withoutShare));
+    jobSearchText('jobSearchAvg',average==null?'-':pf.format(average));
+    jobSearchText('jobSearchAvgNote',average==null?'Ikke oplyst i eksporten':'Fra rapportens opsummerede data');
+    const wrap=$('jobSearchShareWrap');
+    if(wrap&&!wrap.querySelector('canvas'))wrap.innerHTML='<canvas id="jobSearchShareChart"></canvas>';
+    const windowed=seriesWindow(block,'shareWithApplication',+$('periodSelect').value);
+    const totalCode=DATA.meta.totalFundCode;
+    const selectedCode=$('fundSelect').value;
+    const sets=[{label:selected.name,data:windowed.values,borderColor:C.gd,backgroundColor:C.gd,pointRadius:0,borderWidth:2.6,tension:.18,spanGaps:false}];
+    const totalBlock=DATA.funds[totalCode]?.jobindsats?.jobSearch;
+    if(selectedCode!==totalCode&&totalBlock?.labels?.length)sets.push({label:DATA.funds[totalCode].name,data:mapValues(totalBlock,'shareWithApplication',windowed.labels),borderColor:'#6F6258',backgroundColor:'#6F6258',pointRadius:0,borderWidth:2,tension:.18,spanGaps:false});
+    compareCodes().forEach((code,index)=>{
+      if(code===selectedCode||code===totalCode)return;
+      const other=DATA.funds[code]?.jobindsats?.jobSearch;
+      if(!other?.labels?.length)return;
+      sets.push({label:DATA.funds[code].name,data:mapValues(other,'shareWithApplication',windowed.labels),borderColor:color(index),backgroundColor:color(index),pointRadius:0,borderWidth:2,tension:.18,spanGaps:false});
+    });
+    lineChart('js','jobSearchShareChart',windowed.labels,sets,true,false);
+    const chart=charts.js;
+    if(!chart)return;
+    chart.options.scales.y.ticks.callback=value=>jobSearchShareText(value);
+    chart.options.plugins.tooltip={callbacks:{label(ctx){const y=ctx.parsed&&Number.isFinite(ctx.parsed.y)?ctx.parsed.y:null;return ctx.dataset.label+': '+jobSearchShareText(y);}}};
+    chart.update('none');
+  }
+
   const baseDraw=draw;
-  draw=function(){baseDraw();if((window.__dakLazySections||new Set(['duration'])).has('duration'))completedDurationChart();};
+  draw=function(){
+    baseDraw();
+    const active=window.__dakLazySections||new Set(['duration','jobsearch']);
+    if(active.has('duration'))completedDurationChart();
+    if(active.has('jobsearch'))jobSearchChart();
+  };
 })();
 </script>
 <style>#exhaustedWrap.exhausted-compared{height:540px}</style>

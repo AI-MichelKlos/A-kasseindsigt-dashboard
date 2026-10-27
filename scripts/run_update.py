@@ -127,6 +127,36 @@ def validate():
     if sanctions_errors:
         raise RuntimeError("Ufuldstændige rådighedssanktioner: " + "; ".join(sanctions_errors))
 
+    # Jobsøgning er en manuel eksport og er ikke påkrævet. Når serien findes, skal den være konsistent.
+    job_search_keys = (
+        "shareWithApplication",
+        "shareWithoutApplication",
+        "countWithApplication",
+        "countWithoutApplication",
+        "basePopulation",
+        "avgApplications",
+    )
+    job_search_total = total.get("jobindsats", {}).get("jobSearch") or {}
+    job_search_labels = job_search_total.get("labels") or []
+    if job_search_labels:
+        if any(len(job_search_total.get(key) or []) != len(job_search_labels) for key in job_search_keys):
+            raise RuntimeError("Jobsøgning har uens serielængder for I alt")
+        job_search_status = statuses.get("jobJobSearch", {})
+        if job_search_status.get("state") == "ok" and job_search_status.get("latestPeriod") != job_search_labels[-1]:
+            raise RuntimeError(
+                f"Periode mismatch for jobJobSearch: {job_search_status.get('latestPeriod')} != {job_search_labels[-1]}"
+            )
+        job_search_errors = []
+        for code, fund in funds.items():
+            block = fund.get("jobindsats", {}).get("jobSearch") or {}
+            labels = block.get("labels") or []
+            if not labels:
+                continue
+            if any(len(block.get(key) or []) != len(labels) for key in job_search_keys):
+                job_search_errors.append(code)
+        if job_search_errors:
+            raise RuntimeError("Jobsøgning har uens serielængder: " + ", ".join(job_search_errors))
+
     exhausted_keys = ["graduate_one_year", "graduate_two_year", "other_unemployed"]
     exhausted_errors = []
     for code, fund in funds.items():
@@ -207,6 +237,9 @@ def validate():
         'id="sanctionsTypeChart"',
         'id="sanctionsAvgChart"',
         'id="sanctionsPeriodText"',
+        'id="jobSearchShareChart"',
+        'id="jobSearchPeriodText"',
+        '10. Jobsøgning',
         'DAK_DYNAMIC_LINE_SCALE_20260903',
         "cubicInterpolationMode='monotone'",
         "grace:'8%'",
@@ -243,6 +276,7 @@ def main():
     subprocess.run([sys.executable, str(BASE / "scripts" / "jobindsats_patch.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "completed_duration.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "apply_dak_names.py")], check=True)
+    subprocess.run([sys.executable, str(BASE / "scripts" / "import_jobsearch.py")], check=True)
     validate()
 
 
