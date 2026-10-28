@@ -2,6 +2,9 @@ name: Undersoeg jobsoegningskilde
 
 on:
   workflow_dispatch:
+  schedule:
+    # Månedligt tjek af, om Jobindsats har fået en API-tabel for jobsøgning.
+    - cron: "17 6 2 * *"
   push:
     branches: [main]
     paths:
