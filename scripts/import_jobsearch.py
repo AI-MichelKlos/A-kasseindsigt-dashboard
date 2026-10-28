@@ -57,6 +57,15 @@ MONTHS = {
 PERIOD_RE = re.compile(r"Periode er ([A-Za-zÆØÅæøå]+) (\d{4})")
 FILE_RE = re.compile(r"^(\d{6})-(fordeling|tabel)\.xlsx$")
 SHARE_TOLERANCE = 1e-6
+# Stavemåder i Jobindsats-eksporten, som ikke står ordret i navnestandarden.
+# Værdien er DAK-forkortelsen. Betegnelser uden for listen og navnestandarden mappes ikke.
+EXPLICIT_EXPORT_ALIASES = {
+    "DFH-A": "DFH",
+    "Det Faglige Hus": "DFH",
+    "Laka": "LAK",
+    "3FA": "3F-A",
+    "FOA - Fag og Arbejdes A-kasse": "FOA-A",
+}
 
 
 def now_iso():
@@ -206,6 +215,24 @@ def build_aliases(data):
         for key, value in (fund.get("sourceNames") or {}).items():
             bind(value, code, f"sourceNames.{key}")
 
+    short_codes = {
+        fund.get("short"): code
+        for code, fund in data.get("funds", {}).items()
+        if code != total and fund.get("short")
+    }
+    explicit = []
+    for label, short in EXPLICIT_EXPORT_ALIASES.items():
+        code = short_codes.get(short)
+        if not code:
+            raise RuntimeError(f"Eksplicit alias {label!r} peger på ukendt forkortelse {short}")
+        key = ji.norm(label)
+        existing = owners.get(key, {})
+        if existing and code not in existing:
+            others = ", ".join(sorted(existing))
+            raise RuntimeError(f"Eksplicit alias {label!r} peger på {code}, men betegnelsen matcher allerede {others}")
+        bind(label, code, "eksplicit eksportalias")
+        explicit.append({"label": label, "short": short, "code": code})
+
     aliases = {}
     ambiguous = []
     for key, codes in owners.items():
@@ -213,7 +240,7 @@ def build_aliases(data):
             aliases[key] = next(iter(codes))
         else:
             ambiguous.append({"label": key, "codes": sorted(codes)})
-    return aliases, ambiguous
+    return aliases, ambiguous, explicit
 
 
 def resolve_label(label, aliases, bridge):
@@ -412,7 +439,7 @@ def main():
         print(message)
         return 0
 
-    aliases, ambiguous = build_aliases(data)
+    aliases, ambiguous, explicit_aliases = build_aliases(data)
     total_code = data["meta"]["totalFundCode"]
     by_period = {}
     unmapped = []
@@ -515,6 +542,7 @@ def main():
         "incompleteMonths": [filename_period(stamp) for stamp in incomplete],
         "ignoredFiles": ignored,
         "ambiguousAliases": ambiguous,
+        "explicitAliases": explicit_aliases,
         "mapped": mapped,
         "unmapped": unmapped,
         "fundsWithoutSeries": missing_funds,

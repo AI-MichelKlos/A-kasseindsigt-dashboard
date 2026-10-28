@@ -57,6 +57,6 @@ Hver måned, når rapporten har en ny periode:
 
 `scripts/import_jobsearch.py` læser filerne ved den almindelige opdatering og skriver serien til `funds[kode].jobindsats.jobSearch`. En måned uden begge filer springes over. Kilden er ikke påkrævet i valideringen, så en manglende ny måned stopper ikke de øvrige opdateringer. Importen bruger Python-pakken `openpyxl`.
 
-Forkortelser og navne kobles til dashboardets a-kasser via `config/a-kasse-navne.json` og via det navnepar, som fordeling-filen selv angiver. Rækker, der ikke kan kobles entydigt, udelades og skrives i kørselsloggen. Der gættes ikke.
+Forkortelser og navne kobles til dashboardets a-kasser via `config/a-kasse-navne.json`, via det navnepar, som fordeling-filen selv angiver, og via en fast liste over stavemåder fra eksporten (`DFH-A`, `Det Faglige Hus`, `Laka`, `3FA` og `FOA - Fag og Arbejdes A-kasse`). Rækker, der ikke kan kobles entydigt, udelades og skrives i kørselsloggen. Der gættes ikke.
 
 Workflowet `discover-jobsearch-source` kører desuden den 2. i hver måned for at opdage, hvis Jobindsats senere udgiver målingen som API-tabel.
