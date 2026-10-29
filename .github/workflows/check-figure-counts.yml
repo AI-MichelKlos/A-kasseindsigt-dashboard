@@ -1,0 +1,40 @@
+name: Kontroller antal i RM01AK og Y01B01
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/check-figure-counts.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kontroller officielle kolonner og totaler
+        env:
+          JOBINDSATS_API_TOKEN: ${{ secrets.API_ADGANG }}
+        run: |
+          python - <<'PY'
+          import sys, json
+          sys.path.insert(0, "scripts")
+          import jobindsats_api as api
+          for table in ("rm01ak", "y01b01"):
+              spec = api.get(f"table/{table}", {"format": "json"})
+              fund = api.find_hierarchy(spec, ["a kasse", "akasse"])
+              rows = api.query(table, spec, "latest:8", ((fund, api.total_value(fund)),))
+              print("TABLE", table, spec.get("table_name"))
+              print("COLUMNS", json.dumps(api.columns(rows), ensure_ascii=False))
+              for row in rows:
+                  # Only public aggregate counts and periods, never credentials or full API responses.
+                  selected = {k: v for k, v in row.items() if k in ("Periode", "A-kasse") or "antal" in api.norm(k)}
+                  print("COUNTS", json.dumps(selected, ensure_ascii=False))
+          PY
