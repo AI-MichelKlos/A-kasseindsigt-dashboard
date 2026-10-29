@@ -546,3 +546,80 @@
   }
   start();
 })();
+
+/* Official counts for figures 10 and 13. No counts are inferred from percentages. */
+(function () {
+  'use strict';
+  function countText(value) {
+    return Number.isFinite(value) ? num(value) : 'Ikke oplyst';
+  }
+  function panel(id, anchor) {
+    let node = document.getElementById(id);
+    if (!node && anchor) {
+      node = document.createElement('div');
+      node.id = id;
+      node.className = 'explain';
+      anchor.insertAdjacentElement('afterend', node);
+    }
+    if (node) node.replaceChildren();
+    return node;
+  }
+  function paragraph(host, text) {
+    const p = document.createElement('p');
+    p.textContent = text;
+    host.appendChild(p);
+  }
+  const baseResult = drawResultMeasure;
+  drawResultMeasure = function () {
+    baseResult();
+    const host = panel('rmOfficialCounts', document.getElementById('rmMainWrap'));
+    if (!host || !RM_DATA?.meta?.latestStatusMonth) return;
+    const which = document.getElementById('rmHorizon').value;
+    const offset = which === 'three' ? 3 : 6;
+    const code = rmCode(document.getElementById('fundSelect').value);
+    const name = RM_DATA.funds?.[code]?.name || code;
+    const limit = Number(document.getElementById('periodSelect').value);
+    const reports = Object.keys(RM_DATA.series?.[which]?.TOTAL || {})
+      .map(value => rmShift(value, offset)).sort().slice(-limit);
+    const latest = reports.at(-1);
+    if (!latest) return;
+    const point = rmPoint(which, code, latest);
+    paragraph(host, name + ' · Hele landet · ' + offset + ' måneders opfølgning. Opgjort ' + period(latest) + ', nyledige i ' + period(point.cohort) + ': ' + countText(point.count) + ' nyledige.');
+    paragraph(host, 'Antal personer i job eller uddannelse: Ikke offentliggjort som antal i RM01AK. Kilden leverer kun andelen. Der beregnes ikke antal ud fra afrundede procenter.');
+    const details = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = 'Se antal nyledige for alle viste måneder';
+    details.appendChild(summary);
+    const scroll = document.createElement('div');
+    scroll.style.overflowX = 'auto';
+    const table = document.createElement('table');
+    table.style.width = '100%';
+    const caption = document.createElement('caption');
+    caption.textContent = name + ' · Hele landet · ' + offset + ' måneder';
+    table.appendChild(caption);
+    const head = table.createTHead().insertRow();
+    ['Opgørelsesmåned', 'Nyledighedsmåned', 'Antal nyledige', 'I job eller uddannelse'].forEach(label => {
+      const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = label; head.appendChild(cell);
+    });
+    const body = table.createTBody();
+    reports.slice().reverse().forEach(report => {
+      const value = rmPoint(which, code, report), row = body.insertRow();
+      [period(report), period(value.cohort), countText(value.count), Number.isFinite(value.value) ? pct(value.value) : 'Ikke oplyst'].forEach(text => {
+        const cell = row.insertCell(); cell.textContent = text; cell.style.padding = '6px';
+      });
+    });
+    scroll.appendChild(table); details.appendChild(scroll); host.appendChild(details);
+  };
+  const baseCategory = compareCategory;
+  compareCategory = function (key, id, module, ...args) {
+    baseCategory(key, id, module, ...args);
+    if (module !== 'survival') return;
+    // Called inside the existing geography bridge: fund() is exactly the source used by the curve.
+    const source = fund()?.jobindsats?.survival;
+    const host = panel('survOfficialCount', document.getElementById('survWrap'));
+    if (!host) return;
+    if (!source) { paragraph(host, 'Antal påbegyndte forløb: Ikke oplyst for den viste enhed.'); return; }
+    paragraph(host, fund().name + ' · Forløb påbegyndt i ' + period(source.period) + ': ' + countText(source.startedCount) + ' forløb.');
+    paragraph(host, 'Antallet er hentet direkte fra Y01B01 for den viste kurve uden tilbagefald. Det er antal forløb, ikke antal unikke personer.');
+  };
+})();

@@ -557,6 +557,9 @@ def survival(data):
     table = "y01b01"
     spec, fund_h, selection = setup(table)
     rows = ji.query(table, spec, "latest:8", ((fund_h, selection),))
+    count_col = "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
+    if count_col not in ji.columns(rows):
+        raise RuntimeError("Officielt antal påbegyndte forløb mangler i Y01B01")
     fcol = exact_col(rows, "A-kasse") or ji.best_col(rows, ["a kasse"], distinct=True)
     pcol = exact_col(rows, "Periode") or ji.best_col(rows, ["periode"], distinct=True)
     week_cols = []
@@ -592,7 +595,13 @@ def survival(data):
             continue
         items = [{"label": f"{week} uger", "value": ji.number(row.get(col))} for week, col in week_cols]
         items = [item for item in items if item["value"] is not None]
-        data["funds"][code]["jobindsats"]["survival"] = {"period": chosen, "items": items}
+        count = ji.number(row.get(count_col))
+        if count is not None and (count < 0 or int(count) != count):
+            raise ValueError("Ugyldigt antal påbegyndte forløb")
+        data["funds"][code]["jobindsats"]["survival"] = {
+            "period": chosen, "items": items, "startedCount": count,
+            "countSourceColumn": count_col,
+        }
     put_status(data, "jobOverlevelse", table, chosen, "pct. fortsat på dagpenge uden tilbagefald")
 
 

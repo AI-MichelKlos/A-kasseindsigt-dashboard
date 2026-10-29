@@ -60,3 +60,11 @@ Hver måned, når rapporten har en ny periode:
 Forkortelser og navne kobles til dashboardets a-kasser via `config/a-kasse-navne.json`, via det navnepar, som fordeling-filen selv angiver, og via en fast liste over stavemåder fra eksporten (`DFH-A`, `Det Faglige Hus`, `Laka`, `3FA` og `FOA - Fag og Arbejdes A-kasse`). Rækker, der ikke kan kobles entydigt, udelades og skrives i kørselsloggen. Der gættes ikke.
 
 Workflowet `discover-jobsearch-source` kører desuden den 2. i hver måned for at opdage, hvis Jobindsats senere udgiver målingen som API-tabel.
+
+## Antal i figur 10 og 13
+
+Figur 10 viser RM01AK's direkte antal nyledige for den valgte a-kasse, opgørelsesmåned og 3/6 måneders horisont. Nyledighedsmåneden er opgørelsesmåneden minus horisonten. Antal personer i job eller uddannelse udgives ikke direkte i RM01AK og beregnes ikke fra afrundede andele. Figuren angiver dette og viser antal nyledige måned for måned. RM01AK-visningen vedrører hele landet.
+
+Figur 13 bruger Y01B01-kolonnen `Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb` fra samme række som den viste kurve. Det er forløb, ikke unikke personer. Både landstal og regionale udtræk bevarer antallet; diskretionerede antal forbliver null. Perioden følger kurvens modne startkvartal, ikke seneste kvartal med et antal.
+
+Kildekolonnerne blev kontrolleret direkte i Jobindsats API den 29. oktober 2026 via workflowet `check-figure-counts`. De almindelige opdateringsscripts henter antal automatisk. `scripts/test_figure_counts.py` tester periodesammenhæng, horisont, diskretionering og forkert kolonne; `scripts/validate_figure_counts.py` kontrollerer de hentede data før publicering.

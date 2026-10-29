@@ -202,6 +202,8 @@ def main() -> None:
             "latestCohort": {key: cohort(latest_status, n) for key, n in (("three", 3), ("six", 6))},
             "fetchedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "unit": "pct. af nyledige", "geography": "Hele landet",
+            "countSourceColumns": COUNTS,
+            "outcomeCount": {"state": "not_published", "note": "RM01AK leverer antal nyledige og andele i job og uddannelse, men ikke et direkte antal i job og uddannelse. Antal beregnes ikke ud fra afrundede procenter."},
             "filters": "Separate opdelinger efter region, køn, alder og herkomst; a-kasse ved nyledighed",
             "note": "Officiel totalrække og officielle a-kasserækker. Prikker/diskretionerede værdier er null. Ujusterede andele.",
         },
