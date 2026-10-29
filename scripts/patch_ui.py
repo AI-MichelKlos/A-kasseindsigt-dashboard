@@ -74,7 +74,7 @@ ENHANCEMENTS = r'''<script>
 </script>
 '''
 
-PERSONAL_VIEW_SCRIPT = '<script src="assets/personal-view.js"></script>\n'
+PERSONAL_VIEW_SCRIPT = '<script src="assets/personal-view.js?v=20261029-counts"></script>\n'
 
 
 def require_replace(text: str, old: str, new: str, label: str) -> str:
