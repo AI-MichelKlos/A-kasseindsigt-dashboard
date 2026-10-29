@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "A-kasseindsigt",
-    "updated": "2026-10-28",
-    "checkedAt": "2026-10-28T20:46:41+01:00",
+    "updated": "2026-10-29",
+    "checkedAt": "2026-10-29T13:57:37+01:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
@@ -10,7 +10,7 @@
         "dataset": "AUA01",
         "latestPeriod": "2026M08",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-10-28T20:46:00+01:00",
+        "checkedAt": "2026-10-29T13:56:53+01:00",
         "sourceUpdated": "2026-09-30T08:00:00"
       },
       "AUP03": {
@@ -19,7 +19,7 @@
         "dataset": "AUP03",
         "latestPeriod": "2026M08",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-10-28T20:46:21+01:00",
+        "checkedAt": "2026-10-29T13:57:15+01:00",
         "sourceUpdated": "2026-09-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
@@ -29,7 +29,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M09",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-10-28T20:46:32+01:00"
+        "checkedAt": "2026-10-29T13:57:27+01:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -37,7 +37,7 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M09",
         "unit": "personer og pct.",
-        "checkedAt": "2026-10-28T20:46:35+01:00"
+        "checkedAt": "2026-10-29T13:57:30+01:00"
       },
       "jobDagpengeforbrug": {
         "state": "ok",
@@ -45,7 +45,7 @@
         "dataset": "y01a12",
         "latestPeriod": "2026M08",
         "unit": "personer efter forbrugt dagpengeperiode",
-        "checkedAt": "2026-10-28T20:47:22+01:00"
+        "checkedAt": "2026-10-29T13:58:19+01:00"
       },
       "jobOverlevelse": {
         "state": "ok",
@@ -53,7 +53,7 @@
         "dataset": "y01b01",
         "latestPeriod": "2025Q03",
         "unit": "pct. fortsat på dagpenge uden tilbagefald",
-        "checkedAt": "2026-10-28T20:47:24+01:00"
+        "checkedAt": "2026-10-29T13:58:22+01:00"
       },
       "jobStatusAfter": {
         "state": "ok",
@@ -61,7 +61,7 @@
         "dataset": "y01b15",
         "latestPeriod": "2026Q01",
         "unit": "pct. efter arbejdsmarkedsstatus 3 mdr. efter afsluttet forløb",
-        "checkedAt": "2026-10-28T20:47:28+01:00"
+        "checkedAt": "2026-10-29T13:58:30+01:00"
       },
       "jobTalkForms": {
         "state": "ok",
@@ -69,7 +69,7 @@
         "dataset": "smt02",
         "latestPeriod": "2026M08",
         "unit": "antal jobsamtaler efter samtaleform",
-        "checkedAt": "2026-10-28T20:46:49+01:00",
+        "checkedAt": "2026-10-29T13:57:45+01:00",
         "note": "Omfatter jobsamtaler afholdt i a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet. Serien findes fra januar 2024."
       },
       "jobAfterlon": {
@@ -78,7 +78,7 @@
         "dataset": "y28a02",
         "latestPeriod": "2026M09",
         "unit": "personer og fuldtidspersoner på efterløn",
-        "checkedAt": "2026-10-28T20:46:53+01:00"
+        "checkedAt": "2026-10-29T13:57:49+01:00"
       },
       "jobAfterlonContrib": {
         "state": "ok",
@@ -86,7 +86,7 @@
         "dataset": "y28a15",
         "latestPeriod": "2025Y01",
         "unit": "antal og pct. efterlønsbidragsbetalere blandt dagpengeforsikrede",
-        "checkedAt": "2026-10-28T20:47:03+01:00",
+        "checkedAt": "2026-10-29T13:58:00+01:00",
         "note": "Opgøres én gang årligt pr. 1. september, dog 1. november i 2012."
       },
       "jobLongTerm": {
@@ -95,7 +95,7 @@
         "dataset": "y25i09",
         "latestPeriod": "2026M09",
         "unit": "antal langtidsledige personer på a-dagpenge",
-        "checkedAt": "2026-10-28T20:47:09+01:00",
+        "checkedAt": "2026-10-29T13:58:06+01:00",
         "note": "Langtidsledige har været ledige eller aktiverede mindst 80 pct. af de seneste 12 måneder."
       },
       "jobExhaustedRights": {
@@ -104,7 +104,7 @@
         "dataset": "y01ud01di",
         "latestPeriod": "2026M07",
         "unit": "antal personer med opbrugt dagpengeret fordelt på dimittender og øvrige ledige",
-        "checkedAt": "2026-10-28T20:47:13+01:00",
+        "checkedAt": "2026-10-29T13:58:10+01:00",
         "note": "A-kassefordelingen følger seneste udbetalende a-kasse. Grupperne er Jobindsats' kategorier 1 års dimittendret, Øvrige dimittender og Øvrige ledige. Opdelingen udgives kun for hele landet."
       },
       "jobSanctions": {
@@ -113,7 +113,7 @@
         "dataset": "y01h01",
         "latestPeriod": "2026Q02",
         "unit": "antal rådighedssanktioner, pct. sanktionerede og gennemsnit pr. sanktioneret ledig",
-        "checkedAt": "2026-10-28T20:47:21+01:00",
+        "checkedAt": "2026-10-29T13:58:18+01:00",
         "note": "Databrud: 2019-2020 omfatter kun bestemte sager rejst via jobcentrene; fra 1. kvt. 2021 indgår også sager rejst af a-kasserne selv."
       },
       "jobCompletedDuration": {
@@ -122,7 +122,7 @@
         "dataset": "y01a27",
         "latestPeriod": "2026M08",
         "unit": "antal afsluttede a-dagpengeforløb efter varighed og gennemsnitlig varighed i uger",
-        "checkedAt": "2026-10-28T20:47:31+01:00",
+        "checkedAt": "2026-10-29T13:58:34+01:00",
         "note": "Et forløb er afsluttet, når der følger en sammenhængende kalendermåned uden udbetaling af a-dagpenge."
       },
       "jobJobSearch": {
@@ -132,7 +132,7 @@
         "latestPeriod": "2026M07",
         "unit": "pct. dagpengemodtagere med mindst én jobansøgning i måneden",
         "note": "Manuel eksport i data/raw/jobsearch fra rapporten Dagpengemodtageres jobsøgning. Der er ikke et Jobindsats API-tabel for målingen. Seneste filer: 202607-fordeling.xlsx og 202607-tabel.xlsx.",
-        "checkedAt": "2026-10-28T20:47:32+01:00",
+        "checkedAt": "2026-10-29T13:58:34+01:00",
         "reportUrl": "https://jobindsats.dk/rapportbank/rapporter/dagpengemodtageres-jobsogning/",
         "manual": true
       }
@@ -155,7 +155,7 @@
         "jobSanctions"
       ],
       "failed": [],
-      "checkedAt": "2026-10-28T20:47:28+01:00"
+      "checkedAt": "2026-10-29T13:58:30+01:00"
     },
     "methodNotes": [
       "Rå antal vises for den valgte a-kasse alene. Indeks, procenter og andele kan sammenlignes med I alt og flere valgte a-kasser.",
@@ -3486,7 +3486,9 @@
               "label": "52 uger",
               "value": 0.9
             }
-          ]
+          ],
+          "startedCount": 164312,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -7150,7 +7152,9 @@
               "label": "52 uger",
               "value": 1.7
             }
-          ]
+          ],
+          "startedCount": 2744,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -10817,7 +10821,9 @@
               "label": "52 uger",
               "value": 0.7
             }
-          ]
+          ],
+          "startedCount": 23836,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -14488,7 +14494,9 @@
               "label": "52 uger",
               "value": 1.5
             }
-          ]
+          ],
+          "startedCount": 8949,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -18154,7 +18162,9 @@
               "label": "52 uger",
               "value": 0.8
             }
-          ]
+          ],
+          "startedCount": 2332,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -21817,7 +21827,9 @@
               "label": "52 uger",
               "value": 0.9
             }
-          ]
+          ],
+          "startedCount": 14862,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -25483,7 +25495,9 @@
               "label": "52 uger",
               "value": 0.9
             }
-          ]
+          ],
+          "startedCount": 2243,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -29089,7 +29103,9 @@
               "label": "52 uger",
               "value": 0.3
             }
-          ]
+          ],
+          "startedCount": 4526,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -32748,7 +32764,9 @@
               "label": "52 uger",
               "value": 0.5
             }
-          ]
+          ],
+          "startedCount": 7018,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -36419,7 +36437,9 @@
               "label": "52 uger",
               "value": 1.1
             }
-          ]
+          ],
+          "startedCount": 18682,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -40090,7 +40110,9 @@
               "label": "52 uger",
               "value": 0.8
             }
-          ]
+          ],
+          "startedCount": 12265,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -43757,7 +43779,9 @@
               "label": "52 uger",
               "value": 0.9
             }
-          ]
+          ],
+          "startedCount": 12810,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -47428,7 +47452,9 @@
               "label": "52 uger",
               "value": 0.4
             }
-          ]
+          ],
+          "startedCount": 3963,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -51087,7 +51113,9 @@
               "label": "52 uger",
               "value": 1.1
             }
-          ]
+          ],
+          "startedCount": 12747,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -54753,7 +54781,9 @@
               "label": "52 uger",
               "value": 0.5
             }
-          ]
+          ],
+          "startedCount": 4847,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -58416,7 +58446,9 @@
               "label": "52 uger",
               "value": 1.4
             }
-          ]
+          ],
+          "startedCount": 5003,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -62083,7 +62115,9 @@
               "label": "52 uger",
               "value": 0.5
             }
-          ]
+          ],
+          "startedCount": 10012,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -65746,7 +65780,9 @@
               "label": "52 uger",
               "value": 0.7
             }
-          ]
+          ],
+          "startedCount": 2840,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -69417,7 +69453,9 @@
               "label": "52 uger",
               "value": 1.2
             }
-          ]
+          ],
+          "startedCount": 4859,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -73084,7 +73122,9 @@
               "label": "52 uger",
               "value": 0.9
             }
-          ]
+          ],
+          "startedCount": 5830,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -76688,7 +76728,9 @@
               "label": "52 uger",
               "value": 0.2
             }
-          ]
+          ],
+          "startedCount": 2190,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
@@ -80337,7 +80379,9 @@
               "label": "52 uger",
               "value": 0.7
             }
-          ]
+          ],
+          "startedCount": 1754,
+          "countSourceColumn": "Overlevelseskurve u. tilbagefald til den valgte ydelse: Antal påbegyndte forløb"
         },
         "statusAfter3m": {
           "period": "2026Q01",
