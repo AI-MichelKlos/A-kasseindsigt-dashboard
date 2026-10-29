@@ -125,7 +125,6 @@ jobs:
         run: |
           code="${{ steps.update.outputs.exit_code }}"
           cp status/last-run.txt /tmp/last-run.txt
-          cp index.html /tmp/index.html
           if [ "$code" = "0" ]; then
             cp data/dashboard-data.json /tmp/dashboard-data.json
             rm -rf /tmp/regions
@@ -134,7 +133,8 @@ jobs:
           git fetch origin main
           git reset --hard origin/main
           cp /tmp/last-run.txt status/last-run.txt
-          cp /tmp/index.html index.html
+          # Regenerate against the current branch so concurrent UI changes survive.
+          python scripts/patch_ui.py
           git add status/last-run.txt index.html
           if [ "$code" = "0" ]; then
             cp /tmp/dashboard-data.json data/dashboard-data.json

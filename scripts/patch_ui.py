@@ -87,6 +87,11 @@ def require_replace(text: str, old: str, new: str, label: str) -> str:
 
 def main():
     text = HTML.read_text(encoding="utf-8")
+    # Upgrade existing script tags before deciding whether to insert them.
+    text = text.replace('assets/personal-view.js"', 'assets/personal-view.js?v=20261029-counts"')
+    text = text.replace('assets/dashboard-experience.js"', 'assets/dashboard-experience.js?v=20261029-counts"')
+    while text.count(PERSONAL_VIEW_SCRIPT.strip()) > 1:
+        text = text.replace(PERSONAL_VIEW_SCRIPT.strip(), "", 1)
 
     text = text.replace(".source a{color:var(--gd);font-weight:700;text-decoration:none}", ".source a{color:var(--gd);font-weight:400;text-decoration:none}")
     text = text.replace("mailto:mk@danskeakasser.dk", "mailto:michel@klos.dk")
