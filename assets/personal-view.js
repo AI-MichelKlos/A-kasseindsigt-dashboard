@@ -569,6 +569,12 @@
     p.textContent = text;
     host.appendChild(p);
   }
+  // Dashboard keys are DST codes; RM01AK keys are STAR codes from the shared name bridge.
+  rmCode = function (code) {
+    if (code === DATA.meta.totalFundCode) return 'TOTAL';
+    const starCode = DATA.funds?.[code]?.starCode;
+    return starCode || code;
+  };
   const baseResult = drawResultMeasure;
   drawResultMeasure = function () {
     baseResult();
