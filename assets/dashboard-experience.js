@@ -464,7 +464,7 @@
     let figure = 0;
     document.querySelectorAll('#dashboard .card').forEach(card => {
       if (!card.querySelector('canvas')) return;
-      const heading = card.querySelector(':scope > h3');
+      const heading = card.querySelector('h3');
       if (!heading) return;
       let label = heading.querySelector('.figure-number');
       if (!label) {
