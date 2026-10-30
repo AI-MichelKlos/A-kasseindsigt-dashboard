@@ -1,26 +1,26 @@
 {
   "meta": {
     "title": "A-kasseindsigt",
-    "updated": "2026-10-29",
-    "checkedAt": "2026-10-29T14:11:17+01:00",
+    "updated": "2026-10-30",
+    "checkedAt": "2026-10-30T15:17:09+01:00",
     "sourceStatus": {
       "AUA01": {
         "state": "ok",
         "source": "Danmarks Statistik",
         "dataset": "AUA01",
-        "latestPeriod": "2026M08",
+        "latestPeriod": "2026M09",
         "unit": "antal forsikringsaktive",
-        "checkedAt": "2026-10-29T14:11:02+01:00",
-        "sourceUpdated": "2026-09-30T08:00:00"
+        "checkedAt": "2026-10-30T15:16:26+01:00",
+        "sourceUpdated": "2026-10-30T08:00:00"
       },
       "AUP03": {
         "state": "ok",
         "source": "Danmarks Statistik",
         "dataset": "AUP03",
-        "latestPeriod": "2026M08",
+        "latestPeriod": "2026M09",
         "unit": "pct. fuldtidsledige af samtlige forsikrede",
-        "checkedAt": "2026-10-29T14:11:04+01:00",
-        "sourceUpdated": "2026-09-30T08:00:00",
+        "checkedAt": "2026-10-30T15:16:48+01:00",
+        "sourceUpdated": "2026-10-30T08:00:00",
         "note": "foreloebig opgoerelse"
       },
       "jobDagpenge": {
@@ -29,7 +29,7 @@
         "dataset": "y01a02",
         "latestPeriod": "2026M09",
         "unit": "personer og fuldtidspersoner",
-        "checkedAt": "2026-10-29T14:11:10+01:00"
+        "checkedAt": "2026-10-30T15:16:59+01:00"
       },
       "jobDimittend": {
         "state": "ok",
@@ -37,7 +37,7 @@
         "dataset": "y01dia02",
         "latestPeriod": "2026M09",
         "unit": "personer og pct.",
-        "checkedAt": "2026-10-29T14:11:13+01:00"
+        "checkedAt": "2026-10-30T15:17:03+01:00"
       },
       "jobDagpengeforbrug": {
         "state": "ok",
@@ -45,7 +45,7 @@
         "dataset": "y01a12",
         "latestPeriod": "2026M08",
         "unit": "personer efter forbrugt dagpengeperiode",
-        "checkedAt": "2026-10-29T14:11:50+01:00"
+        "checkedAt": "2026-10-30T15:17:49+01:00"
       },
       "jobOverlevelse": {
         "state": "ok",
@@ -53,7 +53,7 @@
         "dataset": "y01b01",
         "latestPeriod": "2025Q03",
         "unit": "pct. fortsat på dagpenge uden tilbagefald",
-        "checkedAt": "2026-10-29T14:11:51+01:00"
+        "checkedAt": "2026-10-30T15:17:51+01:00"
       },
       "jobStatusAfter": {
         "state": "ok",
@@ -61,7 +61,7 @@
         "dataset": "y01b15",
         "latestPeriod": "2026Q01",
         "unit": "pct. efter arbejdsmarkedsstatus 3 mdr. efter afsluttet forløb",
-        "checkedAt": "2026-10-29T14:11:54+01:00"
+        "checkedAt": "2026-10-30T15:17:54+01:00"
       },
       "jobTalkForms": {
         "state": "ok",
@@ -69,7 +69,7 @@
         "dataset": "smt02",
         "latestPeriod": "2026M08",
         "unit": "antal jobsamtaler efter samtaleform",
-        "checkedAt": "2026-10-29T14:11:22+01:00",
+        "checkedAt": "2026-10-30T15:17:15+01:00",
         "note": "Omfatter jobsamtaler afholdt i a-kassen med personer, der modtog a-dagpenge på samtaletidspunktet. Serien findes fra januar 2024."
       },
       "jobAfterlon": {
@@ -78,7 +78,7 @@
         "dataset": "y28a02",
         "latestPeriod": "2026M09",
         "unit": "personer og fuldtidspersoner på efterløn",
-        "checkedAt": "2026-10-29T14:11:26+01:00"
+        "checkedAt": "2026-10-30T15:17:20+01:00"
       },
       "jobAfterlonContrib": {
         "state": "ok",
@@ -86,7 +86,7 @@
         "dataset": "y28a15",
         "latestPeriod": "2025Y01",
         "unit": "antal og pct. efterlønsbidragsbetalere blandt dagpengeforsikrede",
-        "checkedAt": "2026-10-29T14:11:34+01:00",
+        "checkedAt": "2026-10-30T15:17:29+01:00",
         "note": "Opgøres én gang årligt pr. 1. september, dog 1. november i 2012."
       },
       "jobLongTerm": {
@@ -95,7 +95,7 @@
         "dataset": "y25i09",
         "latestPeriod": "2026M09",
         "unit": "antal langtidsledige personer på a-dagpenge",
-        "checkedAt": "2026-10-29T14:11:39+01:00",
+        "checkedAt": "2026-10-30T15:17:35+01:00",
         "note": "Langtidsledige har været ledige eller aktiverede mindst 80 pct. af de seneste 12 måneder."
       },
       "jobExhaustedRights": {
@@ -104,7 +104,7 @@
         "dataset": "y01ud01di",
         "latestPeriod": "2026M07",
         "unit": "antal personer med opbrugt dagpengeret fordelt på dimittender og øvrige ledige",
-        "checkedAt": "2026-10-29T14:11:42+01:00",
+        "checkedAt": "2026-10-30T15:17:40+01:00",
         "note": "A-kassefordelingen følger seneste udbetalende a-kasse. Grupperne er Jobindsats' kategorier 1 års dimittendret, Øvrige dimittender og Øvrige ledige. Opdelingen udgives kun for hele landet."
       },
       "jobSanctions": {
@@ -113,7 +113,7 @@
         "dataset": "y01h01",
         "latestPeriod": "2026Q02",
         "unit": "antal rådighedssanktioner, pct. sanktionerede og gennemsnit pr. sanktioneret ledig",
-        "checkedAt": "2026-10-29T14:11:48+01:00",
+        "checkedAt": "2026-10-30T15:17:48+01:00",
         "note": "Databrud: 2019-2020 omfatter kun bestemte sager rejst via jobcentrene; fra 1. kvt. 2021 indgår også sager rejst af a-kasserne selv."
       },
       "jobCompletedDuration": {
@@ -122,7 +122,7 @@
         "dataset": "y01a27",
         "latestPeriod": "2026M08",
         "unit": "antal afsluttede a-dagpengeforløb efter varighed og gennemsnitlig varighed i uger",
-        "checkedAt": "2026-10-29T14:11:56+01:00",
+        "checkedAt": "2026-10-30T15:17:58+01:00",
         "note": "Et forløb er afsluttet, når der følger en sammenhængende kalendermåned uden udbetaling af a-dagpenge."
       },
       "jobJobSearch": {
@@ -132,7 +132,7 @@
         "latestPeriod": "2026M07",
         "unit": "pct. dagpengemodtagere med mindst én jobansøgning i måneden",
         "note": "Manuel eksport i data/raw/jobsearch fra rapporten Dagpengemodtageres jobsøgning. Der er ikke et Jobindsats API-tabel for målingen. Seneste filer: 202607-fordeling.xlsx og 202607-tabel.xlsx.",
-        "checkedAt": "2026-10-29T14:11:57+01:00",
+        "checkedAt": "2026-10-30T15:17:59+01:00",
         "reportUrl": "https://jobindsats.dk/rapportbank/rapporter/dagpengemodtageres-jobsogning/",
         "manual": true
       }
@@ -155,7 +155,7 @@
         "jobSanctions"
       ],
       "failed": [],
-      "checkedAt": "2026-10-29T14:11:54+01:00"
+      "checkedAt": "2026-10-30T15:17:54+01:00"
     },
     "methodNotes": [
       "Rå antal vises for den valgte a-kasse alene. Indeks, procenter og andele kan sammenlignes med I alt og flere valgte a-kasser.",
@@ -532,7 +532,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           2177350,
@@ -849,45 +850,46 @@
           2280340,
           2279662,
           2281004,
-          2283453,
-          2283730,
-          2289719
+          2282708,
+          2281481,
+          2287358,
+          2302698
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 136206
+          "value": 145995
         },
         {
           "label": "25-29 år",
-          "value": 264761
+          "value": 265703
         },
         {
           "label": "30-39 år",
-          "value": 571326
+          "value": 572786
         },
         {
           "label": "40-49 år",
-          "value": 481666
+          "value": 482155
         },
         {
           "label": "50-59 år",
-          "value": 542615
+          "value": 541644
         },
         {
           "label": "60 år og derover",
-          "value": 293145
+          "value": 294415
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 1132209
+          "value": 1138344
         },
         {
           "label": "Kvinder",
-          "value": 1157510
+          "value": 1164354
         }
       ],
       "jobindsats": {
@@ -3835,7 +3837,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           3.8,
@@ -3947,7 +3950,8 @@
           3.3,
           3.3,
           3.5,
-          3.5
+          3.5,
+          3.3
         ]
       },
       "short": "I alt"
@@ -4273,7 +4277,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           21280,
@@ -4590,45 +4595,46 @@
           47266,
           47547,
           47793,
-          47995,
-          48539,
-          48781
+          47990,
+          48538,
+          48779,
+          49089
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 1785
+          "value": 1795
         },
         {
           "label": "25-29 år",
-          "value": 3832
+          "value": 3875
         },
         {
           "label": "30-39 år",
-          "value": 10789
+          "value": 10923
         },
         {
           "label": "40-49 år",
-          "value": 11531
+          "value": 11623
         },
         {
           "label": "50-59 år",
-          "value": 13781
+          "value": 13795
         },
         {
           "label": "60 år og derover",
-          "value": 7063
+          "value": 7078
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 28355
+          "value": 28558
         },
         {
           "label": "Kvinder",
-          "value": 20426
+          "value": 20531
         }
       ],
       "jobindsats": {
@@ -7493,7 +7499,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           3,
@@ -7605,7 +7612,8 @@
           3.4,
           3.3,
           3.2,
-          3.4
+          3.4,
+          3.3
         ]
       },
       "sourceNames": {
@@ -7937,7 +7945,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           0,
@@ -8254,45 +8263,46 @@
           316384,
           316481,
           317616,
-          319295,
-          320161,
-          323066
+          319254,
+          319049,
+          321870,
+          328549
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 21042
+          "value": 25058
         },
         {
           "label": "25-29 år",
-          "value": 62319
+          "value": 62771
         },
         {
           "label": "30-39 år",
-          "value": 108359
+          "value": 108906
         },
         {
           "label": "40-49 år",
-          "value": 61806
+          "value": 62097
         },
         {
           "label": "50-59 år",
-          "value": 47571
+          "value": 47580
         },
         {
           "label": "60 år og derover",
-          "value": 21969
+          "value": 22137
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 169975
+          "value": 172474
         },
         {
           "label": "Kvinder",
-          "value": 153091
+          "value": 156075
         }
       ],
       "jobindsats": {
@@ -11166,7 +11176,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           4.3,
@@ -11278,7 +11289,8 @@
           3.3,
           3.6,
           4.4,
-          4.5
+          4.6,
+          4
         ]
       },
       "sourceNames": {
@@ -11610,7 +11622,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           136076,
@@ -11927,45 +11940,46 @@
           133165,
           133112,
           133098,
-          133508,
-          133790,
-          133766
+          133393,
+          133676,
+          133645,
+          133828
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 3404
+          "value": 3394
         },
         {
           "label": "25-29 år",
-          "value": 8483
+          "value": 8450
         },
         {
           "label": "30-39 år",
-          "value": 29624
+          "value": 29661
         },
         {
           "label": "40-49 år",
-          "value": 30308
+          "value": 30339
         },
         {
           "label": "50-59 år",
-          "value": 39154
+          "value": 39099
         },
         {
           "label": "60 år og derover",
-          "value": 22793
+          "value": 22885
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 84690
+          "value": 84755
         },
         {
           "label": "Kvinder",
-          "value": 49076
+          "value": 49073
         }
       ],
       "jobindsats": {
@@ -14839,7 +14853,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           2.8,
@@ -14951,7 +14966,8 @@
           3.4,
           3.4,
           3.2,
-          3.3
+          3.3,
+          3.2
         ]
       },
       "sourceNames": {
@@ -15283,7 +15299,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           49638,
@@ -15600,45 +15617,46 @@
           58510,
           58466,
           58439,
-          58388,
-          58281,
-          58148
+          58362,
+          58255,
+          58110,
+          58419
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 2465
+          "value": 2718
         },
         {
           "label": "25-29 år",
-          "value": 6818
+          "value": 6840
         },
         {
           "label": "30-39 år",
-          "value": 16504
+          "value": 16565
         },
         {
           "label": "40-49 år",
-          "value": 13258
+          "value": 13225
         },
         {
           "label": "50-59 år",
-          "value": 12882
+          "value": 12866
         },
         {
           "label": "60 år og derover",
-          "value": 6221
+          "value": 6205
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 10582
+          "value": 10620
         },
         {
           "label": "Kvinder",
-          "value": 47566
+          "value": 47799
         }
       ],
       "jobindsats": {
@@ -18499,7 +18517,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           4.1,
@@ -18611,7 +18630,8 @@
           1.4,
           1.6,
           2.1,
-          1.7
+          1.7,
+          1.5
         ]
       },
       "sourceNames": {
@@ -18943,7 +18963,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           0,
@@ -19260,45 +19281,46 @@
           206599,
           207223,
           207775,
-          208527,
-          209076,
-          210178
+          208535,
+          209080,
+          210166,
+          210937
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 14693
+          "value": 14970
         },
         {
           "label": "25-29 år",
-          "value": 25537
+          "value": 25520
         },
         {
           "label": "30-39 år",
-          "value": 60407
+          "value": 60573
         },
         {
           "label": "40-49 år",
-          "value": 49023
+          "value": 49137
         },
         {
           "label": "50-59 år",
-          "value": 43044
+          "value": 43142
         },
         {
           "label": "60 år og derover",
-          "value": 17474
+          "value": 17595
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 118628
+          "value": 119059
         },
         {
           "label": "Kvinder",
-          "value": 91550
+          "value": 91878
         }
       ],
       "jobindsats": {
@@ -22172,7 +22194,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           4,
@@ -22284,7 +22307,8 @@
           3.6,
           3.4,
           3.3,
-          3.5
+          3.5,
+          3.3
         ]
       },
       "sourceNames": {
@@ -22616,7 +22640,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           0,
@@ -22933,23 +22958,24 @@
           48635,
           48640,
           48639,
-          48701,
-          48768,
-          48801
+          48632,
+          48700,
+          48737,
+          48862
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 4935
+          "value": 4956
         },
         {
           "label": "25-29 år",
-          "value": 5441
+          "value": 5451
         },
         {
           "label": "30-39 år",
-          "value": 11252
+          "value": 11282
         },
         {
           "label": "40-49 år",
@@ -22957,21 +22983,21 @@
         },
         {
           "label": "50-59 år",
-          "value": 11427
+          "value": 11391
         },
         {
           "label": "60 år og derover",
-          "value": 5999
+          "value": 6035
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 41195
+          "value": 41242
         },
         {
           "label": "Kvinder",
-          "value": 7606
+          "value": 7620
         }
       ],
       "jobindsats": {
@@ -25840,7 +25866,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           3.4,
@@ -25951,8 +25978,9 @@
           2.7,
           2.6,
           2.4,
-          2.1,
-          2.2
+          2.2,
+          2.2,
+          2.1
         ]
       },
       "sourceNames": {
@@ -26284,7 +26312,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           50928,
@@ -26601,45 +26630,46 @@
           96324,
           96420,
           96522,
-          96641,
+          96642,
           96510,
-          96357
+          96360,
+          96515
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 3086
+          "value": 3142
         },
         {
           "label": "25-29 år",
-          "value": 14179
+          "value": 14176
         },
         {
           "label": "30-39 år",
-          "value": 27664
+          "value": 27722
         },
         {
           "label": "40-49 år",
-          "value": 20425
+          "value": 20451
         },
         {
           "label": "50-59 år",
-          "value": 19928
+          "value": 19916
         },
         {
           "label": "60 år og derover",
-          "value": 11075
+          "value": 11108
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 8873
+          "value": 8899
         },
         {
           "label": "Kvinder",
-          "value": 87484
+          "value": 87616
         }
       ],
       "jobindsats": {
@@ -29436,7 +29466,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           1.5,
@@ -29548,7 +29579,8 @@
           1.2,
           1.6,
           2,
-          1.8
+          1.8,
+          1.5
         ]
       },
       "sourceNames": {
@@ -29880,7 +29912,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           167883,
@@ -30197,45 +30230,46 @@
           127840,
           127866,
           127847,
-          127823,
-          127743,
-          127848
+          127805,
+          127640,
+          127747,
+          127772
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 5621
+          "value": 5640
         },
         {
           "label": "25-29 år",
-          "value": 8266
+          "value": 8217
         },
         {
           "label": "30-39 år",
-          "value": 25435
+          "value": 25458
         },
         {
           "label": "40-49 år",
-          "value": 27612
+          "value": 27661
         },
         {
           "label": "50-59 år",
-          "value": 36601
+          "value": 36458
         },
         {
           "label": "60 år og derover",
-          "value": 24313
+          "value": 24338
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 21145
+          "value": 21160
         },
         {
           "label": "Kvinder",
-          "value": 106703
+          "value": 106612
         }
       ],
       "jobindsats": {
@@ -33109,7 +33143,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           2.8,
@@ -33221,7 +33256,8 @@
           1.8,
           1.7,
           1.5,
-          1.7
+          1.7,
+          1.3
         ]
       },
       "sourceNames": {
@@ -33553,7 +33589,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           0,
@@ -33870,45 +33907,46 @@
           205048,
           205009,
           204921,
-          205027,
-          204746,
-          204807
+          205002,
+          204720,
+          204800,
+          204982
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 18899
+          "value": 19180
         },
         {
           "label": "25-29 år",
-          "value": 18528
+          "value": 18566
         },
         {
           "label": "30-39 år",
-          "value": 40987
+          "value": 41005
         },
         {
           "label": "40-49 år",
-          "value": 40016
+          "value": 40025
         },
         {
           "label": "50-59 år",
-          "value": 50899
+          "value": 50684
         },
         {
           "label": "60 år og derover",
-          "value": 35478
+          "value": 35522
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 154304
+          "value": 154554
         },
         {
           "label": "Kvinder",
-          "value": 50503
+          "value": 50428
         }
       ],
       "jobindsats": {
@@ -36782,7 +36820,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           3.7,
@@ -36894,6 +36933,7 @@
           4.1,
           3.7,
           3.4,
+          3.5,
           3.5
         ]
       },
@@ -37226,7 +37266,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           162435,
@@ -37543,45 +37584,46 @@
           155913,
           155626,
           155292,
-          155176,
-          154994,
-          155481
+          155163,
+          154977,
+          155446,
+          157600
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 12350
+          "value": 14036
         },
         {
           "label": "25-29 år",
-          "value": 21517
+          "value": 21686
         },
         {
           "label": "30-39 år",
-          "value": 40728
+          "value": 40918
         },
         {
           "label": "40-49 år",
-          "value": 30862
+          "value": 30927
         },
         {
           "label": "50-59 år",
-          "value": 31057
+          "value": 30962
         },
         {
           "label": "60 år og derover",
-          "value": 18967
+          "value": 19071
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 68978
+          "value": 70077
         },
         {
           "label": "Kvinder",
-          "value": 86503
+          "value": 87523
         }
       ],
       "jobindsats": {
@@ -40451,7 +40493,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           3.8,
@@ -40563,7 +40606,8 @@
           3.4,
           3.6,
           4,
-          3.9
+          3.9,
+          3.4
         ]
       },
       "sourceNames": {
@@ -40895,7 +40939,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           293414,
@@ -41212,45 +41257,46 @@
           175775,
           175527,
           175159,
-          174839,
-          174479,
-          174654
+          174762,
+          174401,
+          174568,
+          175640
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 14039
+          "value": 14791
         },
         {
           "label": "25-29 år",
-          "value": 19607
+          "value": 19769
         },
         {
           "label": "30-39 år",
-          "value": 37122
+          "value": 37293
         },
         {
           "label": "40-49 år",
-          "value": 31733
+          "value": 31666
         },
         {
           "label": "50-59 år",
-          "value": 45256
+          "value": 45080
         },
         {
           "label": "60 år og derover",
-          "value": 26897
+          "value": 27041
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 47675
+          "value": 48096
         },
         {
           "label": "Kvinder",
-          "value": 126979
+          "value": 127544
         }
       ],
       "jobindsats": {
@@ -44124,7 +44170,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           4.3,
@@ -44236,7 +44283,8 @@
           3.6,
           3.6,
           3.6,
-          3.8
+          3.8,
+          3.6
         ]
       },
       "sourceNames": {
@@ -44568,7 +44616,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           0,
@@ -44885,45 +44934,46 @@
           24347,
           24285,
           24209,
-          24178,
-          24131,
-          24097
+          24175,
+          24112,
+          24076,
+          24092
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 531
+          "value": 555
         },
         {
           "label": "25-29 år",
-          "value": 2904
+          "value": 2874
         },
         {
           "label": "30-39 år",
-          "value": 7429
+          "value": 7432
         },
         {
           "label": "40-49 år",
-          "value": 5698
+          "value": 5689
         },
         {
           "label": "50-59 år",
-          "value": 4900
+          "value": 4902
         },
         {
           "label": "60 år og derover",
-          "value": 2635
+          "value": 2640
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 8987
+          "value": 8990
         },
         {
           "label": "Kvinder",
-          "value": 15110
+          "value": 15102
         }
       ],
       "jobindsats": {
@@ -47785,7 +47835,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           7,
@@ -47897,7 +47948,8 @@
           6,
           6.3,
           6.8,
-          7.1
+          7.2,
+          6.3
         ]
       },
       "sourceNames": {
@@ -48229,7 +48281,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           136742,
@@ -48546,45 +48599,46 @@
           142647,
           142579,
           142535,
-          142542,
-          142362,
-          142417
+          142420,
+          142231,
+          142265,
+          142594
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 7374
+          "value": 7610
         },
         {
           "label": "25-29 år",
-          "value": 11120
+          "value": 11107
         },
         {
           "label": "30-39 år",
-          "value": 31384
+          "value": 31292
         },
         {
           "label": "40-49 år",
-          "value": 34667
+          "value": 34655
         },
         {
           "label": "50-59 år",
-          "value": 38755
+          "value": 38699
         },
         {
           "label": "60 år og derover",
-          "value": 19117
+          "value": 19231
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 72686
+          "value": 72799
         },
         {
           "label": "Kvinder",
-          "value": 69731
+          "value": 69795
         }
       ],
       "jobindsats": {
@@ -51458,7 +51512,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           4.7,
@@ -51570,7 +51625,8 @@
           4.5,
           4.4,
           4.2,
-          4.4
+          4.4,
+          4.2
         ]
       },
       "sourceNames": {
@@ -51902,7 +51958,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           50234,
@@ -52219,45 +52276,46 @@
           69434,
           69337,
           70334,
-          70332,
-          70239,
-          70044
+          70322,
+          70114,
+          69918,
+          69943
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 1080
+          "value": 1052
         },
         {
           "label": "25-29 år",
-          "value": 6575
+          "value": 6531
         },
         {
           "label": "30-39 år",
-          "value": 16457
+          "value": 16456
         },
         {
           "label": "40-49 år",
-          "value": 17183
+          "value": 17147
         },
         {
           "label": "50-59 år",
-          "value": 20469
+          "value": 20471
         },
         {
           "label": "60 år og derover",
-          "value": 8280
+          "value": 8286
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 21859
+          "value": 21799
         },
         {
           "label": "Kvinder",
-          "value": 48185
+          "value": 48144
         }
       ],
       "jobindsats": {
@@ -55118,7 +55176,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           3.9,
@@ -55230,7 +55289,8 @@
           1.8,
           2.2,
           3.5,
-          2.4
+          2.4,
+          2
         ]
       },
       "sourceNames": {
@@ -55562,7 +55622,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           77682,
@@ -55879,45 +55940,46 @@
           123877,
           123949,
           124003,
-          124088,
-          124097,
-          124188
+          124084,
+          124006,
+          124090,
+          124237
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 338
+          "value": 327
         },
         {
           "label": "25-29 år",
-          "value": 2081
+          "value": 2060
         },
         {
           "label": "30-39 år",
-          "value": 17793
+          "value": 17752
         },
         {
           "label": "40-49 år",
-          "value": 31503
+          "value": 31516
         },
         {
           "label": "50-59 år",
-          "value": 48864
+          "value": 48734
         },
         {
           "label": "60 år og derover",
-          "value": 23609
+          "value": 23848
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 81996
+          "value": 81989
         },
         {
           "label": "Kvinder",
-          "value": 42192
+          "value": 42248
         }
       ],
       "jobindsats": {
@@ -58787,7 +58849,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           2.1,
@@ -58899,7 +58962,8 @@
           2.9,
           2.9,
           2.8,
-          3
+          3,
+          3.1
         ]
       },
       "sourceNames": {
@@ -59231,7 +59295,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           36474,
@@ -59548,45 +59613,46 @@
           83716,
           83551,
           83456,
-          83457,
-          83422,
-          84725
+          83413,
+          83326,
+          84687,
+          85701
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 6136
+          "value": 6757
         },
         {
           "label": "25-29 år",
-          "value": 15477
+          "value": 15721
         },
         {
           "label": "30-39 år",
-          "value": 23231
+          "value": 23291
         },
         {
           "label": "40-49 år",
-          "value": 17213
+          "value": 17187
         },
         {
           "label": "50-59 år",
-          "value": 17176
+          "value": 17222
         },
         {
           "label": "60 år og derover",
-          "value": 5492
+          "value": 5523
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 28107
+          "value": 28343
         },
         {
           "label": "Kvinder",
-          "value": 56618
+          "value": 57358
         }
       ],
       "jobindsats": {
@@ -62452,7 +62518,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           7.1,
@@ -62564,7 +62631,8 @@
           4.4,
           4.5,
           5.6,
-          5.7
+          5.7,
+          5.1
         ]
       },
       "sourceNames": {
@@ -62896,7 +62964,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           106413,
@@ -63213,45 +63282,46 @@
           63923,
           63740,
           63521,
-          63438,
-          63407,
-          63449
+          63382,
+          63349,
+          63385,
+          63486
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 6943
+          "value": 6933
         },
         {
           "label": "25-29 år",
-          "value": 6599
+          "value": 6607
         },
         {
           "label": "30-39 år",
-          "value": 12708
+          "value": 12759
         },
         {
           "label": "40-49 år",
-          "value": 10873
+          "value": 10889
         },
         {
           "label": "50-59 år",
-          "value": 15869
+          "value": 15813
         },
         {
           "label": "60 år og derover",
-          "value": 10457
+          "value": 10485
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 60756
+          "value": 60763
         },
         {
           "label": "Kvinder",
-          "value": 2693
+          "value": 2723
         }
       ],
       "jobindsats": {
@@ -66125,7 +66195,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           2.4,
@@ -66237,6 +66308,7 @@
           2.1,
           2,
           2,
+          2.2,
           2.2
         ]
       },
@@ -66569,7 +66641,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           0,
@@ -66886,45 +66959,46 @@
           79281,
           79126,
           79024,
-          78965,
-          78809,
-          78793
+          78916,
+          78757,
+          78744,
+          78898
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 3650
+          "value": 3798
         },
         {
           "label": "25-29 år",
-          "value": 8460
+          "value": 8475
         },
         {
           "label": "30-39 år",
-          "value": 19469
+          "value": 19515
         },
         {
           "label": "40-49 år",
-          "value": 15236
+          "value": 15197
         },
         {
           "label": "50-59 år",
-          "value": 19848
+          "value": 19749
         },
         {
           "label": "60 år og derover",
-          "value": 12130
+          "value": 12164
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 51508
+          "value": 51495
         },
         {
           "label": "Kvinder",
-          "value": 27285
+          "value": 27403
         }
       ],
       "jobindsats": {
@@ -69794,9 +69868,11 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
+          0,
           0,
           0,
           0,
@@ -70238,7 +70314,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           23665,
@@ -70555,45 +70632,46 @@
           67204,
           66821,
           66559,
-          66390,
-          66188,
-          66258
+          66331,
+          66070,
+          66125,
+          67598
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 5738
+          "value": 7052
         },
         {
           "label": "25-29 år",
-          "value": 11633
+          "value": 11596
         },
         {
           "label": "30-39 år",
-          "value": 21769
+          "value": 21781
         },
         {
           "label": "40-49 år",
-          "value": 12048
+          "value": 12087
         },
         {
           "label": "50-59 år",
-          "value": 10961
+          "value": 10931
         },
         {
           "label": "60 år og derover",
-          "value": 4109
+          "value": 4151
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 31926
+          "value": 32623
         },
         {
           "label": "Kvinder",
-          "value": 34332
+          "value": 34975
         }
       ],
       "jobindsats": {
@@ -73455,7 +73533,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           5.5,
@@ -73567,7 +73646,8 @@
           3.6,
           4,
           4.6,
-          4.8
+          4.8,
+          4.3
         ]
       },
       "sourceNames": {
@@ -73899,7 +73979,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           26489,
@@ -74216,45 +74297,46 @@
           33886,
           33845,
           33763,
-          33701,
-          33634,
-          33552
+          33685,
+          33618,
+          33533,
+          33560
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 1169
+          "value": 1214
         },
         {
           "label": "25-29 år",
-          "value": 3284
+          "value": 3292
         },
         {
           "label": "30-39 år",
-          "value": 7600
+          "value": 7586
         },
         {
           "label": "40-49 år",
-          "value": 6988
+          "value": 6961
         },
         {
           "label": "50-59 år",
-          "value": 9068
+          "value": 9044
         },
         {
           "label": "60 år og derover",
-          "value": 5443
+          "value": 5463
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 8577
+          "value": 8593
         },
         {
           "label": "Kvinder",
-          "value": 24975
+          "value": 24967
         }
       ],
       "jobindsats": {
@@ -77061,7 +77143,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           3.5,
@@ -77173,7 +77256,8 @@
           1.8,
           1.9,
           2.2,
-          2
+          2,
+          1.9
         ]
       },
       "sourceNames": {
@@ -77505,7 +77589,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           31038,
@@ -77822,45 +77907,46 @@
           20566,
           20512,
           20499,
-          20442,
-          20354,
-          20309
+          20440,
+          20352,
+          20307,
+          20396
         ]
       },
       "profileAge": [
         {
           "label": "16-24 år",
-          "value": 928
+          "value": 1017
         },
         {
           "label": "25-29 år",
-          "value": 2101
+          "value": 2119
         },
         {
           "label": "30-39 år",
-          "value": 4615
+          "value": 4616
         },
         {
           "label": "40-49 år",
-          "value": 3936
+          "value": 3929
         },
         {
           "label": "50-59 år",
-          "value": 5105
+          "value": 5106
         },
         {
           "label": "60 år og derover",
-          "value": 3624
+          "value": 3609
         }
       ],
       "profileSex": [
         {
           "label": "Mænd",
-          "value": 11407
+          "value": 11456
         },
         {
           "label": "Kvinder",
-          "value": 8902
+          "value": 8940
         }
       ],
       "jobindsats": {
@@ -80716,7 +80802,8 @@
           "2026M05",
           "2026M06",
           "2026M07",
-          "2026M08"
+          "2026M08",
+          "2026M09"
         ],
         "values": [
           5.9,
@@ -80828,7 +80915,8 @@
           4.5,
           4.5,
           4.9,
-          4.9
+          4.9,
+          4.6
         ]
       },
       "sourceNames": {
