@@ -1,3 +1,4 @@
-status: ok
-tid_utc: 2026-11-12T16:08:16Z
-dato_dk: 2026-11-12
+status: fejl
+tid_utc: 2026-11-13T15:30:29Z
+dato_dk: 2026-11-13
+fejl:  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 1361, in do_open r = h.getresponse() ^^^^^^^^^^^^^^^ File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/http/client.py", line 1478, in getresponse response.begin() File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/http/client.py", line 343, in begin version, status, reason = self._read_status() ^^^^^^^^^^^^^^^^^^^ File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/http/client.py", line 312, in _read_status raise RemoteDisconnected("Remote end closed connection without" http.client.RemoteDisconnected: Remote end closed connection without response 
