@@ -98,7 +98,7 @@
 
     c.fillStyle = '#35493B';
     c.font = '700 22px Arial, sans-serif';
-    c.fillText('Danske A-kasser', 80, 1105);
+    c.fillText('Michel Klos', 80, 1105);
     c.font = '18px Arial, sans-serif';
     c.fillStyle = '#6f6258';
     const src = source.length > 100 ? source.slice(0, 97) + '...' : source;
