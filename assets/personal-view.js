@@ -43,6 +43,52 @@
   let drawingComparisonPair=null;
   let comparisonBridgeInstalled=false;
   let drawWrapped=false;
+  let regionLoadToken=0;
+  let pendingLoads=0;
+  let initializing=true;
+  const loadErrors=new Map();
+  const stateWarnings=new Set();
+  const startedAt=Date.now();
+  let resolveReady;
+  const readyPromise=new Promise(resolve=>{resolveReady=resolve;});
+
+  function statusSnapshot(){
+    const busy=initializing||applying||pendingLoads>0;
+    return{state:busy?'loading':loadErrors.size?'error':'ready',ok:!busy&&!loadErrors.size,busy,errors:[...loadErrors.values()].map(error=>({...error})),warnings:[...stateWarnings]};
+  }
+  function publishStatus(){window.dispatchEvent(new CustomEvent('dak:personal-view-status',{detail:statusSnapshot()}));}
+  function beginLoad(scope){pendingLoads+=1;loadErrors.delete(scope);publishStatus();}
+  function endLoad(){pendingLoads=Math.max(0,pendingLoads-1);publishStatus();}
+  function loadError(scope,error){loadErrors.set(scope,{scope,message:error?.message||String(error||'Ukendt fejl')});publishStatus();}
+  function warnState(message){
+    stateWarnings.add(message);
+    const feedback=document.getElementById('pvFeedback');if(feedback)feedback.textContent=[...stateWarnings].join(' ');
+  }
+  // Shared links wait for the accepted geography and comparison, not only the first draw.
+  window.DAKPersonalView=Object.freeze({
+    ready:readyPromise,getState:currentState,encodeState,decodeState,getStatus:statusSnapshot,
+    get isBusy(){return statusSnapshot().busy;},
+    get status(){return statusSnapshot();}
+  });
+
+  function normalizeState(value){
+    if(!value||typeof value!=='object'||Array.isArray(value))return null;
+    const result={v:5};
+    ['region','fund','period','comparisonFund','comparisonRegion','rmHorizon'].forEach(key=>{
+      const field=value[key];
+      if(typeof field==='string'&&field.length<=120)result[key]=field;
+      else if(key==='period'&&Number.isFinite(field))result[key]=String(field);
+    });
+    result.hidden=Array.isArray(value.hidden)?[...new Set(value.hidden.filter(key=>typeof key==='string'&&/^(kpis|section-\d{1,2})$/.test(key)))].slice(0,32):[];
+    const chartView=value.chartView;
+    if(chartView&&typeof chartView==='object'&&!Array.isArray(chartView)&&typeof chartView.id==='string'&&chartView.id.length<=120&&/^[A-Za-z][A-Za-z0-9]*$/.test(chartView.id)){
+      result.chartView={id:chartView.id,hiddenDatasets:Array.isArray(chartView.hiddenDatasets)?chartView.hiddenDatasets.slice(0,100).filter(item=>item&&typeof item==='object'&&Number.isInteger(item.index)&&item.index>=0&&item.index<100&&typeof item.label==='string'&&item.label.length<=300).map(item=>({index:item.index,label:item.label})):[]};
+    }
+    // Keep legacy comparison state readable without accepting arbitrary object properties.
+    if(Array.isArray(value.compare))result.compare=value.compare.filter(code=>typeof code==='string'&&code.length<=120).slice(0,32);
+    if(value.nationalReference===true)result.nationalReference=true;
+    return result;
+  }
 
   function encodeState(state){
     const json=JSON.stringify(state),bytes=new TextEncoder().encode(json);let binary='';
@@ -50,10 +96,11 @@
     return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
   }
   function decodeState(value){
-    try{let b64=value.replace(/-/g,'+').replace(/_/g,'/');while(b64.length%4)b64+='=';const binary=atob(b64),bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));return JSON.parse(new TextDecoder().decode(bytes));}catch(_){return null;}
+    if(typeof value!=='string'||!value||value.length>16384)return null;
+    try{let b64=value.replace(/-/g,'+').replace(/_/g,'/');while(b64.length%4)b64+='=';const binary=atob(b64),bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));return normalizeState(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes)));}catch(_){return null;}
   }
   function sharedState(){return decodeState(new URLSearchParams(location.search).get(PARAM)||'');}
-  function storedState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');}catch(_){return null;}}
+  function storedState(){try{return normalizeState(JSON.parse(localStorage.getItem(STORAGE_KEY)||'null'));}catch(_){return null;}}
   function moduleKey(el,index){return el.dataset.personalViewKey||(el.dataset.personalViewKey='section-'+(index+1));}
   function modules(){
     const result=[],kpis=document.querySelector('#dashboard > .kpis');
@@ -65,8 +112,8 @@
     return result;
   }
   function hiddenKeys(){return modules().filter(m=>m.nodes.some(n=>n.hidden)).map(m=>m.key);}
-  function currentState(){return{v:5,region:document.getElementById('regionSelect')?.value||'all',fund:document.getElementById('fundSelect')?.value||'',period:document.getElementById('periodSelect')?.value||'',comparisonFund:comparisonFundCode,comparisonRegion:comparisonRegionChoice,hidden:hiddenKeys()};}
-  function save(){if(applying)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(currentState()));}catch(_){} }
+  function currentState(){return{v:5,region:document.getElementById('regionSelect')?.value||'all',fund:document.getElementById('fundSelect')?.value||'',period:document.getElementById('periodSelect')?.value||'',comparisonFund:comparisonFundCode,comparisonRegion:comparisonRegionChoice,rmHorizon:document.getElementById('rmHorizon')?.value==='six'?'six':'three',hidden:hiddenKeys()};}
+  function save(){if(applying||pendingLoads||loadErrors.size)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(currentState()));}catch(_){} }
   function applyVisibility(hidden){const set=new Set(Array.isArray(hidden)?hidden:[]);modules().forEach(m=>m.nodes.forEach(n=>n.hidden=set.has(m.key)));document.querySelectorAll('[data-pv-module]').forEach(input=>input.checked=!set.has(input.value));}
   function refreshChecks(){
     const host=document.getElementById('pvModules');if(!host)return;
@@ -153,8 +200,18 @@
     controls.appendChild(bar);refreshChecks();
     const details=document.getElementById('pvDetails');details?.addEventListener('mouseleave',()=>details.removeAttribute('open'));
     document.addEventListener('pointerdown',e=>{if(details?.open&&!details.contains(e.target))details.removeAttribute('open');});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&details?.open)details.removeAttribute('open');});
-    document.getElementById('pvShare').addEventListener('click',async()=>{const url=new URL(location.href);url.searchParams.set(PARAM,encodeState(currentState()));try{await navigator.clipboard.writeText(url.toString());document.getElementById('pvFeedback').textContent='Link kopieret';}catch(_){prompt('Kopiér dette link',url.toString());}setTimeout(()=>{const f=document.getElementById('pvFeedback');if(f)f.textContent='';},2500);});
-    document.getElementById('pvReset').addEventListener('click',()=>{localStorage.removeItem(STORAGE_KEY);localStorage.removeItem('dak-a-kasseindsigt-personal-view-v4');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v3');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v2');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v1');const url=new URL(location.href);url.searchParams.delete(PARAM);location.replace(url.toString());});
+    document.getElementById('pvShare').addEventListener('click',async()=>{
+      const status=statusSnapshot(),feedback=document.getElementById('pvFeedback');
+      if(status.busy){feedback.textContent='Visningen indlæses. Prøv igen om et øjeblik.';return;}
+      if(!status.ok){feedback.textContent='Visningen kunne ikke indlæses fuldt. Vælg geografi og sammenligning igen før deling.';return;}
+      const url=new URL(location.href);url.searchParams.set(PARAM,encodeState(currentState()));
+      try{await navigator.clipboard.writeText(url.toString());feedback.textContent='Link kopieret';}catch(_){prompt('Kopiér dette link',url.toString());}
+      setTimeout(()=>{const f=document.getElementById('pvFeedback');if(f)f.textContent='';},2500);
+    });
+    document.getElementById('pvReset').addEventListener('click',()=>{
+      try{[STORAGE_KEY,'dak-a-kasseindsigt-personal-view-v4','dak-a-kasseindsigt-personal-view-v3','dak-a-kasseindsigt-personal-view-v2','dak-a-kasseindsigt-personal-view-v1'].forEach(key=>localStorage.removeItem(key));}catch(_){}
+      const url=new URL(location.href);url.searchParams.delete(PARAM);url.searchParams.delete('chart');if(url.hash.startsWith('#graf-'))url.hash='';location.replace(url.toString());
+    });
   }
 
   function setPeriodLimit(regional){const select=document.getElementById('periodSelect');if(!select)return;[...select.options].forEach(option=>{if(Number(option.value)>60){option.disabled=regional;option.hidden=regional;}});}
@@ -184,31 +241,32 @@
 
   async function ensureComparisonData(){
     const key=resolvedComparisonRegion(),token=++comparisonLoadToken;
-    if(!comparisonFundCode||!key){comparisonData=null;comparisonDataRegion=null;return true;}
-    if(key===activeRegion||key==='all'){
-      comparisonData=key==='all'?nationalData:DATA;comparisonDataRegion=key;return true;
-    }
-    updateComparisonControls('Henter '+(REGION_LABELS.get(key)||'sammenligningsdata')+'...');
+    beginLoad('comparison');
     try{
+      if(!comparisonFundCode||!key){comparisonData=null;comparisonDataRegion=null;return true;}
+      if(key===activeRegion||key==='all'){
+        comparisonData=key==='all'?nationalData:DATA;comparisonDataRegion=key;return true;
+      }
+      updateComparisonControls('Henter '+(REGION_LABELS.get(key)||'sammenligningsdata')+'...');
       const data=await dataForRegion(key);if(token!==comparisonLoadToken)return false;
       comparisonData=data;comparisonDataRegion=key;updateComparisonControls();return true;
     }catch(error){
       if(token!==comparisonLoadToken)return false;
-      comparisonData=null;comparisonDataRegion=null;throw error;
-    }
+      comparisonData=null;comparisonDataRegion=null;loadError('comparison',error);throw error;
+    }finally{endLoad();}
   }
 
   async function setComparisonSelection(fundCode,regionChoice,redraw=true){
-    comparisonFundCode=nationalData?.funds?.[fundCode]?fundCode:'';
+    comparisonFundCode=Object.prototype.hasOwnProperty.call(nationalData?.funds||{},fundCode)?fundCode:'';
     comparisonRegionChoice=comparisonFundCode&&REGION_FILES.has(regionChoice)?regionChoice:'';
     updateComparisonControls();
-    await ensureComparisonData();
+    if(!await ensureComparisonData())return;
     if(redraw&&typeof draw==='function')draw();
     save();
   }
 
   function handleComparisonError(error,redraw=true){
-    console.error(error);updateComparisonControls('Sammenligningen kunne ikke indlæses: '+(error?.message||'ukendt fejl')+'.',true);
+    console.error(error);loadError('comparison',error);updateComparisonControls('Sammenligningen kunne ikke indlæses: '+(error?.message||'ukendt fejl')+'.',true);
     if(redraw&&typeof draw==='function')draw();
   }
 
@@ -496,41 +554,72 @@
 
   async function setRegion(key){
     if(!nationalData)return;const select=document.getElementById('regionSelect'),periodSelect=document.getElementById('periodSelect');if(!REGION_FILES.has(key))key='all';
-    if(key==='all'){
-      activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateNotice();updateUnsupported();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();return;
-    }
-    if(activeRegion==='all'){nationalPeriod=periodSelect.value;if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;}else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
-    activeRegion=key;if(select)select.value=key;setPeriodLimit(true);periodSelect.value=Number(regionalPeriod)<=60?String(regionalPeriod):'60';updateNotice('<strong>Henter '+REGION_LABELS.get(key)+'...</strong>');
-    const payload=await loadRegion(key);if(document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);mergedRegionCache.set(key,DATA);updateAvailability();updateNotice();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();
+    const token=++regionLoadToken;beginLoad('region');
+    try{
+      if(key==='all'){
+        activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateNotice();updateUnsupported();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(token===regionLoadToken&&typeof draw==='function')draw();return;
+      }
+      if(activeRegion==='all'){nationalPeriod=periodSelect.value;if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;}else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
+      activeRegion=key;if(select)select.value=key;setPeriodLimit(true);periodSelect.value=Number(regionalPeriod)<=60?String(regionalPeriod):'60';updateNotice('<strong>Henter '+REGION_LABELS.get(key)+'...</strong>');
+      const payload=await loadRegion(key);if(token!==regionLoadToken||document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);mergedRegionCache.set(key,DATA);updateAvailability();updateNotice();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(token===regionLoadToken&&typeof draw==='function')draw();
+    }catch(error){
+      if(token!==regionLoadToken)return;
+      loadError('region',error);throw error;
+    }finally{endLoad();save();}
   }
 
-  function handleRegionError(error){console.error(error);updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateUnsupported();ensureComparisonData().catch(comparisonError=>handleComparisonError(comparisonError,false)).finally(()=>{if(typeof draw==='function')draw();});}
+  async function handleRegionError(error){
+    console.error(error);loadError('region',error);pendingLoads+=1;publishStatus();
+    try{
+      updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateUnsupported();
+      try{await ensureComparisonData();}catch(comparisonError){handleComparisonError(comparisonError,false);}
+      if(typeof draw==='function')draw();
+    }finally{endLoad();}
+  }
 
   function comparisonFromState(state){
+    const knownFund=code=>Object.prototype.hasOwnProperty.call(nationalData?.funds||{},code);
     if(Object.prototype.hasOwnProperty.call(state,'comparisonFund')){
-      const fundCode=nationalData?.funds?.[state.comparisonFund]?state.comparisonFund:'';if(!fundCode)return{fundCode:'',regionChoice:''};
+      const fundCode=knownFund(state.comparisonFund)?state.comparisonFund:'';if(!fundCode)return{fundCode:'',regionChoice:''};
       const migratedRegion=state.comparisonRegion==='same'?(REGION_FILES.has(state.region)?state.region:'all'):state.comparisonRegion;
       return{fundCode,regionChoice:REGION_FILES.has(migratedRegion)?migratedRegion:''};
     }
-    if(state.nationalReference&&nationalData?.funds?.[state.fund])return{fundCode:state.fund,regionChoice:'all'};
-    const legacy=Array.isArray(state.compare)?state.compare.filter(code=>nationalData?.funds?.[code]):[];
+    if(state.nationalReference&&knownFund(state.fund))return{fundCode:state.fund,regionChoice:'all'};
+    const legacy=Array.isArray(state.compare)?state.compare.filter(knownFund):[];
     const fundCode=legacy.find(code=>code!==state.fund)||legacy[0]||'';return{fundCode,regionChoice:fundCode?(REGION_FILES.has(state.region)?state.region:'all'):''};
   }
 
   async function applyState(state){
-    if(!state)return;applying=true;const fundSelect=document.getElementById('fundSelect'),periodSelect=document.getElementById('periodSelect');
-    if(state.fund&&fundSelect&&[...fundSelect.options].some(option=>option.value===state.fund))fundSelect.value=state.fund;
-    if(state.period&&periodSelect&&[...periodSelect.options].some(option=>option.value===String(state.period)))periodSelect.value=String(state.period);
-    const choice=comparisonFromState(state);comparisonFundCode=choice.fundCode;comparisonRegionChoice=choice.regionChoice;updateComparisonControls();applyVisibility(state.hidden||[]);
-    const region=REGION_FILES.has(state.region)?state.region:'all';if(region==='all')nationalPeriod=periodSelect.value;else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
-    try{await setRegion(region);}catch(error){handleRegionError(error);}
-    refreshChecks();updateComparisonControls();applying=false;save();
+    state=normalizeState(state);if(!state)return;applying=true;publishStatus();
+    try{
+      const fundSelect=document.getElementById('fundSelect'),periodSelect=document.getElementById('periodSelect'),horizonSelect=document.getElementById('rmHorizon');
+      if(state.fund){
+        if(fundSelect&&[...fundSelect.options].some(option=>option.value===state.fund))fundSelect.value=state.fund;
+        else warnState('A-kassen i linket findes ikke længere. I alt vises.');
+      }
+      if(state.period){
+        if(periodSelect&&[...periodSelect.options].some(option=>option.value===state.period))periodSelect.value=state.period;
+        else warnState('Perioden i linket genkendes ikke. Standardperioden vises.');
+      }
+      if(horizonSelect)horizonSelect.value=state.rmHorizon==='six'?'six':'three';
+      if(state.rmHorizon&&!['three','six'].includes(state.rmHorizon))warnState('Resultathorisonten i linket genkendes ikke. 3 måneder vises.');
+      const choice=comparisonFromState(state);comparisonFundCode=choice.fundCode;comparisonRegionChoice=choice.regionChoice;
+      if(state.comparisonFund&&!choice.fundCode)warnState('Sammenligningens a-kasse i linket findes ikke længere.');
+      if(choice.fundCode&&state.comparisonRegion&&!choice.regionChoice)warnState('Sammenligningens geografi i linket genkendes ikke.');
+      updateComparisonControls();applyVisibility(state.hidden||[]);
+      const region=REGION_FILES.has(state.region)?state.region:'all';
+      if(state.region&&!REGION_FILES.has(state.region))warnState('Geografien i linket genkendes ikke. Hele landet vises.');
+      if(region==='all')nationalPeriod=periodSelect.value;else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
+      try{await setRegion(region);}catch(error){await handleRegionError(error);}
+      refreshChecks();if(!loadErrors.has('comparison'))updateComparisonControls();
+    }finally{applying=false;publishStatus();save();}
   }
 
   function bindSave(){
     document.getElementById('fundSelect')?.addEventListener('change',()=>setTimeout(()=>{updateComparisonControls();save();},0));
     document.getElementById('periodSelect')?.addEventListener('change',()=>setTimeout(()=>{if(activeRegion==='all')nationalPeriod=document.getElementById('periodSelect').value;else regionalPeriod=document.getElementById('periodSelect').value;save();},0));
     document.getElementById('regionSelect')?.addEventListener('change',()=>setTimeout(save,0));
+    document.getElementById('rmHorizon')?.addEventListener('change',save);
   }
   function ready(){return typeof DATA!=='undefined'&&DATA&&document.getElementById('fundSelect')?.options.length>0&&!document.getElementById('dashboard')?.hidden;}
   function preparePrimaryFundOptions(){
@@ -538,11 +627,21 @@
     const entries=Object.entries(nationalData.funds).sort((a,b)=>{if(a[0]===total)return-1;if(b[0]===total)return 1;return a[1].name.localeCompare(b[1].name,'da');});select.textContent='';entries.forEach(([code,item])=>select.add(new Option(code===total?'I alt':item.name,code)));select.value=total;
   }
   async function start(){
-    injectStyle();injectRegionControls();if(!ready()){setTimeout(start,80);return;}
-    if(!nationalData){nationalData=DATA;nationalPeriod=document.getElementById('periodSelect')?.value||'36';preparePrimaryFundOptions();}
-    installComparisonBridge();wrapDraw();injectComparisonControls();injectPersonalControls();bindSave();
-    const state=sharedState()||storedState();
-    if(state)await applyState(state);else{refreshChecks();await ensureComparisonData();if(typeof draw==='function')draw();save();}
+    try{
+      injectStyle();injectRegionControls();
+      if(!ready()){
+        if(Date.now()-startedAt>30000||document.getElementById('loading')?.querySelector('strong'))throw new Error('Dashboardets data kunne ikke indlæses. Genindlæs siden for at prøve igen.');
+        setTimeout(start,80);return;
+      }
+      if(!nationalData){nationalData=DATA;nationalPeriod=document.getElementById('periodSelect')?.value||'36';preparePrimaryFundOptions();}
+      installComparisonBridge();wrapDraw();injectComparisonControls();injectPersonalControls();bindSave();
+      const hasSharedState=new URLSearchParams(location.search).has(PARAM);
+      // Even an invalid shared state must not inherit unrelated saved filters.
+      const state=hasSharedState?sharedState():storedState();
+      if(hasSharedState&&!state)warnState('Visningen i linket kunne ikke læses. Standardvisningen vises.');
+      if(state)await applyState(state);else{refreshChecks();await ensureComparisonData();if(typeof draw==='function')draw();save();}
+    }catch(error){console.error(error);loadError('initialization',error);}
+    initializing=false;publishStatus();resolveReady(statusSnapshot());
   }
   start();
 })();

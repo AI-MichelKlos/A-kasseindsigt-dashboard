@@ -40,6 +40,56 @@ Den fulde RM01AK-fil bruges fortsat af resultatmålsiden. Forsiden henter i sted
 `data/rm01ak-summary.json`, der kun indeholder metadata, a-kasser, tidsserier og
 populationstal. Den kompakte fil bygges automatisk sammen med `data/rm01ak.json`.
 
+## Del grafer på LinkedIn
+
+Alle 23 grafer har **Del på LinkedIn** og **Kopiér link** under grafen. LinkedIn-knappen
+åbner brugerens delingsdialog. Dashboardet offentliggør ikke selv opslag.
+
+Linket åbner den konkrete graf og bevarer a-kasse, geografi, periode, sammenligningens
+a-kasse og geografi samt resultatmålingens 3/6-månedersvalg. Skjulte sektioner og
+grafens skjulte legendserier følger også med. Den delte graf åbnes altid, selv om
+dens sektion var skjult, og mobilvisningens foldede afsnit åbnes automatisk.
+En delt visning har forrang over modtagerens tidligere lokale indstillinger.
+
+Hver graf har en offentlig side under `share/<grafens-slug>/` med statiske
+Open Graph-metadata og sit eget PNG-billede på 1200 x 630 pixels. Billedet er et
+emnekort med grafens titel, ikke et billede af et bestemt dataudsnit. De aktuelle
+filtre ligger i linket. Emnekortene indeholder ingen tal og bliver derfor ikke
+forældede, når data opdateres. Selve dashboardet har også et fælles forhåndsbillede.
+
+GitHub Pages kan ikke generere metadata for vilkårlige filtre ved et besøg.
+Delingssiderne undlader derfor en fast `og:url` og `rel=canonical`, der kunne få en
+delingstjeneste til at erstatte URL'en med en adresse uden filtre. Metadata findes
+direkte i HTML. JavaScript fører en besøgende videre til dashboardet med `pv`,
+`chart` og et stabilt `#graf-...`-anker. Et synligt link er fallback.
+LinkedIns egen cache og den endelige gengivelse er under LinkedIns kontrol;
+[Post Inspector](https://www.linkedin.com/post-inspector/) kan kontrollere en offentlig URL.
+
+### Vedligeholdelse og test
+
+- `config/share-charts.json` knytter grafens stabile canvas-id til titel og delingsside.
+- `assets/personal-view.js` gendanner og validerer filtre og udstiller indlæsningsstatus.
+- `assets/chart-sharing.js` håndterer grafknapper, direkte links og åbning af sektioner.
+- `scripts/build_share_pages.py` genererer sider og emnekort. Det kræver Pillow og DejaVu Sans.
+- `scripts/test_sharing.py` tester alle statiske metadata og billeder samt filtre og navigation i Chromium.
+
+Ved nye eller omdøbte grafer opdateres manifestet, hvorefter sider og billeder
+genereres og gemmes i samme commit. Eksisterende graf-id'er og slugs bør bevares,
+så allerede delte links bliver ved med at virke.
+
+```bash
+python scripts/build_share_pages.py
+python scripts/build_share_pages.py --check
+python scripts/test_sharing.py --static-only
+python scripts/test_sharing.py
+```
+
+`Kontroller grafdeling` kører automatisk i GitHub Actions ved ændringer i
+delefunktionen og kan også startes manuelt. Browserdelen kræver Python-pakken
+`playwright` og `python -m playwright install chromium`. En publiceret version
+kan kontrolleres med `--base-url https://ai-michelklos.github.io/A-kasseindsigt-dashboard/`.
+Testene opretter ingen opslag og ændrer ingen produktionsdata.
+
 ## Rådighedssanktioner
 
 Sektion 9 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Historikken starter i 2019, og der markeres databrud fra 1. kvt. 2021. `I alt` hentes som en selvstaendig officiel række fra samme Jobindsats-tabel og bruges som standardbenchmark; den beregnes ikke som sum eller gennemsnit af a-kasserne. Både totalrækken og de enkelte a-kasser valideres i den automatiske opdatering. Jobindsats' kvartalskoder normaliseres, så fx `2026Q01` fortolkes som 1. kvartal 2026.

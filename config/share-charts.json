@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "charts": [
+    {"id":"membersRawChart","slug":"forsikringsaktive","title":"Forsikringsaktive, antal","description":"Se antallet af forsikringsaktive medlemmer og sammenlign a-kasser og geografi i den interaktive graf.","section":"members"},
+    {"id":"membersIndexChart","slug":"forsikringsaktive-indeks","title":"Udvikling i forsikringsaktive, indeks 100","description":"Sammenlign udviklingen i forsikringsaktive medlemmer med første viste periode som indeks 100.","section":"members"},
+    {"id":"ageChart","slug":"aldersprofil","title":"Aldersprofil","description":"Se aldersfordelingen blandt forsikringsaktive medlemmer i seneste opgørelsesmåned.","section":"members"},
+    {"id":"unempChart","slug":"ledighedsprocent","title":"Fuldtidsledige i pct. af forsikrede","description":"Følg ledigheden opgjort som fuldtidsledige i procent af de forsikrede medlemmer.","section":"unemployment"},
+    {"id":"longRawChart","slug":"langtidsledige","title":"Langtidsledige på a-dagpenge, antal","description":"Følg antallet af langtidsledige på a-dagpenge og sammenlign den valgte a-kasse med andre.","section":"unemployment"},
+    {"id":"longIndexChart","slug":"langtidsledige-indeks","title":"Langtidsledige, indeks 100","description":"Sammenlign udviklingen i langtidsledighed med første viste periode som indeks 100.","section":"unemployment"},
+    {"id":"dagChart","slug":"dagpengemodtagere","title":"Dagpengemodtagere, fuldtidspersoner","description":"Se omfanget af a-dagpenge omregnet til fuldtidspersoner i den valgte måned, a-kasse og geografi.","section":"benefits"},
+    {"id":"gradCountChart","slug":"dimittendledige-antal","title":"Dimittendledige, antal","description":"Følg antallet af dimittendledige og sammenlign a-kasser og geografi.","section":"benefits"},
+    {"id":"gradChart","slug":"dimittendledige-andel","title":"Dimittendledige, andel","description":"Se dimittendlediges andel af dagpengemodtagerne i den valgte a-kasse og geografi.","section":"benefits"},
+    {"id":"rmMainChart","slug":"job-og-uddannelse","title":"Udvikling i job eller uddannelse","description":"Se andelen af nyledige, der er i job eller uddannelse efter tre eller seks måneder.","section":"results"},
+    {"id":"consChart","slug":"forbrug-af-dagpengeperioden","title":"Forbrug af dagpengeperioden blandt aktuelt ledige","description":"Se, hvor stor en del af dagpengeperioden de aktuelt ledige har brugt, og sammenlign a-kasser.","section":"duration"},
+    {"id":"exhaustedChart","slug":"opbrugt-dagpengeret","title":"Personer med opbrugt dagpengeret","description":"Følg antallet af personer med opbrugt dagpengeret fordelt på dimittender og øvrige ledige.","section":"duration"},
+    {"id":"survChart","slug":"nye-dagpengeforloeb","title":"Varighed i nye a-dagpengeforløb","description":"Se, hvor stor en andel der fortsat modtager a-dagpenge efter en given varighed i et nyt forløb.","section":"duration"},
+    {"id":"completedDurationChart","slug":"afsluttede-dagpengeforloeb","title":"Varighed af afsluttede a-dagpengeforløb","description":"Se fordelingen af afsluttede a-dagpengeforløb efter deres samlede varighed.","section":"duration"},
+    {"id":"statusChart","slug":"efter-dagpenge","title":"Arbejdsmarkedsstatus 3 måneder efter ophør i a-dagpenge","description":"Se arbejdsmarkedsstatus tre måneder efter et afsluttet a-dagpengeforløb. Ophør er ikke det samme som opbrugt dagpengeret.","section":"after-benefits"},
+    {"id":"talkChart","slug":"samtaleformer","title":"Samtaleformer i a-kassen","description":"Se a-kassernes jobsamtaler fordelt på fysisk fremmøde, telefon, video og anden kontakt.","section":"talks"},
+    {"id":"afterlonChart","slug":"efterloen","title":"Personer på efterløn","description":"Følg antallet af personer i efterlønsordningen og sammenlign den valgte a-kasse med andre.","section":"retirement"},
+    {"id":"afterlonContribChart","slug":"efterloensbidrag","title":"Efterlønsbidragsbetalere blandt dagpengeforsikrede","description":"Se andelen af dagpengeforsikrede, der indbetaler efterlønsbidrag, og sammenlign a-kasser.","section":"retirement"},
+    {"id":"sanctionsTotalChart","slug":"sanktioner-antal","title":"Rådighedssanktioner, antal","description":"Se antallet af rådighedssanktioner pr. kvartal. Læs grafens datanote om ændret afgrænsning fra 2021.","section":"sanctions"},
+    {"id":"sanctionsShareChart","slug":"sanktioner-andel","title":"Andel sanktionerede ledige","description":"Se andelen af ledighedsberørte dagpengemodtagere med mindst én sanktion i kvartalet.","section":"sanctions"},
+    {"id":"sanctionsTypeChart","slug":"sanktionstyper","title":"Rådighedssanktioner efter type","description":"Se rådighedssanktionernes fordeling på sanktionstyper i den seneste opgørelse.","section":"sanctions"},
+    {"id":"sanctionsAvgChart","slug":"sanktioner-gennemsnit","title":"Gns. antal sanktioner pr. sanktioneret ledig","description":"Se det gennemsnitlige antal rådighedssanktioner blandt de ledige, som har fået en sanktion.","section":"sanctions"},
+    {"id":"jobSearchShareChart","slug":"jobansoegninger","title":"Andel med mindst én jobansøgning","description":"Se andelen med mindst én registreret jobansøgning og sammenlign a-kasser i den interaktive graf.","section":"jobsearch"}
+  ]
+}

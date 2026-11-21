@@ -1,0 +1,77 @@
+name: Kontroller grafdeling
+
+on:
+  workflow_dispatch:
+    inputs:
+      published_url:
+        description: "Valgfri publiceret URL til kontrol (tom tester denne checkout)"
+        required: false
+        default: ""
+        type: string
+  push:
+    paths:
+      - index.html
+      - assets/**
+      - config/share-charts.json
+      - share/**
+      - scripts/test_sharing.py
+      - scripts/build_share_pages.py
+      - scripts/patch_ui.py
+      - .github/workflows/check-sharing.yml
+  pull_request:
+    paths:
+      - index.html
+      - assets/**
+      - config/share-charts.json
+      - share/**
+      - scripts/test_sharing.py
+      - scripts/build_share_pages.py
+      - scripts/patch_ui.py
+      - .github/workflows/check-sharing.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: graph-sharing-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer browser til funktionstest
+        run: |
+          python -m pip install --disable-pip-version-check "playwright==1.56.0"
+          python -m playwright install --with-deps chromium
+      - name: Kontroller JavaScript og fremtidig UI-opdatering
+        run: |
+          node --check assets/personal-view.js
+          node --check assets/dashboard-experience.js
+          node --check assets/chart-sharing.js
+          node --check assets/share-landing.js
+          python -m py_compile scripts/build_share_pages.py scripts/test_sharing.py scripts/patch_ui.py
+          python scripts/patch_ui.py
+          git diff --exit-code -- index.html
+      - name: Test links, filtre, mobil og LinkedIn-metadata
+        env:
+          PUBLISHED_URL: ${{ inputs.published_url }}
+        shell: bash
+        run: |
+          args=()
+          if [ -n "$PUBLISHED_URL" ]; then
+            args+=(--base-url "$PUBLISHED_URL")
+          fi
+          python scripts/test_sharing.py "${args[@]}" --screenshot-dir test-results
+      - name: Gem skærmbilleder fra testen
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: grafdeling-screenshots
+          path: test-results
+          if-no-files-found: ignore

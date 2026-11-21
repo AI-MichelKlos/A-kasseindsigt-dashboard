@@ -62,6 +62,12 @@
   }
 
   let rmPromise = null;
+  let resolveReady;
+  // A stable bridge for links that must open a lazy section after filters load.
+  window.DAKDashboard = {
+    ready: new Promise(resolve => { resolveReady = resolve; }),
+    activateSection
+  };
 
   function loadResultSummary() {
     if (typeof RM_DATA !== 'undefined' && RM_DATA) return Promise.resolve(RM_DATA);
@@ -96,8 +102,13 @@
   }
 
   async function activateSection(key) {
-    if (window.__dakLazySections.has(key)) return;
+    if (!SECTION_DEFS.some(([section]) => section === key)) return;
+    // Results may have been activated while another request was still pending.
     if (key === 'results') await loadResultSummary();
+    if (window.__dakLazySections.has(key)) {
+      if (key === 'results') renderDashboard();
+      return;
+    }
     window.__dakLazySections.add(key);
     renderDashboard();
   }
@@ -377,7 +388,7 @@
   }
 
   function buildDataTable(canvas, host) {
-    const chart = Chart.getChart(canvas);
+    const chart = canvas ? Chart.getChart(canvas) : null;
     if (!chart) {
       host.innerHTML = '<div class="lazy-message">Grafen indlæses. Prøv igen om et øjeblik.</div>';
       return;
@@ -393,7 +404,7 @@
   }
 
   function downloadCsv(canvas) {
-    const chart = Chart.getChart(canvas);
+    const chart = canvas ? Chart.getChart(canvas) : null;
     if (!chart) return;
     const { labels, datasets } = chartRows(chart);
     const quote = value => '"' + String(value ?? '').replace(/"/g, '""') + '"';
@@ -419,12 +430,15 @@
   function setupChartAccess() {
     document.querySelectorAll('.card').forEach((card, index) => {
       const canvas = card.querySelector('canvas');
-      const chartHost = canvas?.closest('.chart');
-      if (!canvas || !chartHost || card.querySelector('.chart-toolbar')) return;
+      const chartHost = canvas?.closest('.chart') || card.querySelector('.chart');
+      if ((!canvas && !card.dataset.shareChart) || !chartHost || card.querySelector('.chart-toolbar')) return;
+      const chartId = canvas?.id || card.dataset.shareChart;
+      card.id = card.id || 'graf-' + chartId;
+      card.dataset.shareChart = chartId;
       const title = card.querySelector('h3')?.textContent?.trim() || 'Graf';
       const description = card.querySelector('.desc')?.textContent?.trim();
-      canvas.setAttribute('role', 'img');
-      canvas.setAttribute('aria-label', title + (description ? '. ' + description : ''));
+      canvas?.setAttribute('role', 'img');
+      canvas?.setAttribute('aria-label', title + (description ? '. ' + description : ''));
 
       const tableId = 'chartData' + index;
       const toolbar = document.createElement('div');
@@ -444,12 +458,12 @@
         table.hidden = !open;
         event.currentTarget.setAttribute('aria-expanded', String(open));
         event.currentTarget.textContent = open ? 'Skjul data' : 'Vis data';
-        if (open) buildDataTable(canvas, table);
+        if (open) buildDataTable(document.getElementById(chartId), table);
       });
       toolbar.querySelector('.download-data').addEventListener('click', async () => {
         const section = card.closest('section');
         if (section?.dataset.section) await activateSection(section.dataset.section);
-        downloadCsv(canvas);
+        downloadCsv(document.getElementById(chartId));
       });
     });
   }
@@ -500,5 +514,6 @@
 
     const dashboard = document.getElementById('dashboard');
     if (dashboard) new MutationObserver(markSourceState).observe(dashboard, { childList: true, subtree: true, characterData: true });
+    resolveReady();
   });
 })();

@@ -1,0 +1,65 @@
+#dashboard .chart-toolbar {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#dashboard .share-linkedin,
+#dashboard .copy-chart-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+#dashboard .share-linkedin {
+  color: #fff;
+  background: #0a66c2;
+  border-color: #0a66c2;
+}
+
+#dashboard .share-linkedin:hover {
+  background: #004182;
+  border-color: #004182;
+}
+
+#dashboard .share-linkedin[aria-disabled="true"] { opacity: .65; }
+#dashboard .chart-action:focus-visible { outline: 3px solid #0a66c2; outline-offset: 3px; }
+#dashboard .shared-chart { outline: 2px solid #6b9e78; outline-offset: 5px; }
+#dashboard .chart-share-feedback { flex-basis: 100%; color: #3d6b47; font-size: .85rem; line-height: 1.45; }
+#dashboard .chart-share-feedback:empty { display: none; }
+#chartSharingNote { width: 100%; margin: 2px 0 0; color: #52635b; font-size: .8rem; line-height: 1.45; }
+#chartShareNotice { padding: 14px 16px; background: #fff6e9; border: 1px solid #d8bd95; border-radius: 8px; }
+
+#chartShareDialog {
+  box-sizing: border-box;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 24px;
+  border: 1px solid #cad8ce;
+  border-radius: 14px;
+  background: #fff;
+  color: #0f2b36;
+  box-shadow: 0 16px 60px #0003;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#chartShareDialog::backdrop { background: #0f2b3677; }
+#chartShareDialog h2 { margin: 0 0 12px; font-size: 1.3rem; }
+#chartShareDialog p { line-height: 1.5; }
+#chartShareDialog label { display: block; margin-bottom: 6px; font-weight: 600; }
+#chartShareDialog input { box-sizing: border-box; width: 100%; min-width: 0; padding: 12px; border: 1px solid #95aa9b; border-radius: 6px; font: inherit; }
+#chartShareDialog button { min-height: 44px; margin-top: 18px; padding: 10px 18px; border: 0; border-radius: 7px; background: #3d6b47; color: #fff; font: inherit; cursor: pointer; }
+#chartShareDialog :focus-visible { outline: 3px solid #0a66c2; outline-offset: 3px; }
+
+@media (max-width: 720px) {
+  #dashboard .share-linkedin,
+  #dashboard .copy-chart-link { flex: 1 1 42%; }
+}
+
+@media print {
+  #chartSharingNote, #chartShareNotice, #chartShareDialog { display: none !important; }
+  #dashboard .shared-chart { outline: none; }
+}

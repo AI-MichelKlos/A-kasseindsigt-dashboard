@@ -7,11 +7,11 @@ HTML = BASE / "index.html"
 
 PERIOD_CSS = ".period-highlight{margin:6px 0 12px;padding:8px 10px;background:#f7f1ea;color:#4a3428;font-size:.84rem;line-height:1.4}.period-highlight strong{color:var(--ink)}"
 
-STATUS_OLD = '<div class="card"><h3>Arbejdsmarkedsstatus 3 måneder efter ophør i a-dagpenge</h3><div class="explain">'
-STATUS_NEW = '<div class="card"><h3>Arbejdsmarkedsstatus 3 måneder efter ophør i a-dagpenge</h3><div class="period-highlight">Afslutningsperiode: <strong id="statusPeriodHeadline">-</strong></div><div class="explain">'
+STATUS_OLD = '<h3>Arbejdsmarkedsstatus 3 måneder efter ophør i a-dagpenge</h3><div class="explain">'
+STATUS_NEW = '<h3>Arbejdsmarkedsstatus 3 måneder efter ophør i a-dagpenge</h3><div class="period-highlight">Afslutningsperiode: <strong id="statusPeriodHeadline">-</strong></div><div class="explain">'
 
-SURV_OLD = '<div class="card wide"><h3>Varighed i nye a-dagpengeforløb</h3><div class="desc">'
-SURV_NEW = '<div class="card wide"><h3>Varighed i nye a-dagpengeforløb</h3><div class="period-highlight">Forløb påbegyndt i: <strong id="survPeriodHeadline">-</strong></div><div class="desc">'
+SURV_OLD = '<h3>Varighed i nye a-dagpengeforløb</h3><div class="desc">'
+SURV_NEW = '<h3>Varighed i nye a-dagpengeforløb</h3><div class="period-highlight">Forløb påbegyndt i: <strong id="survPeriodHeadline">-</strong></div><div class="desc">'
 
 SURV_SOURCE = '<div class="source"><span>Kilde: <a href="https://jobindsats.dk/information/om-malinger/om-ydelser/om-a-dagpenge/om-overlevelseskurver/" target="_blank" rel="noopener">Jobindsats.dk – Overlevelseskurver</a></span><span id="sSurv"></span></div></div>'
 
@@ -74,7 +74,8 @@ ENHANCEMENTS = r'''<script>
 </script>
 '''
 
-PERSONAL_VIEW_SCRIPT = '<script src="assets/personal-view.js?v=20261029-counts"></script>\n'
+PERSONAL_VIEW_SCRIPT = '<script src="assets/personal-view.js?v=20261121-sharing"></script>\n'
+SHARING_SCRIPT = '<script src="assets/chart-sharing.js?v=20261121-sharing"></script>\n'
 
 
 def require_replace(text: str, old: str, new: str, label: str) -> str:
@@ -88,8 +89,9 @@ def require_replace(text: str, old: str, new: str, label: str) -> str:
 def main():
     text = HTML.read_text(encoding="utf-8")
     # Upgrade existing script tags before deciding whether to insert them.
-    text = text.replace('assets/personal-view.js"', 'assets/personal-view.js?v=20261029-counts"')
-    text = text.replace('assets/dashboard-experience.js"', 'assets/dashboard-experience.js?v=20261029-counts"')
+    for script in ('personal-view', 'dashboard-experience'):
+        for previous in ('', '?v=20261029-counts'):
+            text = text.replace(f'assets/{script}.js{previous}"', f'assets/{script}.js?v=20261121-sharing"')
     while text.count(PERSONAL_VIEW_SCRIPT.strip()) > 1:
         text = text.replace(PERSONAL_VIEW_SCRIPT.strip(), "", 1)
 
@@ -122,6 +124,9 @@ def main():
         if marker not in text:
             raise RuntimeError("Kunne ikke finde GoatCounter-markør til personlig visning")
         text = text.replace(marker, PERSONAL_VIEW_SCRIPT + marker, 1)
+
+    if SHARING_SCRIPT.strip() not in text:
+        text = text.replace(PERSONAL_VIEW_SCRIPT, PERSONAL_VIEW_SCRIPT + SHARING_SCRIPT, 1)
 
     HTML.write_text(text, encoding="utf-8")
     print("OK: UI-patch anvendt")
