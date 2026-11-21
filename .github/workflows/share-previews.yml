@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/share-previews.yml'
       - 'scripts/generate-share-previews.cjs'
+      - 'assets/editorial-design.css'
+      - 'assets/editorial-design.js'
   schedule:
     - cron: '22 7 * * 1'
 concurrency:
