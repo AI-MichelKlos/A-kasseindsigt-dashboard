@@ -1,0 +1,39 @@
+name: Generate LinkedIn chart previews
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/share-previews.yml'
+      - 'scripts/generate-share-previews.cjs'
+  schedule:
+    - cron: '22 7 * * 1'
+permissions:
+  contents: write
+jobs:
+  previews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install screenshot dependencies
+        run: |
+          npm install --no-save playwright sharp
+          npx playwright install --with-deps chromium
+      - name: Start local dashboard
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/dak-share-server.log 2>&1 &
+          sleep 3
+      - name: Generate preview images
+        run: node scripts/generate-share-previews.cjs
+      - name: Commit images and preview metadata
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/share-previews share
+          if ! git diff --cached --quiet; then
+            git commit -m "Update LinkedIn preview images from dashboard charts"
+            git push
+          fi
