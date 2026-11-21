@@ -7,6 +7,9 @@ on:
       - 'scripts/generate-share-previews.cjs'
   schedule:
     - cron: '22 7 * * 1'
+concurrency:
+  group: dak-share-previews
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -35,5 +38,14 @@ jobs:
           git add assets/share-previews share
           if ! git diff --cached --quiet; then
             git commit -m "Update LinkedIn preview images from dashboard charts"
-            git push
+            for attempt in 1 2 3 4; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+              sleep 5
+            done
+            echo "Could not push refreshed previews after retries" >&2
+            exit 1
           fi
