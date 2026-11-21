@@ -37,7 +37,7 @@ const cards = fs.readdirSync(share).filter(name => /^[A-Za-z][\w-]*Chart\.html$/
    <rect width="1200" height="630" fill="#f7f1ea"/><rect x="28" y="28" width="1144" height="574" rx="18" fill="#ffffff"/>
    <rect x="28" y="28" width="1144" height="9" rx="3" fill="#6B9E78"/>
    <text x="60" y="82" fill="#2B211B" font-family="Arial" font-size="27" font-weight="bold">${escapeXml(title.length>62?title.slice(0,59)+'...':title)}</text>
-   <text x="60" y="116" fill="#6f6258" font-family="Arial" font-size="17">A-kasseindsigt | Danske A-kasser</text>
+   <text x="60" y="116" fill="#6f6258" font-family="Arial" font-size="17">A-kasseindsigt | Michel Klos</text>
    <text x="60" y="568" fill="#6f6258" font-family="Arial" font-size="16">Udforsk den interaktive graf og sammenlign a-kasser</text>
    </svg>`;
    const dest=path.join(out,id+'.png');
@@ -47,7 +47,7 @@ const cards = fs.readdirSync(share).filter(name => /^[A-Za-z][\w-]*Chart\.html$/
    console.log('Generated',id);produced++;
   }catch(error){
    console.warn('Chart unavailable for',id,error.message.split('\n')[0]);
-   const svg=`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="630" fill="#f7f1ea"/><rect x="30" y="30" width="1140" height="570" rx="18" fill="#fff"/><rect x="30" y="30" width="1140" height="12" fill="#6B9E78"/><text x="70" y="165" fill="#2B211B" font-family="Arial" font-size="35" font-weight="bold">${escapeXml(title.length>54?title.slice(0,51)+'...':title)}</text><text x="70" y="245" fill="#6f6258" font-family="Arial" font-size="25">A-kasseindsigt | Danske A-kasser</text><text x="70" y="510" fill="#4a3428" font-family="Arial" font-size="24">Se grafen, vælg a-kasse og sammenlign de nyeste tal</text></svg>`;
+   const svg=`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="630" fill="#f7f1ea"/><rect x="30" y="30" width="1140" height="570" rx="18" fill="#fff"/><rect x="30" y="30" width="1140" height="12" fill="#6B9E78"/><text x="70" y="165" fill="#2B211B" font-family="Arial" font-size="35" font-weight="bold">${escapeXml(title.length>54?title.slice(0,51)+'...':title)}</text><text x="70" y="245" fill="#6f6258" font-family="Arial" font-size="25">A-kasseindsigt | Michel Klos</text><text x="70" y="510" fill="#4a3428" font-family="Arial" font-size="24">Se grafen, vælg a-kasse og sammenlign de nyeste tal</text></svg>`;
    await sharp(Buffer.from(svg)).png().toFile(path.join(out,id+'.png'));
    const imageUrl='https://ai-michelklos.github.io/A-kasseindsigt-dashboard/assets/share-previews/'+id+'.png';
    fs.writeFileSync(file,html.replace(/https:\/\/ai-michelklos\.github\.io\/arbejdsmarked\/og-image\.png/g,imageUrl));
