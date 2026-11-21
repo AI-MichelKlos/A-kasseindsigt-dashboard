@@ -7,6 +7,7 @@ function state(){
   return {...old,v:5,region:document.getElementById('regionSelect')?.value||'all',fund:document.getElementById('fundSelect')?.value||'',period:document.getElementById('periodSelect')?.value||'',comparisonFund:document.getElementById('comparisonFundSelect')?.value||'',comparisonRegion:document.getElementById('comparisonRegionSelect')?.value||''};
 }
 function getLink(id){return ROOT+'share/'+encodeURIComponent(id)+'.html?pv='+encodeURIComponent(encode(state()));}
+window.__dakShareLinkForFigure=getLink;
 function notice(button,message){const old=button.textContent;button.textContent=message;setTimeout(()=>button.textContent=old,2200);}
 function attach(){
 document.querySelectorAll('#dashboard .card').forEach(card=>{
