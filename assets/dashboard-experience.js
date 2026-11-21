@@ -62,6 +62,13 @@
   }
 
   let rmPromise = null;
+  let resolveReady;
+  const readyPromise = new Promise(resolve => { resolveReady = resolve; });
+  window.DAKDashboardExperience = Object.freeze({
+    ready: readyPromise,
+    activateSection,
+    revealChart
+  });
 
   function loadResultSummary() {
     if (typeof RM_DATA !== 'undefined' && RM_DATA) return Promise.resolve(RM_DATA);
@@ -96,10 +103,37 @@
   }
 
   async function activateSection(key) {
-    if (window.__dakLazySections.has(key)) return;
-    if (key === 'results') await loadResultSummary();
+    if (!SECTION_DEFS.some(([known]) => known === key)) return false;
+    if (key === 'results' && !await loadResultSummary()) return false;
+    if (window.__dakLazySections.has(key)) {
+      if (key === 'results') renderDashboard();
+      return true;
+    }
     window.__dakLazySections.add(key);
     renderDashboard();
+    return true;
+  }
+
+  async function revealChart(chartId) {
+    await readyPromise;
+    const card = document.getElementById('graf-' + chartId);
+    const section = card?.closest('#dashboard > section');
+    if (!card || !section || card.dataset.shareChart !== chartId) return null;
+    section.hidden = false;
+    card.hidden = false;
+    section.dataset.expanded = 'true';
+    const toggle = section.querySelector('.section-reveal');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.textContent = 'Skjul analyser';
+    }
+    window.DAKPersonalView?.refreshChecks();
+    await activateSection(section.dataset.section);
+    renderDashboard();
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    window.Chart?.getChart(document.getElementById(chartId))?.resize();
+    numberFigures();
+    return card;
   }
 
   function setupSections() {
@@ -421,6 +455,9 @@
       const canvas = card.querySelector('canvas');
       const chartHost = canvas?.closest('.chart');
       if (!canvas || !chartHost || card.querySelector('.chart-toolbar')) return;
+      const chartId = canvas.id;
+      card.id = 'graf-' + chartId;
+      card.dataset.shareChart = chartId;
       const title = card.querySelector('h3')?.textContent?.trim() || 'Graf';
       const description = card.querySelector('.desc')?.textContent?.trim();
       canvas.setAttribute('role', 'img');
@@ -444,12 +481,12 @@
         table.hidden = !open;
         event.currentTarget.setAttribute('aria-expanded', String(open));
         event.currentTarget.textContent = open ? 'Skjul data' : 'Vis data';
-        if (open) buildDataTable(canvas, table);
+        if (open) buildDataTable(document.getElementById(chartId), table);
       });
       toolbar.querySelector('.download-data').addEventListener('click', async () => {
         const section = card.closest('section');
         if (section?.dataset.section) await activateSection(section.dataset.section);
-        downloadCsv(canvas);
+        downloadCsv(document.getElementById(chartId));
       });
     });
   }
@@ -500,5 +537,6 @@
 
     const dashboard = document.getElementById('dashboard');
     if (dashboard) new MutationObserver(markSourceState).observe(dashboard, { childList: true, subtree: true, characterData: true });
+    resolveReady();
   });
 })();

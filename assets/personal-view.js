@@ -21,12 +21,12 @@
     ['consChart','benefitConsumption'],['exhaustedChart','exhaustedRights'],['survChart','survival'],['completedDurationChart','completedDuration'],
     ['statusChart','statusAfter3m'],['talkChart','talkForms'],['afterlonChart','afterlon'],['afterlonContribChart','afterlonContrib'],
     ['sanctionsTotalChart','sanctions'],['sanctionsShareChart','sanctions'],['sanctionsTypeChart','sanctions'],['sanctionsAvgChart','sanctions'],
-    ['jobSearchShareChart','jobSearch'],
+    ['jobSearchShareChart','jobSearch'],['rmMainChart','resultMeasure'],
     ['mr','members'],['mi','members'],['age','profileAge'],['u','unemploymentRate'],['lr','longTerm'],['li','longTerm'],
     ['d','dagpenge'],['gc','graduates'],['gs','graduates'],['cons','benefitConsumption'],['ex','exhaustedRights'],
     ['surv','survival'],['completedDuration','completedDuration'],['status','statusAfter3m'],['talk','talkForms'],
     ['al','afterlon'],['ac','afterlonContrib'],['st','sanctions'],['ss','sanctions'],['sty','sanctions'],['sa','sanctions'],
-    ['js','jobSearch']
+    ['js','jobSearch'],['rmMain','resultMeasure']
   ]);
   const regionCache=new Map();
   const mergedRegionCache=new Map();
@@ -43,6 +43,34 @@
   let drawingComparisonPair=null;
   let comparisonBridgeInstalled=false;
   let drawWrapped=false;
+  let regionLoadToken=0;
+  let initialized=false;
+  let pendingChanges=0;
+  let preserveStoredView=false;
+  const loadErrors=new Map();
+  let resolveReady;
+  const readyPromise=new Promise(resolve=>{resolveReady=resolve;});
+  const idleWaiters=[];
+
+  function notifyViewState(){
+    const status=getStatus();
+    window.dispatchEvent(new CustomEvent('dak:view-state',{detail:status}));
+    if(!status.busy)idleWaiters.splice(0).forEach(resolve=>resolve());
+  }
+  function getStatus(){const busy=!initialized||applying||pendingChanges>0;return{busy,ok:!busy&&!loadErrors.size,errors:[...loadErrors.values()]};}
+  function beginChange(scope){pendingChanges+=1;if(scope)loadErrors.delete(scope);notifyViewState();}
+  function endChange(){pendingChanges=Math.max(0,pendingChanges-1);notifyViewState();}
+  function whenIdle(){return readyPromise.then(()=>pendingChanges||applying?new Promise(resolve=>idleWaiters.push(resolve)):undefined);}
+  function isState(value){return value!==null&&typeof value==='object'&&!Array.isArray(value);}
+  function normalizeState(value){
+    if(!isState(value))return null;
+    const state={v:5};
+    ['region','fund','period','comparisonFund','comparisonRegion','rmHorizon'].forEach(key=>{if(typeof value[key]==='string'&&value[key].length<=120)state[key]=value[key];else if(key==='period'&&Number.isFinite(value[key]))state[key]=String(value[key]);});
+    state.hidden=Array.isArray(value.hidden)?value.hidden.filter(key=>typeof key==='string'&&/^(kpis|section-\d{1,2})$/.test(key)).slice(0,32):[];
+    if(Array.isArray(value.compare))state.compare=value.compare.filter(key=>typeof key==='string'&&key.length<=120).slice(0,32);
+    if(value.nationalReference===true)state.nationalReference=true;
+    return state;
+  }
 
   function encodeState(state){
     const json=JSON.stringify(state),bytes=new TextEncoder().encode(json);let binary='';
@@ -50,10 +78,11 @@
     return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
   }
   function decodeState(value){
-    try{let b64=value.replace(/-/g,'+').replace(/_/g,'/');while(b64.length%4)b64+='=';const binary=atob(b64),bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));return JSON.parse(new TextDecoder().decode(bytes));}catch(_){return null;}
+    if(typeof value!=='string'||value.length>12000||!value||!/^[A-Za-z0-9_-]+$/.test(value))return null;
+    try{let b64=value.replace(/-/g,'+').replace(/_/g,'/');while(b64.length%4)b64+='=';const binary=atob(b64),bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));return normalizeState(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes)));}catch(_){return null;}
   }
   function sharedState(){return decodeState(new URLSearchParams(location.search).get(PARAM)||'');}
-  function storedState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');}catch(_){return null;}}
+  function storedState(){try{return normalizeState(JSON.parse(localStorage.getItem(STORAGE_KEY)||'null'));}catch(_){return null;}}
   function moduleKey(el,index){return el.dataset.personalViewKey||(el.dataset.personalViewKey='section-'+(index+1));}
   function modules(){
     const result=[],kpis=document.querySelector('#dashboard > .kpis');
@@ -65,13 +94,13 @@
     return result;
   }
   function hiddenKeys(){return modules().filter(m=>m.nodes.some(n=>n.hidden)).map(m=>m.key);}
-  function currentState(){return{v:5,region:document.getElementById('regionSelect')?.value||'all',fund:document.getElementById('fundSelect')?.value||'',period:document.getElementById('periodSelect')?.value||'',comparisonFund:comparisonFundCode,comparisonRegion:comparisonRegionChoice,hidden:hiddenKeys()};}
-  function save(){if(applying)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(currentState()));}catch(_){} }
+  function currentState(){return{v:5,region:document.getElementById('regionSelect')?.value||'all',fund:document.getElementById('fundSelect')?.value||'',period:document.getElementById('periodSelect')?.value||'',comparisonFund:comparisonFundCode,comparisonRegion:comparisonRegionChoice,rmHorizon:document.getElementById('rmHorizon')?.value||'three',hidden:hiddenKeys()};}
+  function save(){if(applying||pendingChanges)return;if(!preserveStoredView){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(currentState()));}catch(_){}}notifyViewState();}
   function applyVisibility(hidden){const set=new Set(Array.isArray(hidden)?hidden:[]);modules().forEach(m=>m.nodes.forEach(n=>n.hidden=set.has(m.key)));document.querySelectorAll('[data-pv-module]').forEach(input=>input.checked=!set.has(input.value));}
   function refreshChecks(){
     const host=document.getElementById('pvModules');if(!host)return;
     host.innerHTML=modules().map(m=>`<label class="pv-option"><input type="checkbox" data-pv-module value="${m.key}" ${m.nodes.some(n=>n.hidden)?'':'checked'}><span>${m.label}</span></label>`).join('');
-    host.querySelectorAll('[data-pv-module]').forEach(input=>input.addEventListener('change',()=>{const mod=modules().find(m=>m.key===input.value);if(!mod)return;mod.nodes.forEach(n=>n.hidden=!input.checked);save();}));
+    host.querySelectorAll('[data-pv-module]').forEach(input=>input.addEventListener('change',()=>{const mod=modules().find(m=>m.key===input.value);if(!mod)return;preserveStoredView=false;mod.nodes.forEach(n=>n.hidden=!input.checked);save();}));
   }
 
   function injectStyle(){
@@ -109,7 +138,7 @@
     const fundControl=document.getElementById('fundSelect')?.closest('.control');if(fundControl)fundControl.insertAdjacentElement('afterend',control);else controls.prepend(control);
     const select=control.querySelector('select');REGIONS.forEach(([key,label])=>select.add(new Option(label,key)));
     const notice=document.createElement('div');notice.className='regional-notice';notice.id='regionalNotice';controls.parentElement.appendChild(notice);
-    select.addEventListener('change',()=>setRegion(select.value).catch(handleRegionError));
+    select.addEventListener('change',()=>{preserveStoredView=false;setRegion(select.value).catch(handleRegionError);});
   }
 
   /* DAK_CONTROL_ORDER_20260903 */
@@ -128,8 +157,8 @@
     REGIONS.forEach(([key,label])=>regionSelect.add(new Option(label,key)));
     comparisonFundCode='';comparisonRegionChoice='';
     fundSelect.value=comparisonFundCode;regionSelect.value=comparisonRegionChoice;
-    fundSelect.addEventListener('change',()=>setComparisonSelection(fundSelect.value,regionSelect.value).catch(handleComparisonError));
-    regionSelect.addEventListener('change',()=>setComparisonSelection(fundSelect.value,regionSelect.value).catch(handleComparisonError));
+    fundSelect.addEventListener('change',()=>{preserveStoredView=false;setComparisonSelection(fundSelect.value,regionSelect.value).catch(handleComparisonError);});
+    regionSelect.addEventListener('change',()=>{preserveStoredView=false;setComparisonSelection(fundSelect.value,regionSelect.value).catch(handleComparisonError);});
     updateComparisonControls();
   }
 
@@ -153,7 +182,7 @@
     controls.appendChild(bar);refreshChecks();
     const details=document.getElementById('pvDetails');details?.addEventListener('mouseleave',()=>details.removeAttribute('open'));
     document.addEventListener('pointerdown',e=>{if(details?.open&&!details.contains(e.target))details.removeAttribute('open');});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&details?.open)details.removeAttribute('open');});
-    document.getElementById('pvShare').addEventListener('click',async()=>{const url=new URL(location.href);url.searchParams.set(PARAM,encodeState(currentState()));try{await navigator.clipboard.writeText(url.toString());document.getElementById('pvFeedback').textContent='Link kopieret';}catch(_){prompt('Kopiér dette link',url.toString());}setTimeout(()=>{const f=document.getElementById('pvFeedback');if(f)f.textContent='';},2500);});
+    document.getElementById('pvShare').addEventListener('click',async()=>{await whenIdle();if(!getStatus().ok){document.getElementById('pvFeedback').textContent='Vent med at dele, til de valgte data er indlæst.';return;}const url=new URL(location.href);url.searchParams.set(PARAM,encodeState(currentState()));try{await navigator.clipboard.writeText(url.toString());document.getElementById('pvFeedback').textContent='Link kopieret';}catch(_){prompt('Kopiér dette link',url.toString());}setTimeout(()=>{const f=document.getElementById('pvFeedback');if(f)f.textContent='';},2500);});
     document.getElementById('pvReset').addEventListener('click',()=>{localStorage.removeItem(STORAGE_KEY);localStorage.removeItem('dak-a-kasseindsigt-personal-view-v4');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v3');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v2');localStorage.removeItem('dak-a-kasseindsigt-personal-view-v1');const url=new URL(location.href);url.searchParams.delete(PARAM);location.replace(url.toString());});
   }
 
@@ -184,25 +213,26 @@
 
   async function ensureComparisonData(){
     const key=resolvedComparisonRegion(),token=++comparisonLoadToken;
-    if(!comparisonFundCode||!key){comparisonData=null;comparisonDataRegion=null;return true;}
-    if(key===activeRegion||key==='all'){
-      comparisonData=key==='all'?nationalData:DATA;comparisonDataRegion=key;return true;
-    }
-    updateComparisonControls('Henter '+(REGION_LABELS.get(key)||'sammenligningsdata')+'...');
+    beginChange('comparison');
     try{
+      if(!comparisonFundCode||!key){comparisonData=null;comparisonDataRegion=null;return true;}
+      if(key===activeRegion||key==='all'){
+        comparisonData=key==='all'?nationalData:DATA;comparisonDataRegion=key;return true;
+      }
+      updateComparisonControls('Henter '+(REGION_LABELS.get(key)||'sammenligningsdata')+'...');
       const data=await dataForRegion(key);if(token!==comparisonLoadToken)return false;
       comparisonData=data;comparisonDataRegion=key;updateComparisonControls();return true;
     }catch(error){
       if(token!==comparisonLoadToken)return false;
-      comparisonData=null;comparisonDataRegion=null;throw error;
-    }
+      comparisonData=null;comparisonDataRegion=null;loadErrors.set('comparison',error.message);throw error;
+    }finally{endChange();}
   }
 
   async function setComparisonSelection(fundCode,regionChoice,redraw=true){
     comparisonFundCode=nationalData?.funds?.[fundCode]?fundCode:'';
     comparisonRegionChoice=comparisonFundCode&&REGION_FILES.has(regionChoice)?regionChoice:'';
     updateComparisonControls();
-    await ensureComparisonData();
+    if(!await ensureComparisonData())return;
     if(redraw&&typeof draw==='function')draw();
     save();
   }
@@ -246,6 +276,12 @@
     return fundData.jobindsats?.[module];
   }
   function moduleHasData(fundData,module){
+    if(module==='resultMeasure'){
+      const code=fundData?.code===nationalData?.meta?.totalFundCode?'TOTAL':fundData?.starCode||fundData?.code;
+      const horizon=document.getElementById('rmHorizon')?.value==='six'?'six':'three';
+      const values=typeof RM_DATA==='undefined'?null:RM_DATA?.series?.[horizon]?.[code];
+      return !!values&&Object.values(values).some(value=>Number.isFinite(value));
+    }
     const value=moduleData(fundData,module);
     if(Array.isArray(value))return value.length>0;
     if(!value||typeof value!=='object')return false;
@@ -255,6 +291,9 @@
   }
   function fundModuleUsesNational(fundData,regionKey,target){
     const module=moduleForTarget(target),fallback=fundData?._nationalFallbackModules;
+    // RM01AK is fetched for the whole country, including when other cards use
+    // a regional main series or a separately chosen comparison geography.
+    if(module==='resultMeasure')return regionKey!=='all';
     return regionKey!=='all'&&!!module&&Array.isArray(fallback)&&fallback.includes(module);
   }
   function entityLabel(code,item){return code===nationalData?.meta?.totalFundCode?'I alt':(item?.name||'Valgt a-kasse');}
@@ -438,7 +477,7 @@
 
   function geographyTarget(block){
     const node=block.matches('.kpi')?block.querySelector(':scope > strong[id]'):block.querySelector('canvas[id]');
-    return node?.id||'';
+    return node?.id||block.dataset.shareChart||'';
   }
 
   function updateGeographyContext(){
@@ -496,41 +535,49 @@
 
   async function setRegion(key){
     if(!nationalData)return;const select=document.getElementById('regionSelect'),periodSelect=document.getElementById('periodSelect');if(!REGION_FILES.has(key))key='all';
-    if(key==='all'){
-      activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateNotice();updateUnsupported();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();return;
-    }
-    if(activeRegion==='all'){nationalPeriod=periodSelect.value;if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;}else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
-    activeRegion=key;if(select)select.value=key;setPeriodLimit(true);periodSelect.value=Number(regionalPeriod)<=60?String(regionalPeriod):'60';updateNotice('<strong>Henter '+REGION_LABELS.get(key)+'...</strong>');
-    const payload=await loadRegion(key);if(document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);mergedRegionCache.set(key,DATA);updateAvailability();updateNotice();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(typeof draw==='function')draw();save();
+    const token=++regionLoadToken;beginChange('region');
+    try{
+      if(key==='all'){
+        activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);if(nationalPeriod&&[...periodSelect.options].some(o=>o.value===String(nationalPeriod)))periodSelect.value=String(nationalPeriod);if(select)select.value='all';updateNotice();updateUnsupported();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(token===regionLoadToken&&typeof draw==='function')draw();return;
+      }
+      if(activeRegion==='all'){nationalPeriod=periodSelect.value;if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;}else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
+      activeRegion=key;if(select)select.value=key;setPeriodLimit(true);periodSelect.value=Number(regionalPeriod)<=60?String(regionalPeriod):'60';updateNotice('<strong>Henter '+REGION_LABELS.get(key)+'...</strong>');
+      const payload=await loadRegion(key);if(token!==regionLoadToken||document.getElementById('regionSelect')?.value!==key)return;DATA=mergedRegionalData(payload);mergedRegionCache.set(key,DATA);updateAvailability();updateNotice();try{await ensureComparisonData();}catch(error){handleComparisonError(error,false);}if(token===regionLoadToken&&typeof draw==='function')draw();
+    }catch(error){if(token!==regionLoadToken)return;loadErrors.set('region',error.message);throw error;}
+    finally{endChange();save();}
   }
 
-  function handleRegionError(error){console.error(error);updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateUnsupported();ensureComparisonData().catch(comparisonError=>handleComparisonError(comparisonError,false)).finally(()=>{if(typeof draw==='function')draw();});}
+  async function handleRegionError(error){console.error(error);updateNotice('<strong>Regional visning kunne ikke indlæses.</strong> '+(error?.message||'Ukendt fejl')+'. Landsvisningen er bevaret.',true);activeRegion='all';DATA=nationalData;document.body.classList.remove('regional-no-jobdata');setPeriodLimit(false);const select=document.getElementById('regionSelect');if(select)select.value='all';updateUnsupported();try{await ensureComparisonData();}catch(comparisonError){handleComparisonError(comparisonError,false);}if(typeof draw==='function')draw();notifyViewState();}
 
   function comparisonFromState(state){
+    const knownFund=code=>typeof code==='string'&&Object.prototype.hasOwnProperty.call(nationalData?.funds||{},code);
     if(Object.prototype.hasOwnProperty.call(state,'comparisonFund')){
-      const fundCode=nationalData?.funds?.[state.comparisonFund]?state.comparisonFund:'';if(!fundCode)return{fundCode:'',regionChoice:''};
+      const fundCode=knownFund(state.comparisonFund)?state.comparisonFund:'';if(!fundCode)return{fundCode:'',regionChoice:''};
       const migratedRegion=state.comparisonRegion==='same'?(REGION_FILES.has(state.region)?state.region:'all'):state.comparisonRegion;
       return{fundCode,regionChoice:REGION_FILES.has(migratedRegion)?migratedRegion:''};
     }
-    if(state.nationalReference&&nationalData?.funds?.[state.fund])return{fundCode:state.fund,regionChoice:'all'};
-    const legacy=Array.isArray(state.compare)?state.compare.filter(code=>nationalData?.funds?.[code]):[];
+    if(state.nationalReference&&knownFund(state.fund))return{fundCode:state.fund,regionChoice:'all'};
+    const legacy=Array.isArray(state.compare)?state.compare.filter(knownFund):[];
     const fundCode=legacy.find(code=>code!==state.fund)||legacy[0]||'';return{fundCode,regionChoice:fundCode?(REGION_FILES.has(state.region)?state.region:'all'):''};
   }
 
   async function applyState(state){
-    if(!state)return;applying=true;const fundSelect=document.getElementById('fundSelect'),periodSelect=document.getElementById('periodSelect');
+    state=normalizeState(state);if(!state)return;applying=true;notifyViewState();const fundSelect=document.getElementById('fundSelect'),periodSelect=document.getElementById('periodSelect');
     if(state.fund&&fundSelect&&[...fundSelect.options].some(option=>option.value===state.fund))fundSelect.value=state.fund;
     if(state.period&&periodSelect&&[...periodSelect.options].some(option=>option.value===String(state.period)))periodSelect.value=String(state.period);
+    const horizon=document.getElementById('rmHorizon');if(horizon)horizon.value=state.rmHorizon==='six'?'six':'three';
     const choice=comparisonFromState(state);comparisonFundCode=choice.fundCode;comparisonRegionChoice=choice.regionChoice;updateComparisonControls();applyVisibility(state.hidden||[]);
     const region=REGION_FILES.has(state.region)?state.region:'all';if(region==='all')nationalPeriod=periodSelect.value;else if(Number(periodSelect.value)<=60)regionalPeriod=periodSelect.value;
-    try{await setRegion(region);}catch(error){handleRegionError(error);}
-    refreshChecks();updateComparisonControls();applying=false;save();
+    try{await setRegion(region);}catch(error){await handleRegionError(error);}
+    finally{refreshChecks();updateComparisonControls();applying=false;notifyViewState();save();}
   }
 
   function bindSave(){
+    ['fundSelect','periodSelect','rmHorizon'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{preserveStoredView=false;},true));
     document.getElementById('fundSelect')?.addEventListener('change',()=>setTimeout(()=>{updateComparisonControls();save();},0));
     document.getElementById('periodSelect')?.addEventListener('change',()=>setTimeout(()=>{if(activeRegion==='all')nationalPeriod=document.getElementById('periodSelect').value;else regionalPeriod=document.getElementById('periodSelect').value;save();},0));
     document.getElementById('regionSelect')?.addEventListener('change',()=>setTimeout(save,0));
+    document.getElementById('rmHorizon')?.addEventListener('change',save);
   }
   function ready(){return typeof DATA!=='undefined'&&DATA&&document.getElementById('fundSelect')?.options.length>0&&!document.getElementById('dashboard')?.hidden;}
   function preparePrimaryFundOptions(){
@@ -541,9 +588,16 @@
     injectStyle();injectRegionControls();if(!ready()){setTimeout(start,80);return;}
     if(!nationalData){nationalData=DATA;nationalPeriod=document.getElementById('periodSelect')?.value||'36';preparePrimaryFundOptions();}
     installComparisonBridge();wrapDraw();injectComparisonControls();injectPersonalControls();bindSave();
-    const state=sharedState()||storedState();
-    if(state)await applyState(state);else{refreshChecks();await ensureComparisonData();if(typeof draw==='function')draw();save();}
+    const shared=sharedState();preserveStoredView=Boolean(shared);const state=shared||storedState();
+    try{if(state)await applyState(state);else{refreshChecks();await ensureComparisonData();if(typeof draw==='function')draw();save();}}
+    catch(error){loadErrors.set('initialization',error.message);console.error(error);}
+    finally{initialized=true;resolveReady(getStatus());notifyViewState();}
   }
+  window.DAKPersonalView=Object.freeze({
+    ready:readyPromise,getState:currentState,encodeState,decodeState,getStatus,whenIdle,refreshChecks,
+    get isBusy(){return getStatus().busy;},
+    async applyState(state){await readyPromise;await whenIdle();preserveStoredView=true;return applyState(state);}
+  });
   start();
 })();
 

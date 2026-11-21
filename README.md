@@ -40,6 +40,65 @@ Den fulde RM01AK-fil bruges fortsat af resultatmålsiden. Forsiden henter i sted
 `data/rm01ak-summary.json`, der kun indeholder metadata, a-kasser, tidsserier og
 populationstal. Den kompakte fil bygges automatisk sammen med `data/rm01ak.json`.
 
+## Del en graf på LinkedIn
+
+Alle 23 grafer har knapperne **Del på LinkedIn**, **Kopiér link** og **Hent billede**.
+Vælg først a-kasse, geografi, periode og eventuel sammenligning. Et delt link
+gemmer disse valg samt resultatmålingens valg mellem tre og seks måneder.
+Modtageren kommer direkte til grafen. Skjulte afsnit åbnes også på mobil.
+Grafens stabile id bruges i linket, så ændrede figurnumre ikke ødelægger det.
+
+Hver graf har en offentlig deleside under `del/<canvasId>/` med Open Graph-tags
+i selve HTML-filen. Siden bevarer parameteren `pv` og åbner dashboardet med
+`?graf=<canvasId>&pv=...#graf-<canvasId>`. De tidligere links med `?figure=`
+understøttes fortsat. En delt visning har forrang for modtagerens gemte valg,
+men overskriver dem først, hvis modtageren selv ændrer et filter.
+
+LinkedIns forhåndsbillede viser grafens standardudsnit: **I alt, hele landet**.
+Det fremgår på både billedet og dashboardet. Billederne bygges fra de samme
+officielle datafiler som dashboardet og er PNG på 1200 × 630 pixel.
+GitHub Pages kan ikke danne servermetadata for enhver vilkårlig kombination
+af filtre. De valgte filtre vises derfor efter klik på linket.
+**Hent billede** gemmer derimod den aktuelt viste graf med dens filtre, titel
+og kilde. Brug også grafens link, hvis billedet vedhæftes et opslag.
+
+LinkedIn-knappen åbner LinkedIns delingsvindue. Brugeren skriver og publicerer
+selv opslaget. Ved gamle forhåndsbilleder kan det konkrete link kontrolleres i
+[LinkedIns Post Inspector](https://www.linkedin.com/post-inspector/).
+LinkedIn kan gemme et tidligere billede; en opfriskning ændrer ikke allerede
+publicerede opslag.
+
+### Automatisk opdatering og test af deling
+
+`config/share-charts.json` er oversigten over grafernes id'er, titler og
+beskrivelser. `scripts/build_share_pages.py` bygger delesider og billeder uden
+API-nøgler. `assets/share/manifest.json` kontrollerer datagrundlag og filhashes.
+
+Workflowet **Generate LinkedIn chart previews** kører ved relevante
+kodeændringer og efter de to eksisterende dataworkflows. Det kontrollerer
+datadefinitioner, rå Open Graph-tags og billeder, og tester navigation,
+filterbevaring, mobilvisning, kopiering og PNG-download i Chromium.
+Godkendte billeder gemmes på `main`, og workflowet anmoder derefter eksplicit
+om et Pages-build. Det er nødvendigt, fordi commits med `GITHUB_TOKEN` ikke
+selv udløser Pages-publicering.
+
+Kør lokalt eller i CI:
+
+```bash
+python -m pip install -r scripts/requirements-sharing.txt
+python scripts/test_share_pages.py
+node scripts/test_share_redirect.cjs
+python scripts/build_share_pages.py
+python scripts/build_share_pages.py --check
+python -m playwright install --with-deps chromium
+python scripts/test_sharing.py --artifacts /tmp/sharing-test-artifacts
+```
+
+En vellykket browsertest dokumenterer dashboardets delingsforløb. Den opretter
+intet LinkedIn-opslag og dokumenterer ikke LinkedIns cache eller behandling
+af linkets URL. LinkedIns faktiske forhåndsvisning kontrolleres separat med
+Post Inspector.
+
 ## Rådighedssanktioner
 
 Sektion 9 henter Jobindsats.dk-tabellen `y01h01` (Antal rådighedssanktioner) kvartalsvist. Dashboardet viser samlet antal, andel sanktionerede ledige, sanktionstype og gennemsnitligt antal sanktioner pr. sanktioneret ledig. Historikken starter i 2019, og der markeres databrud fra 1. kvt. 2021. `I alt` hentes som en selvstaendig officiel række fra samme Jobindsats-tabel og bruges som standardbenchmark; den beregnes ikke som sum eller gennemsnit af a-kasserne. Både totalrækken og de enkelte a-kasser valideres i den automatiske opdatering. Jobindsats' kvartalskoder normaliseres, så fx `2026Q01` fortolkes som 1. kvartal 2026.

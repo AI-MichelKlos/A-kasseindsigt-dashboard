@@ -1,0 +1,223 @@
+{
+  "version": 1,
+  "chartCount": 23,
+  "inputsSha256": "8eb8ab1de3d062312ea311a217f012303eabece06459204fba61dec709713483",
+  "files": {
+    "assets/share/membersRawChart.png": "122cca6ef1b4c492aad162e74d8e9327067eb33de59eab264cb5befc52c1cd68",
+    "del/membersRawChart/index.html": "5eb24e1337ea9609a3a5e12a6671869b14226f704a169b7217bd56db3105981e",
+    "share/membersRawChart.html": "22e436cc655a6e0f265e85d934ee5295ff337a8f2312cc26f1b436d98369d855",
+    "assets/share/membersIndexChart.png": "dbf53b3557c47da2b841022d00f257d553058e5156516d4bf4c2e8c7483fb92c",
+    "del/membersIndexChart/index.html": "4b8e084352580216fb0622c9a38b5442a99a0c3deb7b6df96b64867bd613c3bf",
+    "share/membersIndexChart.html": "83f512421e9dfe8b30785f4cf6c9bf719a4db0d1642c3023b6daffa34d555b08",
+    "assets/share/ageChart.png": "7b1dc430ebf88dd03eab13107f3088eb255a3d00d9bcceac35d71d67661fbc2a",
+    "del/ageChart/index.html": "f498424d1088f0985126162a402c6d855087723215be411cf7033e7eb79960e5",
+    "share/ageChart.html": "10efe3b37f51bac8bc5c3720643f6e51392c80dc36ec23699b1fa418e846d6e2",
+    "assets/share/unempChart.png": "90190183de53c4b4752104061a8d4be9ce683035b277629f7f1433b147a234ff",
+    "del/unempChart/index.html": "b95faa2884d0a7f3b80af24791fc7d91300ec2a006139f5ccad05e1a1c8a67d4",
+    "share/unempChart.html": "adc59409abe79c7c974c75257d068bca7760f02353c44c8ec52edc80ba15b737",
+    "assets/share/longRawChart.png": "fa4931e1506d763fbb55942d5f4044b2547268978517d58254800dea671f1686",
+    "del/longRawChart/index.html": "f5fcffe65a977e2b4b9554b582de097365fc0614e20ea0a779a9158087249a3d",
+    "share/longRawChart.html": "c16200a1d8f2798e4b9ee27e1d63019ec561866d3d2ec34a3765da12b4824aec",
+    "assets/share/longIndexChart.png": "c01ad796bbc6c18270a520be5252d6faabc2b0f453162ad1cb6800ed91dd3d48",
+    "del/longIndexChart/index.html": "8ab34add2beb337b3775d8716bba5823f5a7e57e2493af2b8fc12cc586b294f0",
+    "share/longIndexChart.html": "c28398467b85e42c4c6c3a6f430ae8bdc87d140a4b17bee17b42baa3810cf930",
+    "assets/share/dagChart.png": "fb77706c0bdf37693a5cb917d813cb088124473fb469e7a4e864eb7033ded4bb",
+    "del/dagChart/index.html": "6fc33fb0d5e0b46ece68afec132dd77e7b25487e410d29fab092c1e40996dbbb",
+    "share/dagChart.html": "3585dbb9fa5ab9f9b2360a3abfbb721b071aa9c5c4382d35720bcd9ffb598486",
+    "assets/share/gradCountChart.png": "1738d6dad762b752f554affbd70222b0100e83af8fae7aa89e36e3651998b63a",
+    "del/gradCountChart/index.html": "a9328b944321b1dac67b7d0699a95a0e7228632bed32a2d6a6c3fad52f6d8e5e",
+    "share/gradCountChart.html": "6f4e49fcc5ac571924cbbb3dce355da64f4eb0036ba919ec144b1804717067f9",
+    "assets/share/gradChart.png": "bf7be4d0ea6d5ca23b84d5e86bdf18899bd33582cfa9b8b91af7a7903a113820",
+    "del/gradChart/index.html": "e0ed0fcb89076e79fe372c9abb8fcc31d9d8e085c41b505a4ee093aa2933bb58",
+    "share/gradChart.html": "390210fc5fe09e5714fecf6981c07be341b7c045fd502549526a6127e8bc4243",
+    "assets/share/rmMainChart.png": "e1d50f6915d526d62e1058a1e0d662ec229e7fe9565bb7f6af4738c39bd1dc6c",
+    "del/rmMainChart/index.html": "8010586770cb1b2ecf294e7b74b3e6206202344b4d4dbef406382454d1532edd",
+    "share/rmMainChart.html": "379e39de02d5c1202b031d5e8b3da43c39471a63bc519f73f8ee0e62ea74f161",
+    "assets/share/consChart.png": "78a43287083727788620c83b13058d8c9ab62ad1c418d59bcc5bd962e809da0f",
+    "del/consChart/index.html": "92cc29b392b18553c4677055074f4819641078d50ab14a8ce96ad2ded49c8b27",
+    "share/consChart.html": "93b84741471c8815408d7cf1794cac9bff0230e2cb52ce91d8bb3b70ff58ff10",
+    "assets/share/exhaustedChart.png": "8aece5029bcd3733d45099c532f4ebcbde8bf6d7b4faf6b64adae0d1928dccfe",
+    "del/exhaustedChart/index.html": "903e5d31d314f30464c5a27ce6e30c4e58558dbbecea2eb84b3678183880d20b",
+    "share/exhaustedChart.html": "e59497dd850364ba2250ada71601ad7f2ab8ef618146a4a57eef3c93f75363b7",
+    "assets/share/survChart.png": "b8ad3ef812994639ecf545d321f5e42ab114645330e2e8035294825ae88625b3",
+    "del/survChart/index.html": "62d1c99c2964d8dc9a93fb1973abd722d4a331a8353b489ebeaaeb36f3ad6b3e",
+    "share/survChart.html": "39ef5a626f8e3094eec28f42f74540cdf66b177995f98bd4dffdce2e4b7f2fd0",
+    "assets/share/completedDurationChart.png": "f4e8e56ff49c71a83eca56cb281e9882a7780d7f5efc7ecee57e05c2f6bc7a1b",
+    "del/completedDurationChart/index.html": "d914c6cc48af8cd54108816c87c9a01f5f6e8630e4fb018922a253cd19006698",
+    "share/completedDurationChart.html": "434961b44b3979203b0cb2789f51a99cebecb315087345323eec87e9485227b2",
+    "assets/share/statusChart.png": "bdd1fde36f539b3cf6922bd0928f0fafee527176f4092bc9875c5c5321aeff64",
+    "del/statusChart/index.html": "89f1ee9ce046e17a3eebd1a470396609135d73253f694c07d3e9c32447aaf850",
+    "share/statusChart.html": "25bafd008a1a1ba0e5d1a6a6e1d7a68919938466e36e334cc8d63993b8a69292",
+    "assets/share/talkChart.png": "26797fab6ce9a3094ef26182c83b40a60e0178845a4c6ed2ceebbae71e9043d7",
+    "del/talkChart/index.html": "fe024a4a02a2d9c14b3cc935bbfa74f61486da2f33566d3a608e2f40a2fec87a",
+    "share/talkChart.html": "7f777bcc9f8e89f4dbd81502902968deb6ae5c6d42c201075502b6d05ac0e53f",
+    "assets/share/afterlonChart.png": "b3c4d8b1fd16c4b2e01c4992876384eea6a90b77589ab7ee32cb97a0606399d4",
+    "del/afterlonChart/index.html": "65fa33cdd734728d7a7a89cf926874e86702d8e7c683a2392f8eab0c8636e97b",
+    "share/afterlonChart.html": "f2eef38ce9b9de36a2b5dbc43c983d442ccbf095493ba7ff4fe974aa09f46056",
+    "assets/share/afterlonContribChart.png": "bf641b668820379462696e29cba080e3f512b37680f26a21e121cdec8fbaf109",
+    "del/afterlonContribChart/index.html": "eb2838fa2e92481bff09f9ae5eb0803a81a5ed57ecc4068ad7cd632a6726e548",
+    "share/afterlonContribChart.html": "ca0a87e6ed2b4b5f45c349487fb47a2fd3f473edaabe6bcfc57ec89a87287830",
+    "assets/share/sanctionsTotalChart.png": "2a7c71d767aecafe49c573f7ee30d52d591926075e56e2a989d844848f960dff",
+    "del/sanctionsTotalChart/index.html": "3c5ee8691bb0350d2929608ad8375c448fc2699de9274d6bf7dd68088854f53e",
+    "share/sanctionsTotalChart.html": "90a69ba34948f91b42f78268f49e7f64d5241e66dafd556b2eaea46e29716575",
+    "assets/share/sanctionsShareChart.png": "c38ef4aa3b7a4e08794c9ff904c51040bfb59b541f0747a1179341d830f6f956",
+    "del/sanctionsShareChart/index.html": "d720aa32a8d617bc288f8985560bc7232519746997c83889a96414dffb308c28",
+    "share/sanctionsShareChart.html": "e6c5d05cbf5724a1ec274f4c1191ba538f042ac47c8cdbfdb6f7c2da8f648856",
+    "assets/share/sanctionsTypeChart.png": "0086c277656127e666404188c4c4fb0120e443a0ec5d3dd339964e7a65d7eb2b",
+    "del/sanctionsTypeChart/index.html": "5252ceb35db934f6bf0a7220f9d9ae5282b5b41914af7d903ae7a347edc3f012",
+    "share/sanctionsTypeChart.html": "90f4f8eb5030b196a9f4d4e546176ae250c662f3edaad8cb3567e96c35b21798",
+    "assets/share/sanctionsAvgChart.png": "9f812e7ec8ba6b9bead68574e55901a92d7429ceb6fcbd2fd6496dc4fd795a83",
+    "del/sanctionsAvgChart/index.html": "e63b849db4452739bcf630e3c3de459071de9dafb5326458ef04c88cf1c13673",
+    "share/sanctionsAvgChart.html": "ae4f8d719c162ec813b3a6857ba19d96e6f67b2d8bd51cd747728dec798a5b30",
+    "assets/share/jobSearchShareChart.png": "c9a141b5ff554d455224a2f067a911da5d8199162c8184fb64d384a47d23bd9c",
+    "del/jobSearchShareChart/index.html": "da0ada90e828995ffce124f670442b9c365fefd1e386c10d8818ee0a27839775",
+    "share/jobSearchShareChart.html": "b5ed6f1b1aebd7ba41945f49b1ec7b2c85958dd057af430c96d1cfe072105e3d",
+    "assets/share/dashboard.png": "1bd8c15a82dc9097f8234e125060c5c95feeeeb9d72512e34bfbccb2c3687bb4"
+  },
+  "preview": {
+    "fund": "I alt",
+    "geography": "Hele landet",
+    "months": 36,
+    "rmHorizon": "three"
+  },
+  "charts": [
+    {
+      "id": "membersRawChart",
+      "period": "2026M09",
+      "source": "Danmarks Statistik (AUA01)",
+      "specSha256": "2f6b7a0d19235dc79a6965f88830df1967ae82d542d126e916dc6315e24af3c9"
+    },
+    {
+      "id": "membersIndexChart",
+      "period": "2026M09",
+      "source": "Danmarks Statistik (AUA01)",
+      "specSha256": "8a4ad8de6b6e0353daa53b3485bfdd3cfd6b60b8a99d64d70042efea656a583a"
+    },
+    {
+      "id": "ageChart",
+      "period": "2026M09",
+      "source": "Danmarks Statistik (AUA01)",
+      "specSha256": "8f2be4a8abff26199212541f7430dfbdf8999d723dc0d6642b4806e18978d993"
+    },
+    {
+      "id": "unempChart",
+      "period": "2026M09",
+      "source": "Danmarks Statistik (AUP03)",
+      "specSha256": "abf44e64cd451836e5bf4f2dde6554cdd56a07bda8d3228283cac639182e99da"
+    },
+    {
+      "id": "longRawChart",
+      "period": "2026M09",
+      "source": "Jobindsats.dk / STAR (Y25I09)",
+      "specSha256": "83fef4a6cdac5229c3161bc29d6d45e898145fea2fe2d26a8fa260882d6294b2"
+    },
+    {
+      "id": "longIndexChart",
+      "period": "2026M09",
+      "source": "Jobindsats.dk / STAR (Y25I09)",
+      "specSha256": "8003f638254c33eaad13bcdf53dac4d3f71319b3acb6ba4c8f8863a690f77910"
+    },
+    {
+      "id": "dagChart",
+      "period": "2026M09",
+      "source": "Jobindsats.dk / STAR (Y01A02)",
+      "specSha256": "1a1d796209018fea195c51093915ad23e8d20470ef5f7b94654c846bd8bdde0b"
+    },
+    {
+      "id": "gradCountChart",
+      "period": "2026M09",
+      "source": "Jobindsats.dk / STAR (Y01DIA02)",
+      "specSha256": "cd10bbb89478435f4bee66f2a7b176413ad020e522b0f48b108df3919c8228a0"
+    },
+    {
+      "id": "gradChart",
+      "period": "2026M09",
+      "source": "Jobindsats.dk / STAR (Y01DIA02)",
+      "specSha256": "686187d647bb500ad2d97483bbea132227e155acfa58d3dd1dfc4d34fa30f724"
+    },
+    {
+      "id": "rmMainChart",
+      "period": "2026M09",
+      "source": "Jobindsats.dk / STAR (RM01AK)",
+      "specSha256": "16551ba005999a396853f622c414bd0747f3c784bd7d3944d1df47f2be268294"
+    },
+    {
+      "id": "consChart",
+      "period": "2026M08",
+      "source": "Jobindsats.dk / STAR (Y01A12)",
+      "specSha256": "c79ec1c911d4fa9f5ed3081ec8815d72326e629012b48cd9b1d4383888457818"
+    },
+    {
+      "id": "exhaustedChart",
+      "period": "2026M08",
+      "source": "Jobindsats.dk / STAR (Y01UD01DI)",
+      "specSha256": "b659e94cab68656b82b2a2739bcdec7a02db52fdddba86e40aab51f342e83882"
+    },
+    {
+      "id": "survChart",
+      "period": "2025Q03",
+      "source": "Jobindsats.dk / STAR (Y01B01)",
+      "specSha256": "de78cb4a8c9f8c113482c8086243c7775a32ca587fa929e20cc26d0504a34cb3"
+    },
+    {
+      "id": "completedDurationChart",
+      "period": "2026M08",
+      "source": "Jobindsats.dk / STAR (Y01A27)",
+      "specSha256": "bcefed8baae37c3d13726cf79a372e4420f4a2868648f927b4954513b5d8eb1a"
+    },
+    {
+      "id": "statusChart",
+      "period": "2026Q01",
+      "source": "Jobindsats.dk / STAR (Y01B15)",
+      "specSha256": "91f12473514d134261916cdea57a496ad1dbd7c6e1f1f5659132b733fc4d169f"
+    },
+    {
+      "id": "talkChart",
+      "period": "2026M08",
+      "source": "Jobindsats.dk / STAR (SMT02)",
+      "specSha256": "5a300700724903da6940bbe17d0b07af998b66c65aa67a89bea39088363cb6e8"
+    },
+    {
+      "id": "afterlonChart",
+      "period": "2026M09",
+      "source": "Jobindsats.dk / STAR (Y28A02)",
+      "specSha256": "e824afce6918e7b96ac3e01dfd2b1a7d0c558bae9f88a7919af776f5981dace7"
+    },
+    {
+      "id": "afterlonContribChart",
+      "period": "2025Y01",
+      "source": "Jobindsats.dk / STAR (Y28A15)",
+      "specSha256": "f6931418f729674321f61a2e480173f5039bd147c37f48bcc70ef56804757f65"
+    },
+    {
+      "id": "sanctionsTotalChart",
+      "period": "2026Q02",
+      "source": "Jobindsats.dk / STAR (Y01H01)",
+      "specSha256": "edea63bd9ad89d5548cb07b1be2a7f3e6de7b8e83831f07161fda2eae191a803"
+    },
+    {
+      "id": "sanctionsShareChart",
+      "period": "2026Q02",
+      "source": "Jobindsats.dk / STAR (Y01H01)",
+      "specSha256": "276bed695df585fb8a4e93288f6913982ff7c83d03fc3b80064507428db43f35"
+    },
+    {
+      "id": "sanctionsTypeChart",
+      "period": "2026Q02",
+      "source": "Jobindsats.dk / STAR (Y01H01)",
+      "specSha256": "1d912f5189b2099e500e61479c5602f1a793f236f51344cd1dfa7e84b2b0102c"
+    },
+    {
+      "id": "sanctionsAvgChart",
+      "period": "2026Q02",
+      "source": "Jobindsats.dk / STAR (Y01H01)",
+      "specSha256": "bc7e06f25a95a57929dbd55b724cb38709757c2fad9a7d2e698994b206c7ff13"
+    },
+    {
+      "id": "jobSearchShareChart",
+      "period": "2026M07",
+      "source": "Jobindsats.dk / STAR",
+      "specSha256": "9f3d97bfbddc6c25ab07c006ae73230e3a5ad772183469461bfbd90b7d7ebd0c"
+    }
+  ]
+}

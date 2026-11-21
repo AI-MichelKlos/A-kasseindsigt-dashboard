@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 BASE = Path(__file__).resolve().parents[1]
 HTML = BASE / "index.html"
@@ -74,7 +75,10 @@ ENHANCEMENTS = r'''<script>
 </script>
 '''
 
-PERSONAL_VIEW_SCRIPT = '<script src="assets/personal-view.js?v=20261029-counts"></script>\n'
+UI_VERSION = "20261121-linkedin"
+PERSONAL_VIEW_SCRIPT = f'<script src="assets/personal-view.js?v={UI_VERSION}"></script>\n'
+SHARING_SCRIPT = f'<script src="assets/figure-sharing.js?v={UI_VERSION}"></script>\n'
+SHARING_STYLE = f'<link rel="stylesheet" href="assets/chart-sharing.css?v={UI_VERSION}">'
 
 
 def require_replace(text: str, old: str, new: str, label: str) -> str:
@@ -88,10 +92,17 @@ def require_replace(text: str, old: str, new: str, label: str) -> str:
 def main():
     text = HTML.read_text(encoding="utf-8")
     # Upgrade existing script tags before deciding whether to insert them.
-    text = text.replace('assets/personal-view.js"', 'assets/personal-view.js?v=20261029-counts"')
-    text = text.replace('assets/dashboard-experience.js"', 'assets/dashboard-experience.js?v=20261029-counts"')
-    while text.count(PERSONAL_VIEW_SCRIPT.strip()) > 1:
-        text = text.replace(PERSONAL_VIEW_SCRIPT.strip(), "", 1)
+    for name in ("personal-view", "dashboard-experience", "figure-sharing"):
+        text = re.sub(
+            rf'<script src="assets/{name}\.js(?:\?[^\"]*)?"></script>',
+            f'<script src="assets/{name}.js?v={UI_VERSION}"></script>',
+            text,
+        )
+    for script in (PERSONAL_VIEW_SCRIPT, SHARING_SCRIPT):
+        while text.count(script.strip()) > 1:
+            text = text.replace(script.strip(), "", 1)
+    if SHARING_STYLE not in text:
+        text = text.replace("</head>", SHARING_STYLE + "\n</head>", 1)
 
     text = text.replace(".source a{color:var(--gd);font-weight:700;text-decoration:none}", ".source a{color:var(--gd);font-weight:400;text-decoration:none}")
     text = text.replace("mailto:mk@danskeakasser.dk", "mailto:michel@klos.dk")
@@ -122,6 +133,9 @@ def main():
         if marker not in text:
             raise RuntimeError("Kunne ikke finde GoatCounter-markør til personlig visning")
         text = text.replace(marker, PERSONAL_VIEW_SCRIPT + marker, 1)
+
+    if SHARING_SCRIPT.strip() not in text:
+        text = text.replace(PERSONAL_VIEW_SCRIPT, PERSONAL_VIEW_SCRIPT + SHARING_SCRIPT, 1)
 
     HTML.write_text(text, encoding="utf-8")
     print("OK: UI-patch anvendt")
