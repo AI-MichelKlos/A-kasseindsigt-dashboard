@@ -75,15 +75,14 @@ def validate():
                 "Delvis jobCompletedDuration har ukendte a-kassekoder: "
                 + ", ".join(unknown_codes)
             )
-        latest_completed = completed_status.get("latestPeriod")
         invalid_retained = []
         for code in partial_completed_codes:
             retained = funds[code].get("jobindsats", {}).get("completedDuration", {})
-            if not retained.get("period") or retained.get("period") == latest_completed:
+            if not retained.get("period") or not retained.get("items"):
                 invalid_retained.append(code)
         if invalid_retained:
             raise RuntimeError(
-                "Delvis jobCompletedDuration mangler tydeligt bevarede ældre data for: "
+                "Delvis jobCompletedDuration mangler bevarede godkendte data for: "
                 + ", ".join(invalid_retained)
             )
 
