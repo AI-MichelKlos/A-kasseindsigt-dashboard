@@ -1,4 +1,3 @@
-status: fejl
-tid_utc: 2026-11-23T09:30:26Z
+status: ok
+tid_utc: 2026-11-23T09:37:23Z
 dato_dk: 2026-11-23
-fejl: Region Hovedstaden jobDagpengeforbrug ok Region Hovedstaden jobOverlevelse ok Region Hovedstaden jobStatusAfter ok Region Hovedstaden jobCompletedDuration ok Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_regional_jobindsats.py", line 179, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_regional_jobindsats.py", line 171, in main base.process_region(main_data, slug, region_name) File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/fetch_jobindsats_regions.py", line 522, in process_region raise RuntimeError( RuntimeError: Region Hovedstaden mangler godkendt regional jobCompletedDuration-reserve for: 05 
