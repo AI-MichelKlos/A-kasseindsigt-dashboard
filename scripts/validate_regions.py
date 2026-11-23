@@ -70,7 +70,14 @@ def main() -> None:
 
         statuses = meta.get("sourceStatus", {})
         for source in ("AUA01", "AUP03", *REQUIRED_JOB_SOURCES):
-            if statuses.get(source, {}).get("state") != "ok":
+            source_state = statuses.get(source, {}).get("state")
+            allowed_partial = (
+                source == "jobCompletedDuration"
+                and source_state == "partial"
+                and bool(statuses[source].get("missingFundCodes"))
+                and total not in statuses[source].get("missingFundCodes", [])
+            )
+            if source_state != "ok" and not allowed_partial:
                 raise RuntimeError(f"{slug}: {source} er ikke ok")
 
         exhausted_state = statuses.get("jobExhaustedRights", {}).get("state")

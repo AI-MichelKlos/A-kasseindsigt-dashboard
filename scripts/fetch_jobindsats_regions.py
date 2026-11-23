@@ -471,6 +471,11 @@ def completed_duration(main, data, region):
 def process_region(main, slug, region_name):
     path = REGION_DIR / f"{slug}.json"
     data = json.loads(path.read_text(encoding="utf-8"))
+    previous_completed = {
+        code: fund.get("jobindsats", {}).get("completedDuration")
+        for code, fund in data.get("funds", {}).items()
+        if fund.get("jobindsats", {}).get("completedDuration")
+    }
     for fund in data.get("funds", {}).values():
         fund["jobindsats"] = {}
     jobs = [
@@ -497,6 +502,46 @@ def process_region(main, slug, region_name):
     failed_required = [key for key, _ in failures if key in required]
     if failed_required:
         raise RuntimeError(region_name + " mangler regionale Jobindsats-moduler: " + ", ".join(failed_required))
+
+    total_code = data.get("meta", {}).get("totalFundCode")
+    missing_completed = [
+        code for code, fund in data.get("funds", {}).items()
+        if code != total_code
+        and not fund.get("jobindsats", {}).get("completedDuration")
+    ]
+    restored_completed = []
+    for code in missing_completed:
+        previous = previous_completed.get(code)
+        if not previous:
+            continue
+        data["funds"][code].setdefault("jobindsats", {})["completedDuration"] = previous
+        restored_completed.append(code)
+    if missing_completed:
+        unresolved = [code for code in missing_completed if code not in restored_completed]
+        if unresolved:
+            raise RuntimeError(
+                region_name
+                + " mangler godkendt regional jobCompletedDuration-reserve for: "
+                + ", ".join(unresolved)
+            )
+        completed_status = data["meta"].setdefault("sourceStatus", {}).setdefault(
+            "jobCompletedDuration", {}
+        )
+        completed_status["state"] = "partial"
+        completed_status["missingFundCodes"] = missing_completed
+        completed_status["missingFundNames"] = [
+            data["funds"][code].get("name", code) for code in missing_completed
+        ]
+        completed_status["note"] = (
+            "Seneste regionale periode mangler enkelte a-kasser. "
+            "Deres senest godkendte data er bevaret."
+        )
+        print(
+            region_name,
+            "jobCompletedDuration partial, bevarede:",
+            ", ".join(missing_completed),
+        )
+
     data["meta"]["checkedAt"] = now_iso()
     data["meta"]["methodNotes"] = [
         "Regional visning kombinerer region og a-kasse i de officielle DST- og Jobindsats-kilder.",
