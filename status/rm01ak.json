@@ -1,7 +1,7 @@
 {
-  "state": "ok",
-  "dateDK": "2026-11-22",
-  "checkedAt": "2026-11-22T15:28:07+00:00",
+  "state": "failed",
+  "dateDK": "2026-11-23",
+  "checkedAt": "2026-11-23T19:20:06+00:00",
   "source": "Jobindsats.dk",
   "dataset": "rm01ak"
 }
