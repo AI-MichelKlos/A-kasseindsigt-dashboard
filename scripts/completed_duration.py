@@ -144,18 +144,61 @@ def main():
             "items": items,
             "averageWeeks": averages.get(code),
         }
-    if missing:
-        raise RuntimeError("Afsluttede forløb mangler a-kasser: " + ", ".join(missing))
+    if total_code in missing:
+        raise RuntimeError("Afsluttede forløb mangler totalrækken")
 
-    data["meta"]["sourceStatus"]["jobCompletedDuration"] = {
-        "state": "ok",
+    missing_names = [data["funds"][code].get("name", code) for code in missing]
+    source_state = "partial" if missing else "ok"
+    source_status = {
+        "state": source_state,
         "source": "Jobindsats.dk / STAR",
         "dataset": table,
         "latestPeriod": latest,
         "unit": "antal afsluttede a-dagpengeforløb efter varighed og gennemsnitlig varighed i uger",
         "checkedAt": now_iso(),
-        "note": "Et forløb er afsluttet, når der følger en sammenhængende kalendermåned uden udbetaling af a-dagpenge.",
     }
+    if missing:
+        source_status["missingFundCodes"] = missing
+        source_status["missingFundNames"] = missing_names
+        source_status["note"] = (
+            "Seneste periode mangler enkelte a-kasser. Deres senest godkendte data er bevaret: "
+            + ", ".join(missing_names)
+        )
+    else:
+        source_status["note"] = (
+            "Et forløb er afsluttet, når der følger en sammenhængende kalendermåned "
+            "uden udbetaling af a-dagpenge."
+        )
+    data["meta"]["sourceStatus"]["jobCompletedDuration"] = source_status
+
+    update_status = data["meta"].setdefault(
+        "updateStatus",
+        {"state": "ok", "successful": [], "failed": [], "checkedAt": now_iso()},
+    )
+    successful = [
+        item for item in update_status.get("successful", [])
+        if item != "jobCompletedDuration"
+    ]
+    failed = [
+        item for item in update_status.get("failed", [])
+        if not str(item).startswith("jobCompletedDuration:")
+    ]
+    if missing:
+        failed.append(
+            "jobCompletedDuration: seneste periode mangler " + ", ".join(missing_names)
+        )
+        if update_status.get("state") != "failed":
+            update_status["state"] = "partial"
+    else:
+        successful.append("jobCompletedDuration")
+        if not failed and all(
+            value.get("state") == "ok"
+            for value in data["meta"].get("sourceStatus", {}).values()
+        ):
+            update_status["state"] = "ok"
+    update_status["successful"] = successful
+    update_status["failed"] = failed
+    update_status["checkedAt"] = now_iso()
     data["meta"].setdefault("jobindsatsTables", {})["jobCompletedDuration"] = table
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     patch_ui.main()
