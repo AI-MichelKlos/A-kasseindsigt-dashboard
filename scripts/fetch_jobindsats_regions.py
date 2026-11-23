@@ -517,13 +517,9 @@ def process_region(main, slug, region_name):
         data["funds"][code].setdefault("jobindsats", {})["completedDuration"] = previous
         restored_completed.append(code)
     if missing_completed:
-        unresolved = [code for code in missing_completed if code not in restored_completed]
-        if unresolved:
-            raise RuntimeError(
-                region_name
-                + " mangler godkendt regional jobCompletedDuration-reserve for: "
-                + ", ".join(unresolved)
-            )
+        unavailable_completed = [
+            code for code in missing_completed if code not in restored_completed
+        ]
         completed_status = data["meta"].setdefault("sourceStatus", {}).setdefault(
             "jobCompletedDuration", {}
         )
@@ -532,14 +528,19 @@ def process_region(main, slug, region_name):
         completed_status["missingFundNames"] = [
             data["funds"][code].get("name", code) for code in missing_completed
         ]
+        completed_status["restoredFundCodes"] = restored_completed
+        completed_status["unavailableFundCodes"] = unavailable_completed
         completed_status["note"] = (
             "Seneste regionale periode mangler enkelte a-kasser. "
-            "Deres senest godkendte data er bevaret."
+            "Tidligere godkendte data er bevaret, hvor de findes. "
+            "Øvrige berørte a-kasser vises uden tal."
         )
         print(
             region_name,
-            "jobCompletedDuration partial, bevarede:",
+            "jobCompletedDuration partial, mangler:",
             ", ".join(missing_completed),
+            "bevarede:",
+            ", ".join(restored_completed) or "ingen",
         )
 
     data["meta"]["checkedAt"] = now_iso()

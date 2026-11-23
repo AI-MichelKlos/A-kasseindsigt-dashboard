@@ -109,6 +109,15 @@ def main() -> None:
                 unavailable.append((code, fund.get("name", code)))
                 continue
             absent = [module for module in REQUIRED_JOB_MODULES if not jobs.get(module)]
+            completed_missing_codes = statuses.get("jobCompletedDuration", {}).get(
+                "missingFundCodes", []
+            )
+            if (
+                statuses.get("jobCompletedDuration", {}).get("state") == "partial"
+                and code in completed_missing_codes
+                and "completedDuration" in absent
+            ):
+                absent.remove("completedDuration")
             if exhausted_state == "ok" and not jobs.get("exhaustedRights"):
                 absent.append("exhaustedRights")
             if exhausted_state == "ok" and jobs.get("exhaustedRights"):
