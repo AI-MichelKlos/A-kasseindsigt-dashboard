@@ -16,8 +16,24 @@ def validate():
     data = json.loads(DATA.read_text(encoding="utf-8"))
     meta = data.get("meta", {})
     state = meta.get("updateStatus", {}).get("state")
-    if state != "ok":
-        raise RuntimeError(f"Dashboardstatus er {state}; alle påkrævede kilder skal være ok")
+    statuses = meta.get("sourceStatus", {})
+    completed_status = statuses.get("jobCompletedDuration", {})
+    partial_completed_codes = completed_status.get("missingFundCodes") or []
+    allowed_completed_partial = (
+        state == "partial"
+        and completed_status.get("state") == "partial"
+        and bool(partial_completed_codes)
+        and meta.get("totalFundCode") not in partial_completed_codes
+        and set(meta.get("updateStatus", {}).get("failed") or [])
+        == {
+            "jobCompletedDuration: seneste periode mangler "
+            + ", ".join(completed_status.get("missingFundNames") or [])
+        }
+    )
+    if state != "ok" and not allowed_completed_partial:
+        raise RuntimeError(
+            f"Dashboardstatus er {state}; kun eksplicit delvis jobCompletedDuration accepteres"
+        )
 
     required_sources = [
         "AUA01",
@@ -35,11 +51,11 @@ def validate():
         "jobStatusAfter",
         "jobCompletedDuration",
     ]
-    statuses = meta.get("sourceStatus", {})
     bad_sources = {
         key: statuses.get(key, {}).get("state", "mangler")
         for key in required_sources
         if statuses.get(key, {}).get("state") != "ok"
+        and not (allowed_completed_partial and key == "jobCompletedDuration")
     }
     if bad_sources:
         details = "; ".join(f"{key}: {value}" for key, value in bad_sources.items())
@@ -51,6 +67,25 @@ def validate():
         raise RuntimeError("Total a-kasse mangler")
     if len(funds) < 10:
         raise RuntimeError(f"For få aktive a-kasser: {len(funds)}")
+
+    if allowed_completed_partial:
+        unknown_codes = [code for code in partial_completed_codes if code not in funds]
+        if unknown_codes:
+            raise RuntimeError(
+                "Delvis jobCompletedDuration har ukendte a-kassekoder: "
+                + ", ".join(unknown_codes)
+            )
+        latest_completed = completed_status.get("latestPeriod")
+        invalid_retained = []
+        for code in partial_completed_codes:
+            retained = funds[code].get("jobindsats", {}).get("completedDuration", {})
+            if not retained.get("period") or retained.get("period") == latest_completed:
+                invalid_retained.append(code)
+        if invalid_retained:
+            raise RuntimeError(
+                "Delvis jobCompletedDuration mangler tydeligt bevarede ældre data for: "
+                + ", ".join(invalid_retained)
+            )
 
     total = funds[total_code]
     for key, source in (("members", "AUA01"), ("unemploymentRate", "AUP03")):
