@@ -306,9 +306,42 @@ def validate():
 
 
 def main():
+    baseline = json.loads(DATA.read_text(encoding="utf-8"))
+    approved_completed = {
+        code: fund.get("jobindsats", {}).get("completedDuration")
+        for code, fund in baseline.get("funds", {}).items()
+        if fund.get("jobindsats", {}).get("completedDuration")
+    }
+
     subprocess.run([sys.executable, str(BASE / "scripts" / "fetch_sources.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "jobindsats_patch.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "completed_duration.py")], check=True)
+
+    data = json.loads(DATA.read_text(encoding="utf-8"))
+    completed_status = data.get("meta", {}).get("sourceStatus", {}).get(
+        "jobCompletedDuration", {}
+    )
+    restored = []
+    for code in completed_status.get("missingFundCodes") or []:
+        current = data.get("funds", {}).get(code, {}).get("jobindsats", {}).get(
+            "completedDuration"
+        )
+        if current:
+            continue
+        previous = approved_completed.get(code)
+        if not previous:
+            raise RuntimeError(
+                f"Ingen godkendt jobCompletedDuration-reserve for a-kasse {code}"
+            )
+        data["funds"][code].setdefault("jobindsats", {})["completedDuration"] = previous
+        restored.append(code)
+    if restored:
+        DATA.write_text(
+            json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print("Bevarede godkendte jobCompletedDuration-data for:", ", ".join(restored))
+
     subprocess.run([sys.executable, str(BASE / "scripts" / "apply_dak_names.py")], check=True)
     subprocess.run([sys.executable, str(BASE / "scripts" / "import_jobsearch.py")], check=True)
     validate()
