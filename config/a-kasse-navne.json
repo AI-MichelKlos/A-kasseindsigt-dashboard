@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "A-kassenavne og forkortelser",
-    "asOf": "2026-04",
+    "asOf": "2026-11",
     "usage": "DAK display names and explicit source aliases"
   },
   "funds": [
     {"dakName":"Akademikernes A-kasse","dakShort":"AKA","dstName":"Akademikernes (fra 1. juli 2013 inkl. ingeniører)","jobindsatsName":"Akademikernes A-kasse","starMemberName":"Akademikernes A-kasse","starCode":"D86"},
-    {"dakName":"A-kassen A&Til","dakShort":"A&Til","dstName":"Funktionærer og Tjenestemænd (FTF-A)","jobindsatsName":"A-kassen A&Til","starMemberName":"A-kassen A&Til","starCode":"D92"},
+    {"dakName":"A-kassen A&Til","dakShort":"A&Til","dstName":"Funktionærer og Tjenestemænd (FTF-A)","jobindsatsName":"A-kassen A&Til (tidl. FTF-A)","starMemberName":"A-kassen A&Til","starCode":"D92"},
     {"dakName":"A-kassen for Journalistik, Kommunikation & Sprog","dakShort":"AJKS","dstName":"Journalistik, Kommunikation og Sprog","jobindsatsName":"A-kassen for Journalistik, Komm. og Sprog","starMemberName":"Jour., Kom. & Sprog","starCode":"D10"},
     {"dakName":"A-kassen Frie","dakShort":"FRIE","dstName":"A-kassen Frie (fra 1. januar 2020 inkl. DANA)","jobindsatsName":"A-kassen Frie","starMemberName":"A-kassen Frie","starCode":"D83"},
     {"dakName":"Lederne A-kasse","dakShort":"LH-A","dstName":"Ledere","jobindsatsName":"Lederne A-kasse","starMemberName":"Lederne A-kasse","starCode":"D67"},
