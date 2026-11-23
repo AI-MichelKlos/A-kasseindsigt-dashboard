@@ -1,4 +1,4 @@
 status: fejl
-tid_utc: 2026-11-23T09:07:04Z
+tid_utc: 2026-11-23T09:09:35Z
 dato_dk: 2026-11-23
-fejl:  "countWithoutApplication": 980, "shareWithoutApplication": 1.138013 } } Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 284, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 280, in main validate() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 20, in validate raise RuntimeError(f"Dashboardstatus er {state}; alle påkrævede kilder skal være ok") RuntimeError: Dashboardstatus er partial; alle påkrævede kilder skal være ok 
+fejl:  "countWithoutApplication": 980, "shareWithoutApplication": 1.138013 } } Traceback (most recent call last): File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 319, in <module> main() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 315, in main validate() File "/home/runner/work/A-kasseindsigt-dashboard/A-kasseindsigt-dashboard/scripts/run_update.py", line 85, in validate raise RuntimeError( RuntimeError: Delvis jobCompletedDuration mangler tydeligt bevarede ældre data for: 13 
