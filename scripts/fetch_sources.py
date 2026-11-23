@@ -66,6 +66,7 @@ def fund_key(name):
     text = re.sub(r"\s+", " ", text).strip()
     aliases = {
         "a til": "atil",
+        "a til tidl ftf a": "atil",
         "funktionaerer og tjenestemaend ftf a": "atil",
         "ftf a": "atil",
         "frie": "frie",
